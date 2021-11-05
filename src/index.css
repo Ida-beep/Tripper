@@ -1,0 +1,119 @@
+/*GENERAL*/
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: #FFFBF2;
+}
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/*TYPOGRAPHY*/
+h1{
+  font-size: 49pt;
+}
+h2{
+  font-size: 39pt;
+}
+h3{
+  font-size: 31pt;
+}
+h4{
+  font-size: 25pt;
+}
+p{
+  font-size: 12pt;
+}
+.Description{
+  font-size: 10pt;
+}
+.ButtonMedium{
+  font-family: 'Roboto Slab', serif;
+  font-size: 16pt;
+  font-weight:500;
+}
+.ButtonSmall{
+  font-family: 'Roboto Slab', serif;
+  font-size: 13pt;
+  font-weight:500;
+}
+.ButtonExtraSmall{
+  font-family: 'Roboto Slab', serif;
+  font-size: 10pt;
+  font-weight:500;
+}
+.Link{
+  font-family: 'Roboto Slab', serif;
+  font-size: 16pt;
+  text-decoration: underline;
+  color: #1EA774;
+}
+
+
+/*NAVBAR*/
+.Nav-Bar{
+  display:flex;
+  border-bottom: 2px solid;
+  border-color: #FEE2A3;
+  width:100%;
+  height:60px;
+}
+.Nav-Ul{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+}
+.Divider{
+  display: flex;
+  flex:1;
+}
+.Logo{
+  display:flex;
+  padding-left:50px;
+  font-family: 'Roboto Slab', serif;
+  font-size:16pt;
+  color: #1EA774;
+  font-weight:900;
+}
+.Nav-Item-Overview{
+  display: flex;
+  flex-shrink: 0;
+  padding-right:25px;
+}
+.Nav-Item{
+  display:flex;
+  padding-left: 40px;
+}
+
+
+/*LINKS*/
+a{
+  color:grey; /*no Figma decisions yet*/
+  text-decoration: none;
+}
+a:hover{
+  color:black; /*no Figma decisions yet*/
+}
+
+/*EXCURSION*/
+.Excursion{
+  display: flex;
+  justify-content: center;
+}
+
+/*HOME*/
+.Home{
+  display: flex;
+  justify-content: center;
+}
+
+/*PROFILE*/
+.Profile{
+  display: flex;
+  justify-content: center;
+}
+
