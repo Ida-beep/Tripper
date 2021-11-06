@@ -25,7 +25,7 @@ h4{
   font-size: 25pt;
 }
 p{
-  font-size: 12pt;
+  font-size: 10pt; /*Changed from 12 to 10*/
 }
 .Description{
   font-size: 10pt;
@@ -117,3 +117,58 @@ a:hover{
   justify-content: center;
 }
 
+/*PARTICIPANT CARD*/
+.CardPlaceholder{
+  display:flex;
+  margin:20px;
+  flex-direction: column;
+  min-width: 450px; /*This might not make sense on mobile?*/
+  width:50%;
+  height:auto;
+  background-color: #FDF5D5;
+}
+.ParticipantCard{
+  display:flex;
+  flex-basis: 100px;
+  background-color: #FFFBF2;
+  border-radius: 5px;
+  border: solid transparent 2px;
+  margin:10px;
+  padding-left:20px;
+  padding-top:20px;
+  word-wrap: break-word;
+}
+.ParticipantCard:hover{
+  border: solid #1EA774 2px;
+}
+.NameIcon{
+  flex:1;
+  display:grid;
+  grid-template-columns: 40px 40px 40px;
+  grid-template-rows: 30px 30px 30px;
+}
+.Age{
+  flex:1;
+}
+.Duties{
+  padding-bottom:5px;
+  flex:1;
+}
+.Carseat{
+  padding-right:10px;
+  flex:1;
+}
+.DataItem{
+  margin:0px 20px;
+}
+.Name{
+  margin:0px 0px;
+  grid-row:1/2;
+  grid-column:1/4;
+}
+.Icon{
+  grid-row:2/3;
+  grid-column:1/2;
+  height: 50px;
+  width:50px;
+}
