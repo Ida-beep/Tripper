@@ -1,7 +1,7 @@
 const participantData =[
       {
         "id":1,
-        "name": "Jakob",
+        "name": "Jakob Thomsen",
         "age": 32,
         "carseat": "---",
         "dutypreferences": [
@@ -12,34 +12,34 @@ const participantData =[
       },
       {
         "id":2,
-        "name": "Ingrid",
+        "name": "Ingrid Førre",
         "age": 23,
         "carseat": "---",
         "dutypreferences": [
-          "Entertainment",
+          "Games",
           "Shopping",
-          "Kitchen Support"
+          "Kitchen"
         ]
       },
       {
         "id":3,
-        "name": "Ida",
+        "name": "Ida Villadsen",
         "age": 27,
         "carseat": "---",
         "dutypreferences": [
           "Cooking",
-          "Kitchen Support",
+          "Kitchen",
           "Shopping"
         ]
       },
       {
         "id":4,
-        "name": "Malene",
+        "name": "Malene Jensen",
         "age": 34,
         "carseat": "---",
         "dutypreferences": [
           "Shopping",
-          "Kitchen Support",
+          "Kitchen",
           "Cleaning"
         ]
       }
