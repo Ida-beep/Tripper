@@ -8,6 +8,7 @@ import icon from '../assets/noun_User_1796556 1.png';
  *  - A CardPlaceHolder is used in Profile.js to simulate the given measurement restrictions
  *  - Each Row-Item needs to be align correctly to headlines in Card
  *  - The Icon needs to be centered beneath the Name-prop
+ *  - The color-change of the PartcipicantCards needs to be refactored to useEffect()
  */
 
 function ParticipantCard(props){
