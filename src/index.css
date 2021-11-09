@@ -11,6 +11,7 @@ code {
     monospace;
 }
 
+
 /*TYPOGRAPHY*/
 h1,h2,h3,h4,p,.Description,li{
   color: #6B6B6B;
@@ -50,7 +51,9 @@ p, li{
   font-size: 10pt;
   font-weight:500;
   border: solid #1EA774 1px;
+  color:#1EA774;
   background-color: transparent;
+  height:25px;
   padding-left:10px;
   padding-right:10px;
 }
@@ -59,6 +62,10 @@ p, li{
   font-size: 16pt;
   text-decoration: underline;
   color: #1EA774;
+}
+.ButtonExtraSmall:hover{
+  color:#FFFBF2;
+  background-color: #1EA774;
 }
 
 
@@ -126,7 +133,7 @@ a:hover{
 .DropDownTop{
   display: flex;
   flex-direction: row;
-  width:50%;
+  width:91%;
   height:30px;
   border: solid transparent 2px;
   background-color: #FDF5D5;
@@ -139,8 +146,7 @@ a:hover{
 .DropDownItem{
   display: flex;
   padding-left:10px;
-  display: flex;
-  width:47.7%;
+  width:88.2%;
   height:30px;
   background-color: #FDF5D5;
   border: solid transparent 2px;
@@ -148,6 +154,18 @@ a:hover{
 .DropDownItem:hover{
   border: solid #1EA774 2px;
   border-radius: 5%;
+}
+#AddFamBack{
+  display:flex;
+  align-self: flex-end;
+  justify-self: flex-start;
+  margin-right:15px;
+}
+#AddFamAdd{
+  display:flex;
+  align-self: flex-end;
+  justify-self: flex-start;
+  margin-right:15px;
 }
 .PlaceHolder{
   display: flex;
@@ -163,6 +181,24 @@ a:hover{
 .DropDownSecondLine{
   display:flex;
   flex-direction:row;
+  width:100%;
+}
+
+/*OVERVIEWCARD*/
+.OverviewCard{
+  display: flex;
+  width:100%;
+}
+/*CarsAndSeats*/
+.CarsAndSeats{
+  display: flex;
+  width:100%;
+}
+
+/*YOUANDYOURFAM*/
+.YouAndYourFamily{
+  display: flex;
+  width: 100%;
 }
 
 /*EXCURSION*/
@@ -180,17 +216,50 @@ a:hover{
 /*PROFILE*/
 .Profile{
   display: flex;
+  flex-direction: column;
   justify-content: center;
+}
+.Profile-1{
+  display:flex;
+  flex-direction: row;
+  justify-content: center;
+  width:100%
+}
+.Profile-2{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width:100%
 }
 
 /*CARD*/
+.Header{
+  display: flex;
+  justify-content: space-between;
+  color:#6B6B6B;
+  border-bottom: solid #FADF63 2px;
+  padding:15px;
+}
+.Footer{
+  display:flex;
+  flex-direction: row;
+  width: 95%;
+  justify-content: flex-end;
+}
+.Left{
+  display: flex;
+  padding-left:25px;
+}
+.Right{
+  display: flex;
+}
 .Card {
   display:flex;
-  margin:20px;
+  margin:25px;
   padding: 25px; /*Added this -Ingrid*/
   flex-direction: column;
   min-width: 450px; /*This might not make sense on mobile?*/
-  width:50%; /*add max width?*/
+  width:100%; /*add max width?*/
   height:auto;
   background-color: #FDF5D5;
 }
@@ -203,17 +272,14 @@ a:hover{
   display: flex;
   /*flex-direction: column;*/
 }
-
 .ContactMemberInfo {
   display: flex;
   flex-wrap: wrap;
-  flex-basis: 500px; /*Change to responsive format*/
+  flex-basis: 100%; /*Change to responsive format*/
 }
-
 .ContactMemberName {
   width: 100%;
 }
-
 .AddressAndEmail {
   flex: 1;
 }
@@ -223,28 +289,29 @@ a:hover{
 }
 
 .ContactMemberImage {
-  flex-basis: 100px; /*Change to responsive*/
-  justify-content: right;
+  display:flex;
+  align-content: center;
+  justify-content: center;
+  width:100px;
+  height:100px;
+  border:solid #FADF63 4px;
+}
+.ContactMemberImage-1{
+  display: flex;
+  padding: 25px;
 }
 
 .PreferredDuties {
   padding-top: 25px;
 }
 
-
-/*PARTICIPANT CARD -- Replace?*/
-.CardPlaceholder{
+/*IMAGECARD*/
+.ImageCard{
   display:flex;
-  margin:20px;
-  padding: 25px; /*Added this -Ingrid*/
-  flex-direction: column;
-  min-width: 450px; /*This might not make sense on mobile?*/
-  width:50%; 
-  height:auto;
-  background-color: #FDF5D5;
 }
 
-.ParticipantCard{
+/*PARTICIPANT INFO*/
+.ParticipantInfo{
   display:flex;
   flex-basis: 100px;
   background-color: #FFFBF2;
@@ -255,7 +322,7 @@ a:hover{
   padding-top:20px;
   word-wrap: break-word;
 }
-.ParticipantCard:hover{
+.ParticipantInfo:hover{
   border: solid #1EA774 2px;
 }
 .NameIcon{
@@ -266,6 +333,7 @@ a:hover{
 }
 .Age{
   flex:1;
+  width:33%;
 }
 .Duties{
   padding-bottom:5px;
@@ -294,12 +362,11 @@ a:hover{
 input, label{
   display:block;
 }
-
 input{
   border:none;
   background-color: #FDF5D5;
   border: solid transparent 2px;
-  border-bottom: solid #FEE2A3 1px;
+  border-bottom: solid #FEE2A3 2px;
   padding:5px;
 }
 input:hover{
@@ -344,9 +411,24 @@ label{
   display:flex;
   flex-direction: row;
   justify-content: flex-start;
+  width:100%;
 }
 .TitleNewMember{
   display: flex;
   justify-content: flex-start;
   padding-bottom:20px;
+}
+
+
+.addFirstName{
+  display: flex;
+  flex:2;
+}
+.addLastName{
+  display: flex;
+  flex:2;
+}
+.addAge{
+  display: flex;
+  flex:1;
 }
