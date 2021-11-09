@@ -108,6 +108,63 @@ a:hover{
   color:black; /*no Figma decisions yet*/
 }
 
+/*DELETEPOPUP*/
+.DeletePopUp{
+  background-color: #FDF5D5;
+  width:500px;
+  height:200px;
+  border:solid DD0D18 2px;
+}
+
+/*DROPDOWN*/
+.DropDownMenu{
+  display: flex;
+  flex:4;
+  flex-direction: column;
+  margin-top:25px;
+}
+.DropDownTop{
+  display: flex;
+  flex-direction: row;
+  width:50%;
+  height:30px;
+  border: solid transparent 2px;
+  background-color: #FDF5D5;
+  border-bottom: solid #FADF63 2px;
+  padding:0px 0px;
+}
+.DropDownTop:hover{
+  border: solid #1EA774 2px;
+}
+.DropDownItem{
+  display: flex;
+  padding-left:10px;
+  display: flex;
+  width:47.7%;
+  height:30px;
+  background-color: #FDF5D5;
+  border: solid transparent 2px;
+}
+.DropDownItem:hover{
+  border: solid #1EA774 2px;
+  border-radius: 5%;
+}
+.PlaceHolder{
+  display: flex;
+  flex:4;
+  padding:5px;
+}
+.arrowBtn{
+  display: none;
+  flex:1;
+  width:5px;
+  height:10px;
+}
+.DropDownSecondLine{
+  display:flex;
+  flex-direction:row;
+}
+
 /*EXCURSION*/
 .Excursion{
   display: flex;

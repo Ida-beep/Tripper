@@ -1,53 +1,70 @@
-/* import React from 'react';
+import React from 'react';
 import { useState } from 'react';
-import dutyList from './data/dutyList.js'; */
+import DropDownMenu from './DropDownMenu.js';
 
 /** AddFamily is a pop-up window that lets the user add a person as family
  *  - Are all the state relevant when we get to backend? We'll have to see.
- *  - the "submit" needs to be mapped to the final "add" button after filling out inputs
+ *  - the "submit" needs to be handled
  *  - ListOfDuties should be mapped to a dropdown menu
  */
 
-/* function AddFamily(){
+function AddFamily(){
     const [firstName,setFirstName] = useState("First Name");
     const [lastName,setLastName] = useState("Last Name");
     const [age,setAge] = useState(0);
-    const [duties,setDuties] = useState([]);
-    const ListOfDuties = dutyList.map(duty => <li>{duty.name}</li>);
+    const [active,setActive] = useState(true);
 
-    function handleChange(event) {
-        setFirstName(event.target.value);
+/*     useEffect((e)=>{
+        setActive? null: e.target.style="display:none";
+    }) */
+
+    function changeFirstName(e) {
+        setFirstName(e.target.value);
+    }
+    function changeLastName(e) {
+        setLastName(e.target.value);
+    }
+    function changeAge(e) {
+        setAge(e.target.value);
     }
 
-    function handleSubmit(event) {
+    function handleSubmit(e) {
         alert("A Family Member was submitted: " + firstName + lastName + age);
-        event.preventDefault();
+        e.preventDefault();
     }
 
     return (
-        <form className="Popup" onSubmit={handleSubmit}>
+        <div> {active?
+        <form className="Popup">
         <div className="Popup-content">
             <p className="TitleNewMember">New Family Member</p>
             <div className="Inputs">
             <label>
                 <p>First Name</p>
                 <input type="text" value={firstName}
-                onChange={handleChange} />
+                onChange={changeFirstName} />
             </label>
             <label>
                 <p>Last Name</p>
                 <input type="text" value={lastName}
-                onChange={handleChange} />
+                onChange={changeLastName} />
             </label>
             <label>    
                 <p>Age</p>
                 <input type="text" value={age}
-                onChange={handleChange} />
+                onChange={changeAge} />
             </label>  
-            </div>          
+            </div> 
+            <div className="DropDownSecondLine">
+                <DropDownMenu/>
+                <button className="ButtonExtraSmall" onClick={()=>setActive(!active)}>Back</button>
+                <button className="ButtonExtraSmall" type="submit" onSubmit={handleSubmit}>Add</button>
+            </div> 
         </div>
         </form>
+        : null}
+        </div>
     );
 }
 
-export default AddFamily; */
+export default AddFamily;

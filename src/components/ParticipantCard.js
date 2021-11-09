@@ -15,7 +15,7 @@ function ParticipantCard(props){
 
     useEffect(()=>{
         selected? setColor("#FADF63"):setColor("#FFFBF2");
-    })
+    },[selected])
 
     return(
         <div className="ParticipantCard" style={{backgroundColor: color}} onClick={()=>setSelected(!selected)} >
