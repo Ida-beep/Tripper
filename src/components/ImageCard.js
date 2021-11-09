@@ -1,14 +1,11 @@
-import React, {useState} from 'react';
-import Card from './Card';
+import React from 'react';
 import '../index.css';
-//import image
+import Image from '../assets/landscape.png';
 
 function ImageCard() {
     return (
-        <div>
-            <Card>
-            
-            </Card>
+        <div className="Card">
+            <img className="ImageCard" src={Image} alt="landscape"/>
         </div>
     )
 }

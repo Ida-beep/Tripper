@@ -1,14 +1,16 @@
-import React, {useState} from 'react';
-import Card from './Card';
+import React from 'react';
 import '../index.css';
 import OverviewCard from './OverviewCard';
 
 function CarsAndSeatsCard() {
+    const CarsAndSeat = [];
+    const CardHeader = ["Name","Age","Duties","Carseat"];
+    const Rightbuttons = ["Add"];
+    const LeftButtons = ["Delete"];
+
     return(
-        <div>
-            <OverviewCard>
-                
-            </OverviewCard>
+        <div className="CarsAndSeats">
+            <OverviewCard content={CarsAndSeat} header={CardHeader} leftbutton={LeftButtons} rightbutton={Rightbuttons}/>
         </div>
     )
 }

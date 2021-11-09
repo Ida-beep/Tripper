@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import Card from './Card';
+import React from 'react';
+import Image from '../assets/noun_upload photo_1337310 1.png';
 import '../index.css';
 
 function ContactPersonCard(props) {
@@ -19,22 +19,21 @@ function ContactPersonCard(props) {
                 <div className="UpperSection">
                     <div className="ContactMemberInfo">
                         <div className="ContactMemberName">
-                            <h2>{props.data.name}</h2>
+                            <h4>{props.data.name}</h4>
                         </div>
                         <div className="AddressAndEmail">
-                            <p>[street]</p>
-                            <p>[zip, city]</p>
-                            <p>[email]</p>
+                            <p>{props.data.address.street}</p>
+                            <p>{props.data.address.zip}</p>
+                            <p>{props.data.email}</p>
                         </div>
                         <div className="MobileInfo">
-                            <p>(Mobile) [number]</p>
-                            <p>(Phone) [number]</p>
-                            <p>(Work) [number]</p>
+                            <p>(Mobile) {props.data.mobile}</p>
+                            <p>(Phone) {props.data.phone}</p>
+                            <p>(Work) {props.data.workphone}</p>
                         </div>
                     </div>
                     <div className="ContactMemberImage">
-                        <img src="" alt=""/>
-                        <p> Image Placeholder</p>
+                        <img className="ContactMemberImage-1" src={Image} alt="upload"/>
                     </div>
                 </div>
                 <div className="PreferredDuties">
