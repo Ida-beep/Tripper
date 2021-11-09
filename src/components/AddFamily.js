@@ -8,7 +8,7 @@ import DropDownMenu from './DropDownMenu.js';
  *  - ListOfDuties should be mapped to a dropdown menu
  */
 
-function AddFamily(){
+function AddFamily(props){
     const [firstName,setFirstName] = useState("First Name");
     const [lastName,setLastName] = useState("Last Name");
     const [age,setAge] = useState(0);
@@ -34,31 +34,37 @@ function AddFamily(){
     }
 
     return (
-        <div> {active?
+        <div> {props.active?
         <form className="Popup">
         <div className="Popup-content">
             <p className="TitleNewMember">New Family Member</p>
             <div className="Inputs">
-            <label>
-                <p>First Name</p>
-                <input type="text" value={firstName}
-                onChange={changeFirstName} />
-            </label>
-            <label>
-                <p>Last Name</p>
-                <input type="text" value={lastName}
-                onChange={changeLastName} />
-            </label>
-            <label>    
-                <p>Age</p>
-                <input type="text" value={age}
-                onChange={changeAge} />
-            </label>  
+            <div className="addFirstName">
+                <label>
+                    <p>First Name</p>
+                    <input type="text" value={firstName}
+                    onChange={changeFirstName} />
+                </label>
+            </div>
+            <div className="addLastName">
+                <label>
+                    <p>Last Name</p>
+                    <input type="text" value={lastName}
+                    onChange={changeLastName} />
+                </label>
+            </div>
+            <div className="addAge">    
+                <label>    
+                    <p>Age</p>
+                    <input type="text" value={age}
+                    onChange={changeAge} />
+                </label> 
+            </div>
             </div> 
             <div className="DropDownSecondLine">
                 <DropDownMenu/>
-                <button className="ButtonExtraSmall" onClick={()=>setActive(!active)}>Back</button>
-                <button className="ButtonExtraSmall" type="submit" onSubmit={handleSubmit}>Add</button>
+                <button className="ButtonExtraSmall" id="AddFamBack" onClick={()=>setActive(!active)}>Back</button>
+                <button className="ButtonExtraSmall" id="AddFamAdd" type="submit" onSubmit={handleSubmit}>Add</button>
             </div> 
         </div>
         </form>
