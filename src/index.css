@@ -151,7 +151,6 @@ a:hover{
   display: flex;
   flex-wrap: wrap;
   flex-basis: 500px; /*Change to responsive format*/
-  background: blue;
 }
 
 .ContactMemberName {
@@ -159,17 +158,14 @@ a:hover{
 }
 
 .AddressAndEmail {
-  background-color: pink;
   flex: 1;
 }
 
 .MobileInfo {
-  background-color: yellow;
   flex: 1;
 }
 
 .ContactMemberImage {
-  background-color: red;
   flex-basis: 100px; /*Change to responsive*/
   justify-content: right;
 }

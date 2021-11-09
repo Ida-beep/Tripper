@@ -1,6 +1,4 @@
 import React, { useEffect } from 'react';
-//Rename to ParticpantInfo
-import React from 'react';
 import { useState } from 'react';
 import icon from '../assets/noun_User_1796556 1.png';
 
@@ -8,6 +6,7 @@ import icon from '../assets/noun_User_1796556 1.png';
  *  - The rendering of duties should be refactored
  *  - A CardPlaceHolder is used in Profile.js to simulate the given measurement restrictions
  *  - Each Row-Item needs to be align correctly to headlines in Card
+ *  - Rename to ParticipantInfo
  */
 
 function ParticipantCard(props){
