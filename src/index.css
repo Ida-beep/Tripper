@@ -12,7 +12,7 @@ code {
 }
 
 /*TYPOGRAPHY*/
-h1,h2,h3,h4,p,.Description{
+h1,h2,h3,h4,p,.Description,li{
   color: #6B6B6B;
   margin:0px 0px;
 }
@@ -29,7 +29,7 @@ h3{
 h4{
   font-size: 25pt;
 }
-p{
+p, li{
   font-size: 10pt; /*Changed from 12 to 10*/
 }
 .Description{
@@ -126,16 +126,71 @@ a:hover{
   justify-content: center;
 }
 
-/*PARTICIPANT CARD*/
-.CardPlaceholder{
+/*CARD*/
+.Card {
   display:flex;
   margin:20px;
+  padding: 25px; /*Added this -Ingrid*/
   flex-direction: column;
   min-width: 450px; /*This might not make sense on mobile?*/
-  width:50%;
+  width:50%; /*add max width?*/
   height:auto;
   background-color: #FDF5D5;
 }
+
+/*CONTACT PERSON CARD - Necessary?*/
+.ContactPersonCard {
+}
+
+.UpperSection {
+  display: flex;
+  /*flex-direction: column;*/
+}
+
+.ContactMemberInfo {
+  display: flex;
+  flex-wrap: wrap;
+  flex-basis: 500px; /*Change to responsive format*/
+  background: blue;
+}
+
+.ContactMemberName {
+  width: 100%;
+}
+
+.AddressAndEmail {
+  background-color: pink;
+  flex: 1;
+}
+
+.MobileInfo {
+  background-color: yellow;
+  flex: 1;
+}
+
+.ContactMemberImage {
+  background-color: red;
+  flex-basis: 100px; /*Change to responsive*/
+  justify-content: right;
+}
+
+.PreferredDuties {
+  padding-top: 25px;
+}
+
+
+/*PARTICIPANT CARD -- Replace?*/
+.CardPlaceholder{
+  display:flex;
+  margin:20px;
+  padding: 25px; /*Added this -Ingrid*/
+  flex-direction: column;
+  min-width: 450px; /*This might not make sense on mobile?*/
+  width:50%; 
+  height:auto;
+  background-color: #FDF5D5;
+}
+
 .ParticipantCard{
   display:flex;
   flex-basis: 100px;
