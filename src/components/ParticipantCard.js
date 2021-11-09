@@ -1,3 +1,4 @@
+import React, { useEffect } from 'react';
 //Rename to ParticpantInfo
 import React from 'react';
 import { useState } from 'react';
@@ -5,34 +6,20 @@ import icon from '../assets/noun_User_1796556 1.png';
 
 /** ParticipantCard displays a Participants name, age, dutypreferences and carseat
  *  - The rendering of duties should be refactored
- *  - Car seats are currently missing
  *  - A CardPlaceHolder is used in Profile.js to simulate the given measurement restrictions
  *  - Each Row-Item needs to be align correctly to headlines in Card
- *  - The Icon needs to be centered beneath the Name-prop
- *  - The color-change of the PartcipicantCards needs to be refactored to useEffect()
  */
 
 function ParticipantCard(props){
     const [color,setColor] = useState("#FFFBF2");
-    const [isSelected, setIsSelected] = useState(false);
+    const [selected, setSelected] = useState(false);
 
-    function changeSelection(){
-        switch(isSelected){
-            case false:
-                setColor("#FADF63");
-                setIsSelected(true);
-                break;
-            case true:
-                setColor("#FFFBF2");
-                setIsSelected(false);
-                break;
-            default:
-                return;
-        }
-    }
+    useEffect(()=>{
+        selected? setColor("#FADF63"):setColor("#FFFBF2");
+    })
 
     return(
-        <div className="ParticipantCard" style={{backgroundColor: color}} onClick={()=>changeSelection()} >
+        <div className="ParticipantCard" style={{backgroundColor: color}} onClick={()=>setSelected(!selected)} >
             <div className="NameIcon">
                 <p className="Name">{props.name}</p>
                 <img className="Icon"src={icon} alt="Logo"></img>
