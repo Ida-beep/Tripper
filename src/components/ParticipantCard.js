@@ -1,3 +1,4 @@
+//Rename to ParticpantInfo
 import React from 'react';
 import { useState } from 'react';
 import icon from '../assets/noun_User_1796556 1.png';

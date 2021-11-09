@@ -1,16 +1,16 @@
 import React, {useState} from 'react';
 import Card from './Card';
 import '../index.css';
-//import image
+//fix imports
 
-function ImageCard() {
+function OverviewCard(props) {
     return (
         <div>
             <Card>
-            
+                
             </Card>
         </div>
-    )
+    );
 }
 
-export default ImageCard;
+export default OverviewCard;
