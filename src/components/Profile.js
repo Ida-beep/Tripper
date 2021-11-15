@@ -4,7 +4,7 @@
 import React from 'react';
 import {useState} from 'react';
 import participantData from './data/participantData.js';
-import AddFamily from './AddFamily';
+import AddFamily from './AddFamily/AddFamily';
 import ImageCard from './ImageCard.js';
 import '../index.css';
 import YouAndYourFamilyCard from './YouAndYourFamilyCard';

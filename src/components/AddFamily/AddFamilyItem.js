@@ -1,41 +1,44 @@
 import React from 'react';
+import DropDownMenu from '../DropDownMenu/DropDownMenu.js';
 import { useState } from 'react';
-import DropDownMenu from './DropDownMenu.js';
+import API from '../API.js';
 
-/** AddFamily is a pop-up window that lets the user add a person as family
- *  - Are all the state relevant when we get to backend? We'll have to see.
- *  - the "submit" needs to be handled
- *  - ListOfDuties should be mapped to a dropdown menu
+/**
+ * @public AddFamilyItem defines the content of the popup AddFamily.js
+ * @param {*} props 
+ * @returns 
  */
 
-function AddFamily(props){
-    const [firstName,setFirstName] = useState("First Name");
-    const [lastName,setLastName] = useState("Last Name");
-    const [age,setAge] = useState(0);
-    const [active,setActive] = useState(true);
-
-/*     useEffect((e)=>{
-        setActive? null: e.target.style="display:none";
-    }) */
+function AddFamilyItem(props){
+    const [firstName,setFirstName] = useState();
+    const [lastName,setLastName] = useState();
+    const [age,setAge] = useState();
+    const [duties,setDuties]=useState([]);
+    const personData = {firstName,lastName,age,duties};
 
     function changeFirstName(e) {
+        e.preventDefault();
         setFirstName(e.target.value);
     }
     function changeLastName(e) {
+        e.preventDefault();
         setLastName(e.target.value);
     }
     function changeAge(e) {
+        e.preventDefault();
         setAge(e.target.value);
+        console.log("age was changed")
     }
 
     function handleSubmit(e) {
-        alert("A Family Member was submitted: " + firstName + lastName + age);
         e.preventDefault();
+        console.log("handleSubmit called")
+        API.addFamilyMember(personData);
+        console.log("submit handles with " + personData);
     }
 
-    return (
-        <div> {props.active?
-        <form className="Popup">
+    return(
+        <form className="Popup" onSubmit={handleSubmit}>
         <div className="Popup-content">
             <p className="TitleNewMember">New Family Member</p>
             <div className="Inputs">
@@ -62,15 +65,12 @@ function AddFamily(props){
             </div>
             </div> 
             <div className="DropDownSecondLine">
-                <DropDownMenu/>
-                <button className="ButtonExtraSmall" id="AddFamBack" onClick={()=>setActive(!active)}>Back</button>
-                <button className="ButtonExtraSmall" id="AddFamAdd" type="submit" onSubmit={handleSubmit}>Add</button>
+                <DropDownMenu duties={duties}/>
+                <button className="ButtonExtraSmall" id="AddFamBack" onClick={()=>props.active}>Back</button>
+                <button className="ButtonExtraSmall" id="AddFamAdd" type="submit">Add</button>
             </div> 
         </div>
         </form>
-        : null}
-        </div>
     );
 }
-
-export default AddFamily;
+export default AddFamilyItem;
