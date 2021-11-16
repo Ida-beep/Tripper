@@ -66,7 +66,7 @@ function AddFamilyItem(props){
             </div> 
             <div className="DropDownSecondLine">
                 <DropDownMenu duties={duties}/>
-                <button className="ButtonExtraSmall" id="AddFamBack" onClick={()=>props.active}>Back</button>
+                <button className="ButtonExtraSmall" id="AddFamBack" type="button" onClick={()=>props.active(false)}>Back</button>
                 <button className="ButtonExtraSmall" id="AddFamAdd" type="submit">Add</button>
             </div> 
         </div>

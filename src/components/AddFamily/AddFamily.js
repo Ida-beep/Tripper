@@ -19,7 +19,7 @@ import AddFamilyItem from './AddFamilyItem.js';
  */
 function AddFamily(props){
     const [active,setActive] = useState(true);
-    const addFamilyItem = <AddFamilyItem active={()=>setActive(!active)}/>;
+    const addFamilyItem = <AddFamilyItem active={(active)=>setActive(active)}/>;
 
     return (
         <> {props.active && addFamilyItem}</>
