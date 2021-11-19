@@ -13,6 +13,7 @@ function XGuestDutyCard () {
                         <th>Name</th>
                         <th>Age</th>
                         <th>Pref. Duties</th>
+                        <th>ID</th>
                     </tr>
                 </thead>
                 <tbody>
