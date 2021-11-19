@@ -399,6 +399,7 @@ label{
   flex-direction: column;
   background-color: #FFFBF2;
   position: absolute;
+  z-index:2;
   top: 10%;
   left: 30%;
   width: 40%;
