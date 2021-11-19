@@ -1,10 +1,9 @@
 import React from 'react';
-import { useState } from 'react';
 import AddFamilyItem from './AddFamilyItem.js';
 
 /**
  * @public AddFamily is a pop-up window that lets the user add a person as family
- *         It renders the AddFamilyItems on the condition that it's active as a popup
+ *         It renders the AddFamilyItems on the condition that it's showPopup as a popup
  *         It also handles the connection to the backend. 
  * @param {*} props   
  *  - Are all the state relevant when we get to backend? We'll have to see.
@@ -18,11 +17,10 @@ import AddFamilyItem from './AddFamilyItem.js';
  *    it might be a good idea to hoist the states even up to ContactPersonCard.js 
  */
 function AddFamily(props){
-    const [active,setActive] = useState(true);
-    const addFamilyItem = <AddFamilyItem active={(active)=>setActive(active)}/>;
+    const addFamilyItem = <AddFamilyItem showPopup={props.showPopup} togglePopup={props.togglePopup}/>;
 
     return (
-        <> {props.active && addFamilyItem}</>
+        <> {props.showPopup && addFamilyItem}</>
     );
 }
 

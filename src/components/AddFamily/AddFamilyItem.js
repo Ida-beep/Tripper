@@ -3,12 +3,12 @@ import DropDownMenu from '../DropDownMenu/DropDownMenu.js';
 import { useState } from 'react';
 import API from '../API.js';
 
+
 /**
  * @public AddFamilyItem defines the content of the popup AddFamily.js
  * @param {*} props 
  * @returns 
  */
-
 function AddFamilyItem(props){
     const [firstName,setFirstName] = useState();
     const [lastName,setLastName] = useState();
@@ -32,9 +32,19 @@ function AddFamilyItem(props){
 
     function handleSubmit(e) {
         e.preventDefault();
-        console.log("handleSubmit called")
-        API.addFamilyMember(personData);
-        console.log("submit handles with " + personData);
+        if (!firstName){
+            setFirstName(e.target.value = "missing first name")
+        }
+        if (!lastName){
+            setLastName(e.target.value = "missing last name")
+        }
+
+        if(firstName && lastName && age && duties){
+            API.addFamilyMember(personData);
+            console.log("submit handled for " + personData.firstName + " " + personData.lastName);
+        
+            console.log("missing persondata")
+        }
     }
 
     return(
@@ -66,7 +76,7 @@ function AddFamilyItem(props){
             </div> 
             <div className="DropDownSecondLine">
                 <DropDownMenu duties={duties}/>
-                <button className="ButtonExtraSmall" id="AddFamBack" type="button" onClick={()=>props.active(false)}>Back</button>
+                <button className="ButtonExtraSmall" id="AddFamBack" type="button" onClick={props.togglePopup}>Back</button>
                 <button className="ButtonExtraSmall" id="AddFamAdd" type="submit">Add</button>
             </div> 
         </div>

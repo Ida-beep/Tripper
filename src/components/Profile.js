@@ -17,20 +17,25 @@ import CarsAndSeatsCard from './CarsAndSeatsCard.js';
  *    and rendered there instead of in Profile. 
  *  - Button "Add" needs to go into Card
  */
- 
 function Profile () {
     const contactPersonData = participantData[0];
-    const [active,setActive] = useState(false);
+    const [showPopup,setShowPopup] = useState(false);
+
+    function togglePopup(){
+        console.log(" toggled <3 ")
+        setShowPopup((prevState)=>!prevState)
+        
+    }
 
     return (
         <div className="Profile">
-            <AddFamily active={active}/>
+            <AddFamily showPopup={showPopup} togglePopup={togglePopup}/>
         <div className="Profile-1">
             <ContactPersonCard className="ContactPersonCard" data={contactPersonData}/>
             <ImageCard className="ImageCard"/>
         </div>
         <div className="Profile-2">
-            <YouAndYourFamilyCard active={()=>setActive(true)}/>
+            <YouAndYourFamilyCard togglePopup={togglePopup}/>
             <CarsAndSeatsCard/>
         </div>
         </div>

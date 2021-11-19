@@ -6,7 +6,7 @@ function OverviewCard(props) {
     
     return (
         <div className="OverviewCard">
-            <Card content={props.content} header={props.header} rightbutton={props.rightbutton} leftbutton={props.leftbutton} active={props.active}/>
+            <Card content={props.content} header={props.header} rightbutton={props.rightbutton} leftbutton={props.leftbutton} togglePopup={props.togglePopup}/>
         </div>
     );
 }

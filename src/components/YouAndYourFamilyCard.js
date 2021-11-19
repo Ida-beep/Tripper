@@ -18,7 +18,7 @@ function YouAndYourFamilyCard(props) {
 
     return (
         <div className="YouAndYourFamily">
-            <OverviewCard active={props.active} class="YouAndYourFamily" header={CardHeader} content={participantComponents} rightbutton={Rightbuttons} leftbutton={LeftButtons}/>
+            <OverviewCard togglePopup={props.togglePopup} class="YouAndYourFamily" header={CardHeader} content={participantComponents} rightbutton={Rightbuttons} leftbutton={LeftButtons}/>
         </div>
     );
 }
