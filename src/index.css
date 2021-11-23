@@ -1,267 +1,271 @@
 /*GENERAL*/
 body {
   margin: 0;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #FFFBF2;
+  background-color: #fffbf2;
 }
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
 
-
 /*TYPOGRAPHY*/
-h1,h2,h3,h4,p,.Description,li{
-  color: #6B6B6B;
-  margin:0px 0px;
+h1,
+h2,
+h3,
+h4,
+p,
+.Description,
+li {
+  color: #6b6b6b;
+  margin: 0px 0px;
 }
 
-h1{
+h1 {
   font-size: 49pt;
 }
-h2{
+h2 {
   font-size: 39pt;
 }
-h3{
+h3 {
   font-size: 31pt;
 }
-h4{
+h4 {
   font-size: 25pt;
 }
-p, li{
+p,
+li {
   font-size: 10pt; /*Changed from 12 to 10*/
 }
-.Description{
+.Description {
   font-size: 10pt;
 }
-.ButtonMedium{
-  font-family: 'Roboto Slab', serif;
+.ButtonMedium {
+  font-family: "Roboto Slab", serif;
   font-size: 16pt;
-  font-weight:500;
+  font-weight: 500;
 }
-.ButtonSmall{
-  font-family: 'Roboto Slab', serif;
+.ButtonSmall {
+  font-family: "Roboto Slab", serif;
   font-size: 13pt;
-  font-weight:500;
+  font-weight: 500;
 }
-.ButtonExtraSmall{
-  font-family: 'Roboto Slab', serif;
+.ButtonExtraSmall {
+  font-family: "Roboto Slab", serif;
   font-size: 10pt;
-  font-weight:500;
-  border: solid #1EA774 1px;
-  color:#1EA774;
+  font-weight: 500;
+  border: solid #1ea774 1px;
+  color: #1ea774;
   background-color: transparent;
-  height:25px;
-  padding-left:10px;
-  padding-right:10px;
+  height: 25px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
-.Link{
-  font-family: 'Roboto Slab', serif;
+.Link {
+  font-family: "Roboto Slab", serif;
   font-size: 16pt;
   text-decoration: underline;
-  color: #1EA774;
+  color: #1ea774;
 }
-.ButtonExtraSmall:hover{
-  color:#FFFBF2;
-  background-color: #1EA774;
+.ButtonExtraSmall:hover {
+  color: #fffbf2;
+  background-color: #1ea774;
 }
-
 
 /*NAVBAR*/
-.Nav-Bar{
-  display:flex;
+.Nav-Bar {
+  display: flex;
   border-bottom: 2px solid;
-  border-color: #FEE2A3;
-  width:100%;
-  height:60px;
+  border-color: #fee2a3;
+  width: 100%;
+  height: 60px;
 }
-.Nav-Ul{
+.Nav-Ul {
   display: flex;
   flex-direction: row;
   align-items: center;
   width: 100%;
 }
-.Divider{
+.Divider {
   display: flex;
-  flex:1;
+  flex: 1;
 }
-.Logo{
-  display:flex;
-  padding-left:50px;
-  font-family: 'Roboto Slab', serif;
-  font-size:16pt;
-  color: #1EA774;
-  font-weight:900;
+.Logo {
+  display: flex;
+  padding-left: 50px;
+  font-family: "Roboto Slab", serif;
+  font-size: 16pt;
+  color: #1ea774;
+  font-weight: 900;
 }
-.Nav-Item-Overview{
+.Nav-Item-Overview {
   display: flex;
   flex-shrink: 0;
-  padding-right:25px;
+  padding-right: 25px;
 }
-.Nav-Item{
-  display:flex;
+.Nav-Item {
+  display: flex;
   padding-left: 40px;
 }
 
-
 /*LINKS*/
-a{
-  color:grey; /*no Figma decisions yet*/
+a {
+  color: grey; /*no Figma decisions yet*/
   text-decoration: none;
 }
-a:hover{
-  color:black; /*no Figma decisions yet*/
+a:hover {
+  color: black; /*no Figma decisions yet*/
 }
 
 /*DELETEPOPUP*/
-.DeletePopUp{
-  background-color: #FDF5D5;
-  width:500px;
-  height:200px;
-  border:solid DD0D18 2px;
+.DeletePopUp {
+  background-color: #fdf5d5;
+  width: 500px;
+  height: 200px;
+  border: solid DD0D18 2px;
 }
 
 /*DROPDOWN*/
-.DropDownMenu{
+.DropDownMenu {
   display: flex;
-  flex:4;
+  flex: 4;
   flex-direction: column;
-  margin-top:25px;
+  margin-top: 25px;
 }
-.DropDownTop{
+.DropDownTop {
   display: flex;
   flex-direction: row;
-  width:91%;
-  height:30px;
+  width: 91%;
+  height: 30px;
   border: solid transparent 2px;
-  background-color: #FDF5D5;
-  border-bottom: solid #FADF63 2px;
-  padding:0px 0px;
+  background-color: #fdf5d5;
+  border-bottom: solid #fadf63 2px;
+  padding: 0px 0px;
 }
-.DropDownTop:hover{
-  border: solid #1EA774 2px;
+.DropDownTop:hover {
+  border: solid #1ea774 2px;
 }
-.DropDownItem{
+.DropDownItem {
   display: flex;
-  padding-left:10px;
-  width:88.2%;
-  height:30px;
-  background-color: #FDF5D5;
+  padding-left: 10px;
+  width: 88.2%;
+  height: 30px;
+  background-color: #fdf5d5;
   border: solid transparent 2px;
 }
-.DropDownItem:hover{
-  border: solid #1EA774 2px;
+.DropDownItem:hover {
+  border: solid #1ea774 2px;
   border-radius: 5%;
 }
-#AddFamBack{
-  display:flex;
-  align-self: flex-end;
-  justify-self: flex-start;
-  margin-right:15px;
-}
-#AddFamAdd{
-  display:flex;
-  align-self: flex-end;
-  justify-self: flex-start;
-  margin-right:15px;
-}
-.PlaceHolder{
+#AddFamBack {
   display: flex;
-  flex:4;
-  padding:5px;
+  align-self: flex-end;
+  justify-self: flex-start;
+  margin-right: 15px;
 }
-.arrowBtn{
+#AddFamAdd {
+  display: flex;
+  align-self: flex-end;
+  justify-self: flex-start;
+  margin-right: 15px;
+}
+.PlaceHolder {
+  display: flex;
+  flex: 4;
+  padding: 5px;
+}
+.arrowBtn {
   display: none;
-  flex:1;
-  width:5px;
-  height:10px;
+  flex: 1;
+  width: 5px;
+  height: 10px;
 }
-.DropDownSecondLine{
-  display:flex;
-  flex-direction:row;
-  width:100%;
+.DropDownSecondLine {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
 }
 
 /*OVERVIEWCARD*/
-.OverviewCard{
+.OverviewCard {
   display: flex;
-  width:100%;
+  width: 100%;
 }
 /*CarsAndSeats*/
-.CarsAndSeats{
+.CarsAndSeats {
   display: flex;
-  width:100%;
+  width: 100%;
 }
 
 /*YOUANDYOURFAM*/
-.YouAndYourFamily{
+.YouAndYourFamily {
   display: flex;
   width: 100%;
 }
 
 /*EXCURSION*/
-.Excursion{
+.Excursion {
   display: flex;
   justify-content: center;
 }
 
 /*HOME*/
-.Home{
+.Home {
   display: flex;
   justify-content: center;
 }
 
 /*PROFILE*/
-.Profile{
+.Profile {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
-.Profile-1{
-  display:flex;
-  flex-direction: row;
-  justify-content: center;
-  width:100%
-}
-.Profile-2{
+.Profile-1 {
   display: flex;
   flex-direction: row;
   justify-content: center;
-  width:100%
+  width: 100%;
+}
+.Profile-2 {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
 }
 
 /*CARD*/
-.Header{
+.Header {
   display: flex;
   justify-content: space-between;
-  color:#6B6B6B;
-  border-bottom: solid #FADF63 2px;
-  padding:15px;
+  color: #6b6b6b;
+  border-bottom: solid #fadf63 2px;
+  padding: 15px;
 }
-.Footer{
-  display:flex;
+.Footer {
+  display: flex;
   flex-direction: row;
   width: 95%;
   justify-content: flex-end;
 }
-.Left{
+.Left {
   display: flex;
-  padding-left:25px;
+  padding-left: 25px;
 }
-.Right{
+.Right {
   display: flex;
 }
 .Card {
-  display:flex;
-  margin:25px;
+  display: flex;
+  margin: 25px;
   padding: 25px; /*Added this -Ingrid*/
   flex-direction: column;
   min-width: 450px; /*This might not make sense on mobile?*/
-  width:100%; /*add max width?*/
-  height:auto;
-  background-color: #FDF5D5;
+  width: 100%; /*add max width?*/
+  height: auto;
+  background-color: #fdf5d5;
 }
 
 /*CONTACT PERSON CARD - Necessary?*/
@@ -289,14 +293,14 @@ a:hover{
 }
 
 .ContactMemberImage {
-  display:flex;
+  display: flex;
   align-content: center;
   justify-content: center;
-  width:100px;
-  height:100px;
-  border:solid #FADF63 4px;
+  width: 100px;
+  height: 100px;
+  border: solid #fadf63 4px;
 }
-.ContactMemberImage-1{
+.ContactMemberImage-1 {
   display: flex;
   padding: 25px;
 }
@@ -306,98 +310,99 @@ a:hover{
 }
 
 /*IMAGECARD*/
-.ImageCard{
-  display:flex;
+.ImageCard {
+  display: flex;
 }
 
 /*PARTICIPANT INFO*/
-.ParticipantInfo{
-  display:flex;
+.ParticipantInfo {
+  display: flex;
   flex-basis: 100px;
-  background-color: #FFFBF2;
+  background-color: #fffbf2;
   border-radius: 5px;
   border: solid transparent 2px;
-  margin:10px;
-  padding-left:20px;
-  padding-top:20px;
+  margin: 10px;
+  padding-left: 20px;
+  padding-top: 20px;
   word-wrap: break-word;
 }
-.ParticipantInfo:hover{
-  border: solid #1EA774 2px;
+.ParticipantInfo:hover {
+  border: solid #1ea774 2px;
 }
-.NameIcon{
-  flex:1;
-  display:grid;
+.NameIcon {
+  flex: 1;
+  display: grid;
   grid-template-columns: 40px 40px 40px;
   grid-template-rows: 30px 30px 30px;
 }
-.Age{
-  flex:1;
-  width:33%;
+.Age {
+  flex: 1;
+  width: 33%;
 }
-.Duties{
-  padding-bottom:5px;
-  flex:1;
+.Duties {
+  padding-bottom: 5px;
+  flex: 1;
 }
-.Carseat{
-  padding-right:10px;
-  flex:1;
+.Carseat {
+  padding-right: 10px;
+  flex: 1;
 }
-.DataItem{
-  margin:0px 20px;
+.DataItem {
+  margin: 0px 20px;
 }
-.Name{
-  margin:0px 0px;
-  grid-row:1/2;
-  grid-column:1/4;
+.Name {
+  margin: 0px 0px;
+  grid-row: 1/2;
+  grid-column: 1/4;
 }
-.Icon{
-  grid-row:2/3;
-  grid-column:1/2;
+.Icon {
+  grid-row: 2/3;
+  grid-column: 1/2;
   height: 50px;
-  width:50px;
+  width: 50px;
 }
 
 /*ADD FAMILY*/
-input, label{
-  display:block;
+input,
+label {
+  display: block;
 }
-input{
-  border:none;
-  background-color: #FDF5D5;
+input {
+  border: none;
+  background-color: #fdf5d5;
   border: solid transparent 2px;
-  border-bottom: solid #FEE2A3 2px;
-  padding:5px;
+  border-bottom: solid #fee2a3 2px;
+  padding: 5px;
 }
-input:hover{
-  border: solid #1EA774 2px;
+input:hover {
+  border: solid #1ea774 2px;
 }
-input:active{
-  outline:none;
-  border: solid #1EA774 2px;
+input:active {
+  outline: none;
+  border: solid #1ea774 2px;
 }
 input:focus {
-  outline:0;
-  border: solid #1EA774 2px;
+  outline: 0;
+  border: solid #1ea774 2px;
 }
 
-label{
-  margin-right:10px;
+label {
+  margin-right: 10px;
 }
 
-.Popup{
+.Popup {
   display: flex;
   position:fixed;
   top: 0;
   z-index: 1;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0,0.2);
+  background-color: rgba(0, 0, 0, 0.2);
 }
-.Popup-content{
+.Popup-content {
   display: flex;
   flex-direction: column;
-  background-color: #FFFBF2;
+  background-color: #fffbf2;
   position: absolute;
   z-index:2;
   top: 10%;
@@ -407,30 +412,76 @@ label{
   border-radius: 5px;
   border: 1px solid black;
   box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.2);
-
 }
-.Inputs{
-  display:flex;
+.Inputs {
+  display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  width:100%;
+  width: 100%;
 }
-.TitleNewMember{
+.TitleNewMember {
   display: flex;
   justify-content: flex-start;
-  padding-bottom:20px;
+  padding-bottom: 20px;
 }
 
+.addFirstName {
+  display: flex;
+  flex: 2;
+}
+.addLastName {
+  display: flex;
+  flex: 2;
+}
+.addAge {
+  display: flex;
+  flex: 1;
+}
 
-.addFirstName{
+/* ---------------------Excursion CSS-------------------- */
+
+/*-------- GuestsAndPrefDuties Card -----------*/
+.cards-container {
   display: flex;
-  flex:2;
+  justify-content: center;
 }
-.addLastName{
-  display: flex;
-  flex:2;
+/*RENAMING*/
+.card-container {
+  padding: 15px 15px;
+  background-color: #fdf5d5;
+  width: 436px;
+  min-width: 436px;
+  margin: 0px 15px;
 }
-.addAge{
+
+.table-container {
+  height: 250px;
+  overflow-y: scroll;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 10pt;
+}
+th {
+  text-align: left;
+  background-color: #fdf5d5;
+  position: sticky;
+  top: 0px;
+}
+
+td {
+  background-color: #fffbf2;
+  border-radius: 5px;
+}
+
+.button-container {
   display: flex;
-  flex:1;
+  justify-content: right;
+}
+
+.button-container > button {
+  margin-left: 15px;
+  margin-top: 15px;
 }
