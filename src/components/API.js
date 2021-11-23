@@ -4,8 +4,8 @@ import { Parse } from 'parse';
  *  @public initializes connection with backedn Back4App 
  */
 function initialize(){
-    Parse.initialize(process.env.REACT_APP_APP_KEY, process.env.REACT_APP_JS_KEY);
-    Parse.serverURL = process.env.SERVER_URL;
+    Parse.initialize('cSqpSt87DAh7P1u7i99iciru7vSAbREic5H7Duxs', 'xnonzNu6x9RKtJ2OVytZmi2MlS9oPfrjlEVfmO1j');
+    Parse.serverURL = 'https://parseapi.back4app.com/';
 }
 
 function editContactMember({firstName, lastName, street, zip, city, mobile, phone, workNumber, duties}) {
@@ -34,8 +34,10 @@ function editContactMember({firstName, lastName, street, zip, city, mobile, phon
 
 function addFamilyMember({firstName, lastName, age, duties}){
     try{
+        const familyMemberID = Math.floor(Math.random() * 100);
         const FamilyMember = Parse.Object.extend("FamilyMember");
         const familyMember = new FamilyMember();
+        familyMember.set("familyMemberID",familyMemberID);
         familyMember.set("firstName",firstName);
         familyMember.set("lastName",lastName);
         familyMember.set("age",age);
@@ -55,8 +57,10 @@ function addFamilyMember({firstName, lastName, age, duties}){
 
 function addContactPerson({firstName,lastName,age,duties,email,address,workphone,phone,mobile}){
     try{
+        const contactPersonID = Math.floor(Math.random() * 100);
         const ContactPerson = Parse.Object.extend("ContactPerson");
         const contactPerson = new ContactPerson();
+        contactPerson.set("contactPersonID",contactPersonID)
         contactPerson.set("firstName",firstName);
         contactPerson.set("lastName",lastName);
         contactPerson.set("age",age);
