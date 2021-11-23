@@ -6,8 +6,8 @@ import API from '../API.js';
 
 /**
  * @public AddFamilyItem defines the content of the popup AddFamily.js
- * @param {*} props 
- * @returns 
+ * TODO
+ * - code repetition from line 55-75, should be refactored. 
  */
 function AddFamilyItem(props){
     const [firstName,setFirstName] = useState();

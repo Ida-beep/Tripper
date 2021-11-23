@@ -1,6 +1,10 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 
+/**
+ *  @public NavMenu let's the user use the NavRouter to switch between different main pages
+ */
+
 function NavMenu () {
     return <div>
         <nav className="Nav-Bar">

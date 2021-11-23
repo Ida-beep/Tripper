@@ -4,9 +4,7 @@ import participantData from './data/participantData.js';
 import OverviewCard from './OverviewCard';
 
 /**
- * Issues
- * - cannot get 'add' btn to show inside the OverviewCard
- * - cannot get 'add' to open the popup (somethings wrong with communication between children and parents)
+    @public YouAndYourFamilyCard shows all relevant participating members of a family
  */
 
 function YouAndYourFamilyCard(props) {
