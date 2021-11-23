@@ -14,7 +14,7 @@ function YouAndYourFamilyCard(props) {
     const LeftButtons = ["Delete"];
 
     return (
-        <div className="YouAndYourFamily">
+        <div className="you-and-your-family">
             <OverviewCard togglePopup={props.togglePopup} class="YouAndYourFamily" header={CardHeader} content={participantComponents} rightbutton={Rightbuttons} leftbutton={LeftButtons}/>
         </div>
     );

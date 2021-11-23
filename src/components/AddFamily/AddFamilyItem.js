@@ -1,3 +1,5 @@
+/**Rename this to AddFamilyItemPopup or something?
+ */
 import React from 'react';
 import DropDownMenu from '../DropDownMenu/DropDownMenu.js';
 import { useState } from 'react';
@@ -48,38 +50,38 @@ function AddFamilyItem(props){
     }
 
     return(
-        <form className="Popup" onSubmit={handleSubmit}>
-        <div className="Popup-content">
-            <p className="TitleNewMember">New Family Member</p>
-            <div className="Inputs">
-            <div className="addFirstName">
-                <label>
-                    <p>First Name</p>
-                    <input type="text" value={firstName}
-                    onChange={changeFirstName} />
-                </label>
+        <form className="popup" onSubmit={handleSubmit}>
+            <div className="popup-content">
+                <p className="popup-title">New Family Member</p>
+                <div className="first-line">
+                    <div className="long-input">
+                        <label>
+                            <p>First Name</p>
+                            <input type="text" value={firstName}
+                            onChange={changeFirstName} />
+                        </label>
+                    </div>
+                    <div className="long-input">
+                        <label>
+                            <p>Last Name</p>
+                            <input type="text" value={lastName}
+                            onChange={changeLastName} />
+                        </label>
+                    </div>
+                    <div className="short-input">    
+                        <label>    
+                            <p>Age</p>
+                            <input type="text" value={age}
+                            onChange={changeAge} />
+                        </label> 
+                    </div>
+                </div> 
+                <div className="popup-drop-down">
+                    <DropDownMenu duties={duties}/>
+                    <button className="button-extra-small" id="add-fam-back" type="button" onClick={props.togglePopup}>Back</button>
+                    <button className="button-extra-small" id="add-fam-add" type="submit">Add</button>
+                </div> 
             </div>
-            <div className="addLastName">
-                <label>
-                    <p>Last Name</p>
-                    <input type="text" value={lastName}
-                    onChange={changeLastName} />
-                </label>
-            </div>
-            <div className="addAge">    
-                <label>    
-                    <p>Age</p>
-                    <input type="text" value={age}
-                    onChange={changeAge} />
-                </label> 
-            </div>
-            </div> 
-            <div className="DropDownSecondLine">
-                <DropDownMenu duties={duties}/>
-                <button className="ButtonExtraSmall" id="AddFamBack" type="button" onClick={props.togglePopup}>Back</button>
-                <button className="ButtonExtraSmall" id="AddFamAdd" type="submit">Add</button>
-            </div> 
-        </div>
         </form>
     );
 }

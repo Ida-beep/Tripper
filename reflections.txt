@@ -1,9 +1,21 @@
 In general:
 - npm install parse
 
+Suggestions
+- Delete ImageCard.js?
+
 AddFamily:
 - Where should the state be? Where is it most logical?
 - Components: ContactPersonCard -> AddFamily -> AddFamilyItem 
 
 Backend
 - AddFamily Popup doesn't work onSubmit..
+
+Component Manifesto
+- All boxes that have the same structure should comply with given rules
+
+    Tables
+        - Header
+        - Content (length may differ)
+        - Footer
+

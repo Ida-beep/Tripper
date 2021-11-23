@@ -8,7 +8,7 @@ function CarsAndSeatsCard() {
     const LeftButtons = ["Delete"];
 
     return(
-        <div className="CarsAndSeats">
+        <div className="cars-and-seats">
             <OverviewCard content={CarsAndSeat} header={CardHeader} leftbutton={LeftButtons} rightbutton={Rightbuttons}/>
         </div>
     )
