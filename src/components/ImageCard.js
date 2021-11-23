@@ -1,5 +1,4 @@
 import React from 'react';
-import '../index.css';
 import Image from '../assets/landscape.png';
 
 function ImageCard() {

@@ -1,6 +1,5 @@
 import React from 'react';
 import Image from '../assets/noun_upload photo_1337310 1.png';
-import '../index.css';
 
 function ContactPersonCard(props) {
     //create conditionals in case of empty state

@@ -1,5 +1,4 @@
 import React from 'react';
-import '../index.css';
 
 function Card(props) {
     const header = props.header.map(line => (<p>{line}</p>))

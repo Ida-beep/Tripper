@@ -6,7 +6,6 @@ import {useState} from 'react';
 import participantData from './data/participantData.js';
 import AddFamily from './AddFamily/AddFamily';
 import ImageCard from './ImageCard.js';
-import '../index.css';
 import YouAndYourFamilyCard from './YouAndYourFamilyCard';
 import ContactPersonCard from './ContactPersonCard';
 import CarsAndSeatsCard from './CarsAndSeatsCard.js';

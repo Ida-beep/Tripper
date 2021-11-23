@@ -1,7 +1,6 @@
 import React from 'react';
 import ParticipantInfo from './ParticipantInfo';
 import participantData from './data/participantData.js';
-import '../index.css';
 import OverviewCard from './OverviewCard';
 
 /**
