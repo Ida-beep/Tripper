@@ -20,21 +20,21 @@ function ParticipantInfo(props){
     },[selected])
 
     return(
-        <div className="ParticipantInfo" style={{backgroundColor: color}} onClick={()=>setSelected(!selected)} >
-            <div className="NameIcon">
-                <p className="Name">{props.name}</p>
-                <img className="Icon"src={icon} alt="Logo"></img>
+        <div className="participant-info" style={{backgroundColor: color}} onClick={()=>setSelected(!selected)} >
+            <div className="name-icon">
+                <p className="name">{props.name}</p>
+                <img className="icon"src={icon} alt="Logo"></img>
             </div>
-            <div className="Age">
-                <p className="DataItem">{props.age}</p>
+            <div className="age">
+                <p className="data-item">{props.age}</p>
             </div>
-            <div className="Duties">
-                <p className="DataItem">{props.dutypreferences[0]}</p>
-                <p className="DataItem">{props.dutypreferences[1]}</p>
-                <p className="DataItem">{props.dutypreferences[2]}</p>
+            <div className="duties">
+                <p className="data-item">{props.dutypreferences[0]}</p>
+                <p className="data-item">{props.dutypreferences[1]}</p>
+                <p className="data-item">{props.dutypreferences[2]}</p>
             </div>
-            <div className="Carseat">
-                <p className="DataItem">{props.carseat}</p>
+            <div className="car-seat">
+                <p className="data-item">{props.carseat}</p>
             </div>
         </div>
     )

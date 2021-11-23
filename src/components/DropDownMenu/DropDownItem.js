@@ -14,7 +14,7 @@ function DropDownItem(props){
 
     return(
         <div>
-            <li className="DropDownItem"
+            <li className="drop-down-item"
                 name={props.name}
                 style={{backgroundColor: color}}
                 onClick={()=>{
@@ -22,7 +22,7 @@ function DropDownItem(props){
                         if(!selected){props.addToArr()}
                         else {props.removeDuty()}
                         }}>
-                <p className="DropDownItem-name">{props.name}</p>
+                <p className="DropDownItem-name">{props.name}</p> {/*Dont think this class exists?*/}
             </li>
         </div>
     )

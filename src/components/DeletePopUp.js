@@ -2,7 +2,7 @@ import React from 'react';
 
 function DeletePopUp(){
     return (
-        <div className="DeletePopUp"></div>
+        <div className="delete-pop-up"></div>
     )
 }
 
