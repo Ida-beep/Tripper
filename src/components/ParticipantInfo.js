@@ -2,14 +2,16 @@ import React, { useEffect } from 'react';
 import { useState } from 'react';
 import icon from '../assets/noun_User_1796556 1.png';
 
-/** ParticipantInfo displays a Participants name, age, dutypreferences and carseat
+/**
+ * @public ParticipantInfo displays a Participants name, age, dutypreferences and carseat. It's also responsible for querying the db for these props and display them.  
+ * @param {*} props  
  *  - The rendering of duties should be refactored
- *  - A CardPlaceHolder is used in Profile.js to simulate the given measurement restrictions
  *  - Each Row-Item needs to be align correctly to headlines in Card
- *  - Rename to ParticipantInfo
+ *  - Add check to see if FamilyMember table exists before displaying
  */
 
 function ParticipantInfo(props){
+
     const [color,setColor] = useState("#FFFBF2");
     const [selected, setSelected] = useState(false);
 
