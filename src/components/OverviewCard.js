@@ -9,13 +9,8 @@ import Card from './Card';
 function OverviewCard(props) {
     
     return (
-<<<<<<< HEAD
-        <div className="OverviewCard">
-            <Card content={props.content} header={props.header} rightbutton={props.rightbutton} leftbutton={props.leftbutton} togglePopup={props.togglePopup}/>
-=======
         <div className="overview-card">
-            <Card content={props.content} header={props.header} rightbutton={props.rightbutton} leftbutton={props.leftbutton} active={props.active}/>
->>>>>>> feature_Ingrid
+            <Card content={props.content} header={props.header} rightbutton={props.rightbutton} leftbutton={props.leftbutton} togglePopup={props.togglePopup}/>
         </div>
     );
 }

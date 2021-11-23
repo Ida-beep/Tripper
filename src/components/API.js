@@ -53,7 +53,7 @@ function addFamilyMember({firstName, lastName, age, duties}){
     }
 }
 
-function addContçactPerson({firstName,lastName,age,duties,email,address,workphone,phone,mobile}){
+function addContactPerson({firstName,lastName,age,duties,email,address,workphone,phone,mobile}){
     try{
         const ContactPerson = Parse.Object.extend("ContactPerson");
         const contactPerson = new ContactPerson();
@@ -85,30 +85,7 @@ function addContçactPerson({firstName,lastName,age,duties,email,address,workpho
  * - how do I know what contactPersonID to retrieve?
  * - refactor this code to dynamic lists of element in UI (usability lecture)
  */
-function getFamilyMembers(contactPersonID){
-    const FamilyMember = Parse.Object.extend("FamilyMember");
-    const query = new Parse.Query(FamilyMember);
-    query.equalTo("contactPersonID",contactPersonID);
-    const results = await query.find();
-    if(results.length > 0){
-        alert("family members " + results + " was retrieved");
-    }
-    
-    query.get(contactPersonID)
-    .then((familyMember)=>{
-        alert("family member " + familyMember + " was retrieved");
-        const firstName = familyMember.get("firstName");
-        const lastName = familyMember.get("lastName");
-        const age = familyMember.get("age");
-        const duties = familyMember.get("duties");
-        const {firstName, lastName, age, duties} = result.attributes;
-    }, (error) => {
-        alert(error.code);
-    });
-    
-    console.log(result.attributes);
-    return result.attributes;
-}
+
 
 //Create a function for editing Contact and Excursion Information
 
