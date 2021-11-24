@@ -12,16 +12,22 @@ code {
 }
 
 /*TYPOGRAPHY*/
-h1,h2,h3,h4,p,.description,li{
-  color: #6B6B6B;
-  margin:0px 0px;
+h1,
+h2,
+h3,
+h4,
+p,
+.description,
+li {
+  color: #6b6b6b;
+  margin: 0px 0px;
 }
 
 h1 {
   font-size: 49pt;
 }
 
-h2{
+h2 {
   font-size: 39pt;
   padding-top: 10px;
   padding-bottom: 20px;
@@ -44,45 +50,46 @@ h4 {
   margin-bottom: 20px;
 }
 
-p, li{
+p,
+li {
   font-size: 10pt; /*Changed from 12 to 10*/
 }
 
-.description{
+.description {
   font-size: 10pt;
 }
-.button-medium{
-  font-family: 'Roboto Slab', serif;
+.button-medium {
+  font-family: "Roboto Slab", serif;
   font-size: 16pt;
   font-weight: 500;
 }
-.button-small{
-  font-family: 'Roboto Slab', serif;
+.button-small {
+  font-family: "Roboto Slab", serif;
   font-size: 13pt;
   font-weight: 500;
 }
-.button-extra-small{
-  font-family: 'Roboto Slab', serif;
+.button-extra-small {
+  font-family: "Roboto Slab", serif;
   font-size: 10pt;
   font-weight: 500;
   border: solid #1ea774 1px;
   color: #1ea774;
   background-color: transparent;
-  height:25px;
-  padding-left:10px;
-  padding-right:10px;
+  height: 25px;
+  padding-left: 10px;
+  padding-right: 10px;
   margin: 10px;
 }
 
-.Link{
-  font-family: 'Roboto Slab', serif;
+.Link {
+  font-family: "Roboto Slab", serif;
   font-size: 16pt;
   text-decoration: underline;
   color: #1ea774;
 }
-.button-extra-small:hover{
-  color:#FFFBF2;
-  background-color: #1EA774;
+.button-extra-small:hover {
+  color: #fffbf2;
+  background-color: #1ea774;
 }
 
 /*NAVBAR*/
@@ -121,19 +128,10 @@ p, li{
   padding-left: 40px;
 }
 
-/*PHOTOHEADER*/
-.photo-header { /*Redundant?*/
-  display: flex;
-  object-fit: cover;
-  overflow: hidden;
-}
-
 .photo-header-image {
-  display: flex;
-  width: 100%;
+  width: 1450px;
+  height: 200px;
   object-fit: cover;
-  object-position: 0px -179px; /*Bad practice? Removes constant value, but doesn't work with %..*/
-  margin-bottom: -400px; /*Also may be bad practice*/
 }
 
 /*LINKS*/
@@ -146,21 +144,21 @@ a:hover {
 }
 
 /*DELETEPOPUP*/
-.delete-pop-up{
-  background-color: #FDF5D5;
-  width:500px;
-  height:200px;
-  border:solid DD0D18 2px;
+.delete-pop-up {
+  background-color: #fdf5d5;
+  width: 500px;
+  height: 200px;
+  border: solid DD0D18 2px;
 }
 
 /*DROPDOWN*/
-.drop-down-menu{
+.drop-down-menu {
   display: flex;
   flex: 4;
   flex-direction: column;
   margin-top: 25px;
 }
-.drop-down-top{
+.drop-down-top {
   display: flex;
   flex-direction: row;
   width: 91%;
@@ -170,11 +168,11 @@ a:hover {
   border-bottom: solid #fadf63 2px;
   padding: 0px 0px;
 }
-.drop-down-top:hover{
-  border: solid #1EA774 2px;
+.drop-down-top:hover {
+  border: solid #1ea774 2px;
 }
 
-.drop-down-item{
+.drop-down-item {
   display: flex;
   padding-left: 10px;
   width: 88.2%;
@@ -182,18 +180,18 @@ a:hover {
   background-color: #fdf5d5;
   border: solid transparent 2px;
 }
-.drop-down-item:hover{
-  border: solid #1EA774 2px;
+.drop-down-item:hover {
+  border: solid #1ea774 2px;
   border-radius: 5%;
 }
-#add-fam-back{
-  display:flex;
+#add-fam-back {
+  display: flex;
   align-self: flex-end;
   justify-self: flex-start;
   margin-right: 15px;
 }
-#add-fam-add{
-  display:flex;
+#add-fam-add {
+  display: flex;
   align-self: flex-end;
   justify-self: flex-start;
   margin-right: 15px;
@@ -204,7 +202,8 @@ a:hover {
   padding: 5px;
 }
 
-.arrowBtn{ /*Currently not being used - remove?*/
+.arrowBtn {
+  /*Currently not being used - remove?*/
   display: none;
   flex: 1;
   width: 5px;
@@ -212,24 +211,24 @@ a:hover {
 }
 
 /*OVERVIEWCARD*/
-.overview-card{
+.overview-card {
   display: flex;
   width: 100%;
 }
 /*CarsAndSeats*/
-.cars-and-seats{
+.cars-and-seats {
   display: flex;
   width: 100%;
 }
 
 /*YOUANDYOURFAM*/
-.you-and-your-family{
+.you-and-your-family {
   display: flex;
   width: 100%;
 }
 
 /*EXCURSION -- currently not */
-.excursion{
+.excursion {
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -237,23 +236,21 @@ a:hover {
 
 /*profile-1 and excursion-1 are currently
 identical. Should we combine them?*/
-.excursion-1{
-  display:flex;
+.excursion-1 {
+  display: flex;
   flex-direction: row;
   justify-content: center;
-  width:100%;
+  width: 100%;
 }
 
-
-
 /*HOME*/
-.home{
+.home {
   display: flex;
   justify-content: center;
 }
 
 /*PROFILE*/
-.profile{
+.profile {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -261,20 +258,17 @@ identical. Should we combine them?*/
 
 /*profile-1 and excursion-1 are currently
 identical. Should we combine them?*/
-.profile-1{
-  display:flex;
-  flex-direction: row;
-  justify-content: center;
-  width:100%;
-}
-
-
-
-.profile-2{
+.profile-1 {
   display: flex;
   flex-direction: row;
   justify-content: center;
   width: 100%;
+}
+
+.profile-2 {
+  display: flex;
+  justify-content: center;
+  /* width: 100%; */
 }
 
 /*CARD*/
@@ -299,9 +293,9 @@ identical. Should we combine them?*/
   display: flex;
 }
 .card {
-  display:flex;
-  margin:25px;
-  padding: 25px; 
+  display: flex;
+  margin: 25px;
+  padding: 25px;
   flex-direction: column;
   min-width: 450px; /*This might not make sense on mobile?*/
   width: 100%; /*add max width?*/
@@ -310,19 +304,17 @@ identical. Should we combine them?*/
 }
 
 .long-card {
-  display:flex;
-  margin:25px;
-  margin-top: -75px;
-  /* min-width: 450px; /*This might not make sense on mobile?
-  max-width: 850px; */
-  width: 902px; /*add max width?*/
-  height:auto;
-  background-color:#FFFBF2; /*new design - thoughts?*/
-  border: solid #FADF63 1px; /*new design - thoughts?*/
+  display: flex;
+  margin: 25px;
+  margin-top: -100px;
+  width: 932px;
+  height: auto;
+  background-color: #fffbf2;
+  border: solid #fadf63 1px;
 }
 
 .contact-person-card {
-  display:flex;
+  display: flex;
 }
 
 .excursion-card {
@@ -338,8 +330,6 @@ identical. Should we combine them?*/
   flex: 2;
 }
 
-
-
 .contact-member-info {
   display: flex;
   align-content: center;
@@ -349,8 +339,8 @@ identical. Should we combine them?*/
 }
 .contact-member-name {
   width: 100%;
-  height: '20%';
-  border-color: #6B6B6B;
+  height: "20%";
+  border-color: #6b6b6b;
 }
 .address-and-email {
   flex: 1;
@@ -375,14 +365,14 @@ identical. Should we combine them?*/
 }
 
 .edit-button-container {
-  display:flex;
+  display: flex;
   flex-direction: column;
   justify-content: end;
   padding: 25px;
 }
 
 .contact-member-image {
-  display:flex;
+  display: flex;
   align-content: center;
   justify-content: center;
   height: 100%;
@@ -390,12 +380,11 @@ identical. Should we combine them?*/
   background-color: aquamarine;
 }
 
-.contact-member-image-1{
+.contact-member-image-1 {
   display: flex;
   padding: 25px;
   object-fit: cover;
 }
-
 
 /*IMAGECARD*/
 .ImageCard {
@@ -403,8 +392,8 @@ identical. Should we combine them?*/
 }
 
 /*PARTICIPANT INFO*/
-.participant-info{
-  display:flex;
+.participant-info {
+  display: flex;
   flex-basis: 100px;
   background-color: #fffbf2;
   border-radius: 5px;
@@ -414,38 +403,38 @@ identical. Should we combine them?*/
   padding-top: 20px;
   word-wrap: break-word;
 }
-.participant-info:hover{
-  border: solid #1EA774 2px;
+.participant-info:hover {
+  border: solid #1ea774 2px;
 }
-.name-icon{
-  flex:1;
-  display:grid;
+.name-icon {
+  flex: 1;
+  display: grid;
   grid-template-columns: 40px 40px 40px;
   grid-template-rows: 30px 30px 30px;
 }
-.age{
-  flex:1;
-  width:33%;
+.age {
+  flex: 1;
+  width: 33%;
 }
-.duties{
-  padding-bottom:5px;
-  flex:1;
+.duties {
+  padding-bottom: 5px;
+  flex: 1;
 }
-.car-seat{
-  padding-right:10px;
-  flex:1;
+.car-seat {
+  padding-right: 10px;
+  flex: 1;
 }
-.data-item{
-  margin:0px 20px;
+.data-item {
+  margin: 0px 20px;
 }
-.name{
-  margin:0px 0px;
-  grid-row:1/2;
-  grid-column:1/4;
+.name {
+  margin: 0px 0px;
+  grid-row: 1/2;
+  grid-column: 1/4;
 }
-.icon{
-  grid-row:2/3;
-  grid-column:1/2;
+.icon {
+  grid-row: 2/3;
+  grid-column: 1/2;
   height: 50px;
   width: 50px;
 }
@@ -478,16 +467,16 @@ label {
   margin-right: 10px;
 }
 
-.popup{
+.popup {
   display: flex;
-  position:fixed;
+  position: fixed;
   top: 0;
   z-index: 1;
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.2);
 }
-.popup-content{
+.popup-content {
   display: flex;
   flex-direction: column;
   background-color: #fffbf2;
@@ -497,15 +486,15 @@ label {
   width: 500px;
   padding: 50px;
   border-radius: 5px;
-  border: 1px solid #FADF63;
+  border: 1px solid #fadf63;
   box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.2);
 }
 
 .input-section {
-  display:flex;
+  display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  width:100%;
+  width: 100%;
   padding-top: 15px;
 }
 
@@ -523,24 +512,24 @@ label {
   width:100%;
 } */
 
-.popup-title{
+.popup-title {
   display: flex;
   justify-content: flex-start;
 }
 
-.long-input{
+.long-input {
   display: flex;
 }
 
 /*Fix so that it's shorter in the popup*/
-.short-input{
+.short-input {
   display: flex;
 }
 
-.popup-drop-down{
-  display:flex;
-  flex-direction:row;
-  width:100%;
+.popup-drop-down {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
 }
 
 .popup-button-footer {
@@ -548,4 +537,52 @@ label {
   flex-direction: row;
   justify-content: end;
   padding-top: 25px;
+}
+
+/* ---------------------Excursion CSS-------------------- */
+
+/*-------- GuestsAndPrefDuties Card -----------*/
+.cards-container {
+  display: flex;
+  justify-content: center;
+}
+/*RENAMING*/
+.card-container {
+  padding: 10px 10px;
+  background-color: #fffbf2;
+  width: 436px;
+  min-width: 436px;
+  margin: 0px 10px;
+  border: solid #fadf63 1px;
+}
+
+.table-container {
+  height: 250px;
+  overflow-y: scroll;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 10pt;
+}
+th {
+  text-align: left;
+  background-color: #fffbf2;
+  position: sticky;
+  top: 0px;
+}
+
+td {
+  background-color: #fffbf2;
+}
+
+.button-container {
+  display: flex;
+  justify-content: right;
+}
+
+.button-container > button {
+  margin-left: 15px;
+  margin-top: 15px;
 }

@@ -20,8 +20,8 @@ function XGuestDutyCard () {
         </div>
         
         <div className="button-container">
-            <button className="ButtonExtraSmall">Assign Selected</button>
-            <button className="ButtonExtraSmall">Auto Assign All</button>
+            <button className="button-extra-small">Assign Selected</button>
+            <button className="button-extra-small">Auto Assign All</button>
         </div>
         
     </div>
