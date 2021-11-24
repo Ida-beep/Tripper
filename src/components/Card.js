@@ -1,16 +1,17 @@
 import React from 'react';
-import '../index.css';
 
 function Card(props) {
     const header = props.header.map(line => (<p>{line}</p>))
-    const rightButtons = props.rightbutton.map(line=>(<button className="ButtonExtraSmall" onClick={props.active}>{line}</button>))
-    const leftButtons = props.leftbutton.map(line=>(<button className="ButtonExtraSmall">{line}</button>))
+    //Rename "line" to "buttonName"?
+    const rightButtons = props.rightbutton.map(line=>(<button className="button-extra-small" onClick={props.togglePopup}>{line}</button>))
+    const leftButtons = props.leftbutton.map(line=>(<button className="button-extra-small">{line}</button>))
 
-    return (//edit classname
-        <div className="Card"> 
+    return (
+        <div className="card"> 
             <div className="Header">{header}</div>
-            {props.content}
+                {props.content}
             <div className="Footer">
+                {/**Edit order so that "add" is to the right and maybe make it primary? */}
                 <div className="Right">{rightButtons}</div>
                 <div className="Left">{leftButtons}</div>
             </div>

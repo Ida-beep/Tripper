@@ -1,13 +1,10 @@
 import React from 'react';
 import ParticipantInfo from './ParticipantInfo';
 import participantData from './data/participantData.js';
-import '../index.css';
 import OverviewCard from './OverviewCard';
 
 /**
- * Issues
- * - cannot get 'add' btn to show inside the OverviewCard
- * - cannot get 'add' to open the popup (somethings wrong with communication between children and parents)
+    @public YouAndYourFamilyCard shows all relevant participating members of a family
  */
 
 function YouAndYourFamilyCard(props) {
@@ -17,8 +14,8 @@ function YouAndYourFamilyCard(props) {
     const LeftButtons = ["Delete"];
 
     return (
-        <div className="YouAndYourFamily">
-            <OverviewCard active={props.active} class="YouAndYourFamily" header={CardHeader} content={participantComponents} rightbutton={Rightbuttons} leftbutton={LeftButtons}/>
+        <div className="you-and-your-family">
+            <OverviewCard togglePopup={props.togglePopup} class="YouAndYourFamily" header={CardHeader} content={participantComponents} rightbutton={Rightbuttons} leftbutton={LeftButtons}/>
         </div>
     );
 }

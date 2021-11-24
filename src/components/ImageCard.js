@@ -1,10 +1,9 @@
 import React from 'react';
-import '../index.css';
-import Image from '../assets/landscape.png';
+import Image from '../assets/norwegian_fjord.png';
 
 function ImageCard() {
     return (
-        <div className="Card">
+        <div className="card">
             <img className="ImageCard" src={Image} alt="landscape"/>
         </div>
     )

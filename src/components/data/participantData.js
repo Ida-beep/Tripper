@@ -1,5 +1,3 @@
-//Missing address, mobile, 
-
 const participantData =[
       {
         "id":1,

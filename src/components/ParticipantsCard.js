@@ -1,7 +1,6 @@
 //do I need to import Card as well?
 
 import React, {useState} from 'react';
-import '../index.css';
 import OverviewCard from './OverviewCard';
 
 function ParticipantsCard() {

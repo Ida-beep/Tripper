@@ -9,6 +9,9 @@ import {
     Switch
   } from 'react-router-dom';
 
+/**
+ *  @public NavRouter is responsible for all routing between pages
+ */
 function NavRouter(){
   return <div>
         <Router>
