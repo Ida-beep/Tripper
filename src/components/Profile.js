@@ -5,10 +5,9 @@ import AddFamily from './AddFamily/AddFamily';
 import YouAndYourFamilyCard from './YouAndYourFamilyCard';
 import ContactPersonCard from './ContactPersonCard';
 import CarsAndSeatsCard from './CarsAndSeatsCard.js';
-import PhotoHeader from './PhotoHeader';
-import HeaderImage from '../assets/norwegian_fjord.png';
 import ContactImage from '../assets/noun_upload photo_1337310 1.png';
 import EditContactPerson from './EditContactPerson.js';
+import Image from '../assets/norwegian_fjord.png';
 /** Profile displays the different Card types and formats them
  *  - "CardPlaceHolder" has to be changed to an actual Card Component
  *  - Likewise, "participantComponents"should be moved to new Card Component
@@ -17,7 +16,7 @@ import EditContactPerson from './EditContactPerson.js';
  */
 function Profile () {
     const contactPersonData = participantData[0];
-    //reconsider names?
+    
     const [active,setActive] = useState(false);
     const [editActive, setEditActive] = useState(false);
     const [showPopup,setShowPopup] = useState(false);
@@ -30,7 +29,7 @@ function Profile () {
 
     return (
         <div className="profile">
-            <PhotoHeader image={HeaderImage} alt="NorwegianFjord"/>
+            <img className="photo-header-image" src={Image} alt="NorwegianFjord"/>
             <AddFamily showPopup={showPopup} togglePopup={togglePopup}/>
             <EditContactPerson trigger={editActive} editState={() => setEditActive(false)} title="Edit Contact Member"/>
             <div className="profile-1">
