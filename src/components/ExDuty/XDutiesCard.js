@@ -1,25 +1,19 @@
 import React from "react"
 import duties from "../data/dutyList"
-import XDutyInfo from './XDutyInfo.js'
+import TableScaffold from "./TableScaffold"
 
-function XDutiesCard(){
-    const duty = duties.map(duties => <XDutyInfo duty={duties} />)
-    
+function XDutiesCard(){    
     return (
         <div className="card-container">
             <div className="table-container" >
-            <table>
-                <thead>
-                    <tr>
-                        <th>Duty</th>
-                        <th>Min.</th>
-                        <th>Assigned Guest</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {duty}
-                </tbody>
-            </table>
+                <TableScaffold 
+                    // Pass the key name from database object in array matching headers 
+                    tkey={["name","minPeopleRequired","assignedGuests"]}
+                    //Pass Real headers in array
+                    theaders={["Duty","Min.","Assigned Guest"]} 
+                    // Pass object data source 
+                    tdata={duties}
+                />
             </div>
                 <div className="button-container">
                     <button className="ButtonExtraSmall">Delete</button>
