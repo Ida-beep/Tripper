@@ -556,27 +556,31 @@ label {
   border: solid #fadf63 1px;
 }
 
+/* ------------TABLE RELATED STYLING--------*/
 .table-container {
   height: 250px;
   overflow-y: scroll;
 }
-
 table {
   border-collapse: collapse;
   width: 100%;
   font-size: 10pt;
+  color: #424242;
 }
 th {
   text-align: left;
   background-color: #fffbf2;
   position: sticky;
   top: 0px;
+  padding-bottom: 10px;
 }
 
 td {
   background-color: #fffbf2;
+  padding-bottom: 5px;
 }
 
+/* Buttons in the buttom of a card*/
 .button-container {
   display: flex;
   justify-content: right;

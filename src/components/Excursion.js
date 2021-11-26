@@ -18,8 +18,6 @@ function Excursion() {
                 </div>
             </div>
             
-            <h4 style={{textAlign: 'center'}}>Excursion Duties</h4>
-            
             <div className="cards-container">
                 <DutiesCard />
                 <GuestDutyCard />
