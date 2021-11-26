@@ -2,7 +2,8 @@ import Home from './Home';
 import Excursion from './Excursion';
 import Profile from './Profile';
 import NavMenu from './NavMenu';
-import React from 'react';
+import React, { useState } from 'react';
+import Login from './Login';
 import {
     BrowserRouter as Router,
     Route,
@@ -13,16 +14,23 @@ import {
  *  @public NavRouter is responsible for all routing between pages
  */
 function NavRouter(){
-  return <div>
-        <Router>
+
+  const [isLoggedIn,setIsLoggedIn] = useState(false);
+
+  return (
+      isLoggedIn? (
+      <>
+       <Router>
           <NavMenu/>
             <Switch>
               <Route exact path='/' component={Home}></Route>
               <Route exact path='/Excursion' component={Excursion}></Route>
               <Route exact path='/Profile' component={Profile}></Route>
             </Switch>
-       </Router>
-  </div>
-}
+      </Router>
+      </>
+      ) : ( <Login setIsLoggedIn={setIsLoggedIn}/> )
+)
+};
 
 export default NavRouter;
