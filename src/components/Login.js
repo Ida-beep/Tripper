@@ -1,11 +1,52 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import Parse from 'parse';
+
 
 function Login(props){
+
+    const [username,setUsername] = useState();
+    const [password,setPassword] = useState();
+    const navigate = useNavigate();
+
+    function handleLoginAttempt(e) {
+        e.preventDefault();
+        console.log("handleLoginAttempt was called")
+
+        const user = new Parse.User();
+        user.setPassword(password);
+        user.setUsername(username);
+        user.logIn().then((loggedInUser)=>{
+            console.log(loggedInUser);
+            navigate(`/`);
+        }, (error)=>{
+            alert("login not successfull with errorcode: " + error.code);
+        }
+        )
+    }
+
     return (
-        <>
-            <h1>Login!</h1>
-            <button onClick={() => props.setIsLoggedIn((prevState)=> !prevState)}> Click me to login</button>
-        </>
+        <div className="login-container">
+            <p className="logo-login">tripper</p>
+                <div className="login-form">
+                    <form onSubmit={handleLoginAttempt}>
+                        <div className="long-input">
+                            <label>
+                                <p>Username</p>
+                                <input type="text" value={username} onChange={(e)=> setUsername(e.target.value)} />
+                            </label>
+                        </div>
+                        <div className="long-input">
+                            <label>
+                                <p>Password</p>
+                                <input type="password" value={password} onChange={(e)=>setPassword(e.target.value)} />
+                            </label>
+                        </div>
+                        <button className="button-extra-small" type="submit">Login</button>
+                        <button className="button-extra-small" type="submit">Signup</button>
+                    </form>
+                </div>
+        </div>
     )
 };
 
