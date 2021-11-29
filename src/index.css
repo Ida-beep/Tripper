@@ -120,12 +120,24 @@ li {
 }
 .Nav-Item-Overview {
   display: flex;
+  flex-direction: row;
   flex-shrink: 0;
   padding-right: 25px;
 }
 .Nav-Item {
   display: flex;
-  padding-left: 40px;
+  position:relative;
+  padding-top:15px;
+  
+  padding-right:5px;
+  margin-left: 15px;
+  margin-right:15px;
+  align-items: center;
+  justify-self: center;
+  border-bottom: solid transparent 10px;
+}
+.Nav-Item:hover{
+  border-bottom: solid #fadf63 10px;
 }
 
 .photo-header-image {
@@ -139,9 +151,10 @@ a {
   color: grey; /*no Figma decisions yet*/
   text-decoration: none;
 }
-a:hover {
-  color: black; /*no Figma decisions yet*/
-}
+/* a:hover {
+  color: black;
+*/
+
 
 /*DELETEPOPUP*/
 .delete-pop-up {
@@ -152,6 +165,30 @@ a:hover {
 }
 
 /*DROPDOWN*/
+.nav-drop-down{
+  margin-top: 150px;
+  border: solid #fadf63 1.5px;
+  background-color:#fffbf2;
+  display: flex;
+  position:absolute;
+  flex-direction: column;
+  align-content: center;
+}
+.drop-down-options{
+  display:flex;
+  padding-left:20px;
+  padding-right:20px;
+  padding-top:5px;
+  padding-bottom:10px;
+  z-index:1;
+  width:140px;
+  height:50;
+  margin-top:10px;
+}
+.drop-down-options:hover{
+  background-color: #fadf63;
+}
+
 .drop-down-menu {
   display: flex;
   flex: 4;
