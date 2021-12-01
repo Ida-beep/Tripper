@@ -1,7 +1,7 @@
 import React from 'react';
 import {useState} from 'react';
 import participantData from './data/participantData.js';
-import AddFamily from './AddFamily/AddFamily';
+import AddFamilyItem from './AddFamily/AddFamilyItem';
 import YouAndYourFamilyCard from './YouAndYourFamilyCard';
 import ContactPersonCard from './ContactPersonCard';
 import CarsAndSeatsCard from './CarsAndSeatsCard.js';
@@ -13,35 +13,39 @@ import Image from '../assets/norwegian_fjord.png';
  *  - Likewise, "participantComponents"should be moved to new Card Component
  *    and rendered there instead of in Profile. 
  *  - Button "Add" needs to go into Card
- */
+ *  - Rename togglePopUp in YouAndYourFamilyCard
+ */ 
 function Profile () {
     const contactPersonData = participantData[0];
     
     const [active,setActive] = useState(false);
-    const [editActive, setEditActive] = useState(false);
-    const [showPopup,setShowPopup] = useState(false);
+    const [showEditContactMember, setShowEditContactMember] = useState(false);
+    const [showAddFamilyItem,setShowAddFamilyItem] = useState(false);
 
-    function togglePopup(){
+    function toggleFamilyItem(){
         console.log(" toggled <3 ")
-        setShowPopup((prevState)=>!prevState)
-        
+        setShowAddFamilyItem((prevState)=>!prevState)
+    }
+
+    function toggleContactMember() {
+        setShowEditContactMember((prevState)=>!prevState)
     }
 
     return (
         <div className="profile">
             <img className="photo-header-image" src={Image} alt="NorwegianFjord"/>
-            <AddFamily showPopup={showPopup} togglePopup={togglePopup}/>
-            <EditContactPerson trigger={editActive} editState={() => setEditActive(false)} title="Edit Contact Member"/>
+            <AddFamilyItem showAddFamilyItem={showAddFamilyItem} toggleFamilyItem={toggleFamilyItem} title="Add Family Item"/> 
+            <EditContactPerson showEditContactMember={showEditContactMember} toggleContactMember={toggleContactMember} title="Edit Contact Member"/>
             <div className="profile-1">
                 {/*Passing in image as prop but it's not rendering*/}
                 {/*Change name of active property? */}
                 <ContactPersonCard className="ContactPersonCard" 
                     data={contactPersonData} 
                     contactImage={ContactImage}
-                    active={()=>setEditActive(true)}/>
+                    active={()=>setShowEditContactMember(true)}/>
             </div>
             <div className="profile-2">
-                <YouAndYourFamilyCard togglePopup={togglePopup}/>
+                <YouAndYourFamilyCard toggleFamilyItem={toggleFamilyItem}/>
                 <CarsAndSeatsCard/>
             </div>
         </div>

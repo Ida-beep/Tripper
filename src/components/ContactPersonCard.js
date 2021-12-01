@@ -5,15 +5,9 @@ import LongCard from './LongCard';
 
 function ContactPersonCard(props) {
 
-    //could be unnecessary - not sure of the behaviour if props.id is null
-    const personId = props.id;
-    if(personId === null) {
-        return (
-            <div>Add Contact Member Button</div>
-        )
-    }
+    const personId = "84757"; //Connect to database
 
-    return ( 
+    return (personId) ? ( 
         <LongCard active={props.active}>
             <div className="contact-person-card">
                 <div className="contact-member-image">
@@ -43,8 +37,15 @@ function ContactPersonCard(props) {
                     </div>
                 </div>
             </div>
+            <div className="edit-button-container">
+                <button className="button-extra-small" onClick={props.active}>Edit</button>
+            </div>
         </LongCard>
-    )
+    ) : (<LongCard active={props.active}>
+            <div className="create-contact-member">
+                <button className="button-extra-small" onClick={props.active}>Create Contact Member</button>
+            </div>
+        </LongCard>);
 }
 
 export default ContactPersonCard;

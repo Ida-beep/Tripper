@@ -1,15 +1,15 @@
-/**Rename this to AddFamilyItemPopup or something?
- */
 import React from 'react';
 import DropDownMenu from '../DropDownMenu/DropDownMenu.js';
 import { useState } from 'react';
 import API from '../API.js';
-
+import PopUp from '../PopUp';
+import LongInput from '../LongInput.js';
+import ShortInput from '../ShortInput.js';
 
 /**
- * @public AddFamilyItem defines the content of the popup AddFamily.js
- * TODO
- * - code repetition from line 55-75, should be refactored. 
+ * @public AddFamilyItem defines the content of the popup to 
+ * add family items, using its parent PopUp.js
+ * 
  */
 function AddFamilyItem(props){
     const [firstName,setFirstName] = useState();
@@ -49,40 +49,18 @@ function AddFamilyItem(props){
         }
     }
 
-    return(
-        <form className="popup" onSubmit={handleSubmit}>
-            <div className="popup-content">
-                <p className="popup-title">New Family Member</p>
-                <div className="first-line">
-                    <div className="long-input">
-                        <label>
-                            <p>First Name</p>
-                            <input type="text" value={firstName}
-                            onChange={changeFirstName} />
-                        </label>
-                    </div>
-                    <div className="long-input">
-                        <label>
-                            <p>Last Name</p>
-                            <input type="text" value={lastName}
-                            onChange={changeLastName} />
-                        </label>
-                    </div>
-                    <div className="short-input">    
-                        <label>    
-                            <p>Age</p>
-                            <input type="text" value={age}
-                            onChange={changeAge} />
-                        </label> 
-                    </div>
-                </div> 
-                <div className="popup-drop-down">
-                    <DropDownMenu duties={duties}/>
-                    <button className="button-extra-small" id="add-fam-back" type="button" onClick={props.togglePopup}>Back</button>
-                    <button className="button-extra-small" id="add-fam-add" type="submit">Add</button>
-                </div> 
+    return (props.showAddFamilyItem) && (
+        <PopUp editState={props.toggleFamilyItem} data={personData} title="Add Family Member" 
+        submitChanges={handleSubmit} leftButton="Cancel" rightButton="Save">
+            <div className="input-section">
+                <LongInput title="First Name" value={firstName} changeValue={changeFirstName} type="text"/>
+                <LongInput title="Last Name" value={lastName} changeValue={changeLastName} type="text" />
+                <ShortInput title="Age" value={age} changeValue={changeAge} type="text" /> 
             </div>
-        </form>
+            <div className="input-section">
+                <DropDownMenu duties={duties}/>
+            </div>
+        </PopUp>
     );
 }
 export default AddFamilyItem;
