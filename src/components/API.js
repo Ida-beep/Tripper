@@ -90,7 +90,22 @@ function addContactPerson({firstName,lastName,age,duties,email,address,workphone
  * - refactor this code to dynamic lists of element in UI (usability lecture)
  */
 
+// Returns list of Duties
+function getDuties(e){
+    e.preventDefault()
+    const Duty = Parse.Object.extend("Duty");
+    const query = new Parse.Query(Duty);
+    
+    // return await query.find();
+    query.find().then((results) => {
+        console.log(results)
+      }).catch((error) =>  {
+        console.log(error)
+      });
+}
+
+
 
 //Create a function for editing Contact and Excursion Information
 
-export default {initialize:initialize,addFamilyMember:addFamilyMember, editContactMember:editContactMember};
+export default {getDuties:getDuties,initialize:initialize,addFamilyMember:addFamilyMember, editContactMember:editContactMember};

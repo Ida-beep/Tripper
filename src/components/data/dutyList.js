@@ -1,35 +1,35 @@
 const duties =[
     {
       "name":"Cooking",
-      "minPeopleRequired": 10,
+      "minRequired": 10,
     },
     {
         "name":"Cleaning",
-        "minPeopleRequired": 5,
+        "minRequired": 5,
     },
     {
         "name":"Games",
-        "minPeopleRequired": 3,
+        "minRequired": 3,
     },
     {
         "name":"Kitchen",
-        "minPeopleRequired": 3,
+        "minRequired": 3,
     },
     {
         "name":"Shopping",
-        "minPeopleRequired": 3,
+        "minRequired": 3,
     },
     {
         "name":"Yoga",
-        "minPeopleRequired": 2,
+        "minRequired": 2,
     },
     {
         "name":"Entertainment",
-        "minPeopleRequired": 2,
+        "minRequired": 2,
     },
     {
         "name":"Breakfast",
-        "minPeopleRequired": 4,
+        "minRequired": 4,
     },
 ];
 
