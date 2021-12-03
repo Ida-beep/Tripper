@@ -1,12 +1,6 @@
-import Parse from "parse"
 import React, {useState, useEffect} from "react"
 import TableScaffold from "./TableScaffold"
 import API_get from "../API_get"
-
-
-
-
-
 
 function DutiesCard(){    
     

@@ -40,7 +40,7 @@ function Profile () {
                     contactImage={ContactImage}
                     active={()=>setEditActive(true)}/>
             </div>
-            <div className="profile-2">
+            <div className="cards-container">
                 <YouAndYourFamilyCard togglePopup={togglePopup}/>
                 <CarsAndSeatsCard/>
             </div>
