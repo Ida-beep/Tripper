@@ -34,7 +34,6 @@ function NavMenu() {
               <div className="Nav-Item-Overview">
            
                 <>
-                    <Link className="Nav-Item" to="/"> Home </Link>
                     <Link className="Nav-Item" to="/Excursion" onMouseEnter={() => setExcursionDropDown(!excursionDropDown)}>Excursion
                       {excursionDropDown &&
                       <div className="nav-drop-down" onMouseLeave={() => setExcursionDropDown(!excursionDropDown)}>

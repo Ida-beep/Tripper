@@ -19,7 +19,6 @@ function NavRouter(){
       <Router>
         <NavMenu/>
             <Routes>
-              <Route path='/' element={<Home/>}/>
               <Route path='/Excursion' element={<Excursion/>}/>
               <Route path='/Profile' element={<Profile/>}/>
               <Route path='/Login' element={<Login/>}/>
