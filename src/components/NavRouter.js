@@ -2,9 +2,8 @@ import Home from './Home';
 import Excursion from './Excursion';
 import Profile from './Profile';
 import NavMenu from './NavMenu';
-import React, { useState } from 'react';
+import React from 'react';
 import Login from './Login';
-import { render } from 'react-dom';
 import {
     BrowserRouter as Router,
     Route,
@@ -15,9 +14,6 @@ import {
  *  @public NavRouter is responsible for all routing between pages
  */
 function NavRouter(){
-
-  const [isLoggedIn,setIsLoggedIn] = useState(false);
-
 
   return(
       <Router>

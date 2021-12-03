@@ -1,9 +1,38 @@
-import React from 'react';
-import Image from '../assets/noun_upload photo_1337310 1.png';
-import '../index.css';
+import React, { useState } from 'react';
 import LongCard from './LongCard';
+import API from './API.js';
 
 function ContactPersonCard(props) {
+
+    
+    let contactPersonData = {};
+    const [firstName, setFirstName] = useState();
+    const [lastName, setLastName] = useState();
+    const [age,setAge] = useState();
+    const [email,setEmail] = useState();
+    const [mobile,setMobile] = useState();
+    const [phone,setPhone] = useState();
+    const [workPhone,setWorkPhone] = useState();
+    const [address,setAddress] = useState();
+    const [zip, setZip] = useState();
+    const [city, setCity] = useState();
+    const [duties, setDuties] = useState([]);
+
+    API.getContactMember()
+    .then((userObject)=>{
+        console.log("Person: "+ userObject.firstName)
+        contactPersonData = userObject;
+        setFirstName(userObject.firstName);
+        setLastName(userObject.lastName);
+        setAge(userObject.age);
+        setEmail(userObject.email);
+        setMobile(userObject.mobile);
+        setPhone(userObject.phone);
+        setWorkPhone(userObject.workPhone);
+        setAddress(userObject.address);
+        setZip(userObject.zip);
+        setCity(userObject.city);
+    })
 
     const personId = "84757"; //Connect to database
 
@@ -16,24 +45,18 @@ function ContactPersonCard(props) {
                 
                 <div className="contact-member-info">
                     <div className="contact-member-name">
-                        <h4>{props.data.name}</h4>
+                        <h4>{firstName + " " + lastName}</h4>
                     </div>
                     <div className="address-and-email">
                         <p><b>Contact Information</b></p>  
-                        <p>{props.data.address.street}</p>
-                        <p>{props.data.address.zip}</p>
-                        <p>{props.data.email}</p>
+                        <p>{address}</p>
+                        <p>{zip + " " + city}</p>
+                        <p>{email}</p>
                     </div>
                     <div className="mobile-info">
-                        <p>(Mobile) {props.data.mobile}</p>
-                        <p>(Phone) {props.data.phone}</p>
-                        <p>(Work) {props.data.workphone}</p>
-                    </div>
-                    <div className="preferred-duties">
-                    <p><b>Preferred duties</b></p>
-                        <p>{props.data.dutypreferences[0]}</p>
-                        <p>{props.data.dutypreferences[1]}</p>
-                        <p>{props.data.dutypreferences[2]}</p>
+                        <p>(Mobile) {mobile}</p>
+                        <p>(Phone) {phone}</p>
+                        <p>(Work) {workPhone}</p>
                     </div>
                 </div>
             </div>
