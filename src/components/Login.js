@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import { Parse, User } from 'parse';
 import { useNavigate } from 'react-router-dom';
-import Parse from 'parse';
+import API from './API';
 
 
 function Login(props){
@@ -8,6 +9,17 @@ function Login(props){
     const [username,setUsername] = useState();
     const [password,setPassword] = useState();
     const navigate = useNavigate();
+
+    function handleSignup(e){
+        e.preventDefault();
+        console.log("Signup was called");
+        const user = new Parse.User();
+        user.setPassword(password);
+        user.setUsername(username);
+
+        API.signup(username,password);
+        console.log("user singed up!");
+    }
 
     function handleLoginAttempt(e) {
         e.preventDefault();
@@ -43,7 +55,7 @@ function Login(props){
                             </label>
                         </div>
                         <button className="button-extra-small" type="submit">Login</button>
-                        <button className="button-extra-small" type="submit">Signup</button>
+                        <button className="button-extra-small" type="submit" onClick={handleSignup}>Signup</button>
                     </form>
                 </div>
         </div>
