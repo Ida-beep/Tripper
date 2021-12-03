@@ -32,7 +32,7 @@ function TableScaffold(props){
             )
         })
         return(
-            <tr>{rowDataValue}</tr>
+            <tr key={props.tdata.id}>{rowDataValue}</tr>
         )
     }
    )
