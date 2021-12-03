@@ -428,12 +428,6 @@ identical. Should we combine them?*/
   justify-content: center; */
 }
 
-.preferred-duties {
-  flex: 1;
-  /* display:flex;
-  flex-direction: column;
-  justify-content: center; */
-}
 
 .edit-button-container {
   display: flex;
