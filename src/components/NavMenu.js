@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom'
-import Parse, { ParseUser, currentUser } from 'parse';
+import Parse from 'parse';
 
 /**
  *  @public NavMenu let's the user use the NavRouter to switch between different main pages
@@ -19,7 +19,6 @@ function NavMenu() {
 
     Parse.User.logOut()
     .then(()=>{
-      const currentUser = Parse.User.current();
       navigate(`/Login`);
     })
   

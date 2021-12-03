@@ -1,43 +1,101 @@
-import { Parse } from 'parse';
+import { Parse, User } from 'parse';
+import { useNavigate } from 'react-router-dom';
 
 /**
  *  @public initializes connection with backedn Back4App 
  */
+
+
 function initialize(){
     Parse.initialize('cSqpSt87DAh7P1u7i99iciru7vSAbREic5H7Duxs', 'xnonzNu6x9RKtJ2OVytZmi2MlS9oPfrjlEVfmO1j');
     Parse.serverURL = 'https://parseapi.back4app.com/';
 }
 
-function editContactMember({firstName, lastName, street, zip, city, mobile, phone, workNumber, duties}) {
-    //How to maintain unedited data?
-    /** Not too sure what is happening here*/
-    const ContactPerson = Parse.Object.extend("contactMember");
+function editContactMember({firstName, lastName, street, zip, city, mobile, phone, workNumber, duties}) {    
+        try{
+            const ContactMember = Parse.Object.extend("contactMember");
+            const contactMember = new ContactMember();
+            contactMember.set("firstName",firstName);
+            contactMember.set("lastName",lastName);
+            contactMember.set("street",street);
+            contactMember.set("zip", zip);
+            contactMember.set("city", city);
+            contactMember.set("mobile", mobile);
+            contactMember.set("phone", phone);
+            contactMember.set("workNumber", workNumber);
+            contactMember.set("duties",duties);
+        
+            contactMember.save().then((contactMember)=>{
+                alert("Contact information was saved."); 
+            }, (error)=> {
+                alert("Failed to update object, error code: " + error.message);
+            })
+            console.log("Updated contact information")
+        } catch(error){
+            console.log(error);
+        }
+}
+/**
+ * @public getContactMember retrieves the current users contactpersoninformation
+ * TODO
+ * - Pointer didn't seem to work, so now the id of contactmember is hardcoded as string in back4app
+ *   Atm it's a simple string with same ID representing the current user. 
+ */
 
-    const contactPerson = new ContactPerson();
-    contactPerson.set("firstName",firstName);
-    contactPerson.set("lastName",lastName);
-    contactPerson.set("street",street);
-    contactPerson.set("zip", zip);
-    contactPerson.set("city", city);
-    contactPerson.set("mobile", mobile);
-    contactPerson.set("phone", phone);
-    contactPerson.set("workNumber", workNumber);
-    contactPerson.set("duties",duties);
+async function getContactMember(){
+    const User = Parse.User.current();
+    const id = User.id;
 
-    contactPerson.save().then((contactPerson)=>{
-        alert("Contact information was saved."); 
-    }, (error)=> {
-        alert("Failed to update object, error code: " + error.message);
-    })
-    console.log("Updated contact information")
+    const CM = Parse.Object.extend("contactMember");
+    const query = new Parse.Query(CM);
+
+    query.equalTo("UserID_Placeholder",id)
+    const results = await query.find();
+    if(results.length = 1){
+        const user = results[0];
+        const email = user.get("Email");
+        const firstName = user.get("FirstName");
+        const lastName = user.get("LastName");
+        const age = user.get("Age");
+        const address = user.get("Address");
+        const phone = user.get("Phone");
+        const mobile = user.get("Mobile");
+        const workPhone = user.get("WorkPhone");
+        const zip = user.get("ZIP");
+        const city = user.get("City");
+        const duty1 = user.get("Duty1");
+        const duty2 = user.get("Duty2");
+        const duty3 = user.get("Duty3");
+    const userObject = {firstName,lastName,age,address,mobile,phone,workPhone,email,duty1,duty2,duty3,zip,city};
+    console.log(userObject);
+    return userObject;
+    }
+
+
+}
+
+async function signup({username,password}){
+    const user = new Parse.User();
+    user.set("username", username);
+    user.set("password", password);
+
+    const ContactMember = Parse.Object.extend("contactMember");
+    const contactMember = new ContactMember();
+    contactMember.set("UserID",Parse.User.current().id);
+
+    try {
+        await user.signUp();
+        await contactMember.save();
+    } catch (error) {
+    alert("Error: " + error.code + " " + error.message);
+}
 }
 
 function addFamilyMember({firstName, lastName, age, duties}){
+    
     try{
-        const familyMemberID = Math.floor(Math.random() * 100);
         const FamilyMember = Parse.Object.extend("FamilyMember");
         const familyMember = new FamilyMember();
-        familyMember.set("familyMemberID",familyMemberID);
         familyMember.set("firstName",firstName);
         familyMember.set("lastName",lastName);
         familyMember.set("age",age);
@@ -55,25 +113,24 @@ function addFamilyMember({firstName, lastName, age, duties}){
     }
 }
 
-function addContactPerson({firstName,lastName,age,duties,email,address,workphone,phone,mobile}){
+function addContactMember({firstName,lastName,age,duties,email,address,workphone,phone,mobile}){
+    
     try{
-        const contactPersonID = Math.floor(Math.random() * 100);
-        const ContactPerson = Parse.Object.extend("ContactPerson");
-        const contactPerson = new ContactPerson();
-        contactPerson.set("contactPersonID",contactPersonID)
-        contactPerson.set("firstName",firstName);
-        contactPerson.set("lastName",lastName);
-        contactPerson.set("age",age);
-        contactPerson.set("duties",duties);
-        contactPerson.set("email",email);
-        contactPerson.set("address",address);
-        contactPerson.set("workphone",workphone);
-        contactPerson.set("phone",phone);
-        contactPerson.set("mobile",mobile);
+        const ContactMember = Parse.Object.extend("contactMember");
+        const contactMember = new ContactMember();
+        contactMember.set("firstName",firstName);
+        contactMember.set("lastName",lastName);
+        contactMember.set("age",age);
+        contactMember.set("duties",duties);
+        contactMember.set("email",email);
+        contactMember.set("address",address);
+        contactMember.set("workphone",workphone);
+        contactMember.set("phone",phone);
+        contactMember.set("mobile",mobile);
 
-        contactPerson.save()
-        .then((contactPerson)=>{
-            alert("A Family Member was submitted: " + contactPerson.firstName); 
+        contactMember.save()
+        .then((contactMember)=>{
+            alert("A Family Member was submitted: " + contactMember.firstName); 
         }, (error)=> {
             alert("Failed to create object, error code: " + error.message);
         });
@@ -82,19 +139,5 @@ function addContactPerson({firstName,lastName,age,duties,email,address,workphone
         console.log(error);
     }
 }
-/**
- * @public getFamilyMembers should retrive a certain family member based on contactPersonID
- * TODO:
- * - what should generate contactPersonID in the first place?
- * - how do I know what contactPersonID to retrieve?
- * - refactor this code to dynamic lists of element in UI (usability lecture)
- */
 
- 
-
-
-
-
-//Create a function for editing Contact and Excursion Information
-
-export default {initialize:initialize,addFamilyMember:addFamilyMember, editContactMember:editContactMember};
+export default {signup:signup, initialize:initialize,addFamilyMember:addFamilyMember, getContactMember:getContactMember ,editContactMember:editContactMember};

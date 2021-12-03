@@ -8,23 +8,29 @@ import CarsAndSeatsCard from './CarsAndSeatsCard.js';
 import ContactImage from '../assets/noun_upload photo_1337310 1.png';
 import EditContactPerson from './EditContactPerson.js';
 import Image from '../assets/norwegian_fjord.png';
-/** Profile displays the different Card types and formats them
- *  - "CardPlaceHolder" has to be changed to an actual Card Component
- *  - Likewise, "participantComponents"should be moved to new Card Component
- *    and rendered there instead of in Profile. 
- *  - Button "Add" needs to go into Card
+import API from './API.js';
+
+/** 
+ *  @public Profile displays the different Card types and formats them
  */
+
 function Profile () {
-    const contactPersonData = participantData[0];
+    //const contactPersonData = participantData[0];
+    let contactPersonData = {};
+
+    API.getContactMember()
+    .then((userObject)=>{
+        console.log("Person: "+ userObject.firstName)
+        contactPersonData = userObject;
+    })
     
-    const [active,setActive] = useState(false);
+    //const [active,setActive] = useState(false);
     const [editActive, setEditActive] = useState(false);
     const [showPopup,setShowPopup] = useState(false);
 
     function togglePopup(){
-        console.log(" toggled <3 ")
+        console.log("toggled")
         setShowPopup((prevState)=>!prevState)
-        
     }
 
     return (
@@ -33,8 +39,6 @@ function Profile () {
             <AddFamily showPopup={showPopup} togglePopup={togglePopup}/>
             <EditContactPerson trigger={editActive} editState={() => setEditActive(false)} title="Edit Contact Member"/>
             <div className="profile-1">
-                {/*Passing in image as prop but it's not rendering*/}
-                {/*Change name of active property? */}
                 <ContactPersonCard className="ContactPersonCard" 
                     data={contactPersonData} 
                     contactImage={ContactImage}
