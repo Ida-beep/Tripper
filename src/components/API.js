@@ -90,6 +90,10 @@ function addContactPerson({firstName,lastName,age,duties,email,address,workphone
  * - refactor this code to dynamic lists of element in UI (usability lecture)
  */
 
+ 
+
+
+
 
 //Create a function for editing Contact and Excursion Information
 

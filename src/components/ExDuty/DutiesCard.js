@@ -1,18 +1,27 @@
-import React from "react"
-import duties from "../data/dutyList"
+import React, {useState, useEffect} from "react"
 import TableScaffold from "./TableScaffold"
+import API_get from "../API_get"
 
 function DutiesCard(){    
+    
+    const [allDuties, setAllDuties] = useState([])
+    
+    // Renders DutyOverview from DB
+    useEffect(async ()=> {
+        setAllDuties(await API_get.fetchDutiesFromDB())
+    }, [])
+      
     return (
         <div className="card-container">
+            <h4 style={{fontSize:"20px"}}>Excursion Duties</h4>
             <div className="table-container" >
                 <TableScaffold 
                     // Pass the key name from database object in array matching headers 
-                    tkey={["name","minPeopleRequired"]}
+                    tkey={["name","minRequired"]}
                     //Pass Real headers in array
                     theaders={["Duty","Min. guests"]} 
                     // Pass object data source 
-                    tdata={duties}
+                    tdata={allDuties}
                 />
             </div>
                 <div className="button-container">
