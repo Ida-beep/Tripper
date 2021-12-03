@@ -1,7 +1,7 @@
 import React from 'react';
 import {useState} from 'react';
 import participantData from './data/participantData.js';
-import AddFamilyItem from './AddFamilyPopup';
+import AddFamilyPopup from './AddFamilyPopup';
 import YouAndYourFamilyCard from './YouAndYourFamilyCard';
 import ContactPersonCard from './ContactPersonCard';
 import CarsAndSeatsCard from './CarsAndSeatsCard.js';
@@ -20,11 +20,11 @@ function Profile () {
     
     const [active,setActive] = useState(false);
     const [showEditContactMember, setShowEditContactMember] = useState(false);
-    const [showAddFamilyItem,setShowAddFamilyItem] = useState(false);
+    const [showAddFamilyPopup,setShowAddFamilyPopup] = useState(false);
 
     function toggleFamilyItem(){
         console.log(" toggled <3 ")
-        setShowAddFamilyItem((prevState)=>!prevState)
+        setShowAddFamilyPopup((prevState)=>!prevState)
     }
 
     function toggleContactMember() {
@@ -34,7 +34,7 @@ function Profile () {
     return (
         <div className="profile">
             <img className="photo-header-image" src={Image} alt="NorwegianFjord"/>
-            <AddFamilyItem showAddFamilyItem={showAddFamilyItem} toggleFamilyItem={toggleFamilyItem} title="Add Family Item"/> 
+            <AddFamilyPopup showAddFamilyPopup={showAddFamilyPopup} toggleFamilyItem={toggleFamilyItem} title="Add Family Item"/> 
             <EditContactPerson showEditContactMember={showEditContactMember} toggleContactMember={toggleContactMember} title="Edit Contact Member"/>
             <div className="profile-1">
                 {/*Passing in image as prop but it's not rendering*/}

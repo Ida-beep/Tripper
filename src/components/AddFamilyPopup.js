@@ -7,11 +7,11 @@ import LongInput from './LongInput.js';
 import ShortInput from './ShortInput.js';
 
 /**
- * @public AddFamilyItem defines the content of the popup to 
+ * @public AddFamilyPopup defines the content of the popup to 
  * add family items, using its parent PopUp.js
  * 
  */
-function AddFamilyItem(props){
+function AddFamilyPopup(props){
     const [firstName,setFirstName] = useState();
     const [lastName,setLastName] = useState();
     const [age,setAge] = useState();
@@ -49,7 +49,7 @@ function AddFamilyItem(props){
         }
     }
 
-    return (props.showAddFamilyItem) && (
+    return (props.showAddFamilyPopup) && (
         <PopUp editState={props.toggleFamilyItem} data={personData} title="Add Family Member" 
         submitChanges={handleSubmit} leftButton="Cancel" rightButton="Save">
             <div className="input-section">
@@ -63,4 +63,4 @@ function AddFamilyItem(props){
         </PopUp>
     );
 }
-export default AddFamilyItem;
+export default AddFamilyPopup;
