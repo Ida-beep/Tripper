@@ -120,12 +120,24 @@ li {
 }
 .Nav-Item-Overview {
   display: flex;
+  flex-direction: row;
   flex-shrink: 0;
-  padding-right: 25px;
+  padding-right: 70px;
 }
 .Nav-Item {
   display: flex;
-  padding-left: 40px;
+  position: relative;
+  padding-top: 15px;
+
+  padding-right: 5px;
+  margin-left: 15px;
+  margin-right: 15px;
+  align-items: center;
+  justify-self: center;
+  border-bottom: solid transparent 10px;
+}
+.Nav-Item:hover {
+  border-bottom: solid #fadf63 10px;
 }
 
 .photo-header-image {
@@ -139,8 +151,34 @@ a {
   color: grey; /*no Figma decisions yet*/
   text-decoration: none;
 }
-a:hover {
-  color: black; /*no Figma decisions yet*/
+/* a:hover {
+  color: black;
+*/
+
+/*LOGIN*/
+.login-container {
+  display: flex;
+  border: #fadf63 solid 2px;
+  flex-direction: column;
+  margin-top: 50px;
+  margin-left: 100px;
+  padding: 80px;
+  width: 150px;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+}
+.login-form {
+  display: flex;
+  padding: 30px;
+}
+.logo-login {
+  display: flex;
+  font-family: "Roboto Slab", serif;
+  font-size: 16pt;
+  color: #1ea774;
+  font-weight: 900;
 }
 
 /*DELETEPOPUP*/
@@ -152,6 +190,31 @@ a:hover {
 }
 
 /*DROPDOWN*/
+.nav-drop-down {
+  margin-top: 155px;
+  border: solid #fadf63 1.5px;
+  background-color: #fffbf2;
+  display: flex;
+  position: absolute;
+  flex-direction: column;
+  align-content: center;
+}
+.drop-down-options {
+  display: flex;
+  position: relative;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 5px;
+  padding-bottom: 10px;
+  z-index: 1;
+  width: 140px;
+  height: 50;
+  margin-top: 10px;
+}
+.drop-down-options:hover {
+  background-color: #fadf63;
+}
+
 .drop-down-menu {
   display: flex;
   flex: 4;
@@ -564,27 +627,32 @@ label {
   border: solid #fadf63 1px;
 }
 
+/* ------------TABLE RELATED STYLING--------*/
 .table-container {
   height: 250px;
   overflow-y: scroll;
 }
-
 table {
   border-collapse: collapse;
   width: 100%;
   font-size: 10pt;
+  color: #424242;
 }
 th {
   text-align: left;
   background-color: #fffbf2;
   position: sticky;
   top: 0px;
+  padding-bottom: 5px;
+  border-bottom: solid 2px #fadf63;
 }
 
 td {
   background-color: #fffbf2;
+  padding-top: 7.5px;
 }
 
+/* Buttons in the buttom of a card*/
 .button-container {
   display: flex;
   justify-content: right;

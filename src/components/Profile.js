@@ -44,7 +44,7 @@ function Profile () {
                     contactImage={ContactImage}
                     active={()=>setShowEditContactMember(true)}/>
             </div>
-            <div className="profile-2">
+            <div className="cards-container">
                 <YouAndYourFamilyCard toggleFamilyItem={toggleFamilyItem}/>
                 <CarsAndSeatsCard/>
             </div>
