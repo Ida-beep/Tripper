@@ -1,10 +1,23 @@
 import React, {useState} from 'react';
 import DropDownMenu from './DropDownMenu/DropDownMenu';
-import PopUp from './PopUp'
+import PopUp from './PopUp';
+import API from './API';
+import LongInput from './LongInput';
+import ShortInput from './ShortInput';
+
+/**
+ * @public EditContactPerson defines the content of the popup to
+ * edit contact person information, using its parent Popup.js
+ * 
+ * TO DO
+ * - All mobile numbers are not mandatory, change this
+ * - How to prevent overwriting of data when editing contact member information
+ */
 
 function EditContactPerson(props) {
     const [firstName,setFirstName] = useState();
     const [lastName,setLastName] = useState();
+    const [email,setEmail] = useState();
     const [street, setStreet] = useState();
     const [zip, setZip] = useState();
     const [city, setCity] = useState();
@@ -12,16 +25,22 @@ function EditContactPerson(props) {
     const [phone, setPhone] = useState();
     const [work, setWorkNumber] = useState();
     const [duties,setDuties]=useState([]);
-
-    const contactPersonData = [firstName, lastName, street, zip, city, mobile, phone, work, duties]
+    
+    const contactPersonData = [firstName, lastName, email, street, zip, city, mobile, phone, work, duties]
 
     function changeFirstName(e) {
         e.preventDefault();
         setFirstName(e.target.value);
     }
+
     function changeLastName(e) {
         e.preventDefault();
         setLastName(e.target.value);
+    }
+
+    function changeEmail(e) {
+        e.preventDefault()
+        setEmail(e.target.value);
     }
 
     function changeStreet(e) {
@@ -54,75 +73,76 @@ function EditContactPerson(props) {
         setWorkNumber(e.target.value);
     }
 
-    return (props.trigger) ? (
-        <PopUp editState={props.editState} title={props.title} data={contactPersonData}>
+    const contactPersonID = null; //Add data source
+
+    function handleSubmit(e) {
+        e.preventDefault();
+        if (!firstName){
+            setFirstName(e.target.value = "missing first name")
+        }
+        if (!lastName){
+            setLastName(e.target.value = "missing last name")
+        }
+        if (!email) {
+            setEmail(e.target.value = "missing email")
+        }
+        if (!street){
+            setStreet(e.target.value = "missing street")
+        }
+        if (!zip){
+            setZip(e.target.value = "missing zip")
+        }
+        if (!mobile){
+            setMobile(e.target.value = "missing mobile number")
+        }
+        if (!phone){
+            setPhone(e.target.value = "missing phone number")
+        }
+        if (!work){
+            setWorkNumber(e.target.value = "missing work number")
+        }
+        if (!duties){
+            setDuties(e.target.value = "missing duties")
+        }
+        if (firstName && lastName && email && street && zip && city && mobile && phone && work && duties) {
+            if (contactPersonID === null) { 
+                console.log("handleSubmit called")
+                API.addContactPerson(firstName, lastName, street, zip, city, mobile, phone, work, duties);
+                console.log("submit handles with " + firstName, lastName, street, zip, city, mobile, phone, work, duties);
+            }
+            else {
+                
+                console.log("handleSubmit called")
+                API.editContactMember(firstName, lastName, street, zip, city, mobile, phone, work, duties);
+                console.log("submit handles with " + firstName, lastName, street, zip, city, mobile, phone, work, duties);
+            }
+        }
+    }
+
+    return (props.showEditContactMember) && (
+        <PopUp editState={props.toggleContactMember} title={props.title} data={contactPersonData}
+            submitChanges={handleSubmit} leftButton="Cancel" rightButton="Save">
+            
             <div className="input-section">
-                <div className="long-input">
-                    <label>
-                        <p>First Name</p>
-                        <input type="text" value={firstName}
-                        onChange={changeFirstName} />
-                    </label>
-                </div>
-                <div className="long-input">
-                    <label>
-                        <p>Last Name</p>
-                        <input type="text" value={lastName}
-                        onChange={changeLastName} />
-                    </label>
-                </div>
+                <LongInput title="First Name" value={firstName} changeValue={changeFirstName} type="text"/>
+                <LongInput title="Last Name" value={lastName} changeValue={changeLastName} type="text" />
+                <LongInput title="Email" value={email} changeValue={changeEmail} type="text" />
             </div>
             <div className="input-section">
-                <div className="long-input">
-                    <label>
-                        <p>Street</p>
-                        <input type="text" value={street}
-                        onChange={changeStreet} />
-                    </label>
-                </div>
-                <div className="short-input">
-                    <label>
-                        <p>Zip</p>
-                        <input type="text" value={zip}
-                        onChange={changeZip} />
-                    </label>
-                </div>
-                <div className="long-input">
-                    <label>
-                        <p>City</p>
-                        <input type="text" value={city}
-                        onChange={changeCity} />
-                    </label>
-                </div>
+                <LongInput title="Street" value={street} changeValue={changeStreet} type="text" />
+                <ShortInput title="Zip" value={zip} changeValue={changeZip} type="text" />
+                <LongInput title="City" value={city} changeValue={changeCity} type="text" />
             </div>
             <div className="input-section">
-                <div className="long-input">
-                    <label>
-                        <p>Mobile</p>
-                        <input type="text" value={mobile}
-                        onChange={changeMobile} />
-                    </label>
-                </div>
-                <div className="long-input">
-                    <label>
-                        <p>Phone</p>
-                        <input type="text" value={phone}
-                        onChange={changePhone} />
-                    </label>
-                </div>
-                <div className="long-input">
-                    <label>
-                        <p>Work</p>
-                        <input type="text" value={work}
-                        onChange={changeWorkNumber} />
-                    </label>
-                </div>
+                <LongInput title="Mobile" value={mobile} changeValue={changeMobile} type="text" />
+                <LongInput title="Phone" value={phone} changeValue={changePhone} type="text" />
+                <LongInput title="Work" value={work} changeValue={changeWorkNumber} type="text" />
             </div>
-            <div class="popup-drop-down">
+            <div className="popup-drop-down">
                 <DropDownMenu duties={duties}/>
             </div>
         </PopUp>
-    ) : "" ;
+    );
 }
 
 export default EditContactPerson;

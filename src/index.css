@@ -266,7 +266,6 @@ a {
 }
 
 .arrowBtn {
-  /*Currently not being used - remove?*/
   display: none;
   flex: 1;
   width: 5px;
@@ -380,6 +379,15 @@ identical. Should we combine them?*/
   display: flex;
 }
 
+.create-contact-member {
+  display: flex;
+  flex: 1;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  padding: 50px;
+}
+
 .excursion-card {
   display: flex;
   flex-direction: row;
@@ -420,12 +428,6 @@ identical. Should we combine them?*/
   justify-content: center; */
 }
 
-.preferred-duties {
-  flex: 1;
-  /* display:flex;
-  flex-direction: column;
-  justify-content: center; */
-}
 
 .edit-button-container {
   display: flex;

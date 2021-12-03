@@ -3,12 +3,37 @@ import { useNavigate } from 'react-router-dom';
 
 /**
  *  @public initializes connection with backedn Back4App 
+ * 
+ * TO DO
+ * - Create AddExcursion function
  */
 
 
 function initialize(){
     Parse.initialize('cSqpSt87DAh7P1u7i99iciru7vSAbREic5H7Duxs', 'xnonzNu6x9RKtJ2OVytZmi2MlS9oPfrjlEVfmO1j');
     Parse.serverURL = 'https://parseapi.back4app.com/';
+}
+
+function editExcursion({excursionTitle, fromDate, toDate, location, description}) {
+    try {
+        const Excursion = Parse.Object.extend("excursion");
+
+        const excursion = new Excursion();
+        excursion.set("excursionTitle", excursionTitle);
+        excursion.set("fromDate", fromDate);
+        excursion.set("toDate", toDate);
+        excursion.set("location", location);
+        excursion.set("description", description);
+
+        excursion.save().then((excursion)=> {
+            alert("Excursion was edited: " + excursion.excursionTitle);
+        }, (error) => {
+            alert("Failed to edit object, error code: " + error.message)
+        })
+        console.log("Updated excursion information");
+    } catch(error) {
+        console.log(error);
+    }
 }
 
 function editContactMember({firstName, lastName, street, zip, city, mobile, phone, workNumber, duties}) {    
@@ -140,4 +165,4 @@ function addContactMember({firstName,lastName,age,duties,email,address,workphone
     }
 }
 
-export default {signup:signup, initialize:initialize,addFamilyMember:addFamilyMember, getContactMember:getContactMember ,editContactMember:editContactMember};
+export default {signup:signup, initialize:initialize,addFamilyMember:addFamilyMember, getContactMember:getContactMember ,editContactMember:editContactMember, addContactMember:addContactMember};

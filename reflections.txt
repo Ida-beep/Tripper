@@ -6,7 +6,6 @@ Suggestions
 
 AddFamily:
 - Where should the state be? Where is it most logical?
-- Components: ContactPersonCard -> AddFamily -> AddFamilyItem 
 
 Backend
 - AddFamily Popup doesn't work onSubmit..

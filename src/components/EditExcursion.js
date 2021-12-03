@@ -1,7 +1,13 @@
 import React, {useState} from 'react';
 import PopUp from './PopUp';
+import API from './API'; 
+import LongInput from './LongInput';
 
 function EditExcursion(props) {
+
+    /**
+    @public EditExcursion renders the PopUp for editing excursions. Is a child of the component PopUp.s
+    */
 
     /** 
      * - Change date input to short inputs once fixed
@@ -39,42 +45,54 @@ function EditExcursion(props) {
         e.preventDefault();
         setDescription(e.target.value);
     }
+
+    const excursionID = null; //Add data source
+
+    /*The if-else statement determines whether data is currently there, 
+    meaning it should overwrite data or add data */
+    function handleSubmit(e) {
+        if (excursionID === null) { 
+            e.preventDefault();
+
+            if (!excursionTitle){
+                setExcursionTitle(e.target.value = "missing excursion title")
+            }
+            if (!dateFrom){
+                setDateFrom(e.target.value = "missing starting date")
+            }
+            if (!dateTo){
+                setDateTo(e.target.value = "missing ending date")
+            }
+            if (!location){
+                setLocation(e.target.value = "missing location")
+            }
+            if (!description){
+                setDescription(e.target.value = "missing description")
+            }
+
+            if(excursionTitle && dateFrom && dateTo && location && description) {
+                console.log("handleSubmit called")
+                API.editExcursion(excursionTitle, dateFrom, dateTo, location, description);
+                console.log("submit handles with " + excursionTitle, dateTo, dateFrom, location, description);
+            }
+        } else {
+            
+        }
+    }
     
-    return (props.trigger) ? (
-        <PopUp editState={props.editState} title={props.title} data={excursionData }>
+    return (props.trigger) && ( 
+        <PopUp editState={props.editState} title={props.title} 
+            submitChanges={handleSubmit} leftButton="Cancel" rightButton="Save"> 
             <div className="input-section">
-                <div className="long-input">
-                    <label>
-                        <p>Excursion Title</p>
-                        <input type="text" value={excursionTitle}
-                        onChange={changeExcursionTitle} />
-                    </label>
-                </div>
+                <LongInput title="Excursion Title" value={excursionTitle} changeValue={changeExcursionTitle} type="text" />
             </div>
             <div className="input-section">
-                <div className="long-input">
-                    <label>
-                        <p>From (date)</p>
-                        <input type="text" value={dateFrom}
-                        onChange={changeDateFrom} />
-                    </label>
-                </div>
-                <div className="long-input">
-                    <label>
-                        <p>To (date)</p>
-                        <input type="text" value={dateTo}
-                        onChange={changeDateTo} />
-                    </label>
-                </div>
-                <div className="long-input">
-                    <label>
-                        <p>Location</p>
-                        <input type="text" value={location}
-                        onChange={changeLocation} />
-                    </label>
-                </div>
+                <LongInput title="From (date)" value={dateFrom} changeValue={changeDateFrom} type="text" />
+                <LongInput title="To (date)" value={dateTo} changeValue={changeDateTo} type="text" />
+                <LongInput title="Location" value={location} changeValue={changeLocation} type="text" />
             </div>
             <div className="input-section">
+                <LongInput title="Description" value={description} changeValue={changeDescription} type="text" />
                 <div className="long-input">
                     <label>
                         <p>Description</p>
@@ -84,7 +102,7 @@ function EditExcursion(props) {
                 </div>
             </div>
         </PopUp>
-    ) : "" ;
+    );
 }
 
 export default EditExcursion;

@@ -1,7 +1,7 @@
 import React from 'react';
 import {useState} from 'react';
 import participantData from './data/participantData.js';
-import AddFamily from './AddFamily/AddFamily';
+import AddFamilyPopup from './AddFamilyPopup';
 import YouAndYourFamilyCard from './YouAndYourFamilyCard';
 import ContactPersonCard from './ContactPersonCard';
 import CarsAndSeatsCard from './CarsAndSeatsCard.js';
@@ -24,28 +24,32 @@ function Profile () {
         contactPersonData = userObject;
     })
     
-    //const [active,setActive] = useState(false);
-    const [editActive, setEditActive] = useState(false);
-    const [showPopup,setShowPopup] = useState(false);
 
-    function togglePopup(){
-        console.log("toggled")
-        setShowPopup((prevState)=>!prevState)
+    const [showEditContactMember, setShowEditContactMember] = useState(false);
+    const [showAddFamilyPopup,setShowAddFamilyPopup] = useState(false);
+
+    function toggleFamilyItem(){
+        console.log(" toggled <3 ")
+        setShowAddFamilyPopup((prevState)=>!prevState)
+    }
+
+    function toggleContactMember() {
+        setShowEditContactMember((prevState)=>!prevState)
     }
 
     return (
         <div className="profile">
             <img className="photo-header-image" src={Image} alt="NorwegianFjord"/>
-            <AddFamily showPopup={showPopup} togglePopup={togglePopup}/>
-            <EditContactPerson trigger={editActive} editState={() => setEditActive(false)} title="Edit Contact Member"/>
+            <AddFamilyPopup showAddFamilyPopup={showAddFamilyPopup} toggleFamilyItem={toggleFamilyItem} title="Add Family Item"/> 
+            <EditContactPerson showEditContactMember={showEditContactMember} toggleContactMember={toggleContactMember} title="Edit Contact Member"/>
             <div className="profile-1">
                 <ContactPersonCard className="ContactPersonCard" 
                     data={contactPersonData} 
                     contactImage={ContactImage}
-                    active={()=>setEditActive(true)}/>
+                    active={()=>setShowEditContactMember(true)}/>
             </div>
             <div className="cards-container">
-                <YouAndYourFamilyCard togglePopup={togglePopup}/>
+                <YouAndYourFamilyCard toggleFamilyItem={toggleFamilyItem}/>
                 <CarsAndSeatsCard/>
             </div>
         </div>

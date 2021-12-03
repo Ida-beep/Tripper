@@ -16,6 +16,9 @@ function ExcursionCard(props) {
                         nisi ut aliquip ex ea commodo consequat. </p>
                 </div>
             </div>
+            <div className="edit-button-container">
+                <button className="button-extra-small" onClick={props.active}>Edit</button>
+            </div>
         </LongCard>
     );
 }

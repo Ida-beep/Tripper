@@ -12,7 +12,7 @@ function Excursion() {
         <div>
             <div className="excursion">
                 <img className="photo-header-image" src={Image} alt="NorwegianFjord"/>
-                <EditExcursion trigger={editActive} editState={() => setEditActive(false)}/>
+                <EditExcursion trigger={editActive} editState={() => setEditActive(false)} title="Edit Excursion"/>
                 <div className="excursion-1"> {/**Add className */}
                     <ExcursionCard active={()=>setEditActive(true)}/> {/*Add props */}
                 </div>

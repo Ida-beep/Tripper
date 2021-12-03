@@ -15,7 +15,7 @@
 
 //     return (
 //         <div className="you-and-your-family">
-//             <OverviewCard togglePopup={props.togglePopup} class="YouAndYourFamily" header={CardHeader} content={participantComponents} rightbutton={Rightbuttons} leftbutton={LeftButtons}/>
+//             <OverviewCard togglePopup={props.toggleFamilyItem} class="YouAndYourFamily" header={CardHeader} content={participantComponents} rightbutton={Rightbuttons} leftbutton={LeftButtons}/>
 //         </div>
 //     );
 // }
