@@ -1,15 +1,13 @@
 import React from 'react';
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 import AddFamilyPopup from './AddFamilyPopup';
 import YouAndYourFamilyCard from './YouAndYourFamilyCard';
 import ContactPersonCard from './ContactPersonCard';
 import CarsAndSeatsCard from './CarsAndSeatsCard.js';
-import ContactImage from '../assets/noun_upload photo_1337310 1.png';
+import ContactImage from '../../assets/noun_upload photo_1337310 1.png';
 import EditContactPerson from './EditContactPerson.js';
-import Image from '../assets/norwegian_fjord.png';
-import API from './API.js';
-import API_get from './API_get.js';
-
+import Image from '../../assets/norwegian_fjord.png';
+import API from '../API/API.js';
 
 /** 
  *  @public Profile displays the different Card types and formats them
@@ -20,12 +18,13 @@ function Profile () {
     const [showAddFamilyPopup,setShowAddFamilyPopup] = useState(false);
     let contactPersonData = {};
 
-    console.log(API_get.fetchContactMemberFromDB());
-
-    API.getContactMember()
-    .then((userObject)=>{
-        contactPersonData = userObject;
-    })
+    useEffect(()=> {
+        async function fetchData(){
+        API.getContactMember()
+        .then((userObject)=>{
+            contactPersonData = userObject;
+        })}
+        fetchData()}, [])
 
     function toggleFamilyItem(){
         setShowAddFamilyPopup((prevState)=>!prevState)

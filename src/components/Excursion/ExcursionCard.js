@@ -1,5 +1,5 @@
 import React from 'react';
-import LongCard from './LongCard.js';
+import LongCard from '../Cards/LongCard.js';
 
 function ExcursionCard(props) {
 

@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
 import { useEffect } from 'react';
-import DropDownMenu from './DropDownMenu/DropDownMenu';
-import PopUp from './PopUp';
-import API from './API';
-import LongInput from './LongInput';
-import ShortInput from './ShortInput';
-import API_get from './API_get';
+import DropDownMenu from '../DropDownMenu/DropDownMenu';
+import PopUp from '../Cards/PopUp';
+import API from '../API/API';
+import LongInput from '../Cards/LongInput';
+import ShortInput from '../Cards/ShortInput';
+import API_get from '../API/API_get';
 
 /**
  * @public EditContactPerson defines the content of the popup to
@@ -18,8 +18,9 @@ import API_get from './API_get';
 
 function EditContactPerson(props) {
     const [contactP, setContactP] = useState([])
-    useEffect(async () => {
-        setContactP(await API_get.fetchContactMemberFromDB())
+    useEffect(() => {
+        async function fetchData(){setContactP(await API_get.fetchContactMemberFromDB())};
+        fetchData();
     }, []);
 
     const [firstName,setFirstName] = useState();

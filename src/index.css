@@ -432,7 +432,7 @@ identical. Should we combine them?*/
 .edit-button-container {
   display: flex;
   flex-direction: column;
-  justify-content: end;
+  justify-content: flex-end;
   padding: 25px;
 }
 
@@ -600,7 +600,7 @@ label {
 .popup-button-footer {
   display: flex;
   flex-direction: row;
-  justify-content: end;
+  justify-content: flex-end;
   padding-top: 25px;
 }
 

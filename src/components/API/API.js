@@ -1,18 +1,13 @@
-import { Parse, User } from 'parse';
-import { useNavigate } from 'react-router-dom';
+import { Parse } from 'parse';
 
 /**
  *  @public initializes connection with backedn Back4App 
- * 
- * TO DO
- * - Create AddExcursion function
  */
-
-
 function initialize(){
     Parse.initialize('cSqpSt87DAh7P1u7i99iciru7vSAbREic5H7Duxs', 'xnonzNu6x9RKtJ2OVytZmi2MlS9oPfrjlEVfmO1j');
     Parse.serverURL = 'https://parseapi.back4app.com/';
 }
+
 
 function editExcursion({excursionTitle, fromDate, toDate, location, description}) {
     try {
@@ -76,7 +71,7 @@ async function getContactMember(){
 
     query.equalTo("UserID_Placeholder",id)
     const results = await query.find();
-    if(results.length = 1){
+    if(results.length === 1){
         const user = results[0];
         const email = user.get("Email");
         const firstName = user.get("FirstName");
@@ -138,6 +133,28 @@ function addFamilyMember({firstName, lastName, age, duties}){
     }
 }
 
+async function getDuties(){
+    const Duty = Parse.Object.extend("Duty");
+    const query = new Parse.Query(Duty);
+    const dutyCollection = [];
+
+    const results = await query.find();
+    
+    results.forEach(duty => {
+        const name = duty.get("name");
+        const minRequiredGuests = duty.get("minRequiredGuests");
+           
+        const dutyObject= {
+            name: name,
+            minRequiredGuests: minRequiredGuests,
+        };
+        
+        dutyCollection.push(dutyObject)
+    });
+    
+    return dutyCollection;
+}
+
 async function deleteFamilyMember(familyMembers){
     for(let i=0; i < familyMembers.length;i++){
         const member = familyMembers[i];
@@ -186,4 +203,4 @@ function addContactMember({firstName,lastName,age,duties,email,address,workphone
     }
 }
 
-export default {signup:signup, initialize:initialize,addFamilyMember:addFamilyMember, getContactMember:getContactMember ,editContactMember:editContactMember, addContactMember:addContactMember, editExcursion:editExcursion, deleteFamilyMember:deleteFamilyMember};
+export default {signup:signup, initialize:initialize,addFamilyMember:addFamilyMember, getContactMember:getContactMember ,editContactMember:editContactMember, addContactMember:addContactMember, editExcursion:editExcursion, deleteFamilyMember:deleteFamilyMember, getDuties:getDuties};

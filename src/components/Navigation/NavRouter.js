@@ -1,5 +1,5 @@
-import Excursion from './Excursion';
-import Profile from './Profile';
+import Excursion from '../Excursion/Excursion';
+import Profile from '../Profile/Profile';
 import NavMenu from './NavMenu';
 import React from 'react';
 import Login from './Login';

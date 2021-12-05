@@ -21,11 +21,9 @@
 // }
 
 import React,{ useEffect, useState } from 'react';
-import TableScaffold from './ExDuty/TableScaffold';
-import API_get from './API_get';
-import API from './API';
-
-
+import TableScaffold from '../Cards/TableScaffold';
+import API_get from '../API/API_get';
+import API from '../API/API';
 
 /**
     @public YouAndYourFamilyCard shows all relevant participating members of a family
@@ -40,8 +38,9 @@ function YouAndYourFamilyCard(props) {
         console.log(selected);
     }
 
-    useEffect(async ()=> {
-        setMemberAndFamily(await API_get.fetchFamilyMembersFromDB())
+    useEffect(()=> {
+        async function fetchData(){setMemberAndFamily(await API_get.fetchFamilyMembersFromDB())};
+        fetchData();
     }, [])
 
     function handleAdd() {

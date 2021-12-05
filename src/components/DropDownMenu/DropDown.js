@@ -9,7 +9,6 @@ function DropDown(props){
                 <p>Select 3 duties</p>
                 <div className="drop-down-top" onClick={()=>setOpen(!open)}>
                     <p className="PlaceHolder">Choose preference</p>
-{/*                     <img className="arrowBtn" src={arrow} alt="arrowbutton"/> */}
                 </div>
                 {open && props.children}
             </label>

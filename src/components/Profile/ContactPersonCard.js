@@ -1,14 +1,10 @@
 import React, { useState } from 'react';
-import LongCard from './LongCard';
-import API from './API.js';
+import LongCard from '../Cards/LongCard';
+import API from '../API/API.js';
 
 function ContactPersonCard(props) {
-
-    
-    let contactPersonData = {};
     const [firstName, setFirstName] = useState();
     const [lastName, setLastName] = useState();
-    const [age,setAge] = useState();
     const [email,setEmail] = useState();
     const [mobile,setMobile] = useState();
     const [phone,setPhone] = useState();
@@ -16,14 +12,11 @@ function ContactPersonCard(props) {
     const [address,setAddress] = useState();
     const [zip, setZip] = useState();
     const [city, setCity] = useState();
-    const [duties, setDuties] = useState([]);
 
     API.getContactMember()
     .then((userObject)=>{
-        contactPersonData = userObject;
         setFirstName(userObject.firstName);
         setLastName(userObject.lastName);
-        setAge(userObject.age);
         setEmail(userObject.email);
         setMobile(userObject.mobile);
         setPhone(userObject.phone);

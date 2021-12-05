@@ -18,3 +18,8 @@ Component Manifesto
         - Content (length may differ)
         - Footer
 
+
+Components to Delete
+- AddContactPerson.js?
+
+

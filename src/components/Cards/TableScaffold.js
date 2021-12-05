@@ -1,4 +1,3 @@
-import react, { useState } from "react";
 /* 
  Takes three props and returns a table based on a passed object.
     Props to pass
@@ -11,7 +10,7 @@ function TableScaffold(props){
 
     // Takes props array and return as tableheaders
     const rowHeaders = props.theaders.map(header => {
-        return(<th>{header}</th>)
+        return(<th key={header.id}>{header}</th>)
     })
     
     // Takes props object and return as tabledata
@@ -19,16 +18,16 @@ function TableScaffold(props){
         const rowDataValue = props.tkey.map(header => {
             if (tdata[header].constructor=== Array){
                 let tableDatalist = ""
-                for (let index = 0; index < tdata[header].length; index++) {
-                    tableDatalist += tdata[header][index] + " "
+                for (let i = 0; i < tdata[header].length; i++) {
+                    tableDatalist += tdata[header][i] + " "
                     
                 }
                 return(
-                    <td>{tableDatalist}</td>
+                    <td key={"tableDataList"}>{tableDatalist}</td>
                 )
             }
             return(
-                <td>{tdata[header]}</td>
+                <td key={tdata[header].id}>{tdata[header]}</td>
             )
         })
         return(
