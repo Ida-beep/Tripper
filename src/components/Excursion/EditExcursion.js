@@ -1,15 +1,14 @@
 import React, {useState} from 'react';
-import PopUp from './PopUp';
-import API from './API'; 
-import LongInput from './LongInput';
+import PopUp from '../Cards/PopUp';
+import API from '../API/API'; 
+import LongInput from '../Cards/LongInput';
 
 function EditExcursion(props) {
 
     /**
-    @public EditExcursion renders the PopUp for editing excursions. Is a child of the component PopUp.s
-    */
-
-    /** 
+     * @public EditExcursion renders the PopUp for editing excursions. Is a child of the component PopUp.s
+     * 
+     * TODO
      * - Change date input to short inputs once fixed
      * - Change description to big box
     */
@@ -20,7 +19,7 @@ function EditExcursion(props) {
     const [location, setLocation] = useState();
     const [description, setDescription] = useState();
 
-    const excursionData = [excursionTitle, dateFrom, dateTo, location, description];
+    //const excursionData = [excursionTitle, dateFrom, dateTo, location, description];
 
     function changeExcursionTitle(e) {
         e.preventDefault();

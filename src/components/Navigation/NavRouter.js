@@ -1,6 +1,5 @@
-import Home from './Home';
-import Excursion from './Excursion';
-import Profile from './Profile';
+import Excursion from '../Excursion/Excursion';
+import Profile from '../Profile/Profile';
 import NavMenu from './NavMenu';
 import React from 'react';
 import Login from './Login';
@@ -19,7 +18,6 @@ function NavRouter(){
       <Router>
         <NavMenu/>
             <Routes>
-              <Route path='/' element={<Home/>}/>
               <Route path='/Excursion' element={<Excursion/>}/>
               <Route path='/Profile' element={<Profile/>}/>
               <Route path='/Login' element={<Login/>}/>

@@ -1,4 +1,4 @@
-import { Parse, User} from "parse"
+import { Parse} from "parse"
  
 const fetchDutiesFromDB = async () => {
     const dutyCollection = []

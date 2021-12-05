@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Parse, User } from 'parse';
+import { Parse } from 'parse';
 import { useNavigate } from 'react-router-dom';
-import API from './API';
+import API from '../API/API';
 
 
 function Login(props){

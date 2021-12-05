@@ -1,4 +1,4 @@
-import NavRouter from './components/NavRouter';
+import NavRouter from './components/Navigation/NavRouter';
 import './index.css';
 
 function App() {
