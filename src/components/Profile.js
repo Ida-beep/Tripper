@@ -20,7 +20,6 @@ function Profile () {
 
     API.getContactMember()
     .then((userObject)=>{
-        console.log("Person: "+ userObject.firstName)
         contactPersonData = userObject;
     })
     

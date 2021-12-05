@@ -645,6 +645,15 @@ td {
   background-color: #fffbf2;
   padding-top: 7.5px;
 }
+.trow{
+  margin:10px;
+  cursor:default;
+  border: transparent solid 2px;
+}
+.trow:hover{
+  border-bottom:#1ea774 solid 2px;
+}
+
 
 /* Buttons in the buttom of a card*/
 .button-container {

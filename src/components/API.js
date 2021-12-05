@@ -92,7 +92,6 @@ async function getContactMember(){
         const duty2 = user.get("Duty2");
         const duty3 = user.get("Duty3");
     const userObject = {firstName,lastName,age,address,mobile,phone,workPhone,email,duty1,duty2,duty3,zip,city};
-    console.log(userObject);
     return userObject;
     }
 
@@ -126,6 +125,7 @@ function addFamilyMember({firstName, lastName, age, duties}){
         familyMember.set("age",age);
         familyMember.set("duties",duties);
 
+
         familyMember.save()
         .then((familyMember)=>{
             alert("A Family Member was submitted: " + familyMember.firstName); 
@@ -135,6 +135,27 @@ function addFamilyMember({firstName, lastName, age, duties}){
 
     } catch(error){
         console.log(error);
+    }
+}
+
+async function deleteFamilyMember(familyMembers){
+    for(let i=0; i < familyMembers.length;i++){
+        const member = familyMembers[i];
+
+        const jsobjID = member.id;
+        const FamilyMember = Parse.Object.extend("FamilyMember");
+        const query = new Parse.Query(FamilyMember);
+    
+        query.equalTo("objectId",jsobjID)
+        let result = await query.find();
+        result = result[0];
+
+        result.destroy()
+        .then(()=>{
+            alert(" family members succesfully deleted ");
+        }, (error)=>{
+            alert("failed to delete with error-code : " + error.code);
+        })
     }
 }
 
@@ -165,4 +186,4 @@ function addContactMember({firstName,lastName,age,duties,email,address,workphone
     }
 }
 
-export default {signup:signup, initialize:initialize,addFamilyMember:addFamilyMember, getContactMember:getContactMember ,editContactMember:editContactMember, addContactMember:addContactMember};
+export default {deleteFamilyMember:deleteFamilyMember,signup:signup, initialize:initialize,addFamilyMember:addFamilyMember, getContactMember:getContactMember ,editContactMember:editContactMember, addContactMember:addContactMember};

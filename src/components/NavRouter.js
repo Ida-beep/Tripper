@@ -1,4 +1,3 @@
-import Home from './Home';
 import Excursion from './Excursion';
 import Profile from './Profile';
 import NavMenu from './NavMenu';

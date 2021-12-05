@@ -1,4 +1,4 @@
-import react from "react";
+import react, { useState } from "react";
 /* 
  Takes three props and returns a table based on a passed object.
     Props to pass
@@ -7,8 +7,8 @@ import react from "react";
         tkey        =   [pass an array of the keys the tdata should display] - should match the headers 
 */
 
-function TableScaffold(props){
-    
+function TableScaffold(props){    
+
     // Takes props array and return as tableheaders
     const rowHeaders = props.theaders.map(header => {
         return(<th>{header}</th>)
@@ -32,7 +32,7 @@ function TableScaffold(props){
             )
         })
         return(
-            <tr key={props.tdata.id}>{rowDataValue}</tr>
+            <tr className="trow" onClick={()=>props.onSelection(tdata)} key={props.tdata.id}>{rowDataValue}</tr>
         )
     }
    )
