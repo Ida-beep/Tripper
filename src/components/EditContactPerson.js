@@ -1,9 +1,11 @@
 import React, {useState} from 'react';
+import { useEffect } from 'react';
 import DropDownMenu from './DropDownMenu/DropDownMenu';
 import PopUp from './PopUp';
 import API from './API';
 import LongInput from './LongInput';
 import ShortInput from './ShortInput';
+import API_get from './API_get';
 
 /**
  * @public EditContactPerson defines the content of the popup to
@@ -15,6 +17,11 @@ import ShortInput from './ShortInput';
  */
 
 function EditContactPerson(props) {
+    const [contactP, setContactP] = useState([])
+    useEffect(async () => {
+        setContactP(await API_get.fetchContactMemberFromDB())
+    }, []);
+
     const [firstName,setFirstName] = useState();
     const [lastName,setLastName] = useState();
     const [email,setEmail] = useState();
@@ -25,8 +32,6 @@ function EditContactPerson(props) {
     const [phone, setPhone] = useState();
     const [work, setWorkNumber] = useState();
     const [duties,setDuties]=useState([]);
-    
-    const contactPersonData = [firstName, lastName, email, street, zip, city, mobile, phone, work, duties]
 
     function changeFirstName(e) {
         e.preventDefault();
@@ -73,7 +78,7 @@ function EditContactPerson(props) {
         setWorkNumber(e.target.value);
     }
 
-    const contactPersonID = null; //Add data source
+   
 
     function handleSubmit(e) {
         e.preventDefault();
@@ -119,24 +124,26 @@ function EditContactPerson(props) {
         }
     }
 
+    const contactPersonID = null; //Add data source
+
     return (props.showEditContactMember) && (
-        <PopUp editState={props.toggleContactMember} title={props.title} data={contactPersonData}
+        <PopUp editState={props.toggleContactMember} title={props.title} data={contactP}
             submitChanges={handleSubmit} leftButton="Cancel" rightButton="Save">
             
             <div className="input-section">
-                <LongInput title="First Name" value={firstName} changeValue={changeFirstName} type="text"/>
-                <LongInput title="Last Name" value={lastName} changeValue={changeLastName} type="text" />
-                <LongInput title="Email" value={email} changeValue={changeEmail} type="text" />
+                <LongInput title="First Name" value={contactP.firstName} changeValue={changeFirstName} type="text" />
+                <LongInput title="Last Name" value={contactP.lastName} changeValue={changeLastName} type="text" />
+                <LongInput title="Email" value={contactP.email} changeValue={changeEmail} type="email" />
             </div>
             <div className="input-section">
-                <LongInput title="Street" value={street} changeValue={changeStreet} type="text" />
-                <ShortInput title="Zip" value={zip} changeValue={changeZip} type="text" />
-                <LongInput title="City" value={city} changeValue={changeCity} type="text" />
+                <LongInput title="Street" value={contactP.street} changeValue={changeStreet} type="text" />
+                <ShortInput title="Zip" value={contactP.zip} changeValue={changeZip} type="text" />
+                <LongInput title="City" value={contactP.city} changeValue={changeCity} type="text" />
             </div>
             <div className="input-section">
-                <LongInput title="Mobile" value={mobile} changeValue={changeMobile} type="text" />
-                <LongInput title="Phone" value={phone} changeValue={changePhone} type="text" />
-                <LongInput title="Work" value={work} changeValue={changeWorkNumber} type="text" />
+                <LongInput title="Mobile" value={contactP.mobile} changeValue={changeMobile} type="text" />
+                <LongInput title="Phone" value={contactP.phone} changeValue={changePhone} type="text" />
+                <LongInput title="Work" value={contactP.workPhone} changeValue={changeWorkNumber} type="text" />
             </div>
             <div className="popup-drop-down">
                 <DropDownMenu duties={duties}/>

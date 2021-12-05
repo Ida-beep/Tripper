@@ -20,7 +20,6 @@ function ContactPersonCard(props) {
 
     API.getContactMember()
     .then((userObject)=>{
-        console.log("Person: "+ userObject.firstName)
         contactPersonData = userObject;
         setFirstName(userObject.firstName);
         setLastName(userObject.lastName);

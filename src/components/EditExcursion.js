@@ -87,19 +87,13 @@ function EditExcursion(props) {
                 <LongInput title="Excursion Title" value={excursionTitle} changeValue={changeExcursionTitle} type="text" />
             </div>
             <div className="input-section">
-                <LongInput title="From (date)" value={dateFrom} changeValue={changeDateFrom} type="text" />
-                <LongInput title="To (date)" value={dateTo} changeValue={changeDateTo} type="text" />
+                <LongInput title="From (date)" value={dateFrom} changeValue={changeDateFrom} type="date" />
+                <LongInput title="To (date)" value={dateTo} changeValue={changeDateTo} type="date" />
                 <LongInput title="Location" value={location} changeValue={changeLocation} type="text" />
             </div>
             <div className="input-section">
                 <LongInput title="Description" value={description} changeValue={changeDescription} type="text" />
-                <div className="long-input">
-                    <label>
-                        <p>Description</p>
-                        <input type="text" value={description}
-                        onChange={changeDescription} />
-                    </label>
-                </div>
+
             </div>
         </PopUp>
     );
