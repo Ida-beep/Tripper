@@ -1,6 +1,5 @@
 import React from 'react';
 import {useState} from 'react';
-import participantData from './data/participantData.js';
 import AddFamilyPopup from './AddFamilyPopup';
 import YouAndYourFamilyCard from './YouAndYourFamilyCard';
 import ContactPersonCard from './ContactPersonCard';
@@ -17,24 +16,18 @@ import API_get from './API_get.js';
  */
 
 function Profile () {
-    //const contactPersonData = participantData[0];
+    const [showEditContactMember, setShowEditContactMember] = useState(false);
+    const [showAddFamilyPopup,setShowAddFamilyPopup] = useState(false);
     let contactPersonData = {};
 
     console.log(API_get.fetchContactMemberFromDB());
-
-    
 
     API.getContactMember()
     .then((userObject)=>{
         contactPersonData = userObject;
     })
-    
-
-    const [showEditContactMember, setShowEditContactMember] = useState(false);
-    const [showAddFamilyPopup,setShowAddFamilyPopup] = useState(false);
 
     function toggleFamilyItem(){
-        console.log(" toggled <3 ")
         setShowAddFamilyPopup((prevState)=>!prevState)
     }
 
