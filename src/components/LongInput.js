@@ -6,7 +6,7 @@ function LongInput(props) {
             <label>
                 <p>{props.title}</p>
                 <input type={props.type} value={props.value}
-                onChange={props.changeValue} />
+                onChange={props.changeValue}/>
             </label>
         </div>
     )

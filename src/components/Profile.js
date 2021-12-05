@@ -9,6 +9,8 @@ import ContactImage from '../assets/noun_upload photo_1337310 1.png';
 import EditContactPerson from './EditContactPerson.js';
 import Image from '../assets/norwegian_fjord.png';
 import API from './API.js';
+import API_get from './API_get.js';
+
 
 /** 
  *  @public Profile displays the different Card types and formats them
@@ -17,6 +19,10 @@ import API from './API.js';
 function Profile () {
     //const contactPersonData = participantData[0];
     let contactPersonData = {};
+
+    console.log(API_get.fetchContactMemberFromDB());
+
+    
 
     API.getContactMember()
     .then((userObject)=>{

@@ -186,4 +186,4 @@ function addContactMember({firstName,lastName,age,duties,email,address,workphone
     }
 }
 
-export default {deleteFamilyMember:deleteFamilyMember,signup:signup, initialize:initialize,addFamilyMember:addFamilyMember, getContactMember:getContactMember ,editContactMember:editContactMember, addContactMember:addContactMember};
+export default {signup:signup, initialize:initialize,addFamilyMember:addFamilyMember, getContactMember:getContactMember ,editContactMember:editContactMember, addContactMember:addContactMember, editExcursion:editExcursion, deleteFamilyMember:deleteFamilyMember};
