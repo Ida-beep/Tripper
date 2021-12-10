@@ -7,11 +7,11 @@ function XGuestDutyCard () {
     // const partData = participantData.map(data => <XGuestDuty data={data}  />);
     const [allGuests,setAllGuests] = useState([])
     
-    // Renders GuestsOverview from DB
+/*     // Renders GuestsOverview from DB
     useEffect(()=> {
         async function fetchData(){setAllGuests(await API_get.fetchGuestsFromDB())};
         fetchData();
-    }, [])
+    }, []) */
     
     return (   
         <div className="card-container">

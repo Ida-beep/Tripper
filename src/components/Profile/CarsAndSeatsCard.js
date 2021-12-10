@@ -17,10 +17,10 @@ import API_get from '../API/API_get';
 function CarsAndSeatsCard(){
     const [carsAndSeats,setCarsAndSeats] = useState([])
     
-    useEffect(()=> {
+/*     useEffect(()=> {
         async function fetchData(){setCarsAndSeats(await API_get.fetchCarsFromDB())};
         fetchData();
-    }, [])
+    }, []) */
 
     return (   
         <div className="card-container">

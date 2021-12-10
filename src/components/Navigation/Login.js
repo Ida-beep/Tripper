@@ -10,7 +10,7 @@ function Login(props){
     const [password,setPassword] = useState();
     const navigate = useNavigate();
 
-    function handleSignup(e){
+/*     function handleSignup(e){
         e.preventDefault();
         console.log("Signup was called");
         const user = new Parse.User();
@@ -35,7 +35,7 @@ function Login(props){
             alert("login not successfull with errorcode: " + error.code);
         }
         )
-    }
+    } */
 
     return (
         <div className="login-container">

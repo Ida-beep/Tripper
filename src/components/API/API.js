@@ -120,7 +120,6 @@ function addFamilyMember({firstName, lastName, age, duties}){
         familyMember.set("age",age);
         familyMember.set("duties",duties);
 
-
         familyMember.save()
         .then((familyMember)=>{
             alert("A Family Member was submitted: " + familyMember.firstName); 

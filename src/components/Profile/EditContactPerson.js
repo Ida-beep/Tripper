@@ -18,10 +18,11 @@ import API_get from '../API/API_get';
 
 function EditContactPerson(props) {
     const [contactP, setContactP] = useState([])
-    useEffect(() => {
+    
+/*     useEffect(() => {
         async function fetchData(){setContactP(await API_get.fetchContactMemberFromDB())};
         fetchData();
-    }, []);
+    }, []); */
 
     const [firstName,setFirstName] = useState();
     const [lastName,setLastName] = useState();

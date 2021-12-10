@@ -13,7 +13,7 @@ function ContactPersonCard(props) {
     const [zip, setZip] = useState();
     const [city, setCity] = useState();
 
-    API.getContactMember()
+/*     API.getContactMember()
     .then((userObject)=>{
         setFirstName(userObject.firstName);
         setLastName(userObject.lastName);
@@ -24,7 +24,7 @@ function ContactPersonCard(props) {
         setAddress(userObject.address);
         setZip(userObject.zip);
         setCity(userObject.city);
-    })
+    }) */
 
     const personId = "84757"; //Connect to database
 

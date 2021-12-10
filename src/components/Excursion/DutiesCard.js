@@ -5,10 +5,10 @@ import API_get from "../API/API_get"
 function DutiesCard(){    
     const [allDuties, setAllDuties] = useState([])
     
-    useEffect(()=> {
+/*     useEffect(()=> {
         async function fetchData(){setAllDuties(await API_get.fetchDutiesFromDB())};
         fetchData();
-    }, [])
+    }, []) */
       
     return (
         <div className="card-container">

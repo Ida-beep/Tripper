@@ -18,13 +18,15 @@ function Profile () {
     const [showAddFamilyPopup,setShowAddFamilyPopup] = useState(false);
     let contactPersonData = {};
 
-    useEffect(()=> {
-        async function fetchData(){
+/*     async function fetchData(){
         API.getContactMember()
-        .then((userObject)=>{
+        .then((userObject)=> {
             contactPersonData = userObject;
-        })}
-        fetchData()}, [])
+    })}
+
+    useEffect(()=> {
+        await fetchData();
+    }, []); */
 
     function toggleFamilyItem(){
         setShowAddFamilyPopup((prevState)=>!prevState)

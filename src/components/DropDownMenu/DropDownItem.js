@@ -5,13 +5,13 @@ function DropDownItem(props){
     const [color,setColor] = useState("#FDF5D5");
     
 
-    useEffect(()=>{
+/*     useEffect(()=>{
         selected? (
             setColor("#FADF63")
         ) : (
             setColor("#FDF5D5")
         )
-    },[selected])
+    },[selected]) */
 
     return(
         <div>

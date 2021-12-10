@@ -12,7 +12,7 @@ function DropDownMenu(props){
     const [selectedDuties, setselectedDuties] = useState([]);
     let displayedDuties = [];
 
-    useEffect(()=> {
+  /*   useEffect(()=> {
         let result = [];
         
         function addToArr(name){
@@ -45,7 +45,7 @@ function DropDownMenu(props){
         fetchData().then(()=>{
             mapDuties(result);
         })
-    }, []);
+    }, []); */
 
     
     return(
