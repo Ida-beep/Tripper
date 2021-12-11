@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import LongCard from '../Cards/LongCard';
-import API from '../API/API.js';
+import ContactMemberAPI from '../API/ContactMemberAPI.js';
 
 function ContactPersonCard(props) {
     const [firstName, setFirstName] = useState();
@@ -13,7 +13,7 @@ function ContactPersonCard(props) {
     const [zip, setZip] = useState();
     const [city, setCity] = useState();
 
-/*     API.getContactMember()
+/*     ContactMemberAPI.getContactMember()
     .then((userObject)=>{
         setFirstName(userObject.firstName);
         setLastName(userObject.lastName);

@@ -7,7 +7,7 @@ import CarsAndSeatsCard from './CarsAndSeatsCard.js';
 import ContactImage from '../../assets/noun_upload photo_1337310 1.png';
 import EditContactPerson from './EditContactPerson.js';
 import Image from '../../assets/norwegian_fjord.png';
-import API from '../API/API.js';
+import ContactMemberAPI from '../API/ContactMemberAPI.js';
 
 /** 
  *  @public Profile displays the different Card types and formats them
@@ -19,7 +19,7 @@ function Profile () {
     let contactPersonData = {};
 
 /*     async function fetchData(){
-        API.getContactMember()
+        ContactMemberAPI.getContactMember()
         .then((userObject)=> {
             contactPersonData = userObject;
     })}

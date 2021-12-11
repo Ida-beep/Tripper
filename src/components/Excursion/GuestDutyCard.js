@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import TableScaffold from '../Cards/TableScaffold.js'
-import API_get from '../API/API_get.js'
+import FamilyMembersAPI from '../API/FamilyMembersAPI.js'
 
 
 function XGuestDutyCard () {
@@ -9,7 +9,7 @@ function XGuestDutyCard () {
     
 /*     // Renders GuestsOverview from DB
     useEffect(()=> {
-        async function fetchData(){setAllGuests(await API_get.fetchGuestsFromDB())};
+        async function fetchData(){setAllGuests(await FamilyMemberAPI.fetchGuestsFromDB())};
         fetchData();
     }, []) */
     

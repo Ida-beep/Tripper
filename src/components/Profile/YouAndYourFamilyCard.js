@@ -22,8 +22,7 @@
 
 import React,{ useEffect, useState } from 'react';
 import TableScaffold from '../Cards/TableScaffold';
-import API_get from '../API/API_get';
-import API from '../API/API';
+import FamilyMemberAPI from '../API/FamilyMemberAPI';
 
 /**
     @public YouAndYourFamilyCard shows all relevant participating members of a family
@@ -39,18 +38,18 @@ function YouAndYourFamilyCard(props) {
     }
 
 /*     useEffect(()=> {
-        async function fetchData(){setMemberAndFamily(await API_get.fetchFamilyMembersFromDB())};
+        async function fetchData(){setMemberAndFamily(await FamilyMembersAPI.fetchFamilyMembersFromDB())};
         fetchData();
     }, []) */
 
 /*     function handleAdd() {
-        API.addFamilyMember({firstName:"Emil",lastName:"Løndeberg",age:"45",duties:["lala","blabla"]});
+        FamilyMemberAPI.addFamilyMember({firstName:"Emil",lastName:"Løndeberg",age:"45",duties:["lala","blabla"]});
     } */
 
 /*     async function handleDelete(e){
         e.preventDefault();
-        API.deleteFamilyMember(selected).then(async () => {
-            const refetchedList = await API_get.fetchFamilyMembersFromDB();
+        FamilyMemberAPI.deleteFamilyMember(selected).then(async () => {
+            const refetchedList = await FamilyMembersAPI.fetchFamilyMembersFromDB();
             setMemberAndFamily(refetchedList);
         });
     } */

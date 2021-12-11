@@ -2,10 +2,10 @@ import React, {useState} from 'react';
 import { useEffect } from 'react';
 import DropDownMenu from '../DropDownMenu/DropDownMenu';
 import PopUp from '../Cards/PopUp';
-import API from '../API/API';
+import ContactMemberAPI from '../API/ContactMemberAPI';
 import LongInput from '../Cards/LongInput';
 import ShortInput from '../Cards/ShortInput';
-import API_get from '../API/API_get';
+import ContactMemberAPI from '../API/ContactMemberAPI';
 
 /**
  * @public EditContactPerson defines the content of the popup to
@@ -20,7 +20,7 @@ function EditContactPerson(props) {
     const [contactP, setContactP] = useState([])
     
 /*     useEffect(() => {
-        async function fetchData(){setContactP(await API_get.fetchContactMemberFromDB())};
+        async function fetchData(){setContactP(await ContactMemberAPI.fetchContactMemberFromDB())};
         fetchData();
     }, []); */
 
@@ -114,13 +114,13 @@ function EditContactPerson(props) {
         if (firstName && lastName && email && street && zip && city && mobile && phone && work && duties) {
             if (contactPersonID === null) { 
                 console.log("handleSubmit called")
-                API.addContactPerson(firstName, lastName, street, zip, city, mobile, phone, work, duties);
+                ContactMemberAPI.addContactPerson(firstName, lastName, street, zip, city, mobile, phone, work, duties);
                 console.log("submit handles with " + firstName, lastName, street, zip, city, mobile, phone, work, duties);
             }
             else {
                 
                 console.log("handleSubmit called")
-                API.editContactMember(firstName, lastName, street, zip, city, mobile, phone, work, duties);
+                ContactMemberAPI.editContactMember(firstName, lastName, street, zip, city, mobile, phone, work, duties);
                 console.log("submit handles with " + firstName, lastName, street, zip, city, mobile, phone, work, duties);
             }
         }
