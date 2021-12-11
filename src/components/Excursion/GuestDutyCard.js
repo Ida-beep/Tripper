@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import TableScaffold from '../Cards/TableScaffold.js'
-import FamilyMembersAPI from '../API/FamilyMembersAPI.js'
+import FamilyMemberAPI from '../API/FamilyMemberAPI.js'
 
 
 function XGuestDutyCard () {

@@ -5,7 +5,6 @@ import PopUp from '../Cards/PopUp';
 import ContactMemberAPI from '../API/ContactMemberAPI';
 import LongInput from '../Cards/LongInput';
 import ShortInput from '../Cards/ShortInput';
-import ContactMemberAPI from '../API/ContactMemberAPI';
 
 /**
  * @public EditContactPerson defines the content of the popup to

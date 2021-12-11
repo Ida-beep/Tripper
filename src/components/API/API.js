@@ -4,7 +4,7 @@ import { Parse } from 'parse';
  *  @public initializes connection with backedn Back4App 
  */
 function initialize(){
-    Parse.initialize('cSqpSt87DAh7P1u7i99iciru7vSAbREic5H7Duxs', 'xnonzNu6x9RKtJ2OVytZmi2MlS9oPfrjlEVfmO1j');
+    Parse.initialize('EVjh0m8JGZyGxYoKbj11GNJlN6mJ1gOhJDbbpBQV', 'o2WBDuLkFJlnhJmgIRTVqG29hYuzttGxVibVzgs6');
     Parse.serverURL = 'https://parseapi.back4app.com/';
 }
 async function signup({username,password}){
@@ -12,7 +12,7 @@ async function signup({username,password}){
     user.set("username", username);
     user.set("password", password);
 
-    const ContactMember = Parse.Object.extend("contactMember");
+    const ContactMember = Parse.Object.extend("ContactMember");
     const contactMember = new ContactMember();
     contactMember.set("UserID",Parse.User.current().id);
 
