@@ -43,17 +43,17 @@ function YouAndYourFamilyCard(props) {
         fetchData();
     }, []) */
 
-/*     function handleAdd() {
+   function handleAdd() {
         API.addFamilyMember({firstName:"Emil",lastName:"Løndeberg",age:"45",duties:["lala","blabla"]});
-    } */
+    } 
 
-/*     async function handleDelete(e){
+    async function handleDelete(e){
         e.preventDefault();
         API.deleteFamilyMember(selected).then(async () => {
             const refetchedList = await API_get.fetchFamilyMembersFromDB();
             setMemberAndFamily(refetchedList);
         });
-    } */
+    } 
 
     return (   
         <div className="card-container">

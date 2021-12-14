@@ -4,7 +4,8 @@ import { Parse } from 'parse';
  *  @public initializes connection with backedn Back4App 
  */
 function initialize(){
-    Parse.initialize('cSqpSt87DAh7P1u7i99iciru7vSAbREic5H7Duxs', 'xnonzNu6x9RKtJ2OVytZmi2MlS9oPfrjlEVfmO1j');
+    //Parse.initialize('cSqpSt87DAh7P1u7i99iciru7vSAbREic5H7Duxs', 'xnonzNu6x9RKtJ2OVytZmi2MlS9oPfrjlEVfmO1j');
+    Parse.initialize('EVjh0m8JGZyGxYoKbj11GNJlN6mJ1gOhJDbbpBQV', 'o2WBDuLkFJlnhJmgIRTVqG29hYuzttGxVibVzgs6'); //ny database
     Parse.serverURL = 'https://parseapi.back4app.com/';
 }
 
@@ -55,6 +56,63 @@ function editContactMember({firstName, lastName, street, zip, city, mobile, phon
             console.log(error);
         }
 }
+
+
+function editShoppingL({item, amount, unit}) {
+    try{
+        
+        const ShoppingList = Parse.Object.extend("ShoppingList");
+        const shoppingList = new ShoppingList();
+       
+        shoppingList.set("item",item);
+        shoppingList.set("amount",amount);
+        shoppingList.set("unit",unit);
+
+        shoppingList.save()
+        .then((shoppingList)=>{
+            alert(item + "has been added to your Shopping List"); 
+        }, (error)=> {
+            alert("Failed to create object, error code: " + error.message);
+        });
+
+    } catch(error){
+        console.log(error);
+    }
+}
+
+
+
+
+/**
+ 
+ function uploadImage({imageFile}) {
+   
+    try{
+
+        const Image = Parse.Object.extend("Image");
+        const newImage = new Image();
+
+        newImage.set("imageFile", imageFile);
+  
+        const file = new Parse.File(imageFile.name, imageFile);
+        newImage.set("file", file);
+
+
+        newImage.save()
+        .then((newImage)=>{
+        alert("has been uploaded"); 
+        }, (error)=> {
+        alert("Failed to create object, error code: "+ error.message);
+        });
+
+    } catch(error){
+        console.log(error);
+    }
+}
+ */
+
+
+
 /**
  * @public getContactMember retrieves the current users contactpersoninformation
  * TODO
@@ -202,4 +260,4 @@ function addContactMember({firstName,lastName,age,duties,email,address,workphone
     }
 }
 
-export default {signup:signup, initialize:initialize,addFamilyMember:addFamilyMember, getContactMember:getContactMember ,editContactMember:editContactMember, addContactMember:addContactMember, editExcursion:editExcursion, deleteFamilyMember:deleteFamilyMember, getDuties:getDuties};
+export default {signup:signup, initialize:initialize,addFamilyMember:addFamilyMember, getContactMember:getContactMember ,editContactMember:editContactMember, addContactMember:addContactMember, editExcursion:editExcursion, deleteFamilyMember:deleteFamilyMember, getDuties:getDuties, editShoppingL:editShoppingL};

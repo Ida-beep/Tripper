@@ -26,6 +26,39 @@ const fetchDutiesFromDB = async () => {
     } return dutyCollection
 }
 
+
+
+const fetchItemsFromDB = async () => {
+    const itemCollection = []
+    const query = new Parse.Query("Item");
+    
+    let allItemsFromDB = await query.find();
+    for (let i = 0; i < allItemsFromDB.length; i++) { 
+        try {
+            const item = await query.get(allItemsFromDB[i].id);
+            
+            const id = allItemsFromDB[i].id;
+            const itemname = item.get("itemame");
+            const amount = item.get("amount");
+            const unit = item.get("unit"); 
+           
+            const itemObject = {
+                id: id,
+                itemname: itemname,
+                amount: amount,
+                unit:unit
+            };
+            itemCollection.push(itemObject)
+        
+        } catch (error) {
+            alert(`FAILED to retrieve the Item entry. Error: ${error.message}`);
+          }
+    } return itemCollection
+}
+
+
+
+
 const fetchContactMemberFromDB = async () => {
     const User = Parse.User.current();
     const id = User.id;
@@ -155,7 +188,8 @@ export default {
     fetchGuestsFromDB:fetchGuestsFromDB,
     fetchCarsFromDB:fetchCarsFromDB,
     fetchFamilyMembersFromDB:fetchFamilyMembersFromDB,
-    fetchContactMemberFromDB:fetchContactMemberFromDB
+    fetchContactMemberFromDB:fetchContactMemberFromDB,
+    fetchItemsFromDB:fetchItemsFromDB
 }
 
 
