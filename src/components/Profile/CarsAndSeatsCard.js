@@ -1,7 +1,6 @@
 import React, {useState, useEffect} from 'react';
-import OverviewCard from './OverviewCard';
-import TableScaffold from './ExDuty/TableScaffold';
-import API_get from './API_get';
+import TableScaffold from '../Cards/TableScaffold';
+import API_get from '../API/API_get';
 
 // function CarsAndSeatsCard() {
 //     const CarsAndSeat = [];
@@ -18,9 +17,10 @@ import API_get from './API_get';
 function CarsAndSeatsCard(){
     const [carsAndSeats,setCarsAndSeats] = useState([])
     
-    useEffect(async ()=> {
-        setCarsAndSeats(await API_get.fetchCarsFromDB())
-    }, [])
+/*     useEffect(()=> {
+        async function fetchData(){setCarsAndSeats(await API_get.fetchCarsFromDB())};
+        fetchData();
+    }, []) */
 
     return (   
         <div className="card-container">

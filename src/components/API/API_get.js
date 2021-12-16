@@ -1,4 +1,4 @@
-import Parse from "parse"
+import { Parse} from "parse"
  
 const fetchDutiesFromDB = async () => {
     const dutyCollection = []
@@ -24,6 +24,71 @@ const fetchDutiesFromDB = async () => {
             alert(`FAILED to retrieve the DUTY entry. Error: ${error.message}`);
           }
     } return dutyCollection
+}
+
+
+
+const fetchItemsFromDB = async () => {
+    const itemCollection = []
+    const query = new Parse.Query("Item");
+    
+    let allItemsFromDB = await query.find();
+    for (let i = 0; i < allItemsFromDB.length; i++) { 
+        try {
+            const item = await query.get(allItemsFromDB[i].id);
+            
+            const id = allItemsFromDB[i].id;
+            const itemname = item.get("itemame");
+            const amount = item.get("amount");
+            const unit = item.get("unit"); 
+           
+            const itemObject = {
+                id: id,
+                itemname: itemname,
+                amount: amount,
+                unit:unit
+            };
+            itemCollection.push(itemObject)
+        
+        } catch (error) {
+            alert(`FAILED to retrieve the Item entry. Error: ${error.message}`);
+          }
+    } return itemCollection
+}
+
+
+
+
+const fetchContactMemberFromDB = async () => {
+    const User = Parse.User.current();
+    const id = User.id;
+
+    const queryUser = new Parse.Query("User");
+    const user = await queryUser.get(id);
+    
+    const queryContactMember = new Parse.Query("contactMember");
+
+    const userInfo = await user.get("userInfo");
+    const contactMember = await queryContactMember.get(userInfo.id);
+
+    const firstName = contactMember.get("FirstName");
+    const lastName = contactMember.get("LastName");
+    const email = contactMember.get("Email");
+    const street = contactMember.get("Address");
+    const zip = contactMember.get("ZIP");
+    const city = contactMember.get("City");
+    const mobile = contactMember.get("Mobile");
+    const phone = contactMember.get("Phone");
+    const workPhone = contactMember.get("WorkPhone");
+    const duty1 = contactMember.get("Duty1");
+    const duty2 = contactMember.get("Duty2");
+    const duty3 = contactMember.get("Duty3");
+    
+    const contactMemberData = {firstName:firstName, lastName:lastName, email:email,
+        street:street, zip:zip, city:city, mobile:mobile, phone:phone, 
+        workPhone:workPhone, duty1:duty1, duty2:duty2, duty3:duty3};
+
+    return contactMemberData
 }
 
 const fetchGuestsFromDB = async () => {
@@ -123,6 +188,8 @@ export default {
     fetchGuestsFromDB:fetchGuestsFromDB,
     fetchCarsFromDB:fetchCarsFromDB,
     fetchFamilyMembersFromDB:fetchFamilyMembersFromDB,
+    fetchContactMemberFromDB:fetchContactMemberFromDB,
+    fetchItemsFromDB:fetchItemsFromDB
 }
 
 

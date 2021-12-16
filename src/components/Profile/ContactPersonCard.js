@@ -1,14 +1,11 @@
 import React, { useState } from 'react';
-import LongCard from './LongCard';
-import API from './API.js';
+import LongCard from '../Cards/LongCard';
+import API from '../API/API.js';
+import Upload from '../Upload';
 
 function ContactPersonCard(props) {
-
-    
-    let contactPersonData = {};
     const [firstName, setFirstName] = useState();
     const [lastName, setLastName] = useState();
-    const [age,setAge] = useState();
     const [email,setEmail] = useState();
     const [mobile,setMobile] = useState();
     const [phone,setPhone] = useState();
@@ -16,15 +13,11 @@ function ContactPersonCard(props) {
     const [address,setAddress] = useState();
     const [zip, setZip] = useState();
     const [city, setCity] = useState();
-    const [duties, setDuties] = useState([]);
 
-    API.getContactMember()
+/*     API.getContactMember()
     .then((userObject)=>{
-        console.log("Person: "+ userObject.firstName)
-        contactPersonData = userObject;
         setFirstName(userObject.firstName);
         setLastName(userObject.lastName);
-        setAge(userObject.age);
         setEmail(userObject.email);
         setMobile(userObject.mobile);
         setPhone(userObject.phone);
@@ -32,7 +25,7 @@ function ContactPersonCard(props) {
         setAddress(userObject.address);
         setZip(userObject.zip);
         setCity(userObject.city);
-    })
+    }) */
 
     const personId = "84757"; //Connect to database
 
@@ -40,7 +33,9 @@ function ContactPersonCard(props) {
         <LongCard active={props.active}>
             <div className="contact-person-card">
                 <div className="contact-member-image">
-                    <img className="contact-member-image-1" src={props.ContactImage} alt="upload"/>
+                <Upload /> 
+                
+
                 </div>
                 
                 <div className="contact-member-info">
@@ -72,3 +67,5 @@ function ContactPersonCard(props) {
 }
 
 export default ContactPersonCard;
+
+//    <img className="contact-member-image-1" src={props.ContactImage} alt="upload"/>

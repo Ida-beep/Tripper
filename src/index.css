@@ -432,7 +432,7 @@ identical. Should we combine them?*/
 .edit-button-container {
   display: flex;
   flex-direction: column;
-  justify-content: end;
+  justify-content: flex-end;
   padding: 25px;
 }
 
@@ -600,7 +600,7 @@ label {
 .popup-button-footer {
   display: flex;
   flex-direction: row;
-  justify-content: end;
+  justify-content: flex-end;
   padding-top: 25px;
 }
 
@@ -645,6 +645,15 @@ td {
   background-color: #fffbf2;
   padding-top: 7.5px;
 }
+.trow{
+  margin:10px;
+  cursor:default;
+  border: transparent solid 2px;
+}
+.trow:hover{
+  border-bottom:#1ea774 solid 2px;
+}
+
 
 /* Buttons in the buttom of a card*/
 .button-container {
@@ -656,3 +665,83 @@ td {
   margin-left: 15px;
   margin-top: 15px;
 }
+
+
+
+
+
+
+
+/*-------- Upload (Profile_Image) -----------*/
+
+.p-header-image {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  justify-content: center;
+  margin: 0px
+}
+
+.image-container {
+  display: flex;
+  justify-content: center;
+}
+/*RENAMING*/
+.image-container {
+  padding: 10px;
+  /*background-color: #fffbf2;*/
+  width: 150px;
+  min-width: 150px;
+  margin: 0px 10px;
+  /*border: solid #fadf63 1px;*/
+}
+
+.label{
+  width: 100%;
+  /*margin-top: 1rem;*/
+  display: flex;
+  justify-content: center;
+}
+
+#input[type='file']{
+  display: none
+}
+
+
+/*-------- SignUp -----------*/
+
+.footer-container {
+  display: flex;
+  margin-top: 150px;
+  align-content: center;
+  justify-content: center;
+  height: 100%;
+  padding-top: 15px;
+  border-top: solid #fadf63 2px;
+  
+  /*border: #fadf63 solid 2px;
+  flex-direction: column;
+  margin-top: 50px;
+  margin-left: 100px;
+  padding: 80px;
+  width: 180px;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  align-content: center;*/
+}
+
+.signup-container {
+  display: flex;
+  border: #fadf63 solid 2px;
+  flex-direction: column;
+  margin-top: 50px;
+  margin-left: 200px;
+  padding: 80px;
+  width: 180px;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+}
+

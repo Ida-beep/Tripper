@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom'
 import Parse from 'parse';
+import { FaRegUserCircle, FaUser} from 'react-icons/fa';
 
 /**
  *  @public NavMenu let's the user use the NavRouter to switch between different main pages
@@ -34,7 +35,7 @@ function NavMenu() {
               <div className="Nav-Item-Overview">
            
                 <>
-                    <Link className="Nav-Item" to="/"> Home </Link>
+                <Link className="Nav-Item" to="/"> Home </Link>
                     <Link className="Nav-Item" to="/Excursion" onMouseEnter={() => setExcursionDropDown(!excursionDropDown)}>Excursion
                       {excursionDropDown &&
                       <div className="nav-drop-down" onMouseLeave={() => setExcursionDropDown(!excursionDropDown)}>
@@ -42,13 +43,14 @@ function NavMenu() {
                           <Link className="drop-down-options" to="/Duties">Duties</Link>
                       </div>}
                     </Link>
-                    <Link className="Nav-Item" to="/Profile" onMouseEnter={() => setProfileDropDown(!profileDropDown)}>Profile
+                    <Link className="Nav-Item" to="/Profile" onMouseEnter={() => setProfileDropDown(!profileDropDown)}>Profile <FaRegUserCircle />
                       {profileDropDown &&
                       <div className="nav-drop-down" onMouseLeave={() => setProfileDropDown(!profileDropDown)}>
                           <Link className="drop-down-options" to="/Profile">View Profile</Link>
                           <Link className="drop-down-options" onClick={handleLogOutAttempt} to="/Login">Logout</Link>
                       </div>}
                     </Link>
+                    <Link className="Nav-Item" to="/SignUp"> SignUp </Link>
                 </>
 
               </div>

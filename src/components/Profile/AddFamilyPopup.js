@@ -1,10 +1,10 @@
 import React from 'react';
-import DropDownMenu from './DropDownMenu/DropDownMenu.js';
+import DropDownMenu from '../DropDownMenu/DropDownMenu.js';
 import { useState } from 'react';
-import API from './API.js';
-import PopUp from './PopUp';
-import LongInput from './LongInput.js';
-import ShortInput from './ShortInput.js';
+import API from '../API/API.js';
+import PopUp from '../Cards/PopUp';
+import LongInput from '../Cards/LongInput.js';
+import ShortInput from '../Cards/ShortInput.js';
 
 /**
  * @public AddFamilyPopup defines the content of the popup to 

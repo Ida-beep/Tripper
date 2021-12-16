@@ -1,35 +1,34 @@
 import React from 'react';
-import {useState} from 'react';
-import participantData from './data/participantData.js';
+import {useState, useEffect} from 'react';
 import AddFamilyPopup from './AddFamilyPopup';
 import YouAndYourFamilyCard from './YouAndYourFamilyCard';
 import ContactPersonCard from './ContactPersonCard';
 import CarsAndSeatsCard from './CarsAndSeatsCard.js';
-import ContactImage from '../assets/noun_upload photo_1337310 1.png';
+import ContactImage from '../../assets/noun_upload photo_1337310 1.png';
 import EditContactPerson from './EditContactPerson.js';
-import Image from '../assets/norwegian_fjord.png';
-import API from './API.js';
+import Image from '../../assets/norwegian_fjord.png';
+import API from '../API/API.js';
 
 /** 
  *  @public Profile displays the different Card types and formats them
  */
 
 function Profile () {
-    //const contactPersonData = participantData[0];
-    let contactPersonData = {};
-
-    API.getContactMember()
-    .then((userObject)=>{
-        console.log("Person: "+ userObject.firstName)
-        contactPersonData = userObject;
-    })
-    
-
     const [showEditContactMember, setShowEditContactMember] = useState(false);
     const [showAddFamilyPopup,setShowAddFamilyPopup] = useState(false);
+    let contactPersonData = {};
+
+/*     async function fetchData(){
+        API.getContactMember()
+        .then((userObject)=> {
+            contactPersonData = userObject;
+    })}
+
+    useEffect(()=> {
+        await fetchData();
+    }, []); */
 
     function toggleFamilyItem(){
-        console.log(" toggled <3 ")
         setShowAddFamilyPopup((prevState)=>!prevState)
     }
 

@@ -1,19 +1,17 @@
 import React, {useState, useEffect} from 'react'
-// import participantData from '../data/participantData.js'
-import TableScaffold from './TableScaffold.js'
-import API_get from '../API_get.js'
-
-
+import TableScaffold from '../Cards/TableScaffold.js'
+import API_get from '../API/API_get.js'
 
 
 function XGuestDutyCard () {
     // const partData = participantData.map(data => <XGuestDuty data={data}  />);
     const [allGuests,setAllGuests] = useState([])
     
-    // Renders GuestsOverview from DB
-    useEffect(async ()=> {
-        setAllGuests(await API_get.fetchGuestsFromDB())
-    }, [])
+/*     // Renders GuestsOverview from DB
+    useEffect(()=> {
+        async function fetchData(){setAllGuests(await API_get.fetchGuestsFromDB())};
+        fetchData();
+    }, []) */
     
     return (   
         <div className="card-container">
