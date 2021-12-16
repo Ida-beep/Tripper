@@ -1,5 +1,5 @@
 import React from 'react';
-import API from './API/API';
+import API from '../API/API';
 
 function ShoppingPopUp(props) {
 

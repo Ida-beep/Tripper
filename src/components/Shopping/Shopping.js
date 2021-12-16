@@ -1,7 +1,7 @@
 
 import React, {useState} from 'react';
-import Image from '../assets/norwegian_fjord.png';
-import ShoppingCard from '../ShoppingCard';
+import Image from '../../assets/norwegian_fjord.png';
+import ShoppingCard from './ShoppingCard';
 import EditShopping from './EditShopping';
 
 //import ShoppingItemList from './ShoppingItemList';

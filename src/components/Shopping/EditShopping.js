@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import API from '../API/API';
-import ShoppingPopUp from '../ShoppingPopUp';
+import ShoppingPopUp from './ShoppingPopUp';
 
 function EditShopping(props) {
 
