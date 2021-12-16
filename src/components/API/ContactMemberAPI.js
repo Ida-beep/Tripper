@@ -68,7 +68,7 @@ const fetchContactMemberFromDB = async () => {
 function addContactMember({firstName,lastName,age,duties,email,address,workphone,phone,mobile}){
     
     try{
-        const ContactMember = Parse.Object.extend("ContactMember");
+        const ContactMember = Parse.Object.extend("User");
         const contactMember = new ContactMember();
         contactMember.set("firstName",firstName);
         contactMember.set("lastName",lastName);
@@ -95,7 +95,7 @@ function addContactMember({firstName,lastName,age,duties,email,address,workphone
 /**Current identical to addContactMember, must be changed. Also, rename to updateContactMember? */
 function editContactMember({firstName, lastName, street, zip, city, mobile, phone, workNumber, duties}) {    
     try{
-        const ContactMember = Parse.Object.extend("contactMember");
+        const ContactMember = Parse.Object.extend("User");
         const contactMember = new ContactMember();
         contactMember.set("firstName",firstName);
         contactMember.set("lastName",lastName);
