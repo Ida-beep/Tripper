@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react"
-import TableScaffold from "./Cards/TableScaffold"
-import API from "./API/API"
+import TableScaffold from "../Cards/TableScaffold"
+import API from "../API/API"
 
 function ShoppingItemList(){    
     

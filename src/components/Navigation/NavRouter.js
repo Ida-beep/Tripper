@@ -5,7 +5,7 @@ import React from 'react';
 import Login from './Login';
 import SignUp from './SignUp';
 import Home from '../Home';
-import Shopping from '../Shopping';
+import Shopping from '../Shopping/Shopping';
 import {
     BrowserRouter as Router,
     Route,
