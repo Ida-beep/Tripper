@@ -1,11 +1,11 @@
 
 import React, {useState} from 'react';
 import Image from '../assets/norwegian_fjord.png';
-import ShoppingCard from './ShoppingCard';
+import ShoppingCard from '../ShoppingCard';
 import EditShopping from './EditShopping';
 
 //import ShoppingItemList from './ShoppingItemList';
-import Footer from './Footer.js';
+import Footer from '../Footer.js';
 
 
 function Shopping() {
