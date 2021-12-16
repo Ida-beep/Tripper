@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Parse } from 'parse';
 import { useNavigate } from 'react-router-dom';
 import API from '../API/API';
+import { Link } from 'react-router-dom'
 
 
 function Login(props){
@@ -10,7 +11,7 @@ function Login(props){
     const [password,setPassword] = useState();
     const navigate = useNavigate();
 
-     function handleSignup(e){
+    function handleSignup(e){
         e.preventDefault();
         console.log("Signup was called");
         const user = new Parse.User();
@@ -58,6 +59,10 @@ function Login(props){
                         </div>
                         <button className="button-extra-small" type="submit">Login</button>
                         <button className="button-extra-small" type="submit" onClick={handleSignup}>Signup</button>
+                        <br />
+                        <br /> 
+                        <p style={{textAlign: 'center'}} >
+                        <Link to='/SignUp' >  Don't Have an Account? <p style={{color: '#1ea774'}} >Sign Up Here</p> </Link></p> 
                     </form>
                 </div>
         </div>

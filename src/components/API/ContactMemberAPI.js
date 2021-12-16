@@ -118,6 +118,37 @@ function editContactMember({firstName, lastName, street, zip, city, mobile, phon
     }
 }
 
+
+/** 
+ 
+ function uploadContactMemberImage({imageFile}) {
+   
+    try{
+
+        const Image = Parse.Object.extend("Image");
+        const newImage = new Image();
+
+        newImage.set("imageFile", imageFile);
+  
+        const file = new Parse.File(imageFile.name, imageFile);
+        newImage.set("file", file);
+
+
+        newImage.save()
+        .then((newImage)=>{
+        alert("has been uploaded"); 
+        }, (error)=> {
+        alert("Failed to create object, error code: "+ error.message);
+        });
+
+    } catch(error){
+        console.log(error);
+    }
+}
+ */
+
+
+
 export default {
     fetchContactMemberFromDB:fetchContactMemberFromDB,
     getContactMember:getContactMember,

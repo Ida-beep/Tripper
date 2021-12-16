@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import LongCard from '../Cards/LongCard';
+
+import Upload from '../Upload';
 import ContactMemberAPI from '../API/ContactMemberAPI.js';
 
 function ContactPersonCard(props) {
@@ -33,7 +35,9 @@ function ContactPersonCard(props) {
         <LongCard active={props.active}>
             <div className="contact-person-card">
                 <div className="contact-member-image">
-                    <img className="contact-member-image-1" src={props.ContactImage} alt="upload"/>
+                <Upload /> 
+                
+
                 </div>
                 
                 <div className="contact-member-info">
@@ -65,3 +69,5 @@ function ContactPersonCard(props) {
 }
 
 export default ContactPersonCard;
+
+//    <img className="contact-member-image-1" src={props.ContactImage} alt="upload"/>
