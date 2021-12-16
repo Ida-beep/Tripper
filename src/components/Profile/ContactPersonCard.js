@@ -1,11 +1,8 @@
 import React, { useState } from 'react';
 import LongCard from '../Cards/LongCard';
-<<<<<<< HEAD
-import API from '../API/API.js';
+
 import Upload from '../Upload';
-=======
 import ContactMemberAPI from '../API/ContactMemberAPI.js';
->>>>>>> 7fce9c712f1ee106a00ca91341c4342db977f903
 
 function ContactPersonCard(props) {
     const [firstName, setFirstName] = useState();

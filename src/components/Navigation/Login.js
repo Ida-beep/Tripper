@@ -11,11 +11,7 @@ function Login(props){
     const [password,setPassword] = useState();
     const navigate = useNavigate();
 
-<<<<<<< HEAD
     function handleSignup(e){
-=======
-     function handleSignup(e){
->>>>>>> 7fce9c712f1ee106a00ca91341c4342db977f903
         e.preventDefault();
         console.log("Signup was called");
         const user = new Parse.User();
@@ -41,11 +37,8 @@ function Login(props){
         }
         )
     } 
-<<<<<<< HEAD
-=======
 
     
->>>>>>> 7fce9c712f1ee106a00ca91341c4342db977f903
 
     return (
         <div className="login-container">

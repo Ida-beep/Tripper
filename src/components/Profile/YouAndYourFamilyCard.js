@@ -43,19 +43,11 @@ function YouAndYourFamilyCard(props) {
         console.log("You and your family useEffect called");
     }, []) 
 
-<<<<<<< HEAD
-   function handleAdd() {
-        API.addFamilyMember({firstName:"Emil",lastName:"Løndeberg",age:"45",duties:["lala","blabla"]});
-    } 
-
-    async function handleDelete(e){
-=======
     function handleAdd() {
         FamilyMemberAPI.addFamilyMember({firstName:"Emil",lastName:"Løndeberg",age:"45",duties:["lala","blabla"]});
     } 
 
      async function handleDelete(e){
->>>>>>> 7fce9c712f1ee106a00ca91341c4342db977f903
         e.preventDefault();
         FamilyMemberAPI.deleteFamilyMember(selected).then(async () => {
             const refetchedList = await FamilyMemberAPI.fetchFamilyMembersFromDB();
