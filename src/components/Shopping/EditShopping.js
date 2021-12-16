@@ -30,7 +30,7 @@ function EditShopping(props) {
     
     return (props.trigger) ? (
         <ShoppingPopUp editState={props.editState} title={props.title} data={shoppingData }
-        submitChanges={API.editShoppingL}>
+        submitChanges={API.addShoppingItem}>
   
             <div className="input-section">
                 <div className="long-input">

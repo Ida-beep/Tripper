@@ -1,15 +1,16 @@
 import React from 'react';
-import API from '../API/API';
+import ShoppingAPI from '../API/ShoppingAPI';
 
 function ShoppingPopUp(props) {
+
+    console.log("props: " + props.data);
+    console.log("item: " + props.data[0]);
 
     function handleSubmit(e) {
         e.preventDefault();
         console.log("handleSubmit called")
-        API.editShoppingL(props.data);
-        //props.submitChanges(props.data); 
-        console.log(typeof(props.data[0]))
-        console.log("submit handles with " + props.data);
+        
+        ShoppingAPI.addShoppingItem(props);
     }
     
     return (
