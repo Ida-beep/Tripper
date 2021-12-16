@@ -22,8 +22,7 @@
 
 import React,{ useEffect, useState } from 'react';
 import TableScaffold from '../Cards/TableScaffold';
-import API_get from '../API/API_get';
-import API from '../API/API';
+import FamilyMemberAPI from '../API/FamilyMemberAPI';
 
 /**
     @public YouAndYourFamilyCard shows all relevant participating members of a family
@@ -38,22 +37,23 @@ function YouAndYourFamilyCard(props) {
         console.log(selected);
     }
 
-/*     useEffect(()=> {
-        async function fetchData(){setMemberAndFamily(await API_get.fetchFamilyMembersFromDB())};
+    useEffect(()=> {
+        async function fetchData(){setMemberAndFamily(await FamilyMemberAPI.fetchFamilyMembersFromDB())};
         fetchData();
-    }, []) */
+        console.log("You and your family useEffect called");
+    }, []) 
 
-/*     function handleAdd() {
-        API.addFamilyMember({firstName:"Emil",lastName:"Løndeberg",age:"45",duties:["lala","blabla"]});
-    } */
+    function handleAdd() {
+        FamilyMemberAPI.addFamilyMember({firstName:"Emil",lastName:"Løndeberg",age:"45",duties:["lala","blabla"]});
+    } 
 
-/*     async function handleDelete(e){
+     async function handleDelete(e){
         e.preventDefault();
-        API.deleteFamilyMember(selected).then(async () => {
-            const refetchedList = await API_get.fetchFamilyMembersFromDB();
+        FamilyMemberAPI.deleteFamilyMember(selected).then(async () => {
+            const refetchedList = await FamilyMemberAPI.fetchFamilyMembersFromDB();
             setMemberAndFamily(refetchedList);
         });
-    } */
+    } 
 
     return (   
         <div className="card-container">

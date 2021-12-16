@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import PopUp from '../Cards/PopUp';
-import API from '../API/API'; 
 import LongInput from '../Cards/LongInput';
+import ExcursionAPI from '../API/ExcursionAPI';
 
 function EditExcursion(props) {
 
@@ -71,7 +71,7 @@ function EditExcursion(props) {
 
             if(excursionTitle && dateFrom && dateTo && location && description) {
                 console.log("handleSubmit called")
-                API.editExcursion(excursionTitle, dateFrom, dateTo, location, description);
+                ExcursionAPI.editExcursion(excursionTitle, dateFrom, dateTo, location, description);
                 console.log("submit handles with " + excursionTitle, dateTo, dateFrom, location, description);
             }
         } else {
