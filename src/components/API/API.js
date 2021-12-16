@@ -20,7 +20,7 @@ async function signup({username,password}){
         await user.signUp();
         await contactMember.save();
     } catch (error) {
-    alert("Error: " + error.code + " " + error.message);
+        alert("Error: " + error.code + " " + error.message);
     }
 }
 

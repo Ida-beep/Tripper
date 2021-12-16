@@ -43,27 +43,24 @@ const fetchContactMemberFromDB = async () => {
     const queryUser = new Parse.Query("User");
     const user = await queryUser.get(id);
     
-    const queryContactMember = new Parse.Query("contactMember");
+    const contactMember = await queryUser.get(user.id);
 
-    const userInfo = await user.get("userInfo");
-    const contactMember = await queryContactMember.get(userInfo.id);
+    const username = contactMember.get("username");
+    const firstName = contactMember.get("firstName");
+    const lastName = contactMember.get("lastName");
+    const email = contactMember.get("email");
+    const street = contactMember.get("street");
+    const zip = contactMember.get("zip");
+    const city = contactMember.get("city");
+    const mobilePhone = contactMember.get("mobilePhone");
+    const phone = contactMember.get("phone");
+    const workPhone = contactMember.get("workPhone");
+    const duties = contactMember.get("duties");
 
-    const firstName = contactMember.get("FirstName");
-    const lastName = contactMember.get("LastName");
-    const email = contactMember.get("Email");
-    const street = contactMember.get("Address");
-    const zip = contactMember.get("ZIP");
-    const city = contactMember.get("City");
-    const mobile = contactMember.get("Mobile");
-    const phone = contactMember.get("Phone");
-    const workPhone = contactMember.get("WorkPhone");
-    const duty1 = contactMember.get("Duty1");
-    const duty2 = contactMember.get("Duty2");
-    const duty3 = contactMember.get("Duty3");
     
     const contactMemberData = {firstName:firstName, lastName:lastName, email:email,
-        street:street, zip:zip, city:city, mobile:mobile, phone:phone, 
-        workPhone:workPhone, duty1:duty1, duty2:duty2, duty3:duty3};
+        street:street, zip:zip, city:city, mobilePhone:mobilePhone, phone:phone, 
+        workPhone:workPhone, duty1:duties[0], duty2:duties[1], duty3:duties[2]};
 
     return contactMemberData
 }
@@ -71,7 +68,7 @@ const fetchContactMemberFromDB = async () => {
 function addContactMember({firstName,lastName,age,duties,email,address,workphone,phone,mobile}){
     
     try{
-        const ContactMember = Parse.Object.extend("contactMember");
+        const ContactMember = Parse.Object.extend("ContactMember");
         const contactMember = new ContactMember();
         contactMember.set("firstName",firstName);
         contactMember.set("lastName",lastName);
@@ -111,7 +108,7 @@ function editContactMember({firstName, lastName, street, zip, city, mobile, phon
         contactMember.set("duties",duties);
     
         contactMember.save().then((contactMember)=>{
-            alert("Contact information was saved."); 
+            alert(contactMember + "'s contact information was saved."); 
         }, (error)=> {
             alert("Failed to update object, error code: " + error.message);
         })

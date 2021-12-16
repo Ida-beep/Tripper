@@ -18,10 +18,11 @@ import ShortInput from '../Cards/ShortInput';
 function EditContactPerson(props) {
     const [contactP, setContactP] = useState([])
     
-/*     useEffect(() => {
+    useEffect(() => {
         async function fetchData(){setContactP(await ContactMemberAPI.fetchContactMemberFromDB())};
         fetchData();
-    }, []); */
+        console.log("editContactPerson useeffect called ");
+    }, []); 
 
     const [firstName,setFirstName] = useState();
     const [lastName,setLastName] = useState();
@@ -142,7 +143,7 @@ function EditContactPerson(props) {
                 <LongInput title="City" value={contactP.city} changeValue={changeCity} type="text" />
             </div>
             <div className="input-section">
-                <LongInput title="Mobile" value={contactP.mobile} changeValue={changeMobile} type="text" />
+                <LongInput title="Mobile" value={contactP.mobilePhone} changeValue={changeMobile} type="text" />
                 <LongInput title="Phone" value={contactP.phone} changeValue={changePhone} type="text" />
                 <LongInput title="Work" value={contactP.workPhone} changeValue={changeWorkNumber} type="text" />
             </div>

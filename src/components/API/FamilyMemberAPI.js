@@ -1,31 +1,36 @@
 import { Parse } from 'parse';
 
 const fetchFamilyMembersFromDB = async () => {
+    const contactPerson = Parse.User.current();
+    const contactPersonID = contactPerson.id;
+    
     const familyMemberCollection = []
-    const query = new Parse.Query("FamilyMember");
+    const query = new Parse.Query("familyMember");
+    
     let allFamilyMembersfromDB = await query.find();
-    for (let i = 0; i < allFamilyMembersfromDB.length; i++) { // finder alle cars i back4app baseret på objectId
+    for (let i = 0; i < allFamilyMembersfromDB.length; i++) { 
         try {
             const familyMember = await query.get(allFamilyMembersfromDB[i].id);
             
-            const id = allFamilyMembersfromDB[i].id;  
-            const firstName = familyMember.get("firstName");
-            const lastName = familyMember.get("lastName");
-            const age = familyMember.get("age");
-            const duties = familyMember.get("duties");
+            if (familyMember.get("contactPersonID") === contactPersonID) {
+                const id = allFamilyMembersfromDB[i].id;  
+                const firstName = familyMember.get("firstName");
+                const lastName = familyMember.get("lastName");
+                const age = familyMember.get("age");
+                const duties = familyMember.get("duties");
+                
+                const familyMemberObject = {
+                    id: id,
+                    firstName: firstName,
+                    lastName: lastName,
+                    age: age,
+                    duties: duties,
+                };
+                familyMemberCollection.push(familyMemberObject)
+            }
             
-            const familyMemberObject = {
-                id: id,
-                firstName: firstName,
-                lastName: lastName,
-                age: age,
-                duties: duties,
-            };
-            
-            familyMemberCollection.push(familyMemberObject)
-        
         } catch (error) {
-            alert(`FAILED to retrieve the CAR entry. Error: ${error.message}`);
+            alert("FAILED to retrieve the CAR entry. Error: ${error.message}");
           }
     } return familyMemberCollection
 }
@@ -55,14 +60,14 @@ const fetchGuestsFromDB = async () => {
             guestCollection.push(guestObject)
         
         } catch (error) {
-            alert(`FAILED to retrieve the DUTY entry. Error: ${error.message}`);
+            alert("FAILED to retrieve the DUTY entry. Error: ${error.message}");
           }
     } return guestCollection
 }
 
 function addFamilyMember({firstName, lastName, age, duties}){
     try{
-        const FamilyMember = Parse.Object.extend("FamilyMember");
+        const FamilyMember = Parse.Object.extend("familyMember");
         const familyMember = new FamilyMember();
         familyMember.set("firstName",firstName);
         familyMember.set("lastName",lastName);
@@ -86,7 +91,7 @@ async function deleteFamilyMember(familyMembers){
         const member = familyMembers[i];
 
         const jsobjID = member.id;
-        const FamilyMember = Parse.Object.extend("FamilyMember");
+        const FamilyMember = Parse.Object.extend("familyMember");
         const query = new Parse.Query(FamilyMember);
     
         query.equalTo("objectId",jsobjID)
