@@ -1,7 +1,7 @@
 import React from 'react';
 import {useState, useEffect } from 'react';
 import DropDown from './DropDown';
-import API from '../API/API.js';
+import DutiesAPI from '../API/DutiesAPI.js';
 import DropDownItem from './DropDownItem';
 
 /**
@@ -39,7 +39,7 @@ function DropDownMenu(props){
                     addToArr={()=>addToArr(fetchedDutyList[i].name)}/>);
         }}  
             async function fetchData(){
-                result = await API.getDuties();
+                result = await DutiesAPI.getDuties();
                 return result;
             }
         fetchData().then(()=>{

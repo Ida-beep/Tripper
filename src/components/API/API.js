@@ -4,6 +4,7 @@ import { Parse } from 'parse';
  *  @public initializes connection with backedn Back4App 
  */
 function initialize(){
+<<<<<<< HEAD
     //Parse.initialize('cSqpSt87DAh7P1u7i99iciru7vSAbREic5H7Duxs', 'xnonzNu6x9RKtJ2OVytZmi2MlS9oPfrjlEVfmO1j');
     Parse.initialize('EVjh0m8JGZyGxYoKbj11GNJlN6mJ1gOhJDbbpBQV', 'o2WBDuLkFJlnhJmgIRTVqG29hYuzttGxVibVzgs6'); //ny database
     Parse.serverURL = 'https://parseapi.back4app.com/';
@@ -151,12 +152,17 @@ async function getContactMember(){
 
 }
 
+=======
+    Parse.initialize('EVjh0m8JGZyGxYoKbj11GNJlN6mJ1gOhJDbbpBQV', 'o2WBDuLkFJlnhJmgIRTVqG29hYuzttGxVibVzgs6');
+    Parse.serverURL = 'https://parseapi.back4app.com/';
+}
+>>>>>>> 7fce9c712f1ee106a00ca91341c4342db977f903
 async function signup({username,password}){
     const user = new Parse.User();
     user.set("username", username);
     user.set("password", password);
 
-    const ContactMember = Parse.Object.extend("contactMember");
+    const ContactMember = Parse.Object.extend("ContactMember");
     const contactMember = new ContactMember();
     contactMember.set("UserID",Parse.User.current().id);
 
@@ -164,100 +170,12 @@ async function signup({username,password}){
         await user.signUp();
         await contactMember.save();
     } catch (error) {
-    alert("Error: " + error.code + " " + error.message);
-}
-}
-
-function addFamilyMember({firstName, lastName, age, duties}){
-    
-    try{
-        const FamilyMember = Parse.Object.extend("FamilyMember");
-        const familyMember = new FamilyMember();
-        familyMember.set("firstName",firstName);
-        familyMember.set("lastName",lastName);
-        familyMember.set("age",age);
-        familyMember.set("duties",duties);
-
-        familyMember.save()
-        .then((familyMember)=>{
-            alert("A Family Member was submitted: " + familyMember.firstName); 
-        }, (error)=> {
-            alert("Failed to create object, error code: " + error.message);
-        });
-
-    } catch(error){
-        console.log(error);
+        alert("Error: " + error.code + " " + error.message);
     }
 }
 
-async function getDuties(){
-    const Duty = Parse.Object.extend("Duty");
-    const query = new Parse.Query(Duty);
-    const dutyCollection = [];
-
-    const results = await query.find();
-    
-    results.forEach(duty => {
-        const name = duty.get("name");
-        const minRequiredGuests = duty.get("minRequiredGuests");
-           
-        const dutyObject= {
-            name: name,
-            minRequiredGuests: minRequiredGuests,
-        };
-        
-        dutyCollection.push(dutyObject)
-    });
-    
-    return dutyCollection;
-}
-
-async function deleteFamilyMember(familyMembers){
-    for(let i=0; i < familyMembers.length;i++){
-        const member = familyMembers[i];
-
-        const jsobjID = member.id;
-        const FamilyMember = Parse.Object.extend("FamilyMember");
-        const query = new Parse.Query(FamilyMember);
-    
-        query.equalTo("objectId",jsobjID)
-        let result = await query.find();
-        result = result[0];
-
-        result.destroy()
-        .then(()=>{
-            alert(" family members succesfully deleted ");
-        }, (error)=>{
-            alert("failed to delete with error-code : " + error.code);
-        })
-    }
-}
-
-function addContactMember({firstName,lastName,age,duties,email,address,workphone,phone,mobile}){
-    
-    try{
-        const ContactMember = Parse.Object.extend("contactMember");
-        const contactMember = new ContactMember();
-        contactMember.set("firstName",firstName);
-        contactMember.set("lastName",lastName);
-        contactMember.set("age",age);
-        contactMember.set("duties",duties);
-        contactMember.set("email",email);
-        contactMember.set("address",address);
-        contactMember.set("workphone",workphone);
-        contactMember.set("phone",phone);
-        contactMember.set("mobile",mobile);
-
-        contactMember.save()
-        .then((contactMember)=>{
-            alert("A Family Member was submitted: " + contactMember.firstName); 
-        }, (error)=> {
-            alert("Failed to create object, error code: " + error.message);
-        });
-
-    } catch(error){
-        console.log(error);
-    }
-}
-
+<<<<<<< HEAD
 export default {signup:signup, initialize:initialize,addFamilyMember:addFamilyMember, getContactMember:getContactMember ,editContactMember:editContactMember, addContactMember:addContactMember, editExcursion:editExcursion, deleteFamilyMember:deleteFamilyMember, getDuties:getDuties, editShoppingL:editShoppingL};
+=======
+export default {signup:signup, initialize:initialize};
+>>>>>>> 7fce9c712f1ee106a00ca91341c4342db977f903

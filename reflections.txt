@@ -13,13 +13,9 @@ Backend
 Component Manifesto
 - All boxes that have the same structure should comply with given rules
 
-    Tables
-        - Header
-        - Content (length may differ)
-        - Footer
-
-
-Components to Delete
-- AddContactPerson.js?
+Case Conventions
+- Database
+    - Entities/Tables/Class: First letter capital, e.g. FamilyMember
+    - Attributes: camelCase
 
 

@@ -1,12 +1,12 @@
 import React, {useState, useEffect} from "react"
 import TableScaffold from "../Cards/TableScaffold"
-import API_get from "../API/API_get"
+import DutiesAPI from "../API/DutiesAPI"
 
 function DutiesCard(){    
     const [allDuties, setAllDuties] = useState([])
     
 /*     useEffect(()=> {
-        async function fetchData(){setAllDuties(await API_get.fetchDutiesFromDB())};
+        async function fetchData(){setAllDuties(await DutiesAPI.fetchDutiesFromDB())};
         fetchData();
     }, []) */
       

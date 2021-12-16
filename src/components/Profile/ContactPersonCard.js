@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
 import LongCard from '../Cards/LongCard';
+<<<<<<< HEAD
 import API from '../API/API.js';
 import Upload from '../Upload';
+=======
+import ContactMemberAPI from '../API/ContactMemberAPI.js';
+>>>>>>> 7fce9c712f1ee106a00ca91341c4342db977f903
 
 function ContactPersonCard(props) {
     const [firstName, setFirstName] = useState();
@@ -14,18 +18,19 @@ function ContactPersonCard(props) {
     const [zip, setZip] = useState();
     const [city, setCity] = useState();
 
-/*     API.getContactMember()
+     ContactMemberAPI.fetchContactMemberFromDB()
     .then((userObject)=>{
+        console.log("ContactMember fetch called");
         setFirstName(userObject.firstName);
         setLastName(userObject.lastName);
         setEmail(userObject.email);
-        setMobile(userObject.mobile);
+        setMobile(userObject.mobilePhone);
         setPhone(userObject.phone);
         setWorkPhone(userObject.workPhone);
-        setAddress(userObject.address);
+        setAddress(userObject.street);
         setZip(userObject.zip);
         setCity(userObject.city);
-    }) */
+    }) 
 
     const personId = "84757"; //Connect to database
 
