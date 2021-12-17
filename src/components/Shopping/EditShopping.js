@@ -1,17 +1,20 @@
 import React, {useState} from 'react';
 import API from '../API/API';
 import ShoppingPopUp from './ShoppingPopUp';
+import LongInput from '../Cards/LongInput';
+import ShoppingAPI from '../API/ShoppingAPI';
+import PopUp from '../Cards/PopUp';
 
 function EditShopping(props) {
 
     
-    const [item, setItem] = useState();
+    const [itemName, setItem] = useState();
     const [amount, setAmount] = useState();
     const [unit, setUnit] = useState();
     
 
 
-    const shoppingData = [item, amount, unit];
+    const shoppingData = [itemName, amount, unit];
 
     function changeItem(e) {
         e.preventDefault();
@@ -27,37 +30,31 @@ function EditShopping(props) {
         setUnit(e.target.value);
     }
 
-    
-    return (props.trigger) ? (
-        <ShoppingPopUp editState={props.editState} title={props.title} data={shoppingData }
-        submitChanges={API.addShoppingItem}>
-  
+    function handleSubmit(e) {
+        e.preventDefault();
+        console.log("handleSubmit called")
+        
+        ShoppingAPI.addShoppingItem(props);
+    }
+
+    const buttons = [
+        <button className="button-extra-small" onClick={props.editState}>Cancel</button>,
+        <button className="button-extra-small">Delete</button>,
+        <button className="button-extra-small">Add</button>
+    ]
+
+    //editState={props.toggleContactMember}
+    //Add title to popup card and placeholder to longinput 
+    return (props.trigger) && (
+        <PopUp  title={props.title} data={shoppingData} editState={props.toggleContactMember}
+            submitChanges={handleSubmit} buttons={buttons}>
             <div className="input-section">
-                <div className="long-input">
-                    <label>
-                        <p>Add Shopping Item</p>
-                        <input type="text" placeholder='Item' value={item}
-                        onChange={changeItem} />
-                    </label>
-                </div>
-                <div className="long-input">
-                    <label>
-                        <p>Amount</p>
-                        <input type="number" placeholder='0' value={amount}
-                        onChange={changeAmount} />
-                    </label>
-                </div>
-                <div className="long-input">
-                    <label>
-                        <p>Unit</p>
-                        <input type="text" placeholder='kg / L / pcs...' value={unit}
-                        onChange={changeUnit} />
-                    </label>
-                </div>
+                <LongInput title="Shopping Item" value={itemName} changeValue={changeItem} type="text" placeholder='Item'/>
+                <LongInput title="Amount" value={amount} changeValue={changeAmount} type="text" placeholder='0'/>
+                <LongInput title="Unit" value={unit} changeValue={changeUnit} type="text" placeholder='kg / L / pcs...'/>
             </div>
-         
-        </ShoppingPopUp>
-    ) : "" ;
+        </PopUp>
+    );
 }
 
 export default EditShopping;

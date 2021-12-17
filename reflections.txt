@@ -1,21 +1,34 @@
-In general:
+----In general----
 - npm install parse
 
-Suggestions
-- Delete ImageCard.js?
 
-AddFamily:
-- Where should the state be? Where is it most logical?
 
-Backend
-- AddFamily Popup doesn't work onSubmit..
-
-Component Manifesto
+----Component Manifesto----
 - All boxes that have the same structure should comply with given rules
 
-Case Conventions
+
+
+-----Case Conventions----
 - Database
     - Entities/Tables/Class: First letter capital, e.g. FamilyMember
     - Attributes: camelCase
 
 
+
+----Outstanding Issues----
+- FetchContactMember in Contact Person Card is being called 40 times when rendering.
+    I have tried making it an async function, but did not do anything. Any help here? -Ingrid
+
+- getCurrentExcursion() in ShoppingAPI is only returning a promise, but not the excursionID.
+    Would love some help here. -Ingrid
+
+- TableScaffold in ShoppingListCard won't render as it tries to render before it has been
+    able to fetch the data. -Ingrid
+
+- AddFamily Popup doesn't work onSubmit..
+
+
+
+----Discussions----
+- AddFamily: Where should the state be? Where is it most logical?
+- Shopping list: remove popup and make it a field above the list?

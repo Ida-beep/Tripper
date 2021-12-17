@@ -15,19 +15,19 @@ function ContactPersonCard(props) {
     const [zip, setZip] = useState();
     const [city, setCity] = useState();
 
-     ContactMemberAPI.fetchContactMemberFromDB()
-    .then((userObject)=>{
-        console.log("ContactMember fetch called");
-        setFirstName(userObject.firstName);
-        setLastName(userObject.lastName);
-        setEmail(userObject.email);
-        setMobile(userObject.mobilePhone);
-        setPhone(userObject.phone);
-        setWorkPhone(userObject.workPhone);
-        setAddress(userObject.street);
-        setZip(userObject.zip);
-        setCity(userObject.city);
-    }) 
+    // ContactMemberAPI.fetchContactMemberFromDB()
+    // .then((userObject)=>{
+    //     console.log("ContactMember fetch called");
+    //     setFirstName(userObject.firstName);
+    //     setLastName(userObject.lastName);
+    //     setEmail(userObject.email);
+    //     setMobile(userObject.mobilePhone);
+    //     setPhone(userObject.phone);
+    //     setWorkPhone(userObject.workPhone);
+    //     setAddress(userObject.street);
+    //     setZip(userObject.zip);
+    //     setCity(userObject.city);
+    // }) 
 
     const personId = "84757"; //Connect to database
 
@@ -35,11 +35,8 @@ function ContactPersonCard(props) {
         <LongCard active={props.active}>
             <div className="contact-person-card">
                 <div className="contact-member-image">
-                <Upload /> 
-                
-
+                    <Upload className="contact-member-image"/> 
                 </div>
-                
                 <div className="contact-member-info">
                     <div className="contact-member-name">
                         <h4>{firstName + " " + lastName}</h4>
