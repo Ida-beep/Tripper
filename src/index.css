@@ -451,11 +451,6 @@ identical. Should we combine them?*/
   object-fit: cover;
 }
 
-/*IMAGECARD*/
-.ImageCard {
-  display: flex;
-}
-
 /*PARTICIPANT INFO*/
 .participant-info {
   display: flex;
