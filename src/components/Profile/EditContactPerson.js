@@ -126,11 +126,16 @@ function EditContactPerson(props) {
         }
     }
 
+    const buttons = [
+        <button className="button-extra-small">Cancel</button>,
+        <button className="button-extra-small">Save</button>
+    ]
+
     const contactPersonID = null; //Add data source
 
     return (props.showEditContactMember) && (
         <PopUp editState={props.toggleContactMember} title={props.title} data={contactP}
-            submitChanges={handleSubmit} leftButton="Cancel" rightButton="Save">
+            submitChanges={handleSubmit} buttons={buttons}>
             
             <div className="input-section">
                 <LongInput title="First Name" value={contactP.firstName} changeValue={changeFirstName} type="text" />

@@ -39,7 +39,7 @@ function NavMenu() {
                     <Link className="Nav-Item" to="/Excursion" onMouseEnter={() => setExcursionDropDown(!excursionDropDown)}>Excursion
                       {excursionDropDown &&
                       <div className="nav-drop-down" onMouseLeave={() => setExcursionDropDown(!excursionDropDown)}>
-                          <Link className="drop-down-options" to="/Shopping">Shoppinglist</Link>
+                          <Link className="drop-down-options" to="/Shopping">Shopping List</Link>
                           <Link className="drop-down-options" to="/Duties">Duties</Link>
                       </div>}
                     </Link>

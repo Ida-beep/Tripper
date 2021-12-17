@@ -78,10 +78,15 @@ function EditExcursion(props) {
             
         }
     }
+
+    const buttons = [
+        <button className="button-extra-small">Cancel</button>,
+        <button className="button-extra-small">Save</button>
+    ]
     
     return (props.trigger) && ( 
         <PopUp editState={props.editState} title={props.title} 
-            submitChanges={handleSubmit} leftButton="Cancel" rightButton="Save"> 
+            submitChanges={handleSubmit} buttons={buttons}>
             <div className="input-section">
                 <LongInput title="Excursion Title" value={excursionTitle} changeValue={changeExcursionTitle} type="text" />
             </div>

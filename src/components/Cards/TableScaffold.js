@@ -12,10 +12,15 @@ function TableScaffold(props){
     const rowHeaders = props.theaders.map(header => {
         return(<th key={header.id}>{header}</th>)
     })
+
+    const stringtest = "stringtest";
+    console.log("stringtest contructor: " + stringtest.constructor);
     
     // Takes props object and return as tabledata
     const rowData = props.tdata.map(tdata => {
         const rowDataValue = props.tkey.map(header => {
+            console.log("tdata[header]:" + typeof(tdata[header]))
+            //console.log("tdata[header].constructor:" + tdata[header].constructor);
             if (tdata[header].constructor=== Array){
                 let tableDatalist = ""
                 for (let i = 0; i < tdata[header].length; i++) {
