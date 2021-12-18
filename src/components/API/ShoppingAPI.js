@@ -59,13 +59,11 @@ const fetchShoppingListFromDB = async () => {
     return shoppingList
 }
 
-async function addShoppingItem(props) {
+async function addShoppingItem(data) {
     try{
-
-        console.log("addShoppingItem called");
-        const itemName = props.data[0];
-        const amount = parseInt(props.data[1]);
-        const unit = props.data[2];
+        const itemName = data[0];
+        const amount = parseInt(data[1]);
+        const unit = data[2];
 
         const User = Parse.User.current();
         const queryUser = new Parse.Query("User");

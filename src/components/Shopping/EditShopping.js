@@ -34,7 +34,7 @@ function EditShopping(props) {
         e.preventDefault();
         console.log("handleSubmit called")
         
-        ShoppingAPI.addShoppingItem(props);
+        ShoppingAPI.addShoppingItem(shoppingData);
     }
 
     const buttons = [
@@ -44,7 +44,7 @@ function EditShopping(props) {
     ]
 
     //editState={props.toggleContactMember}
-    //Add title to popup card and placeholder to longinput 
+    //placeholder to longinput 
     return (props.trigger) && (
         <PopUp  title={props.title} data={shoppingData} editState={props.toggleContactMember}
             submitChanges={handleSubmit} buttons={buttons}>
