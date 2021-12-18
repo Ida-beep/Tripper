@@ -6,7 +6,7 @@ function PopUp(props) {
     //                 <button className="button-extra-small">{props.rightButton}</button>
     
     return (
-        <form className="popup" onSubmit={props.handleSubmit}>
+        <form className="popup" onSubmit={props.submitChanges}>
             <div className="popup-content">
                 <p className="popup-title">{props.title}</p>
                 {props.children}
