@@ -16,17 +16,6 @@ import ContactMemberAPI from '../API/ContactMemberAPI.js';
 function Profile () {
     const [showEditContactMember, setShowEditContactMember] = useState(false);
     const [showAddFamilyPopup,setShowAddFamilyPopup] = useState(false);
-    let contactPersonData = {};
-
-/*     async function fetchData(){
-        ContactMemberAPI.getContactMember()
-        .then((userObject)=> {
-            contactPersonData = userObject;
-    })}
-
-    useEffect(()=> {
-        await fetchData();
-    }, []); */
 
     function toggleFamilyItem(){
         setShowAddFamilyPopup((prevState)=>!prevState)
@@ -43,7 +32,6 @@ function Profile () {
             <EditContactPerson showEditContactMember={showEditContactMember} toggleContactMember={toggleContactMember} title="Edit Contact Member"/>
             <div className="profile-1">
                 <ContactPersonCard className="ContactPersonCard" 
-                    data={contactPersonData} 
                     contactImage={ContactImage}
                     active={()=>setShowEditContactMember(true)}/>
             </div>

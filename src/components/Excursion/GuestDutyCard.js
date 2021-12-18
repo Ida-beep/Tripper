@@ -9,8 +9,9 @@ function XGuestDutyCard () {
     
     // Renders GuestsOverview from DB
     useEffect(()=> {
-        async function fetchData(){setAllGuests(await FamilyMemberAPI.fetchGuestsFromDB())};
+        async function fetchData(){setAllGuests(await FamilyMemberAPI.fetchFamilyMembersFromDB())};
         fetchData();
+        console.log("guestdutycard called")
     }, []) 
     
     return (   
@@ -26,7 +27,7 @@ function XGuestDutyCard () {
                     theaders={[
                         "First Name",
                         "Age",
-                        "Duty Pref"
+                        "Duty Preferences"
                     ]} 
                     tdata={allGuests}
                 />

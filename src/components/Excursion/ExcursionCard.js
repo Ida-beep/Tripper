@@ -1,19 +1,30 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import LongCard from '../Cards/LongCard.js';
+import ExcursionAPI from '../API/ExcursionAPI.js';
 
 function ExcursionCard(props) {
+    const [selected, setSelected] = useState([]);
+    const [excursionInfo,setExcursionInfo] = useState([])
+
+    useEffect(()=> {
+        async function fetchData()
+            {setExcursionInfo(await ExcursionAPI.fetchExcursionFromDB())
+        };
+        
+        fetchData()
+        console.log("excursionCard useEffect called");
+    }, []) 
+
+    
+    let subtitle = excursionInfo.fromDate + " - " + excursionInfo.toDate + ", " + excursionInfo.location
 
     return (
         <LongCard active={props.active}>
             <div className="excursion-card">
                 <div className="excursion-card-main-content">
-                    <h4>Fjelltur</h4>
-                    <p className="subtitle">23/11/21 - 1/12/21, Fjellet 29</p>
-                    <p>Description: Lorem ipsum dolor sit amet, consectetur 
-                        adipiscing elit, sed do eiusmod tempor incididunt 
-                        ut labore et dolore magna aliqua. Ut enim ad minim 
-                        veniam, quis nostrud exercitation ullamco laboris 
-                        nisi ut aliquip ex ea commodo consequat. </p>
+                    <h4>{excursionInfo.excursionTitle}</h4>
+                    <p className="subtitle">{subtitle}</p>
+                    <p>{excursionInfo.description}</p>
                 </div>
             </div>
             <div className="edit-button-container">
