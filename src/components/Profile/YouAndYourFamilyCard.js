@@ -38,7 +38,9 @@ function YouAndYourFamilyCard(props) {
     }
 
     useEffect(()=> {
-        async function fetchData(){setMemberAndFamily(await FamilyMemberAPI.fetchFamilyMembersFromDB())};
+        async function fetchData(){
+            setMemberAndFamily(await FamilyMemberAPI.fetchFamilyMembersFromDB())
+        };
         fetchData();
         console.log("You and your family useEffect called");
     }, []) 
