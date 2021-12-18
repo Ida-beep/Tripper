@@ -2,13 +2,22 @@ import { Parse } from 'parse';
 
 //**Only returns an object promise -- help?? */
 async function getCurrentExcursion() {
-    const User = Parse.User.current();
-    const queryUser = new Parse.Query("User");
-    const user = await queryUser.get(User.id);
-    const contactMember = await queryUser.get(user.id);
-    const excursionID = contactMember.get("excursionID");
+
+    const excursionID = "";
+    try {
+        const User = Parse.User.current();
+        const queryUser = new Parse.Query("User");
+        const user = await queryUser.get(User.id);
+        const contactMember = await queryUser.get(user.id);
+        excursionID = contactMember.get("excursionID");
+    } catch(error) {
+        console.log(error);
+    }
+    
     return excursionID
 }
+// const excursionID = getCurrentExcursion();
+// console.log("excuuuuursionID---" + excursionID);
 
 
 const fetchShoppingListFromDB = async () => {

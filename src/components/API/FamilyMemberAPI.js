@@ -5,7 +5,7 @@ const fetchFamilyMembersFromDB = async () => {
     const contactPersonID = contactPerson.id;
     
     const familyMemberCollection = []
-    const query = new Parse.Query("familyMember");
+    const query = new Parse.Query("FamilyMember");
     
     let allFamilyMembersfromDB = await query.find();
     for (let i = 0; i < allFamilyMembersfromDB.length; i++) { 
@@ -35,35 +35,35 @@ const fetchFamilyMembersFromDB = async () => {
     } return familyMemberCollection
 }
 
-const fetchGuestsFromDB = async () => {
-    const guestCollection = []
-    const query = new Parse.Query("FamilyMember");
-    let allGuestsfromDB = await query.find();
-    for (let i = 0; i < allGuestsfromDB.length; i++) { // finder alle duties i back4app baseret på objectId
-        try {
-            const guest = await query.get(allGuestsfromDB[i].id);
+// const fetchGuestsFromDB = async () => {
+//     const guestCollection = []
+//     const query = new Parse.Query("FamilyMember");
+//     let allGuestsfromDB = await query.find();
+//     for (let i = 0; i < allGuestsfromDB.length; i++) { // finder alle duties i back4app baseret på objectId
+//         try {
+//             const guest = await query.get(allGuestsfromDB[i].id);
             
-            const id = allGuestsfromDB[i].id;
-            const firstName = guest.get("firstName");
-            const lastName = guest.get("lastName");
-            const age = guest.get("age");
-            const duties = guest.get("duties");
+//             const id = allGuestsfromDB[i].id;
+//             const firstName = guest.get("firstName");
+//             const lastName = guest.get("lastName");
+//             const age = guest.get("age");
+//             const duties = guest.get("duties");
            
-            const guestObject = {
-                id: id,
-                firstName: firstName,
-                lastName: lastName,
-                age: age,
-                duties: duties,
-            };
+//             const guestObject = {
+//                 id: id,
+//                 firstName: firstName,
+//                 lastName: lastName,
+//                 age: age,
+//                 duties: duties,
+//             };
             
-            guestCollection.push(guestObject)
+//             guestCollection.push(guestObject)
         
-        } catch (error) {
-            alert("FAILED to retrieve the DUTY entry. Error: ${error.message}");
-          }
-    } return guestCollection
-}
+//         } catch (error) {
+//             alert("FAILED to retrieve the DUTY entry. Error: ${error.message}");
+//           }
+//     } return guestCollection
+// }
 
 function addFamilyMember({firstName, lastName, age, duties}){
     try{
@@ -108,7 +108,6 @@ async function deleteFamilyMember(familyMembers){
 }
 
 export default {
-    fetchGuestsFromDB:fetchGuestsFromDB,
     fetchFamilyMembersFromDB:fetchFamilyMembersFromDB,
     addFamilyMember:addFamilyMember,
     deleteFamilyMember:deleteFamilyMember};

@@ -5,10 +5,11 @@ import DutiesAPI from "../API/DutiesAPI"
 function DutiesCard(){    
     const [allDuties, setAllDuties] = useState([])
     
-/*     useEffect(()=> {
+     useEffect(()=> {
         async function fetchData(){setAllDuties(await DutiesAPI.fetchDutiesFromDB())};
         fetchData();
-    }, []) */
+        console.log("DutiesCard useEffect called");
+    }, []) 
       
     return (
         <div className="card-container">
@@ -23,11 +24,11 @@ function DutiesCard(){
                     tdata={allDuties}
                 />
             </div>
-                <div className="button-container">
-                    <button className="button-extra-small">Delete</button>
-                    <button className="button-extra-small">Add Duty</button>
-                    <button className="button-extra-small">Find Previous</button>
-                </div>
+            <div className="button-container">
+                <button className="button-extra-small">Delete</button>
+                <button className="button-extra-small">Add Duty</button>
+                <button className="button-extra-small">Find Previous</button>
+            </div>
         </div>    
     )
 }

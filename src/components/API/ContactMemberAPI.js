@@ -7,34 +7,34 @@ import { Parse } from 'parse';
  *   Atm it's a simple string with same ID representing the current user. 
  */
 
-async function getContactMember(){
-    const User = Parse.User.current();
-    const id = User.id;
+// async function getContactMember(){
+//     const User = Parse.User.current();
+//     const id = User.id;
 
-    const CM = Parse.Object.extend("ContactMember");
-    const query = new Parse.Query(CM);
+//     const CM = Parse.Object.extend("ContactMember");
+//     const query = new Parse.Query(CM);
 
-    query.equalTo("UserID_Placeholder",id)
-    const results = await query.find();
-    if(results.length === 1){
-        const user = results[0];
-        const email = user.get("Email");
-        const firstName = user.get("FirstName");
-        const lastName = user.get("LastName");
-        const age = user.get("Age");
-        const address = user.get("Address");
-        const phone = user.get("Phone");
-        const mobile = user.get("Mobile");
-        const workPhone = user.get("WorkPhone");
-        const zip = user.get("ZIP");
-        const city = user.get("City");
-        const duty1 = user.get("Duty1");
-        const duty2 = user.get("Duty2");
-        const duty3 = user.get("Duty3");
-    const userObject = {firstName,lastName,age,address,mobile,phone,workPhone,email,duty1,duty2,duty3,zip,city};
-    return userObject;
-    }
-}
+//     query.equalTo("UserID_Placeholder",id)
+//     const results = await query.find();
+//     if(results.length === 1){
+//         const user = results[0];
+//         const email = user.get("Email");
+//         const firstName = user.get("FirstName");
+//         const lastName = user.get("LastName");
+//         const age = user.get("Age");
+//         const address = user.get("Address");
+//         const phone = user.get("Phone");
+//         const mobile = user.get("Mobile");
+//         const workPhone = user.get("WorkPhone");
+//         const zip = user.get("ZIP");
+//         const city = user.get("City");
+//         const duty1 = user.get("Duty1");
+//         const duty2 = user.get("Duty2");
+//         const duty3 = user.get("Duty3");
+//     const userObject = {firstName,lastName,age,address,mobile,phone,workPhone,email,duty1,duty2,duty3,zip,city};
+//     return userObject;
+//     }
+// }
 
 const fetchContactMemberFromDB = async () => {
     const User = Parse.User.current();
@@ -151,6 +151,5 @@ function editContactMember({firstName, lastName, street, zip, city, mobile, phon
 
 export default {
     fetchContactMemberFromDB:fetchContactMemberFromDB,
-    getContactMember:getContactMember,
     addContactMember:addContactMember,
     editContactMember:editContactMember};

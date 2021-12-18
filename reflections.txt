@@ -16,8 +16,6 @@
 
 
 ----Outstanding Issues----
-- FetchContactMember in Contact Person Card is being called 40 times when rendering.
-    I have tried making it an async function, but did not do anything. Any help here? -Ingrid
 
 - getCurrentExcursion() in ShoppingAPI is only returning a promise, but not the excursionID.
     Would love some help here. -Ingrid
@@ -27,8 +25,12 @@
 
 - AddFamily Popup doesn't work onSubmit..
 
+- EditExcursion might be currently adding new excursion instead of editing
 
 
 ----Discussions----
 - AddFamily: Where should the state be? Where is it most logical?
 - Shopping list: remove popup and make it a field above the list?
+- Why is GuestDutyCard called XGuestDutyCard inside its component?
+- What is the difference in fetchFamilyMembersFromDB and fetchGuestsFromDB?
+    Same with getDuties and fetchDutiesFromDB + getContactMember
