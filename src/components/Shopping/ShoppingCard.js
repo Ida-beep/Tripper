@@ -18,9 +18,3 @@ function ShoppingCard(props) {
 }
 
 export default ShoppingCard;
-
-
-/**
- * 
- * 
- */

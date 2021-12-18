@@ -17,10 +17,13 @@ import CarsAPI from '../API/CarsAPI';
 function CarsAndSeatsCard(){
     const [carsAndSeats,setCarsAndSeats] = useState([])
     
-/*     useEffect(()=> {
-        async function fetchData(){setCarsAndSeats(await CarsAPI.fetchCarsFromDB())};
+    useEffect(()=> {
+        async function fetchData(){
+            setCarsAndSeats(await CarsAPI.fetchCarsFromDB())
+        };
         fetchData();
-    }, []) */
+        console.log("use Effect for fetchCarsFromDB called")
+    }, []) 
 
     return (   
         <div className="card-container">

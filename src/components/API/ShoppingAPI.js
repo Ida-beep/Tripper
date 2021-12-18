@@ -84,10 +84,8 @@ async function addShoppingItem(props) {
         console.log("start")
         item.save()
         .then((itemName)=>{
-            console.log("success")
             alert(itemName + "has been added to your Shopping List"); 
         }, (error)=> {
-            console.log("failure")
             alert("Failed to create object, error code: " + error.message);
         });
 

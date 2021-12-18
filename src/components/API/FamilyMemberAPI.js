@@ -30,7 +30,7 @@ const fetchFamilyMembersFromDB = async () => {
             }
             
         } catch (error) {
-            alert("FAILED to retrieve the CAR entry. Error: ${error.message}");
+            alert("FAILED to retrieve the CAR entry. Error: "+ error.message);
           }
     } return familyMemberCollection
 }
