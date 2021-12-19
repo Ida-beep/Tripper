@@ -69,8 +69,8 @@ function addFamilyMember({firstName, lastName, age, duties}){
     try{
         const User = Parse.User.current();
         const id = User.id;
-        console.log(id);
         const ageInt = parseInt(age);
+        
         const FamilyMember = Parse.Object.extend("FamilyMember");
         const familyMember = new FamilyMember();
         familyMember.set("firstName",firstName);
@@ -95,11 +95,11 @@ async function deleteFamilyMember(familyMembers){
     for(let i=0; i < familyMembers.length;i++){
         const member = familyMembers[i];
 
-        const jsobjID = member.id;
-        const FamilyMember = Parse.Object.extend("familyMember");
+        const familyMemberID = member.id;
+        const FamilyMember = Parse.Object.extend("FamilyMember");
         const query = new Parse.Query(FamilyMember);
     
-        query.equalTo("objectId",jsobjID)
+        query.equalTo("objectId",familyMemberID)
         let result = await query.find();
         result = result[0];
 

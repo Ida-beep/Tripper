@@ -92,6 +92,28 @@ async function addShoppingItem(data) {
     }
 }
 
+async function deleteShoppingItem(items){
+    for(let i=0; i < items.length;i++){
+        const item = items[i];
+
+        const itemID = item.id;
+        const ShoppingList = Parse.Object.extend("ShoppingList");
+        const query = new Parse.Query(ShoppingList);
+    
+        query.equalTo("objectId",itemID)
+        let result = await query.find();
+        result = result[0];
+
+        result.destroy()
+        .then(()=>{
+            alert("Shopping item successfully deleted ");
+        }, (error)=>{
+            alert("failed to delete with error-code : " + error.code);
+        })
+    }
+}
+
 
 export default {addShoppingItem:addShoppingItem, 
-    fetchShoppingListFromDB:fetchShoppingListFromDB};
+    fetchShoppingListFromDB:fetchShoppingListFromDB,
+    deleteShoppingItem:deleteShoppingItem};

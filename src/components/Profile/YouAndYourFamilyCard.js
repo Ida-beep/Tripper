@@ -52,7 +52,7 @@ function YouAndYourFamilyCard(props) {
             setMemberAndFamily(refetchedList);
         });
     } 
-
+    
     return (   
         <div className="card-container">
             <h4 style={{fontSize:"20px"}}>You and Your Family</h4>

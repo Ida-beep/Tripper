@@ -8,7 +8,7 @@ function AddCarPopup(props) {
     const [license, setLicense] = useState();
     const [color, setColor] = useState();
     const [seats, setSeats] = useState();
-    const carData = {carModel, license, color, seats}
+    const carData = [carModel, license, color, seats]
 
     function changeCarModel(e) {
         e.preventDefault();
@@ -32,7 +32,8 @@ function AddCarPopup(props) {
 
     function handleSubmit(e) {
         e.preventDefault();
-        //CarsAPI.addCar(carData);
+        console.log("handleSubmit called")
+        CarsAPI.addCar(carData);
     }
 
     const buttons = [

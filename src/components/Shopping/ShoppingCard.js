@@ -6,7 +6,7 @@ function ShoppingCard(props) {
 
 
     return (
-        <ShoppingLongCard active={props.active}>
+        <ShoppingLongCard >
                 <div className="excursion-card-main-content">
                     <h4 style={{textAlign: 'center'}}>Shopping List  </h4>
                     <br/>

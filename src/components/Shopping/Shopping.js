@@ -3,7 +3,7 @@ import React, {useState} from 'react';
 import { useEffect } from 'react';
 import Image from '../../assets/norwegian_fjord.png';
 import ShoppingCard from './ShoppingCard';
-import EditShopping from './EditShopping';
+import AddShoppingItem from './AddShoppingItem';
 import ShoppingListCard from './ShoppingListCard';
 
 //import ShoppingItemList from './ShoppingItemList';
@@ -22,12 +22,12 @@ function Shopping() {
                 <img className="photo-header-image" src={Image} alt="NorwegianFjord"/>
                 <div className="excursion-card-main-content">
                     <div className="card-container">      
-                        <EditShopping title="Add Shopping Item" trigger={editActive} editState={() => setEditActive(false)}/>
+                        <AddShoppingItem title="Add Shopping Item" trigger={editActive} editState={() => setEditActive(false)}/>
                         <div className="excursion-1"> {/**Add className */}
-                            <ShoppingCard active={()=>setEditActive(true)}/> {/*Add props */}
+                            <ShoppingCard /> {/*Add props */}
                         </div>
                     </div>
-                    <ShoppingListCard />
+                    <ShoppingListCard active={()=>setEditActive(true)}/>
                 </div>
             </div>  
             <Footer />     
