@@ -7,7 +7,7 @@ import CarsAndSeatsCard from './CarsAndSeatsCard.js';
 import ContactImage from '../../assets/noun_upload photo_1337310 1.png';
 import EditContactPerson from './EditContactPerson.js';
 import Image from '../../assets/norwegian_fjord.png';
-import ContactMemberAPI from '../API/ContactMemberAPI.js';
+import AddCarPopup from './AddCarPopup';
 
 /** 
  *  @public Profile displays the different Card types and formats them
@@ -16,10 +16,7 @@ import ContactMemberAPI from '../API/ContactMemberAPI.js';
 function Profile () {
     const [showEditContactMember, setShowEditContactMember] = useState(false);
     const [showAddFamilyPopup,setShowAddFamilyPopup] = useState(false);
-
-    function toggleFamilyItem(){
-        setShowAddFamilyPopup((prevState)=>!prevState)
-    }
+    const [showCarPopup, setShowCarPopup] = useState(false);
 
     function toggleContactMember() {
         setShowEditContactMember((prevState)=>!prevState)
@@ -28,18 +25,26 @@ function Profile () {
     return (
         <div className="profile">
             <img className="photo-header-image" src={Image} alt="NorwegianFjord"/>
-            <AddFamilyPopup showAddFamilyPopup={showAddFamilyPopup} toggleFamilyItem={toggleFamilyItem} title="Add Family Item"/> 
-            <EditContactPerson showEditContactMember={showEditContactMember} toggleContactMember={toggleContactMember} title="Edit Contact Member"/>
+            <AddFamilyPopup showAddFamilyPopup={showAddFamilyPopup} 
+                toggleFamilyItem={()=>setShowAddFamilyPopup(false)} /> 
+            <EditContactPerson showEditContactMember={showEditContactMember} 
+                toggleContactMember={toggleContactMember} 
+                title="Edit Contact Member"/>
+            <AddCarPopup showCarPopup={showCarPopup} 
+                toggleAddCar={()=>setShowCarPopup(false)} 
+                title="Add Car"/>
+            
             <div className="profile-1">
-                <ContactPersonCard className="ContactPersonCard" 
+                <ContactPersonCard className ="ContactPersonCard" 
                     contactImage={ContactImage}
                     active={()=>setShowEditContactMember(true)}/>
             </div>
             <div className="cards-container">
-                <YouAndYourFamilyCard />
-                <CarsAndSeatsCard/>
+                <YouAndYourFamilyCard toggleFamilyItem={()=>setShowAddFamilyPopup(true)}/>
+                <CarsAndSeatsCard toggleCarItem={()=>setShowCarPopup(true)}/>
             </div>
         </div>
     );
 }
 export default Profile;       
+
