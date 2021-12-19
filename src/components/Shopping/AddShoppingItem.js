@@ -3,7 +3,7 @@ import LongInput from '../Cards/LongInput';
 import ShoppingAPI from '../API/ShoppingAPI';
 import PopUp from '../Cards/PopUp';
 
-function EditShopping(props) {
+function AddShoppingItem(props) {
     
     const [itemName, setItem] = useState();
     const [amount, setAmount] = useState();
@@ -51,7 +51,7 @@ function EditShopping(props) {
     );
 }
 
-export default EditShopping;
+export default AddShoppingItem;
 
 
 

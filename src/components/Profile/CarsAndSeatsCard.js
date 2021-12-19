@@ -15,8 +15,22 @@ import CarsAPI from '../API/CarsAPI';
 //     )
 // }
 function CarsAndSeatsCard(props){
-    const [carsAndSeats,setCarsAndSeats] = useState([])
+    const [carsAndSeats,setCarsAndSeats] = useState([]);
+    const [selected, setSelected] = useState([]);
     
+    function addElementToSelected(element){
+        setSelected((prevState)=> [...prevState,element]);
+        console.log(selected);
+    }
+
+    async function handleDelete(e){
+        e.preventDefault();
+        CarsAPI.deleteCar(selected).then(async () => {
+            const refetchedList = await CarsAPI.fetchCarsFromDB();
+            setCarsAndSeats(refetchedList);
+        });
+    }
+
     useEffect(()=> {
         async function fetchData(){
             setCarsAndSeats(await CarsAPI.fetchCarsFromDB())
@@ -25,11 +39,13 @@ function CarsAndSeatsCard(props){
         console.log("use Effect for fetchCarsFromDB called")
     }, []) 
 
+    
+
     return (   
         <div className="card-container">
             <h4 style={{fontSize:"20px"}}>Cars and Seats</h4>
             <div className="table-container">
-                <TableScaffold 
+                <TableScaffold onSelection={(selected)=>addElementToSelected(selected)}
                     tkey={[
                         "carModel",
                         "licensePlate",
@@ -47,7 +63,7 @@ function CarsAndSeatsCard(props){
             </div>
             
             <div className="button-container">
-                <button className="button-extra-small">Delete</button>
+                <button className="button-extra-small" onClick={handleDelete}>Delete</button>
                 <button className="button-extra-small">Edit</button>
                 <button className="button-extra-small" onClick={props.toggleCarItem}>Add</button>
             </div>       
