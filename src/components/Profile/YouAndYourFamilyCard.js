@@ -34,7 +34,7 @@ function YouAndYourFamilyCard(props) {
 
     function addElementToSelected(element){
         setSelected((prevState)=> [...prevState,element]);
-        console.log(selected);
+        console.log("selected:", selected);
     }
 
     useEffect(()=> {

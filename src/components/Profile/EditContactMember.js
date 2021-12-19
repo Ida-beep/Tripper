@@ -7,7 +7,7 @@ import LongInput from '../Cards/LongInput';
 import ShortInput from '../Cards/ShortInput';
 
 /**
- * @public EditContactPerson defines the content of the popup to
+ * @public EditContactMembern defines the content of the popup to
  * edit contact person information, using its parent Popup.js
  * 
  * TO DO
@@ -15,13 +15,13 @@ import ShortInput from '../Cards/ShortInput';
  * - How to prevent overwriting of data when editing contact member information
  */
 
-function EditContactPerson(props) {
+function EditContactMember(props) {
     const [contactP, setContactP] = useState([])
     
     useEffect(() => {
         async function fetchData(){setContactP(await ContactMemberAPI.fetchContactMemberFromDB())};
         fetchData();
-        console.log("editContactPerson useeffect called ");
+        console.log("EditContactMember useeffect called ");
     }, []); 
 
     const [firstName,setFirstName] = useState();
@@ -127,7 +127,7 @@ function EditContactPerson(props) {
     }
 
     const buttons = [
-        <button className="button-extra-small">Cancel</button>,
+        <button className="button-extra-small" onClick={props.toggleContactMember}>Cancel</button>,
         <button className="button-extra-small">Save</button>
     ]
 
@@ -159,4 +159,4 @@ function EditContactPerson(props) {
     );
 }
 
-export default EditContactPerson;
+export default EditContactMember;

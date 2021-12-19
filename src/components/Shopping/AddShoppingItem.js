@@ -33,7 +33,6 @@ function AddShoppingItem(props) {
 
     const buttons = [
         <button className="button-extra-small" onClick={props.editState}>Cancel</button>,
-        <button className="button-extra-small">Add</button>,
         <button className="button-extra-small">Finish</button>
     ]
 
@@ -46,6 +45,7 @@ function AddShoppingItem(props) {
                 <LongInput title="Shopping Item" value={itemName} changeValue={changeItem} type="text" placeholder='Item'/>
                 <LongInput title="Amount" value={amount} changeValue={changeAmount} type="text" placeholder='0'/>
                 <LongInput title="Unit" value={unit} changeValue={changeUnit} type="text" placeholder='kg / L / pcs...'/>
+                <button className="button-extra-small" style={{marginTop:"22px"}}>Add</button>
             </div>
         </PopUp>
     );

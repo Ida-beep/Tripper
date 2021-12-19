@@ -10,7 +10,7 @@ const fetchCarsFromDB = async () => {
             const userid = User.id;
             const car = await query.get(allCarsfromDB[i].id);
             
-            if (allCarsfromDB[i].get("owner") == userid) {
+            if (allCarsfromDB[i].get("owner") === userid) {
                 const id = allCarsfromDB[i].id;
                 const carModel = car.get("carModel");
                 const licensePlate = car.get("licensePlate");
