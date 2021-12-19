@@ -80,7 +80,7 @@ function EditExcursion(props) {
     }
 
     const buttons = [
-        <button className="button-extra-small">Cancel</button>,
+        <button className="button-extra-small" onClick={props.editState}>Cancel</button>,
         <button className="button-extra-small">Save</button>
     ]
     

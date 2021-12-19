@@ -543,7 +543,7 @@ label {
   position: absolute;
   top: 15%;
   left: 30%;
-  width: 500px;
+
   padding: 50px;
   border-radius: 5px;
   border: 1px solid #fadf63;
@@ -598,6 +598,7 @@ label {
   justify-content: flex-end;
   padding-top: 25px;
 }
+
 
 /* ---------------------Excursion CSS-------------------- */
 

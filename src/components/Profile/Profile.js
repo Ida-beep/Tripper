@@ -1,11 +1,11 @@
 import React from 'react';
-import {useState, useEffect} from 'react';
+import {useState} from 'react';
 import AddFamilyPopup from './AddFamilyPopup';
 import YouAndYourFamilyCard from './YouAndYourFamilyCard';
 import ContactPersonCard from './ContactPersonCard';
 import CarsAndSeatsCard from './CarsAndSeatsCard.js';
 import ContactImage from '../../assets/noun_upload photo_1337310 1.png';
-import EditContactPerson from './EditContactPerson.js';
+import EditContactMember from './EditContactMember.js';
 import Image from '../../assets/norwegian_fjord.png';
 import AddCarPopup from './AddCarPopup';
 
@@ -18,17 +18,13 @@ function Profile () {
     const [showAddFamilyPopup,setShowAddFamilyPopup] = useState(false);
     const [showCarPopup, setShowCarPopup] = useState(false);
 
-    function toggleContactMember() {
-        setShowEditContactMember((prevState)=>!prevState)
-    }
-
     return (
         <div className="profile">
             <img className="photo-header-image" src={Image} alt="NorwegianFjord"/>
             <AddFamilyPopup showAddFamilyPopup={showAddFamilyPopup} 
                 toggleFamilyItem={()=>setShowAddFamilyPopup(false)} /> 
-            <EditContactPerson showEditContactMember={showEditContactMember} 
-                toggleContactMember={toggleContactMember} 
+            <EditContactMember showEditContactMember={showEditContactMember} 
+                toggleContactMember={()=>setShowEditContactMember(false)} 
                 title="Edit Contact Member"/>
             <AddCarPopup showCarPopup={showCarPopup} 
                 toggleAddCar={()=>setShowCarPopup(false)} 

@@ -6,7 +6,6 @@ function ShoppingListCard(props) {
     const [shoppingList,setShoppingList] = useState([]);
     const [selected, setSelected] = useState([]);
 
-
     async function handleDelete(e){
         e.preventDefault();
         console.log("handle delete called");
