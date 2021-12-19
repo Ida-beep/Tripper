@@ -1,7 +1,7 @@
 import React from 'react';
 import DropDownMenu from '../DropDownMenu/DropDownMenu.js';
 import { useState } from 'react';
-import API from '../API/API.js';
+import FamilyMemberAPI from '../API/FamilyMemberAPI.js';
 import PopUp from '../Cards/PopUp';
 import LongInput from '../Cards/LongInput.js';
 import ShortInput from '../Cards/ShortInput.js';
@@ -34,24 +34,28 @@ function AddFamilyPopup(props){
 
     function handleSubmit(e) {
         e.preventDefault();
-        if (!firstName){
-            setFirstName(e.target.value = "missing first name")
-        }
-        if (!lastName){
-            setLastName(e.target.value = "missing last name")
-        }
+        // if (!firstName ){
+        //     setFirstName(e.target.value = "missing first name")
+        // }
+        // if (!lastName){
+        //     setLastName(e.target.value = "missing last name")
+        // }
 
-        if(firstName && lastName && age && duties){
-            API.addFamilyMember(personData);
-            console.log("submit handled for " + personData.firstName + " " + personData.lastName);
+        // if(firstName && lastName && age && duties){
+        FamilyMemberAPI.addFamilyMember(personData);
+        //     console.log("submit handled for " + personData.firstName + " " + personData.lastName);
         
-            console.log("missing persondata")
-        }
+        //     console.log("missing persondata")
+        // }
     }
 
+    const buttons = [
+        <button className="button-extra-small" onClick={props.toggleFamilyItem}>Cancel</button>,
+        <button className="button-extra-small">Save</button>
+    ]
+
     return (props.showAddFamilyPopup) && (
-        <PopUp editState={props.toggleFamilyItem} data={personData} title="Add Family Member" 
-        submitChanges={handleSubmit} leftButton="Cancel" rightButton="Save">
+        <PopUp data={personData} title="Add Family Member" submitChanges={handleSubmit} buttons={buttons}>
             <div className="input-section">
                 <LongInput title="First Name" value={firstName} changeValue={changeFirstName} type="text"/>
                 <LongInput title="Last Name" value={lastName} changeValue={changeLastName} type="text" />
@@ -64,3 +68,5 @@ function AddFamilyPopup(props){
     );
 }
 export default AddFamilyPopup;
+
+//editState={props.toggleFamilyItem} toggleFamilyItem={props.toggleFamilyItem}

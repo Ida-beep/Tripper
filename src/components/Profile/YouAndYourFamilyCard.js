@@ -45,10 +45,6 @@ function YouAndYourFamilyCard(props) {
         console.log("You and your family useEffect called");
     }, []) 
 
-    function handleAdd() {
-        FamilyMemberAPI.addFamilyMember({firstName:"Emil",lastName:"Løndeberg",age:"45",duties:["lala","blabla"]});
-    } 
-
      async function handleDelete(e){
         e.preventDefault();
         FamilyMemberAPI.deleteFamilyMember(selected).then(async () => {
@@ -80,7 +76,8 @@ function YouAndYourFamilyCard(props) {
             
             <div className="button-container">
                 <button className="button-extra-small" onClick={handleDelete}>Delete</button>
-                <button className="button-extra-small" onClick={handleAdd}>Add</button>
+                <button className="button-extra-small">Edit</button>
+                <button className="button-extra-small" onClick={props.toggleFamilyItem}>Add</button>
             </div>       
         </div>
     )

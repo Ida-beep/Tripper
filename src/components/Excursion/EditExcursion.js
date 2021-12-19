@@ -97,7 +97,6 @@ function EditExcursion(props) {
             </div>
             <div className="input-section">
                 <LongInput title="Description" value={description} changeValue={changeDescription} type="text" />
-
             </div>
         </PopUp>
     );

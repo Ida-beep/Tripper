@@ -67,16 +67,21 @@ const fetchFamilyMembersFromDB = async () => {
 
 function addFamilyMember({firstName, lastName, age, duties}){
     try{
-        const FamilyMember = Parse.Object.extend("familyMember");
+        const User = Parse.User.current();
+        const id = User.id;
+        console.log(id);
+        const ageInt = parseInt(age);
+        const FamilyMember = Parse.Object.extend("FamilyMember");
         const familyMember = new FamilyMember();
         familyMember.set("firstName",firstName);
         familyMember.set("lastName",lastName);
-        familyMember.set("age",age);
+        familyMember.set("age",ageInt);
         familyMember.set("duties",duties);
+        familyMember.set("contactPersonID",id);
 
         familyMember.save()
         .then((familyMember)=>{
-            alert("A Family Member was submitted: " + familyMember.firstName); 
+            alert("A Family Member was submitted: " + firstName); 
         }, (error)=> {
             alert("Failed to create object, error code: " + error.message);
         });

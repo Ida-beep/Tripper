@@ -84,46 +84,46 @@ function EditContactPerson(props) {
 
     function handleSubmit(e) {
         e.preventDefault();
-        if (!firstName){
-            setFirstName(e.target.value = "missing first name")
-        }
-        if (!lastName){
-            setLastName(e.target.value = "missing last name")
-        }
-        if (!email) {
-            setEmail(e.target.value = "missing email")
-        }
-        if (!street){
-            setStreet(e.target.value = "missing street")
-        }
-        if (!zip){
-            setZip(e.target.value = "missing zip")
-        }
-        if (!mobile){
-            setMobile(e.target.value = "missing mobile number")
-        }
-        if (!phone){
-            setPhone(e.target.value = "missing phone number")
-        }
-        if (!work){
-            setWorkNumber(e.target.value = "missing work number")
-        }
-        if (!duties){
-            setDuties(e.target.value = "missing duties")
-        }
-        if (firstName && lastName && email && street && zip && city && mobile && phone && work && duties) {
-            if (contactPersonID === null) { 
-                console.log("handleSubmit called")
-                ContactMemberAPI.addContactPerson(firstName, lastName, street, zip, city, mobile, phone, work, duties);
-                console.log("submit handles with " + firstName, lastName, street, zip, city, mobile, phone, work, duties);
-            }
-            else {
+        // if (!firstName){
+        //     setFirstName(e.target.value = "missing first name")
+        // }
+        // if (!lastName){
+        //     setLastName(e.target.value = "missing last name")
+        // }
+        // if (!email) {
+        //     setEmail(e.target.value = "missing email")
+        // }
+        // if (!street){
+        //     setStreet(e.target.value = "missing street")
+        // }
+        // if (!zip){
+        //     setZip(e.target.value = "missing zip")
+        // }
+        // if (!mobile){
+        //     setMobile(e.target.value = "missing mobile number")
+        // }
+        // if (!phone){
+        //     setPhone(e.target.value = "missing phone number")
+        // }
+        // if (!work){
+        //     setWorkNumber(e.target.value = "missing work number")
+        // }
+        // if (!duties){
+        //     setDuties(e.target.value = "missing duties")
+        // }
+        // if (firstName && lastName && email && street && zip && city && mobile && phone && work && duties) {
+        //     if (contactPersonID === null) { 
+        //         console.log("handleSubmit called")
+        //         ContactMemberAPI.addContactPerson(firstName, lastName, street, zip, city, mobile, phone, work, duties);
+        //         console.log("submit handles with " + firstName, lastName, street, zip, city, mobile, phone, work, duties);
+        //     }
+        //     else {
                 
-                console.log("handleSubmit called")
-                ContactMemberAPI.editContactMember(firstName, lastName, street, zip, city, mobile, phone, work, duties);
-                console.log("submit handles with " + firstName, lastName, street, zip, city, mobile, phone, work, duties);
-            }
-        }
+        //         console.log("handleSubmit called")
+        //         ContactMemberAPI.editContactMember(firstName, lastName, street, zip, city, mobile, phone, work, duties);
+        //         console.log("submit handles with " + firstName, lastName, street, zip, city, mobile, phone, work, duties);
+        //     }
+        // }
     }
 
     const buttons = [

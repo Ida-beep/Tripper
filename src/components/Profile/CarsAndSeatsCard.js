@@ -14,7 +14,7 @@ import CarsAPI from '../API/CarsAPI';
 //         </div>
 //     )
 // }
-function CarsAndSeatsCard(){
+function CarsAndSeatsCard(props){
     const [carsAndSeats,setCarsAndSeats] = useState([])
     
     useEffect(()=> {
@@ -48,7 +48,8 @@ function CarsAndSeatsCard(){
             
             <div className="button-container">
                 <button className="button-extra-small">Delete</button>
-                <button className="button-extra-small">Add</button>
+                <button className="button-extra-small">Edit</button>
+                <button className="button-extra-small" onClick={props.toggleCarItem}>Add</button>
             </div>       
         </div>
     )

@@ -22,7 +22,7 @@ function Shopping() {
                 <img className="photo-header-image" src={Image} alt="NorwegianFjord"/>
                 <div className="excursion-card-main-content">
                     <div className="card-container">      
-                        <EditShopping title="Add Shopping Item"trigger={editActive} editState={() => setEditActive(false)}/>
+                        <EditShopping title="Add Shopping Item" trigger={editActive} editState={() => setEditActive(false)}/>
                         <div className="excursion-1"> {/**Add className */}
                             <ShoppingCard active={()=>setEditActive(true)}/> {/*Add props */}
                         </div>
