@@ -36,13 +36,21 @@ function AddCarPopup(props) {
         CarsAPI.addCar(carData);
     }
 
+    function disable() {
+        if (!carModel || !license || !color || !seats) {
+            return true;
+        }
+        return false;
+    }
+
     const buttons = [
         <button className="button-extra-small" onClick={props.toggleAddCar}>Cancel</button>,
-        <button className="button-extra-small">Save</button>
+        <button className="button-extra-small" disabled={disable()}>Save</button>
     ]
 
     return (props.showCarPopup) && (
-        <PopUp data={carData} title="Add Car" submitChanges={handleSubmit} buttons={buttons}>
+        <PopUp data={carData} title="Add Car" submitChanges={handleSubmit} 
+            buttons={buttons}> 
             <div className="input-section">
                 <LongInput title="Car Model" value={carModel} 
                     changeValue={changeCarModel} type="text" placeholder="Audi"/>

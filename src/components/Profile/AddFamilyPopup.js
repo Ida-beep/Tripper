@@ -34,24 +34,19 @@ function AddFamilyPopup(props){
 
     function handleSubmit(e) {
         e.preventDefault();
-        // if (!firstName ){
-        //     setFirstName(e.target.value = "missing first name")
-        // }
-        // if (!lastName){
-        //     setLastName(e.target.value = "missing last name")
-        // }
-
-        // if(firstName && lastName && age && duties){
         FamilyMemberAPI.addFamilyMember(personData);
-        //     console.log("submit handled for " + personData.firstName + " " + personData.lastName);
-        
-        //     console.log("missing persondata")
-        // }
+    }
+
+    function disable() {
+        if (!firstName || !lastName || !age) {
+            return true;
+        }
+        return false;
     }
 
     const buttons = [
         <button className="button-extra-small" onClick={props.toggleFamilyItem}>Cancel</button>,
-        <button className="button-extra-small">Save</button>
+        <button className="button-extra-small" onClick={props.toggleFamilyItem}>Finish</button>
     ]
 
     return (props.showAddFamilyPopup) && (
@@ -63,6 +58,8 @@ function AddFamilyPopup(props){
             </div>
             <div className="input-section">
                 <DropDownMenu duties={duties}/>
+                <button className="button-extra-small" style={{marginTop:"50px"}}
+                    disabled={disable()}>Add</button>
             </div>
         </PopUp>
     );
