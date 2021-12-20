@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import LongInput from '../Cards/LongInput';
+import ShortInput from '../Cards/ShortInput';
 import ShoppingAPI from '../API/ShoppingAPI';
 import PopUp from '../Cards/PopUp';
 
@@ -40,7 +41,7 @@ function AddShoppingItem(props) {
 
     const buttons = [
         <button className="button-secondary-extra-small" onClick={props.editState}>Cancel</button>,
-        <button className="button-secondary-extra-small">Finish</button>
+        <button className="button-secondary-extra-small" onClick={props.editState}>Finish</button>
     ]
 
     //editState={props.toggleContactMember}
@@ -50,7 +51,7 @@ function AddShoppingItem(props) {
             submitChanges={handleSubmit} buttons={buttons}>
             <div className="input-section">
                 <LongInput title="Shopping Item" value={itemName} changeValue={changeItem} type="text" placeholder='Item'/>
-                <LongInput title="Amount" value={amount} changeValue={changeAmount} type="text" placeholder='0'/>
+                <ShortInput title="Amount" value={amount} changeValue={changeAmount} type="text" placeholder='0'/>
                 <LongInput title="Unit" value={unit} changeValue={changeUnit} type="text" placeholder='kg / L / pcs...'/>
                 <button className="button-secondary-extra-small" style={{marginTop:"22px"}}
                     disabled={disable()}>Add</button>

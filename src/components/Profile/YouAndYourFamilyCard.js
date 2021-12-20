@@ -3,22 +3,6 @@
 // import participantData from './data/participantData.js';
 // import OverviewCard from './OverviewCard';
 
-// /**
-//     @public YouAndYourFamilyCard shows all relevant participating members of a family
-//  */
-
-// function YouAndYourFamilyCard(props) {
-//     const participantComponents = participantData.map(data => <ParticipantInfo key={data.id} name={data.name} age={data.age} dutypreferences={data.dutypreferences} carseat={data.carseat}/>);
-//     const CardHeader = ["Name","Age","Duties","Carseat"];
-//     const Rightbuttons = ["Add"];
-//     const LeftButtons = ["Delete"];
-
-//     return (
-//         <div className="you-and-your-family">
-//             <OverviewCard togglePopup={props.toggleFamilyItem} class="YouAndYourFamily" header={CardHeader} content={participantComponents} rightbutton={Rightbuttons} leftbutton={LeftButtons}/>
-//         </div>
-//     );
-// }
 
 import React,{ useEffect, useState } from 'react';
 import TableScaffold from '../Cards/TableScaffold';
@@ -31,10 +15,11 @@ import FamilyMemberAPI from '../API/FamilyMemberAPI';
 function YouAndYourFamilyCard(props) {
     const [selected, setSelected] = useState([]);
     const [memberAndFamiliy,setMemberAndFamily] = useState([])
+  
 
     function addElementToSelected(element){
         setSelected((prevState)=> [...prevState,element]);
-        console.log("selected:", selected);
+        console.log("selected: ", selected);
     }
 
     useEffect(()=> {
@@ -84,7 +69,7 @@ function YouAndYourFamilyCard(props) {
             <div className="button-container">
                 <button className="button-secondary-extra-small" onClick={handleDelete}
                     disabled={disable()}>Delete</button>
-                <button className="button-secondary-extra-small"
+                <button className="button-secondary-extra-small" onClick={props.editActive}
                     disabled={disable()}>Edit</button>
                 <button className="button-primary-extra-small" onClick={props.toggleFamilyItem}>Add</button>
             </div>       

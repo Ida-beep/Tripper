@@ -3,7 +3,7 @@ import LongCard from '../Cards/LongCard';
 import Upload from '../Upload';
 import ContactMemberAPI from '../API/ContactMemberAPI.js';
 
-function ContactPersonCard(props) {
+function ContactMemberCard(props) {
     const [firstName, setFirstName] = useState();
     const [lastName, setLastName] = useState();
     const [email,setEmail] = useState();
@@ -69,6 +69,6 @@ function ContactPersonCard(props) {
         </LongCard>);
 }
 
-export default ContactPersonCard;
+export default ContactMemberCard;
 
 //    <img className="contact-member-image-1" src={props.ContactImage} alt="upload"/>

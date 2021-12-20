@@ -2,18 +2,6 @@ import React, {useState, useEffect} from 'react';
 import TableScaffold from '../Cards/TableScaffold';
 import CarsAPI from '../API/CarsAPI';
 
-// function CarsAndSeatsCard() {
-//     const CarsAndSeat = [];
-//     const CardHeader = ["Name","Age","Duties","Carseat"];
-//     const Rightbuttons = ["Add"];
-//     const LeftButtons = ["Delete"];
-
-//     return(
-//         <div className="cars-and-seats">
-//             <OverviewCard content={CarsAndSeat} header={CardHeader} leftbutton={LeftButtons} rightbutton={Rightbuttons}/>
-//         </div>
-//     )
-// }
 function CarsAndSeatsCard(props){
     const [carsAndSeats,setCarsAndSeats] = useState([]);
     const [selected, setSelected] = useState([]);
