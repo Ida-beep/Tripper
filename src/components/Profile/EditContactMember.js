@@ -19,7 +19,9 @@ function EditContactMember(props) {
     const [contactP, setContactP] = useState([])
     
     useEffect(() => {
-        async function fetchData(){setContactP(await ContactMemberAPI.fetchContactMemberFromDB())};
+        async function fetchData(){
+            setContactP(await ContactMemberAPI.fetchContactMemberFromDB())
+        };
         fetchData();
         console.log("EditContactMember useeffect called ");
     }, []); 
@@ -34,6 +36,7 @@ function EditContactMember(props) {
     const [phone, setPhone] = useState();
     const [work, setWorkNumber] = useState();
     const [duties,setDuties]=useState([]);
+
 
     function changeFirstName(e) {
         e.preventDefault();
@@ -78,6 +81,11 @@ function EditContactMember(props) {
     function changeWorkNumber(e) {
         e.preventDefault();
         setWorkNumber(e.target.value);
+    }
+
+    function changeDuties(e) {
+        e.preventDefault();
+        setDuties(e.target.value);
     }
 
    
@@ -138,22 +146,22 @@ function EditContactMember(props) {
             submitChanges={handleSubmit} buttons={buttons}>
             
             <div className="input-section">
-                <LongInput title="First Name" value={contactP.firstName} changeValue={changeFirstName} type="text" />
-                <LongInput title="Last Name" value={contactP.lastName} changeValue={changeLastName} type="text" />
-                <LongInput title="Email" value={contactP.email} changeValue={changeEmail} type="email" />
+                <LongInput title="First Name" changeValue={changeFirstName} type="text" />
+                <LongInput title="Last Name" changeValue={changeLastName} type="text" />
+                <LongInput title="Email" changeValue={changeEmail} type="email" />
             </div>
             <div className="input-section">
-                <LongInput title="Street" value={contactP.street} changeValue={changeStreet} type="text" />
-                <ShortInput title="Zip" value={contactP.zip} changeValue={changeZip} type="text" />
-                <LongInput title="City" value={contactP.city} changeValue={changeCity} type="text" />
+                <LongInput title="Street" changeValue={changeStreet} type="text" />
+                <ShortInput title="Zip" changeValue={changeZip} type="text" />
+                <LongInput title="City" changeValue={changeCity} type="text" />
             </div>
             <div className="input-section">
-                <LongInput title="Mobile" value={contactP.mobilePhone} changeValue={changeMobile} type="text" />
-                <LongInput title="Phone" value={contactP.phone} changeValue={changePhone} type="text" />
-                <LongInput title="Work" value={contactP.workPhone} changeValue={changeWorkNumber} type="text" />
+                <LongInput title="Mobile" changeValue={changeMobile} type="text" />
+                <LongInput title="Phone" changeValue={changePhone} type="text" />
+                <LongInput title="Work" changeValue={changeWorkNumber} type="text" />
             </div>
             <div className="popup-drop-down">
-                <DropDownMenu duties={duties}/>
+                <DropDownMenu duties={duties} changeValue={changeDuties}/>
             </div>
         </PopUp>
     );

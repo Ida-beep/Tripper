@@ -39,7 +39,12 @@ function CarsAndSeatsCard(props){
         console.log("use Effect for fetchCarsFromDB called")
     }, []) 
 
-    
+    function disable() {
+        if (selected.length < 1) {
+            return true;
+        }
+        return false;
+    }
 
     return (   
         <div className="card-container">
@@ -63,8 +68,10 @@ function CarsAndSeatsCard(props){
             </div>
             
             <div className="button-container">
-                <button className="button-extra-small" onClick={handleDelete}>Delete</button>
-                <button className="button-extra-small">Edit</button>
+                <button className="button-extra-small" onClick={handleDelete}
+                    disabled={disable()}>Delete</button>
+                <button className="button-extra-small"
+                    disabled={disable()}>Edit</button>
                 <button className="button-extra-small" onClick={props.toggleCarItem}>Add</button>
             </div>       
         </div>

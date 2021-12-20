@@ -20,12 +20,12 @@
 - getCurrentExcursion() in ShoppingAPI is only returning a promise, but not the excursionID.
     Would love some help here. -Ingrid
 
-- TableScaffold in ShoppingListCard won't render as it tries to render before it has been
-    able to fetch the data. -Ingrid
-
 - AddFamily Popup doesn't work onSubmit..
 
 - EditExcursion might be currently adding new excursion instead of editing
+
+- Unable to deselect items in table scaffolds
+
 
 
 ----Discussions----

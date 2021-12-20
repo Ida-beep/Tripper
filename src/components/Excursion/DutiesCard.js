@@ -26,6 +26,13 @@ function DutiesCard(props){
             setAllDuties(refetchedList);
         });
     } 
+
+    function disableDelete() {
+        if (selected.length < 1) {
+            return true;
+        }
+        return false;
+    }
       
     return (
         <div className="card-container">
@@ -41,7 +48,8 @@ function DutiesCard(props){
                 />
             </div>
             <div className="button-container">
-                <button className="button-extra-small" onClick={handleDelete}>Delete</button>
+                <button className="button-extra-small" onClick={handleDelete}
+                    disabled={disableDelete()}>Delete</button>
                 <button className="button-extra-small"onClick={props.active}>Add Duty</button>
                 <button className="button-extra-small">Find Previous</button>
             </div>
