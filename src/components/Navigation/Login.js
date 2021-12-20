@@ -57,8 +57,8 @@ function Login(props){
                                 <input type="password" value={password} onChange={(e)=>setPassword(e.target.value)} />
                             </label>
                         </div>
-                        <button className="button-extra-small" type="submit">Login</button>
-                        <button className="button-extra-small" type="submit" onClick={handleSignup}>Signup</button>
+                        <button className="button-secondary-extra-small" type="submit">Login</button>
+                        <button className="button-secondary-extra-small" type="submit" onClick={handleSignup}>Signup</button>
                         <br />
                         <br /> 
                         <p style={{textAlign: 'center'}} >

@@ -44,8 +44,8 @@ function AddCarPopup(props) {
     }
 
     const buttons = [
-        <button className="button-extra-small" onClick={props.toggleAddCar}>Cancel</button>,
-        <button className="button-extra-small" disabled={disable()}>Save</button>
+        <button className="button-secondary-extra-small" onClick={props.toggleAddCar}>Cancel</button>,
+        <button className="button-secondary-extra-small" disabled={disable()}>Save</button>
     ]
 
     return (props.showCarPopup) && (

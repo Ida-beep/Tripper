@@ -80,8 +80,8 @@ function EditExcursion(props) {
     }
 
     const buttons = [
-        <button className="button-extra-small" onClick={props.editState}>Cancel</button>,
-        <button className="button-extra-small">Save</button>
+        <button className="button-secondary-extra-small" onClick={props.editState}>Cancel</button>,
+        <button className="button-secondary-extra-small">Save</button>
     ]
     
     return (props.trigger) && ( 

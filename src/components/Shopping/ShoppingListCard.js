@@ -54,11 +54,11 @@ function ShoppingListCard(props) {
                     />
             </div>
              <div className="button-container">
-                <button className="button-extra-small" onClick={handleDelete}
+                <button className="button-secondary-extra-small" onClick={handleDelete}
                     disabled={disable()}>Delete</button>
-                <button className="button-extra-small"
+                <button className="button-secondary-extra-small"
                     disabled={disable()}>Edit</button>
-                <button className="button-extra-small" onClick={props.active}>Add</button>
+                <button className="button-primary-extra-small" onClick={props.active}>Add</button>
             </div> 
         </div>
     );

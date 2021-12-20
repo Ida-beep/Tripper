@@ -32,7 +32,7 @@ function Upload() {
 
             <input type="file" name="profpic" id="input"  onChange={handleFileUpload} />
             <div className="label">
-                <label className="button-extra-small" htmlFor="input">
+                <label className="button-secondary-extra-small" htmlFor="input">
                <FaFileUpload /> 
                   select profile picture
                 </label>

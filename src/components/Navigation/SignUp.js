@@ -80,7 +80,7 @@ function SignUp() {
        </div> 
        <br />
        
-      <button className="button-extra-small" type="submit" variant="primary" onClick={createAccount}>
+      <button className="button-secondary-extra-small" type="submit" variant="primary" onClick={createAccount}>
         Create Account
       </button>
       </form>
