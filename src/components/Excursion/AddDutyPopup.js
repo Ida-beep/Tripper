@@ -34,8 +34,8 @@ function AddDutyPopup(props) {
     }
 
     const buttons = [
-        <button className="button-extra-small" onClick={props.editState}>Cancel</button>,
-        <button className="button-extra-small" onClick={props.editState}>Finish</button>
+        <button className="button-secondary-extra-small" onClick={props.editState}>Cancel</button>,
+        <button className="button-secondary-extra-small" onClick={props.editState}>Finish</button>
     ]
 
     //editState={props.toggleContactMember}
@@ -46,7 +46,7 @@ function AddDutyPopup(props) {
             <div className="input-section">
                 <LongInput title="Duty" value={name} changeValue={changeName} type="text" placeholder='Cleaning'/>
                 <LongInput title="Min. people required" value={minRequired} changeValue={changeMinRequired} type="text" placeholder='3'/>
-                <button className="button-extra-small" style={{marginTop:"22px"}}
+                <button className="button-secondary-extra-small" style={{marginTop:"22px"}}
                     disabled={disable()}>Add</button>
             </div>
         </PopUp>

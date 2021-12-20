@@ -25,9 +25,9 @@
 //                 />
 //             </div>
 //                 <div className="button-container">
-//                     <button className="button-extra-small">Delete</button>
-//                     <button className="button-extra-small">Add Duty</button>
-//                     <button className="button-extra-small">Find Previous</button>
+//                     <button className="button-secondary-extra-small">Delete</button>
+//                     <button className="button-secondary-extra-small">Add Duty</button>
+//                     <button className="button-secondary-extra-small">Find Previous</button>
 //                 </div>
 //         </div>    
 //     )

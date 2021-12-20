@@ -59,12 +59,12 @@ function ContactPersonCard(props) {
                 </div>
             </div>
             <div className="edit-button-container">
-                <button className="button-extra-small" onClick={props.active}>Edit</button>
+                <button className="button-primary-extra-small" onClick={props.active}>Edit</button>
             </div>
         </LongCard>
     ) : (<LongCard active={props.active}>
             <div className="create-contact-member">
-                <button className="button-extra-small" onClick={props.active}>Create Contact Member</button>
+                <button className="button-primary-extra-small" onClick={props.active}>Create Contact Member</button>
             </div>
         </LongCard>);
 }

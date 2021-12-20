@@ -45,8 +45,8 @@ function AddFamilyPopup(props){
     }
 
     const buttons = [
-        <button className="button-extra-small" onClick={props.toggleFamilyItem}>Cancel</button>,
-        <button className="button-extra-small" onClick={props.toggleFamilyItem}>Finish</button>
+        <button className="button-secondary-extra-small" onClick={props.toggleFamilyItem}>Cancel</button>,
+        <button className="button-secondary-extra-small" onClick={props.toggleFamilyItem}>Finish</button>
     ]
 
     return (props.showAddFamilyPopup) && (
@@ -58,7 +58,7 @@ function AddFamilyPopup(props){
             </div>
             <div className="input-section">
                 <DropDownMenu duties={duties}/>
-                <button className="button-extra-small" style={{marginTop:"50px"}}
+                <button className="button-secondary-extra-small" style={{marginTop:"50px"}}
                     disabled={disable()}>Add</button>
             </div>
         </PopUp>

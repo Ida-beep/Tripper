@@ -48,10 +48,10 @@ function DutiesCard(props){
                 />
             </div>
             <div className="button-container">
-                <button className="button-extra-small" onClick={handleDelete}
+                <button className="button-secondary-extra-small" onClick={handleDelete}
                     disabled={disableDelete()}>Delete</button>
-                <button className="button-extra-small"onClick={props.active}>Add Duty</button>
-                <button className="button-extra-small">Find Previous</button>
+                <button className="button-secondary-extra-small">Find Previous</button>
+                <button className="button-primary-extra-small"onClick={props.active}>Add Duty</button>
             </div>
         </div>    
     )

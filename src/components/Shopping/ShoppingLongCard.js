@@ -9,7 +9,7 @@ function ShoppingLongCard(props) {
         <div className="shopping-long-card">   
             {props.children}
             <div className="edit-button-container">
-                <button className="button-extra-small" onClick={props.active}>Create</button>
+                <button className="button-secondary-extra-small" onClick={props.active}>Create</button>
             </div>
         </div>
     );
