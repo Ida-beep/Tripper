@@ -548,6 +548,16 @@ input {
   border-bottom: solid #fee2a3 2px;
   padding: 5px;
 }
+
+textarea {
+  border: none;
+  background-color: #fdf5d5;
+  border: solid transparent 2px;
+  border-bottom: solid #fee2a3 2px;
+  padding: 5px;
+  width:490px;
+  height:100px;
+}
 input:hover {
   border: solid #1ea774 2px;
 }

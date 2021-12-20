@@ -91,6 +91,38 @@ function addFamilyMember({firstName, lastName, age, duties}){
     }
 }
 
+const updateFamilyMember = async (
+    {firstName, lastName, age, dutied}, selected) => {
+    
+    const query = new Parse.Query("FamilyMember");
+    console.log("selectedid: ", selected)
+    // try {
+    //   // here you put the objectId that you want to update
+    //   const object = await query.get(selected.id);
+    //   object.set('age', 1);
+    //   object.set('firstName', 'A string');
+    //   object.set('lastName', 'A string');
+    //   object.set('duties', [1, 'a string']);
+    //   object.set('contactPersonID', 'A string');
+    //   try {
+    //     const response = await object.save();
+    //     // You can use the "get" method to get the value of an attribute
+    //     // Ex: response.get("<ATTRIBUTE_NAME>")
+    //     // Access the Parse Object attributes using the .GET method
+    //     console.log(response.get('age'));
+    //     console.log(response.get('firstName'));
+    //     console.log(response.get('lastName'));
+    //     console.log(response.get('duties'));
+    //     console.log(response.get('contactPersonID'));
+    //     console.log('FamilyMember updated', response);
+    //   } catch (error) {
+    //     console.error('Error while updating FamilyMember', error);
+    //     }
+    //   } catch (error) {
+    //     console.error('Error while retrieving object FamilyMember', error);
+    //   }
+  }
+
 async function deleteFamilyMember(familyMembers){
     for(let i=0; i < familyMembers.length;i++){
         const member = familyMembers[i];
@@ -114,5 +146,6 @@ async function deleteFamilyMember(familyMembers){
 
 export default {
     fetchFamilyMembersFromDB:fetchFamilyMembersFromDB,
+    updateFamilyMember:updateFamilyMember,
     addFamilyMember:addFamilyMember,
     deleteFamilyMember:deleteFamilyMember};

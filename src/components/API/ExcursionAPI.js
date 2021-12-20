@@ -1,28 +1,5 @@
 import { Parse } from 'parse';
 
-//Think this one adds a new object
-function editExcursion({excursionTitle, fromDate, toDate, location, description}) {
-    try {
-        const Excursion = Parse.Object.extend("Excursion");
-
-        const excursion = new Excursion();
-        excursion.set("excursionTitle", excursionTitle);
-        excursion.set("fromDate", fromDate);
-        excursion.set("toDate", toDate);
-        excursion.set("location", location);
-        excursion.set("description", description);
-
-        excursion.save().then((excursion)=> {
-            alert("Excursion was edited: " + excursion.excursionTitle);
-        }, (error) => {
-            alert("Failed to edit object, error code: " + error.message)
-        })
-        console.log("Updated excursion information");
-    } catch(error) {
-        console.log(error);
-    }
-}
-
 const fetchExcursionFromDB = async () => {
     
     const User = Parse.User.current();
@@ -43,9 +20,11 @@ const fetchExcursionFromDB = async () => {
             
             if (excursion.id === excursionID) {
                 const excursionTitle = excursion.get("excursionTitle");
-                const fromDate = excursion.get("fromDate");
+                const dateFrom = excursion.get("fromDate");
+                const fromDate = new Date(dateFrom);
                 const fromDateString = fromDate.toLocaleDateString()
-                const toDate = excursion.get("toDate");
+                const dateTo = excursion.get("toDate");
+                const toDate = new Date(dateTo)
                 const toDateString = toDate.toLocaleDateString();
                 const location = excursion.get("location");
                 const description = excursion.get("description");
@@ -69,5 +48,48 @@ const fetchExcursionFromDB = async () => {
     return excursionInfo
 }
 
-export default {editExcursion:editExcursion,
+const updateExcursion = async ({
+    excursionTitle, dateFrom, dateTo, location, description}) => {
+    
+    const query = new Parse.Query("Excursion");
+    console.log("excursion title: " + excursionTitle);
+    console.log("date from: " + dateFrom);
+    console.log("date to: " + dateTo);
+    console.log("location: " + location);
+    console.log("description: " + description);
+    
+    try {
+      // here you put the objectId that you want to update
+      const User = Parse.User.current();
+      const queryUser = new Parse.Query("User");
+      const user = await queryUser.get(User.id);
+      const contactMember = await queryUser.get(user.id);
+      const excursionID = contactMember.get("excursionID");
+
+      const object = await query.get(excursionID);
+      object.set('excursionTitle', excursionTitle);
+      object.set('fromDate', new Date(dateFrom));
+      object.set('toDate', new Date(dateTo));
+      object.set('location', location);
+      object.set('description', description);
+      try {
+        const response = await object.save()
+        // You can use the "get" method to get the value of an attribute
+        // Ex: response.get("<ATTRIBUTE_NAME>")
+        // Access the Parse Object attributes using the .GET method
+        console.log(response.get('excursionTitle'));
+        console.log(response.get('fromDate'));
+        console.log(response.get('toDate'));
+        console.log(response.get('location'));
+        console.log(response.get('description'));
+        console.log('Excursion updated', response);
+      } catch (error) {
+        console.error('Error while updating Excursion', error);
+        }
+      } catch (error) {
+        console.error('Error while retrieving object Excursion', error);
+      }
+  }
+
+export default {updateExcursion:updateExcursion,
     fetchExcursionFromDB:fetchExcursionFromDB};

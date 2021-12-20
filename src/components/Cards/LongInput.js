@@ -1,6 +1,9 @@
 import React from 'react';
 
 function LongInput(props) {
+
+    console.log("value: ", props.value)
+
     return (
         <div className="long-input">
             <label>
