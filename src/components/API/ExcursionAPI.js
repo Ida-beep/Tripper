@@ -48,6 +48,37 @@ const fetchExcursionFromDB = async () => {
     return excursionInfo
 }
 
+const fetchAllExcursionsFromDB = async () => {
+    
+  const User = Parse.User.current();
+  const queryUser = new Parse.Query("User");
+  const user = await queryUser.get(User.id);
+  const contactMember = await queryUser.get(user.id);
+  const excursionID = contactMember.get("excursionID");
+
+  const query = new Parse.Query("Excursion");
+  let excursions = await query.find();
+
+  let excursionArr = []
+  
+  for (let i = 0; i < excursions.length; i++) { 
+      try {
+          const excursion = await query.get(excursions[i].id);
+          
+          const excursionTitle = excursion.get("excursionTitle");
+          
+          const excursionObject = {
+              id: excursionID,
+              excursionTitle: excursionTitle,
+          };
+          excursionArr.push(excursionObject);
+      } catch (error) {
+          alert("FAILED to retrieve the Excursion entry entry. Error: " + error.message);
+        }
+  } 
+  return excursionArr
+}
+
 const updateExcursion = async ({
     excursionTitle, dateFrom, dateTo, location, description}) => {
     
@@ -66,6 +97,8 @@ const updateExcursion = async ({
       const contactMember = await queryUser.get(user.id);
       const excursionID = contactMember.get("excursionID");
 
+      console.log("inside try with clause")
+
       const object = await query.get(excursionID);
       object.set('excursionTitle', excursionTitle);
       object.set('fromDate', new Date(dateFrom));
@@ -73,7 +106,11 @@ const updateExcursion = async ({
       object.set('location', location);
       object.set('description', description);
       try {
-        const response = await object.save()
+        const response = await object.save().then(()=>{
+          alert("Info successfully updated");
+      }, (error)=>{
+          alert("failed to update with error-code : " + error);
+      });
         // You can use the "get" method to get the value of an attribute
         // Ex: response.get("<ATTRIBUTE_NAME>")
         // Access the Parse Object attributes using the .GET method
@@ -92,4 +129,5 @@ const updateExcursion = async ({
   }
 
 export default {updateExcursion:updateExcursion,
-    fetchExcursionFromDB:fetchExcursionFromDB};
+  fetchAllExcursionsFromDB:fetchAllExcursionsFromDB,
+  fetchExcursionFromDB:fetchExcursionFromDB};

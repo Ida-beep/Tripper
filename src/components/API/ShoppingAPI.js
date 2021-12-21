@@ -1,9 +1,8 @@
 import { Parse } from 'parse';
 
-//**Only returns an object promise -- help?? */
-async function getCurrentExcursion() {
+const getCurrentExcursion = async () => {
 
-    const excursionID = "";
+    let excursionID = "";
     try {
         const User = Parse.User.current();
         const queryUser = new Parse.Query("User");
@@ -16,8 +15,6 @@ async function getCurrentExcursion() {
     
     return excursionID
 }
-// const excursionID = getCurrentExcursion();
-// console.log("excuuuuursionID---" + excursionID);
 
 
 const fetchShoppingListFromDB = async () => {
@@ -116,4 +113,5 @@ async function deleteShoppingItem(items){
 
 export default {addShoppingItem:addShoppingItem, 
     fetchShoppingListFromDB:fetchShoppingListFromDB,
-    deleteShoppingItem:deleteShoppingItem};
+    deleteShoppingItem:deleteShoppingItem,
+    getCurrentExcursion:getCurrentExcursion};

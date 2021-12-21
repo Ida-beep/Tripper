@@ -1,5 +1,4 @@
 import React, {useState} from 'react';
-import {Parse} from 'parse';
 import PopUp from '../Cards/PopUp';
 import LongInput from '../Cards/LongInput';
 import DutiesAPI from '../API/DutiesAPI';
