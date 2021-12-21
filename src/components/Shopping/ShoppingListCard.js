@@ -53,7 +53,7 @@ function ShoppingListCard(props) {
                         tdata={shoppingList}
                     />
             </div>
-             <div className="button-container">
+            <div className="button-container">
                 <button className="button-secondary-extra-small" onClick={handleDelete}
                     disabled={disable()}>Delete</button>
                 <button className="button-secondary-extra-small"

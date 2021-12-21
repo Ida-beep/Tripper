@@ -33,7 +33,6 @@ function EditExcursion(props) {
         console.log("Excursion useeffect called ");
     }, []); 
 
-    console.log("excursionTitle: ", excursion);
 
     useEffect(() => {
         if(notInitialRender.current) {

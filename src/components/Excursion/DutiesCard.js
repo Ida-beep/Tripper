@@ -4,11 +4,12 @@ import DutiesAPI from "../API/DutiesAPI"
 
 function DutiesCard(props){    
     const [allDuties, setAllDuties] = useState([]);
-    const [selected, setSelected] = useState([]);
+    const [selected, setSelected] = useState();
 
     function addElementToSelected(element){
-        setSelected((prevState)=> [...prevState,element]);
-        console.log("selected: ", selected);
+        setSelected(element)
+        // setSelected((prevState)=> [...prevState,element]);
+        // console.log("selected: ", selected);
     }
     
      useEffect(()=> {
@@ -28,11 +29,16 @@ function DutiesCard(props){
     } 
 
     function disableDelete() {
-        if (selected.length < 1) {
+        if (!selected) {
             return true;
         }
         return false;
     }
+
+    //Returns selected data to Excursion component
+    useEffect(()=> {
+        props.selected(selected)
+    }, [selected]) 
       
     return (
         <div className="card-container">
