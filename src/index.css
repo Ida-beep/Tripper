@@ -68,7 +68,35 @@ li {
   font-size: 13pt;
   font-weight: 500;
 }
-.button-extra-small {
+
+
+
+.button-primary-extra-small {
+  font-family: "Roboto Slab", serif;
+  font-size: 10pt;
+  font-weight: 500;
+  color: #FEFBEC;
+  border: #1EA774 1px;
+  background-color: #1EA774;
+  height: 25px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin: 10px;
+}
+
+.button-primary-extra-small:disabled {
+  border: solid #A6A6A6 1px;
+  color: #FEFBEC;
+  background-color: #A6A6A6;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.button-primary-extra-small:hover {
+  border: solid #2CF2B0 1px;
+}
+
+.button-secondary-extra-small {
   font-family: "Roboto Slab", serif;
   font-size: 10pt;
   font-weight: 500;
@@ -81,16 +109,26 @@ li {
   margin: 10px;
 }
 
+.button-secondary-extra-small:disabled {
+  border: solid #A6A6A6 1px;
+  color: #A6A6A6;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.button-secondary-extra-small:hover {
+  color: #fffbf2;
+  background-color: #1ea774;
+}
+
+
 .Link {
   font-family: "Roboto Slab", serif;
   font-size: 16pt;
   text-decoration: underline;
   color: #1ea774;
 }
-.button-extra-small:hover {
-  color: #fffbf2;
-  background-color: #1ea774;
-}
+
 
 /*NAVBAR*/
 .Nav-Bar {
@@ -188,6 +226,13 @@ a {
   height: 200px;
   border: solid DD0D18 2px;
 }
+
+/* #family-member-add-button {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  margin-top: px;
+} */
 
 /*DROPDOWN*/
 .nav-drop-down {
@@ -401,6 +446,14 @@ identical. Should we combine them?*/
   flex: 2;
 }
 
+.shopping-card-main-content {
+  display: flex;
+  flex-direction: column;
+  flex: 2;
+  text-align: left;
+  padding: 40px;
+}
+
 .contact-member-info {
   display: flex;
   align-content: center;
@@ -432,7 +485,7 @@ identical. Should we combine them?*/
 .edit-button-container {
   display: flex;
   flex-direction: column;
-  justify-content: end;
+  justify-content: flex-end;
   padding: 25px;
 }
 
@@ -449,11 +502,6 @@ identical. Should we combine them?*/
   display: flex;
   padding: 25px;
   object-fit: cover;
-}
-
-/*IMAGECARD*/
-.ImageCard {
-  display: flex;
 }
 
 /*PARTICIPANT INFO*/
@@ -516,6 +564,16 @@ input {
   border-bottom: solid #fee2a3 2px;
   padding: 5px;
 }
+
+textarea {
+  border: none;
+  background-color: #fdf5d5;
+  border: solid transparent 2px;
+  border-bottom: solid #fee2a3 2px;
+  padding: 5px;
+  width:490px;
+  height:100px;
+}
 input:hover {
   border: solid #1ea774 2px;
 }
@@ -548,7 +606,7 @@ label {
   position: absolute;
   top: 15%;
   left: 30%;
-  width: 500px;
+
   padding: 50px;
   border-radius: 5px;
   border: 1px solid #fadf63;
@@ -600,9 +658,10 @@ label {
 .popup-button-footer {
   display: flex;
   flex-direction: row;
-  justify-content: end;
+  justify-content: flex-end;
   padding-top: 25px;
 }
+
 
 /* ---------------------Excursion CSS-------------------- */
 
@@ -645,6 +704,15 @@ td {
   background-color: #fffbf2;
   padding-top: 7.5px;
 }
+.trow{
+  margin:10px;
+  cursor:default;
+  border: transparent solid 2px;
+}
+.trow:hover{
+  border-bottom:#1ea774 solid 2px;
+}
+
 
 /* Buttons in the buttom of a card*/
 .button-container {
@@ -656,3 +724,83 @@ td {
   margin-left: 15px;
   margin-top: 15px;
 }
+
+
+
+
+
+
+
+/*-------- Upload (Profile_Image) -----------*/
+
+.p-header-image {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  justify-content: center;
+  margin: 0px
+}
+
+.image-container {
+  display: flex;
+  justify-content: center;
+}
+/*RENAMING*/
+.image-container {
+  padding: 10px;
+  /*background-color: #fffbf2;*/
+  width: 150px;
+  min-width: 150px;
+  margin: 0px 10px;
+  /*border: solid #fadf63 1px;*/
+}
+
+.label{
+  width: 100%;
+  /*margin-top: 1rem;*/
+  display: flex;
+  justify-content: center;
+}
+
+#input[type='file']{
+  display: none
+}
+
+
+/*-------- SignUp -----------*/
+
+.footer-container {
+  display: flex;
+  margin-top: 150px;
+  align-content: center;
+  justify-content: center;
+  height: 100%;
+  padding-top: 15px;
+  border-top: solid #fadf63 2px;
+  
+  /*border: #fadf63 solid 2px;
+  flex-direction: column;
+  margin-top: 50px;
+  margin-left: 100px;
+  padding: 80px;
+  width: 180px;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  align-content: center;*/
+}
+
+.signup-container {
+  display: flex;
+  border: #fadf63 solid 2px;
+  flex-direction: column;
+  margin-top: 50px;
+  margin-left: 200px;
+  padding: 80px;
+  width: 180px;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+}
+
