@@ -17,9 +17,16 @@ function DutiesCard(){
             <div className="table-container" >
                 <TableScaffold 
                     // Pass the key name from database object in array matching headers 
-                    tkey={["name","minRequired"]}
+                    tkey={["name",
+                    "minRequired",
+                    "id"
+                    ]}
                     //Pass Real headers in array
-                    theaders={["Duty","Min. guests"]} 
+                    theaders={[
+                        "Duty",
+                        "Min. guests",
+                        "Assigned guests"
+                    ]} 
                     // Pass object data source 
                     tdata={allDuties}
                 />

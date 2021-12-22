@@ -92,7 +92,6 @@ async function getContactMember(){
         const duty2 = user.get("Duty2");
         const duty3 = user.get("Duty3");
     const userObject = {firstName,lastName,age,address,mobile,phone,workPhone,email,duty1,duty2,duty3,zip,city};
-    console.log(userObject);
     return userObject;
     }
 
