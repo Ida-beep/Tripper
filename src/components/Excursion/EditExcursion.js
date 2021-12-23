@@ -8,11 +8,9 @@ import DescriptionInput from '../Cards/DescriptionInput';
 function EditExcursion(props) {
 
     /**
-     * @public EditExcursion renders the PopUp for editing excursions. Is a child of the component PopUp.s
+     * @public EditExcursion renders the PopUp for editing excursions. 
+     * Is a child of the component PopUp. 
      * 
-     * TODO
-     * - Change date input to short inputs once fixed
-     * - Change description to big box
     */
     
     const [excursion, setExcursion] = useState();
@@ -34,6 +32,10 @@ function EditExcursion(props) {
     }, []); 
 
 
+    /**Sets excursion information once excursion state has been updated.
+     * useRef notInititalRender ensures that this useEffect will not be
+     * called until excursion state contains data.
+     */
     useEffect(() => {
         if(notInitialRender.current) {
             setExcursionTitle(excursion.excursionTitle);
@@ -72,6 +74,7 @@ function EditExcursion(props) {
         setDescription(e.target.value);
     }
 
+    /**Disables submit button if either input fields are empty. */
     function disable() {
         if (!excursionTitle || !dateFrom || !dateTo || !location || !description) {
             return true;

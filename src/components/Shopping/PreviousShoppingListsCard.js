@@ -18,6 +18,12 @@ function PreviousShoppingListsCard(props) {
         console.log("Previous shopping lists useEffect called");
     }, []) 
 
+    //Returns selected data to Excursion component
+    useEffect(()=> {
+        props.selected(selected)
+        console.log("selected in previous: ", selected)
+    }, [selected]) 
+
     function disable() {
         if (!selected) {
             return true;
@@ -41,7 +47,7 @@ function PreviousShoppingListsCard(props) {
             </div>
             <div className="button-container">
                 <button className="button-primary-extra-small"
-                    disabled={disable()}>Open</button>
+                    disabled={disable()} onClick={props.active}>Open</button>
             </div> 
         </div>
     );

@@ -10,7 +10,11 @@ function AddShoppingItem(props) {
     const [amount, setAmount] = useState();
     const [unit, setUnit] = useState();
     
-    const shoppingData = [itemName, amount, unit];
+    const shoppingData = {
+        "itemName":itemName, 
+        "amount":amount, 
+        "unit":unit
+    };
 
     function changeItem(e) {
         e.preventDefault();
@@ -61,6 +65,3 @@ function AddShoppingItem(props) {
 }
 
 export default AddShoppingItem;
-
-
-

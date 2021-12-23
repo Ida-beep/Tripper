@@ -468,17 +468,11 @@ identical. Should we combine them?*/
 }
 .address-and-email {
   flex: 1;
-  /* display:flex;
-  flex-direction: column;
-  justify-content: center; */
 }
 
 .mobile-info {
   flex: 1;
   padding-top: 20px;
-  /* display:flex;
-  flex-direction: column;
-  justify-content: center; */
 }
 
 
@@ -605,7 +599,7 @@ label {
   background-color: #fffbf2;
   position: absolute;
   top: 15%;
-  left: 30%;
+  left: 15%;
 
   padding: 50px;
   border-radius: 5px;
@@ -621,20 +615,6 @@ label {
   padding-top: 15px;
 }
 
-/* .first-line{
-  display:flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  width: 100%;
-}
-
-.second-line {
-  display:flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  width:100%;
-} */
-
 .popup-title {
   display: flex;
   justify-content: flex-start;
@@ -644,7 +624,6 @@ label {
   display: flex;
 }
 
-/*Fix so that it's shorter in the popup*/
 .short-input {
   display: flex;
 }
@@ -669,6 +648,7 @@ label {
 .cards-container {
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 /*RENAMING*/
 .card-container {

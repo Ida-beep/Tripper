@@ -18,6 +18,7 @@ const getCurrentExcursion = async () => {
 
 
 const fetchShoppingListFromDB = async () => {
+    
     const User = Parse.User.current();
     const queryUser = new Parse.Query("User");
     const user = await queryUser.get(User.id);
@@ -56,11 +57,61 @@ const fetchShoppingListFromDB = async () => {
     return shoppingList
 }
 
+const fetchPreviousShoppingListFromDB = async (excursionID) => {
+    
+    const shoppingList = []
+    const query = new Parse.Query("ShoppingList");
+    
+    let allShoppingItems = await query.find();
+    console.log("all shopping items length: ", allShoppingItems.length)
+    for (let i = 0; i < allShoppingItems.length; i++) { 
+        try {
+            const item = await query.get(allShoppingItems[i].id);
+            
+            const otherexcursionid = item.get("excursionID")
+            console.log("other excursion id: ", otherexcursionid)
+            console.log("main excursionid: ", excursionID);
+            if (item.get("excursionID") === excursionID) {
+                const id = allShoppingItems[i].id;
+                const itemName = item.get("itemName");
+                console.log("item name: " + itemName);
+                const amount = item.get("amount");
+                console.log("amount: " + amount)
+                const unit = item.get("unit");
+                console.log("unit: ", unit)
+
+                const itemObject = {
+                    id: id,
+                    itemName: itemName,
+                    amount: amount,
+                    unit: unit
+                };
+
+                console.log("object: ", itemObject)
+
+                shoppingList.push(itemObject);
+            }
+            
+        } catch (error) {
+            alert("FAILED to retrieve the shopping entry. Error: " + error.message);
+          }
+    } 
+
+    console.log("shoppinglist: ", shoppingList)
+    
+    return shoppingList
+}
+
+
 async function addShoppingItem(data) {
+    console.log("data: ", data)
     try{
-        const itemName = data[0];
-        const amount = parseInt(data[1]);
-        const unit = data[2];
+        const itemName = data.itemName;
+        console.log("item name", itemName)
+        const amount = parseInt(data.amount);
+        console.log("amount", amount)
+        const unit = data.unit;
+        console.log("unit", unit)
 
         const User = Parse.User.current();
         const queryUser = new Parse.Query("User");
@@ -76,7 +127,6 @@ async function addShoppingItem(data) {
         item.set("unit", unit);
         item.set("excursionID", excursionID);
         
-        console.log("start")
         item.save()
         .then((itemName)=>{
             alert(itemName + "has been added to your Shopping List"); 
@@ -86,6 +136,14 @@ async function addShoppingItem(data) {
 
     } catch(error){
         console.log(error);
+    }
+}
+
+async function addMultipleShoppingItems(list) {
+    
+    for (let i = 0; i < list.length; i++) {
+        console.log("list ", i, list[i])
+        addShoppingItem(list[i])
     }
 }
 
@@ -114,4 +172,6 @@ async function deleteShoppingItem(items){
 export default {addShoppingItem:addShoppingItem, 
     fetchShoppingListFromDB:fetchShoppingListFromDB,
     deleteShoppingItem:deleteShoppingItem,
-    getCurrentExcursion:getCurrentExcursion};
+    getCurrentExcursion:getCurrentExcursion,
+    fetchPreviousShoppingListFromDB,
+    addMultipleShoppingItems:addMultipleShoppingItems};

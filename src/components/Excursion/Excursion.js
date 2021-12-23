@@ -6,10 +6,12 @@ import GuestDutyCard from './GuestDutyCard';
 import DutiesCard from './DutiesCard'
 import AddDutyPopup from './AddDutyPopup';
 import DeletePopup from '../Cards/DeletePopup';
+import PreviousDutiesPopup from './PreviousDutiesPopup'
 
 function Excursion() {
     const [editExcursionActive, setExcursionEditActive] = useState(false);
     const [dutiesPopupActive, setDutiesPopupAcitve] = useState(false);
+    const [previousDutiesActive, setPreviousDutiesActive] = useState(false);
     const [lastSelected, setLastSelected] = useState();
     
     function returnSelected(selected) {
@@ -25,6 +27,9 @@ function Excursion() {
                     editState={() => setExcursionEditActive(false)} title="Edit Excursion"/>
                 <AddDutyPopup trigger={dutiesPopupActive} 
                     editState={() => setDutiesPopupAcitve(false)} title="Add duty"/>
+                <PreviousDutiesPopup trigger={previousDutiesActive}
+                    editState={() => setPreviousDutiesActive(false)}/>
+
                 
                 <div className="excursion-1"> {/**Add className */}
                     <ExcursionCard active={()=>setExcursionEditActive(true)}/>
@@ -32,7 +37,8 @@ function Excursion() {
             </div>
             
             <div className="cards-container">
-                <DutiesCard active={()=> setDutiesPopupAcitve(true)} selected={returnSelected}/>
+                <DutiesCard addActive={()=> setDutiesPopupAcitve(true)} selected={returnSelected}
+                    previousActive={()=> setPreviousDutiesActive(true)}/>
                 <GuestDutyCard />
             </div>
         </div>

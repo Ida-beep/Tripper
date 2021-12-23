@@ -13,9 +13,9 @@ async function signup({username,password}){
     user.set("username", username);
     user.set("password", password);
 
-    const ContactMember = Parse.Object.extend("ContactMember");
+    const ContactMember = Parse.Object.extend("User");
     const contactMember = new ContactMember();
-    contactMember.set("UserID",Parse.User.current().id);
+    contactMember.set("objectId",Parse.User.current().id);
 
     try {
         await user.signUp();

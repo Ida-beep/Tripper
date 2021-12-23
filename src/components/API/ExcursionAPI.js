@@ -49,12 +49,6 @@ const fetchExcursionFromDB = async () => {
 }
 
 const fetchAllExcursionsFromDB = async () => {
-    
-  const User = Parse.User.current();
-  const queryUser = new Parse.Query("User");
-  const user = await queryUser.get(User.id);
-  const contactMember = await queryUser.get(user.id);
-  const excursionID = contactMember.get("excursionID");
 
   const query = new Parse.Query("Excursion");
   let excursions = await query.find();
@@ -64,11 +58,11 @@ const fetchAllExcursionsFromDB = async () => {
   for (let i = 0; i < excursions.length; i++) { 
       try {
           const excursion = await query.get(excursions[i].id);
-          
+          console.log("iiiiid: ", excursion.id)
           const excursionTitle = excursion.get("excursionTitle");
           
           const excursionObject = {
-              id: excursionID,
+              id: excursion.id,
               excursionTitle: excursionTitle,
           };
           excursionArr.push(excursionObject);
