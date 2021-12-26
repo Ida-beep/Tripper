@@ -1,5 +1,26 @@
 import { Parse } from 'parse';
 
+const createExcursion = async (
+  {excursionName, fromDate, toDate, location, description}) => {
+  
+  const newExcursion = new Parse.Object('Excursion');
+  newExcursion.set('excursionTitle', excursionName);
+  newExcursion.set('fromDate', new Date(fromDate));
+  newExcursion.set('toDate', new Date(toDate));
+  newExcursion.set('location', location);
+  newExcursion.set('description', description);
+  try {
+    const result = await newExcursion.save();
+    // Access the Parse Object attributes using the .GET method
+    console.log('Excursion created', result);
+    alert('Excursion created', result);
+    return result;
+  } catch (error) {
+    console.error('Error while creating Excursion: ', error);
+    alert("error: ", error)
+  }
+};
+
 const fetchExcursionFromDB = async () => {
     
     const User = Parse.User.current();
@@ -122,6 +143,8 @@ const updateExcursion = async ({
       }
   }
 
-export default {updateExcursion:updateExcursion,
+export default {
+  createExcursion:createExcursion,
+  updateExcursion:updateExcursion,
   fetchAllExcursionsFromDB:fetchAllExcursionsFromDB,
   fetchExcursionFromDB:fetchExcursionFromDB};

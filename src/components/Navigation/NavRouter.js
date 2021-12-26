@@ -3,7 +3,7 @@ import Profile from '../Profile/Profile';
 import NavMenu from './NavMenu';
 import React from 'react';
 import Login from './Login';
-import SignUp from './SignUp';
+import SignUp from '../SignUp';
 import Home from '../Home';
 import Shopping from '../Shopping/Shopping';
 import {
@@ -11,6 +11,7 @@ import {
     Route,
     Routes
   } from 'react-router-dom';
+import CreateExcursion from '../CreateExcursion';
 
 /**
  *  @public NavRouter is responsible for all routing between pages
@@ -26,6 +27,7 @@ function NavRouter(){
               <Route path='/Profile' element={<Profile/>}/>
               <Route path='/Shopping' element={<Shopping/>}/>
               <Route path='/Login' element={<Login/>}/>
+              <Route path='/CreateExcursion' element={<CreateExcursion/>}/>
               <Route path='/SignUp' element={<SignUp/>}/>
             </Routes>
       </Router>

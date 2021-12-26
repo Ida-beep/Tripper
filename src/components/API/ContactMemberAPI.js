@@ -1,4 +1,5 @@
 import { Parse } from 'parse';
+import DutiesAPI from './DutiesAPI';
 
 /**
  * @public getContactMember retrieves the current users contactpersoninformation
@@ -35,6 +36,28 @@ import { Parse } from 'parse';
 //     return userObject;
 //     }
 // }
+
+const signUp = async (
+    {username, password, email, isOrganiser, excursionID}) => {
+    const user = new Parse.User();
+    user.set('username', username);
+    user.set('email', email);
+    // user.set('age', parseInt(age));
+    // user.set('firstName', firstName);
+    // user.set('lastName', lastName);
+    user.set('excursionID', excursionID);
+    user.set('isOrganiser', isOrganiser);
+    user.set('password', password);
+  
+    try {
+      let userResult = await user.signUp();
+      console.log('User signed up', userResult);
+      alert('User signed up', userResult);
+    } catch (error) {
+      console.error('Error while signing up user' +  error);
+      alert('Error while signing up user' + error);
+    }
+  };
 
 const fetchContactMemberFromDB = async () => {
     const User = Parse.User.current();
@@ -168,6 +191,7 @@ const updateContactMemberFromDB = async ({
 
 
 export default {
+    signUp:signUp,
     fetchContactMemberFromDB:fetchContactMemberFromDB,
     addContactMember:addContactMember,
     updateContactMemberFromDB:updateContactMemberFromDB};
