@@ -35,7 +35,7 @@ function Profile () {
                 toggleAddCar={()=>setShowCarPopup(false)} 
                 title="Add Car"/>
             
-            <div className="profile-1">
+            <div className="page-container">
                 <ContactMemberCard className ="ContactMemberCard" 
                     contactImage={ContactImage}
                     active={()=>setShowEditContactMember(true)}/>

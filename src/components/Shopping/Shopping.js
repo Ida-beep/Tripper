@@ -44,7 +44,7 @@ function Shopping() {
                 <PreviousShoppingListPopup title="Select Shopping Items" 
                     trigger={showPreviousShopping} excursionID={lastSelected}
                     editState={() => setShowPreviousShopping(false)} />
-                <div className="excursion-1">
+                <div className="page-container">
                     <ShoppingCard /> {/*Add props */}
                 </div>
                 <div className="cards-container">

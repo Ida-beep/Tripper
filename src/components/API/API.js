@@ -8,20 +8,26 @@ function initialize(){
     Parse.initialize('EVjh0m8JGZyGxYoKbj11GNJlN6mJ1gOhJDbbpBQV', 'o2WBDuLkFJlnhJmgIRTVqG29hYuzttGxVibVzgs6');
     Parse.serverURL = 'https://parseapi.back4app.com/';
 }
-async function signup({username,password}){
-    const user = new Parse.User();
-    user.set("username", username);
-    user.set("password", password);
-
-    const ContactMember = Parse.Object.extend("User");
-    const contactMember = new ContactMember();
-    contactMember.set("objectId",Parse.User.current().id);
-
+async function signup({username,password, email}){
     try {
-        await user.signUp();
-        await contactMember.save();
+
+        console.log("signup calledddddd")
+        const ContactMember = Parse.Object.extend("User");
+        const contactMember = new ContactMember();
+        
+        contactMember.set("username", username);
+        contactMember.set("password", password);
+        contactMember.set("email", email);
+        
+        contactMember.save()
+        .then((contactMember)=>{
+            alert("User was submitted: " + username); 
+        }, (error)=> {
+            alert("Failed to create object, error code: " + error.message);
+        });
+
     } catch (error) {
-        alert("Error: " + error.code + " " + error.message);
+        console.log(error);
     }
 }
 

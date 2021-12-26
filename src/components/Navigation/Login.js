@@ -9,18 +9,20 @@ function Login(props){
 
     const [username,setUsername] = useState();
     const [password,setPassword] = useState();
+
     const navigate = useNavigate();
 
-    function handleSignup(e){
-        e.preventDefault();
-        console.log("Signup was called");
-        const user = new Parse.User();
-        user.setPassword(password);
-        user.setUsername(username);
+    // function handleSignup(e){
+    //     e.preventDefault();
+    //     console.log("Signup was called");
+    //     const user = new Parse.User();
+    //     user.setPassword(password);
+    //     user.setUsername(username);
 
-        API.signup(username,password);
-        console.log("user singed up!");
-    }
+    //     API.signup(username,password);
+    //     console.log("user singed up!");
+    //<button className="button-secondary-extra-small" type="submit" onClick={handleSignup}>Signup</button>
+    // }
 
     function handleLoginAttempt(e) {
         e.preventDefault();
@@ -58,7 +60,7 @@ function Login(props){
                             </label>
                         </div>
                         <button className="button-secondary-extra-small" type="submit">Login</button>
-                        <button className="button-secondary-extra-small" type="submit" onClick={handleSignup}>Signup</button>
+                        
                         <br />
                         <br /> 
                         <p style={{textAlign: 'center'}} >

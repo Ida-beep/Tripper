@@ -31,7 +31,7 @@ function Excursion() {
                     editState={() => setPreviousDutiesActive(false)}/>
 
                 
-                <div className="excursion-1"> {/**Add className */}
+                <div className="page-container"> {/**Add className */}
                     <ExcursionCard active={()=>setExcursionEditActive(true)}/>
                 </div>
             </div>
