@@ -1,11 +1,10 @@
-import {React, useState, useEffect} from 'react';
+import { React, useState, useEffect } from "react";
 
-function DropDownItem(props){
-    const [selected,setSelected] = useState(false);
-    const [color,setColor] = useState("#FDF5D5");
-    
+function DropDownItem(props) {
+  const [selected, setSelected] = useState(false);
+  const [color, setColor] = useState("#FDF5D5");
 
-/*     useEffect(()=>{
+  /*     useEffect(()=>{
         selected? (
             setColor("#FADF63")
         ) : (
@@ -13,20 +12,26 @@ function DropDownItem(props){
         )
     },[selected]) */
 
-    return(
-        <div>
-            <li className="drop-down-item"
-                name={props.name}
-                style={{backgroundColor: color}}
-                onClick={()=>{
-                        setSelected(!selected);
-                        if(!selected){props.addToArr()}
-                        else {props.removeDuty()}
-                        }}>
-                <p className="DropDownItem-name">{props.name}</p> {/*Dont think this class exists?*/}
-            </li>
-        </div>
-    )
+  return (
+    <div>
+      <li
+        className="drop-down-item"
+        name={props.name}
+        style={{ backgroundColor: color }}
+        onClick={() => {
+          setSelected(!selected);
+          if (!selected) {
+            props.addToArr();
+          } else {
+            props.removeDuty();
+          }
+        }}
+      >
+        <p className="DropDownItem-name">{props.name}</p>{" "}
+        {/*Dont think this class exists?*/}
+      </li>
+    </div>
+  );
 }
 
 export default DropDownItem;
