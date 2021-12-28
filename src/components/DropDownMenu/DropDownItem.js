@@ -4,13 +4,17 @@ function DropDownItem(props) {
   const [selected, setSelected] = useState(false);
   const [color, setColor] = useState("#FDF5D5");
 
-  /*     useEffect(()=>{
-        selected? (
-            setColor("#FADF63")
-        ) : (
-            setColor("#FDF5D5")
-        )
-    },[selected]) */
+  useEffect(() => {
+    console.log("changed color inside DropDown Item using useEffect");
+    if (selected === true) {
+      setColor("#FADF63");
+      props.addToArr(props.name);
+      console.log("added item to array: ", props.name);
+    } else {
+      setColor("#FDF5D5");
+      props.removeDuty(props.name);
+    }
+  }, [selected]);
 
   return (
     <div>
@@ -19,12 +23,12 @@ function DropDownItem(props) {
         name={props.name}
         style={{ backgroundColor: color }}
         onClick={() => {
-          setSelected(!selected);
-          if (!selected) {
-            props.addToArr();
-          } else {
-            props.removeDuty();
-          }
+          console.log(selected);
+
+          setSelected((prevState) => !prevState);
+
+          console.log("clicked a list item");
+          console.log(selected);
         }}
       >
         <p className="DropDownItem-name">{props.name}</p>{" "}

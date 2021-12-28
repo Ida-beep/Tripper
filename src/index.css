@@ -347,7 +347,7 @@ a {
   justify-self: flex-start;
   margin-right: 15px;
 }
-.PlaceHolder {
+.placeHolder {
   display: flex;
   flex: 4;
   padding: 5px;
