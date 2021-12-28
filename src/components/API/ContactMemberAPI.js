@@ -1,11 +1,11 @@
-import { Parse } from 'parse';
-import DutiesAPI from './DutiesAPI';
+import { Parse } from "parse";
+import DutiesAPI from "./DutiesAPI";
 
 /**
  * @public getContactMember retrieves the current users contactpersoninformation
  * TODO
  * - Pointer didn't seem to work, so now the id of contactmember is hardcoded as string in back4app
- *   Atm it's a simple string with same ID representing the current user. 
+ *   Atm it's a simple string with same ID representing the current user.
  */
 
 // async function getContactMember(){
@@ -37,128 +37,167 @@ import DutiesAPI from './DutiesAPI';
 //     }
 // }
 
-const signUp = async (
-    {username, password, email, isOrganiser, excursionID}) => {
-    const user = new Parse.User();
-    user.set('username', username);
-    user.set('email', email);
-    // user.set('age', parseInt(age));
-    // user.set('firstName', firstName);
-    // user.set('lastName', lastName);
-    user.set('excursionID', excursionID);
-    user.set('isOrganiser', isOrganiser);
-    user.set('password', password);
-  
-    try {
-      let userResult = await user.signUp();
-      console.log('User signed up', userResult);
-      alert('User signed up', userResult);
-    } catch (error) {
-      console.error('Error while signing up user' +  error);
-      alert('Error while signing up user' + error);
-    }
-  };
+const signUp = async ({
+  username,
+  password,
+  email,
+  isOrganiser,
+  excursionID,
+}) => {
+  console.log("started signup process");
+  const user = new Parse.User();
+  user.set("username", username);
+  user.set("email", email);
+  // user.set('age', parseInt(age));
+  // user.set('firstName', firstName);
+  // user.set('lastName', lastName);
+  user.set("excursionID", excursionID);
+  user.set("isOrganiser", isOrganiser);
+  user.set("password", password);
+
+  try {
+    let userResult = await user.signUp();
+    console.log("User signed up", userResult);
+    alert("User signed up", userResult);
+  } catch (error) {
+    console.error("Error while signing up user" + error);
+    alert("Error while signing up user" + error);
+  }
+};
 
 const fetchContactMemberFromDB = async () => {
-    const User = Parse.User.current();
-    const id = User.id;
+  const User = Parse.User.current();
+  const id = User.id;
 
-    const queryUser = new Parse.Query("User");
-    const user = await queryUser.get(id);
-    
-    const contactMember = await queryUser.get(user.id);
+  const queryUser = new Parse.Query("User");
+  const user = await queryUser.get(id);
 
-    const username = contactMember.get("username");
-    const firstName = contactMember.get("firstName");
-    const lastName = contactMember.get("lastName");
-    const age = contactMember.get("age");
-    const email = contactMember.get("email");
-    const street = contactMember.get("street");
-    const zip = contactMember.get("zip");
-    const city = contactMember.get("city");
-    const mobilePhone = contactMember.get("mobilePhone");
-    const phone = contactMember.get("phone");
-    const workPhone = contactMember.get("workPhone");
-    const duties = contactMember.get("duties");
-    
-    const contactMemberData = {firstName:firstName, lastName:lastName, age:age, email:email,
-        street:street, zip:zip, city:city, mobilePhone:mobilePhone, phone:phone, 
-        workPhone:workPhone, duties};
+  const contactMember = await queryUser.get(user.id);
 
-    return contactMemberData
-}
+  const username = contactMember.get("username");
+  const firstName = contactMember.get("firstName");
+  const lastName = contactMember.get("lastName");
+  const age = contactMember.get("age");
+  const email = contactMember.get("email");
+  const street = contactMember.get("street");
+  const zip = contactMember.get("zip");
+  const city = contactMember.get("city");
+  const mobilePhone = contactMember.get("mobilePhone");
+  const phone = contactMember.get("phone");
+  const workPhone = contactMember.get("workPhone");
+  const duties = contactMember.get("duties");
 
-function addContactMember({firstName,lastName,age,duties,email,street,workPhone,phone,mobilePhone,zip,city}){
-    
-    try{
-        const ContactMember = Parse.Object.extend("User");
-        const contactMember = new ContactMember();
-        contactMember.set("firstName",firstName);
-        contactMember.set("lastName",lastName);
-        contactMember.set("age",parseInt(age));
-        contactMember.set("duties",duties);
-        contactMember.set("email",email);
-        contactMember.set("zip",parseInt(zip));
-        contactMember.set("street",street);
-        contactMember.set("city",city);
-        contactMember.set("workPhone",parseInt(workPhone));
-        contactMember.set("phone",parseInt(phone));
-        contactMember.set("mobilePhone",parseInt(mobilePhone));
+  const contactMemberData = {
+    firstName: firstName,
+    lastName: lastName,
+    age: age,
+    email: email,
+    street: street,
+    zip: zip,
+    city: city,
+    mobilePhone: mobilePhone,
+    phone: phone,
+    workPhone: workPhone,
+    duties,
+  };
 
-        contactMember.save()
-        .then((contactMember)=>{
-            alert("A Family Member was submitted: " + contactMember.firstName); 
-        }, (error)=> {
-            alert("Failed to create object, error code: " + error.message);
-        });
+  return contactMemberData;
+};
 
-    } catch(error){
-        console.log(error);
-    }
+function addContactMember({
+  firstName,
+  lastName,
+  age,
+  duties,
+  email,
+  street,
+  workPhone,
+  phone,
+  mobilePhone,
+  zip,
+  city,
+}) {
+  try {
+    const ContactMember = Parse.Object.extend("User");
+    const contactMember = new ContactMember();
+    contactMember.set("firstName", firstName);
+    contactMember.set("lastName", lastName);
+    contactMember.set("age", parseInt(age));
+    contactMember.set("duties", duties);
+    contactMember.set("email", email);
+    contactMember.set("zip", parseInt(zip));
+    contactMember.set("street", street);
+    contactMember.set("city", city);
+    contactMember.set("workPhone", parseInt(workPhone));
+    contactMember.set("phone", parseInt(phone));
+    contactMember.set("mobilePhone", parseInt(mobilePhone));
+
+    contactMember.save().then(
+      (contactMember) => {
+        alert("A Family Member was submitted: " + contactMember.firstName);
+      },
+      (error) => {
+        alert("Failed to create object, error code: " + error.message);
+      }
+    );
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 const updateContactMemberFromDB = async ({
-    firstName,lastName,age,duties,email,street,workPhone,phone,mobile,zip,city}) => {
-  
-    const User = new Parse.User();
-    const query = new Parse.Query(User);
+  firstName,
+  lastName,
+  age,
+  duties,
+  email,
+  street,
+  workPhone,
+  phone,
+  mobile,
+  zip,
+  city,
+}) => {
+  const User = new Parse.User();
+  const query = new Parse.Query(User);
 
+  try {
+    // Finds the user by its ID
+    const User = Parse.User.current();
+    const id = User.id;
+    let user = await query.get(id);
+
+    // Updates the data we want
+    user.set("email", email);
+    user.set("street", street);
+    user.set("zip", parseInt(zip));
+    user.set("age", parseInt(age));
+    user.set("workPhone", parseInt(workPhone));
+    user.set("mobilePhone", parseInt(mobile));
+    user.set("phone", parseInt(phone));
+    user.set("duties", duties);
+    user.set("firstName", firstName);
+    user.set("lastName", lastName);
+    user.set("city", city);
     try {
-        // Finds the user by its ID
-        const User = Parse.User.current();
-        const id = User.id;
-        let user = await query.get(id);
-
-        // Updates the data we want
-        user.set('email', email);
-        user.set('street', street);
-        user.set('zip', parseInt(zip));
-        user.set('age', parseInt(age));
-        user.set('workPhone', parseInt(workPhone));
-        user.set('mobilePhone', parseInt(mobile));
-        user.set('phone', parseInt(phone));
-        user.set('duties', duties);
-        user.set('firstName', firstName);
-        user.set('lastName', lastName);
-        user.set('city', city);
-        try {
-        // Saves the user with the updated data
-        let response = await user.save().then(()=>{
-            alert("Info successfully updated");
-        }, (error)=>{
-            alert("failed to update with error-code : " + error.code);
-        });
-
-        console.log('Updated user', response);
-        } catch (error) {
-        console.error('Error while updating user', error);
+      // Saves the user with the updated data
+      let response = await user.save().then(
+        () => {
+          alert("Info successfully updated");
+        },
+        (error) => {
+          alert("failed to update with error-code : " + error.code);
         }
+      );
+
+      console.log("Updated user", response);
     } catch (error) {
-        console.error('Error while retrieving user', error);
+      console.error("Error while updating user", error);
     }
+  } catch (error) {
+    console.error("Error while retrieving user", error);
+  }
 };
-
-
 
 /** 
  
@@ -188,10 +227,9 @@ const updateContactMemberFromDB = async ({
 }
  */
 
-
-
 export default {
-    signUp:signUp,
-    fetchContactMemberFromDB:fetchContactMemberFromDB,
-    addContactMember:addContactMember,
-    updateContactMemberFromDB:updateContactMemberFromDB};
+  signUp: signUp,
+  fetchContactMemberFromDB: fetchContactMemberFromDB,
+  addContactMember: addContactMember,
+  updateContactMemberFromDB: updateContactMemberFromDB,
+};
