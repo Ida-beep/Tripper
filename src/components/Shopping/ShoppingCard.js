@@ -1,21 +1,45 @@
-import React from 'react';
-import ShoppingLongCard from './ShoppingLongCard.js';
-import LongCard from '../Cards/LongCard'
-
+import LongCard from "../Cards/LongCard";
+import React, { useState, useEffect } from "react";
+import ExcursionAPI from "../API/ExcursionAPI.js";
 
 function ShoppingCard(props) {
+  const [selected, setSelected] = useState([]);
+  const [excursionInfo, setExcursionInfo] = useState([]);
 
+  useEffect(() => {
+    async function fetchData() {
+      setExcursionInfo(await ExcursionAPI.fetchExcursionFromDB());
+    }
+    fetchData();
+    console.log("excursionCard useEffect called");
+  }, []);
 
-    return (
-        <LongCard >
-            <div className="shopping-card-main-content">
-                <h4>Shopping List</h4>
-                <p className="subtitle"  >25/1/22 - 30/1/22, Fjellet 29</p>
-                <p>Here you can easily create a Shopping List for your Excursion. </p>
-                <p style={{paddingTop:"10px"}}>Adults:   Teenagers:    Kids:</p>
-            </div>
-        </LongCard>
-    );
+  let subtitle =
+    excursionInfo.fromDate +
+    " - " +
+    excursionInfo.toDate +
+    ", " +
+    excursionInfo.location;
+
+  return (
+    <LongCard active={props.active}>
+      <div className="excursion-card">
+        <div className="excursion-card-main-content">
+          <h4>{excursionInfo.excursionTitle}</h4>
+          <p className="subtitle">{subtitle}</p>
+          <p>{excursionInfo.description}</p>
+        </div>
+      </div>
+      <div className="edit-button-container">
+        <button disabled={true} className="button-secondary-extra-small">
+          Send Out Invite!
+        </button>
+        <button className="button-primary-extra-small" onClick={props.active}>
+          Edit
+        </button>
+      </div>
+    </LongCard>
+  );
 }
 
 export default ShoppingCard;
