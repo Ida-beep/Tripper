@@ -112,10 +112,10 @@ async function addMultipleDuties(list) {
   }
 }
 
-async function deleteDuty(duties) {
-  for (let i = 0; i < duties.length; i++) {
-    const duty = duties[i];
+async function deleteDuty(duty) {
+  console.log("DELETE IN API CALLED, deleting: ", duty);
 
+  if (typeof duty !== "undefined") {
     const dutyID = duty.id;
     const Duties = Parse.Object.extend("Duties");
     const query = new Parse.Query(Duties);
@@ -124,6 +124,7 @@ async function deleteDuty(duties) {
     let result = await query.find();
     result = result[0];
 
+    console.log("result is: ", result);
     result.destroy().then(
       () => {
         alert("Duty successfully deleted ");

@@ -6,12 +6,61 @@ function DutiesCard(props) {
   const [allDuties, setAllDuties] = useState([]);
   const [selected, setSelected] = useState();
 
+  async function fetchUpdatedDuties() {
+    const refetchedList = await DutiesAPI.fetchDutiesFromDB();
+    setAllDuties(refetchedList);
+  }
+
+  function fetchUpdateAfterDeletion() {
+    console.log("deleting: ", selected);
+    DutiesAPI.deleteDuty(selected).then(async () => {
+      const refetchedList = await DutiesAPI.fetchDutiesFromDB();
+      setAllDuties(refetchedList);
+    });
+  }
+
+  function removeAllSelected() {
+    if (typeof selected !== "undefined") {
+      selected.forEach((n) => {
+        selected.splice(n);
+      });
+      console.log("the content of selected-array is now: ", selected);
+    }
+  }
+
+  useEffect(() => {
+    props.setDeletionHappening(false);
+    props.toggleDeletePopup(false);
+    removeAllSelected();
+  }, [allDuties]);
+
+  useEffect(() => {
+    if (props.deletionConfirmed === true) {
+      console.log("The deletion is confirmed?: ", props.deletionConfirmed);
+      fetchUpdateAfterDeletion();
+    }
+  }, [props.deletionConfirmed]);
+
+  useEffect(() => {
+    if (props.addPrevious === true) {
+      fetchUpdatedDuties();
+      console.log("after updating the list is now: ", selected);
+      removeAllSelected();
+      props.setAddPrevious(false);
+    }
+  }, [props.addPrevious]);
+
+  useEffect(() => {
+    console.log("DUTIES CARD : Added duties with value ", props.onDutiesAdded);
+    fetchUpdatedDuties();
+    props.addingDuty(false);
+  }, [props.onDutiesAdded]);
+
   function addElementToSelected(element) {
     setSelected(element);
     // setSelected((prevState)=> [...prevState,element]);
     // console.log("selected: ", selected);
   }
-
   useEffect(() => {
     async function fetchData() {
       setAllDuties(await DutiesAPI.fetchDutiesFromDB());
@@ -22,10 +71,9 @@ function DutiesCard(props) {
 
   async function handleDelete(e) {
     e.preventDefault();
-    DutiesAPI.deleteDuty(selected).then(async () => {
-      const refetchedList = await DutiesAPI.fetchDutiesFromDB();
-      setAllDuties(refetchedList);
-    });
+    props.toggleDeletePopup(true);
+    console.log("DUTIES CARD: selected to be deleted ", selected);
+    props.setDutyToDelete(selected);
   }
 
   function disableDelete() {
@@ -36,9 +84,9 @@ function DutiesCard(props) {
   }
 
   //Returns selected data to Excursion component
-  useEffect(() => {
+  /*   useEffect(() => {
     props.selected(selected);
-  }, [selected]);
+  }, [selected]); */
 
   return (
     <div className="card-container">
