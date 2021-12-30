@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import Footer from "./Footer.js";
 import Image from "../assets/car.png";
 
+import ImgTripCar from "./ImgTripCar.js";
+
 function Home() {
   return (
     <>
@@ -13,6 +15,10 @@ function Home() {
             <p style={{ color: "#1ea774" }}>
               Start planning your next Excursion today{" "}
             </p>
+
+
+            <ImgTripCar />
+
             <div className="button-container">
               <Link to="/OrganiserLogin">
                 <button className="button-primary-medium">
