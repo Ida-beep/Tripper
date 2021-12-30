@@ -9,7 +9,8 @@ import EditContactMember from "./EditContactMember.js";
 import Image from "../../assets/norwegian_fjord.png";
 import AddCarPopup from "./AddCarPopup";
 import EditFamilyMemberPopup from "./EditFamilyMemberPopup";
-import DeletePopup from "../Cards/DeletePopup";
+import DeletePopup from "./DeletePopup";
+import Footer from "../Footer.js";
 
 /**
  *  @public Profile displays the different Card types and formats them
@@ -24,10 +25,13 @@ function Profile() {
   const [deleteMember, setDeleteMember] = useState(false);
   const [memberToDelete, setMemberToDelete] = useState();
   const [confirmedDeletion, setConfirmedDeletion] = useState();
+  const [cancelDelete, setCancelDelete] = useState(false);
+  const [selectedMember, setSelectedMember] = useState();
+  const [didUpdate, setDidUpdate] = useState(false);
 
   useEffect(() => {
-    console.log("The confirmation was called with value: ", confirmedDeletion);
-  }, [confirmedDeletion]);
+    console.log("PROFILE: value of update is : ", didUpdate);
+  }, [didUpdate]);
 
   return (
     <div className="profile">
@@ -38,6 +42,7 @@ function Profile() {
       />
       <DeletePopup
         showDeletePopup={deleteMember}
+        onCancel={(isCanceled) => setCancelDelete(isCanceled)}
         toggleDeletePopup={(isOpen) => setDeleteMember(isOpen)}
         memberToDelete={memberToDelete}
         onConfirmation={(isConfirmed) => {
@@ -45,14 +50,14 @@ function Profile() {
         }}
       />
       <EditFamilyMemberPopup
+        selectedMember={selectedMember}
+        didUpdate={(didUpdate) => setDidUpdate(didUpdate)}
         editFMActive={editFMActive}
         editState={() => setEditFMActive(false)}
-        title="Edit Family Member"
       />
       <EditContactMember
         showEditContactMember={showEditContactMember}
         toggleContactMember={() => setShowEditContactMember(false)}
-        title=""
       />
       <AddCarPopup
         showCarPopup={showCarPopup}
@@ -75,19 +80,26 @@ function Profile() {
       </div>
       <div className="cards-container">
         <YouAndYourFamilyCard
-          member={(member) => {
+          memberToDelete={(member) => {
             setMemberToDelete(member);
           }}
           onDeletion={(isDeleting) => {
             setDeleteMember(isDeleting);
           }}
+          selectedMember={(member) => {
+            setSelectedMember(member);
+          }}
+          didUpdate={didUpdate}
+          setDidUpdate={(isUpdating) => setDidUpdate(isUpdating)}
           toggleFamilyItem={() => setShowAddFamilyPopup(true)}
+          isCanceled={cancelDelete}
           editActive={() => setEditFMActive(true)}
           onConfirmation={confirmedDeletion}
           onAddingFamilyMembers={showAddFamilyPopup}
         />
         <CarsAndSeatsCard toggleCarItem={() => setShowCarPopup(true)} />
       </div>
+      <Footer />
     </div>
   );
 }

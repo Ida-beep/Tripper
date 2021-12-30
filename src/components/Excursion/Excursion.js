@@ -5,8 +5,8 @@ import EditExcursion from "./EditExcursion";
 import GuestDutyCard from "./GuestDutyCard";
 import DutiesCard from "./DutiesCard";
 import AddDutyPopup from "./AddDutyPopup";
-import DeletePopup from "../Cards/DeletePopup";
 import PreviousDutiesPopup from "./PreviousDutiesPopup";
+import Footer from "../Footer";
 
 function Excursion() {
   const [editExcursionActive, setExcursionEditActive] = useState(false);
@@ -46,9 +46,9 @@ function Excursion() {
       <div className="page-container">
         <div className="duties-headline">
           <h4 style={{ fontSize: "20px" }}>Duties and Participants</h4>
-          <p>
+          <p style={{ width: "464px" }}>
             Here you can add duties to your excursion and assign partcipants to
-            join them
+            join them. You can always go back and try again!
           </p>
         </div>
       </div>
@@ -60,6 +60,7 @@ function Excursion() {
         />
         <GuestDutyCard />
       </div>
+      <Footer />
     </div>
   );
 }

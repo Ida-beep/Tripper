@@ -32,6 +32,8 @@ function AddFamilyPopup(props) {
     console.log("age was changed");
   }
 
+  handle;
+
   function handleSubmit(e) {
     e.preventDefault();
     FamilyMemberAPI.addFamilyMember(personData);
@@ -57,16 +59,14 @@ function AddFamilyPopup(props) {
     >
       Finish
     </button>,
+    <button className="button-primary-extra-small" disabled={disable()}>
+      Add
+    </button>,
   ];
 
   return (
     props.showAddFamilyPopup && (
-      <PopUp
-        data={personData}
-        title="Add Family Member"
-        submitChanges={handleSubmit}
-        buttons={buttons}
-      >
+      <PopUp data={personData} submitChanges={handleSubmit} buttons={buttons}>
         <div className="input-section">
           <LongInput
             title="First Name"
@@ -89,13 +89,6 @@ function AddFamilyPopup(props) {
         </div>
         <div className="input-section">
           <DropDownMenu duties={duties} />
-          <button
-            className="button-secondary-extra-small"
-            style={{ marginTop: "50px" }}
-            disabled={disable()}
-          >
-            Add
-          </button>
         </div>
       </PopUp>
     )

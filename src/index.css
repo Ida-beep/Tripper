@@ -46,7 +46,7 @@ h4 {
 /*Subtitle suggestion*/
 .subtitle {
   font-size: 12pt;
-  margin-top: -20px;
+  margin-top: -5px;
   margin-bottom: 20px;
 }
 
@@ -425,7 +425,7 @@ a {
   display: flex;
   justify-content: space-between;
   color: #6b6b6b;
-  border-bottom: solid #fadf63 2px;
+  border-bottom: solid #fadf63 3px;
   padding: 15px;
 }
 .Footer {
@@ -459,7 +459,7 @@ a {
   width: 932px;
   height: auto;
   background-color: #fffbf2;
-  border: solid #fadf63 1px;
+  border: #fadf63 solid 2px;
 }
 
 .contact-person-card {
@@ -488,6 +488,8 @@ a {
   flex: 2;
 }
 .duties-headline {
+  color: #0c6d4a;
+  padding: 10px;
   width: 925px;
   display: flex;
   align-items: flex-start;
@@ -709,7 +711,7 @@ label {
   width: 436px;
   min-width: 436px;
   margin: 0px 10px;
-  border: solid #fadf63 1px;
+  border: solid #fadf63 2px;
 }
 
 /* ------------TABLE RELATED STYLING--------*/
@@ -726,6 +728,9 @@ table {
 }
 th {
   text-align: left;
+  font-size: 13px;
+  font-family: "Poppins", sans-serif;
+  color: #8d8d8d;
   background-color: #fffbf2;
   position: sticky;
   top: 0px;
@@ -740,6 +745,7 @@ td {
 }
 .trow {
   margin: 10px;
+  font-size: 15px;
   cursor: default;
   border: transparent solid 2px;
 }
@@ -794,8 +800,8 @@ td {
 .footer-container {
   display: flex;
   justify-content: center;
-  height: 100%;
   padding-top: 25px;
+  margin-top: 150px;
   border-top: solid #fadf63 2px;
 
   /*border: #fadf63 solid 2px;

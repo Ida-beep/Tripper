@@ -12,7 +12,6 @@ import ExtraLongInput from "../Cards/ExtraLongInput";
  * edit contact person information, using its parent Popup.js
  *
  * TO DO
- * - All mobile numbers are not mandatory, change this
  * - How to prevent overwriting of data when editing contact member information
  */
 
@@ -22,7 +21,7 @@ function EditContactMember(props) {
   useEffect(() => {
     async function fetchData() {
       setContactP(await ContactMemberAPI.fetchContactMemberFromDB());
-      console.log("fetchContactMember called");
+      console.log("fetched the following :", contactP);
     }
     fetchData();
     console.log("EditContactMember useeffect called ");

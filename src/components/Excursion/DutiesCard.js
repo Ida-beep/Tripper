@@ -48,7 +48,7 @@ function DutiesCard(props) {
           // Pass the key name from database object in array matching headers
           tkey={["name", "minRequired", "peopleAssigned"]}
           //Pass Real headers in array
-          theaders={["Duty", "Min. guests", "People Assigned"]}
+          theaders={["Duty", "Min. participants", "People Assigned"]}
           // Pass object data source
           tdata={allDuties}
         />
