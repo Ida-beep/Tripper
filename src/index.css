@@ -46,7 +46,7 @@ h4 {
 /*Subtitle suggestion*/
 .subtitle {
   font-size: 12pt;
-  margin-top: -20px;
+  margin-top: -5px;
   margin-bottom: 20px;
 }
 
@@ -109,7 +109,7 @@ li {
   font-size: 10pt;
   font-weight: 500;
   color: #fefbec;
-  border: #1ea774 1px;
+  border: solid #1ea774 3px;
   background-color: #1ea774;
   height: 25px;
   padding-left: 10px;
@@ -118,7 +118,7 @@ li {
 }
 
 .button-primary-extra-small:disabled {
-  border: solid #a6a6a6 1px;
+  border: solid #a6a6a6 3px;
   color: #fefbec;
   background-color: #a6a6a6;
   cursor: not-allowed;
@@ -126,7 +126,23 @@ li {
 }
 
 .button-primary-extra-small:hover {
-  border: solid #2cf2b0 1px;
+  border: solid #0c6d4a 3px;
+  background-color: #0c6d4a;
+}
+.delete-button {
+  font-family: "Roboto Slab", serif;
+  font-size: 10pt;
+  font-weight: 500;
+  border: solid #dd0d18 1px;
+  color: #dd0d18;
+  background-color: transparent;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin: 10px;
+}
+.delete-button:hover {
+  color: #fffbf2;
+  background-color: #dd0d18;
 }
 
 .button-secondary-extra-small {
@@ -409,7 +425,7 @@ a {
   display: flex;
   justify-content: space-between;
   color: #6b6b6b;
-  border-bottom: solid #fadf63 2px;
+  border-bottom: solid #fadf63 3px;
   padding: 15px;
 }
 .Footer {
@@ -443,7 +459,7 @@ a {
   width: 932px;
   height: auto;
   background-color: #fffbf2;
-  border: solid #fadf63 1px;
+  border: #fadf63 solid 2px;
 }
 
 .contact-person-card {
@@ -470,6 +486,16 @@ a {
   display: flex;
   flex-direction: column;
   flex: 2;
+}
+.duties-headline {
+  color: #0c6d4a;
+  padding: 10px;
+  width: 925px;
+  display: flex;
+  align-items: flex-start;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  flex-direction: column;
 }
 
 .shopping-card-main-content {
@@ -503,9 +529,11 @@ a {
 
 .edit-button-container {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  align-items: flex-end;
   justify-content: flex-end;
-  padding: 25px;
+  width: 400px;
+  padding: 10px;
 }
 
 .contact-member-image {
@@ -611,21 +639,22 @@ label {
 
 .popup {
   display: flex;
-  position: fixed;
+  position: absolute;
   top: 0;
+  justify-items: center;
   z-index: 1;
-  width: 100%;
+  width: 200%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.2);
 }
 .popup-content {
   display: flex;
   flex-direction: column;
+
   background-color: #fffbf2;
   position: absolute;
   top: 15%;
   left: 15%;
-
   padding: 50px;
   border-radius: 5px;
   border: 1px solid #fadf63;
@@ -657,6 +686,7 @@ label {
   display: flex;
   flex-direction: row;
   width: 100%;
+  margin-top: 30px;
 }
 
 .popup-button-footer {
@@ -681,26 +711,31 @@ label {
   width: 436px;
   min-width: 436px;
   margin: 0px 10px;
-  border: solid #fadf63 1px;
+  border: solid #fadf63 2px;
 }
 
 /* ------------TABLE RELATED STYLING--------*/
 .table-container {
   height: 250px;
+
   overflow-y: scroll;
 }
 table {
   border-collapse: collapse;
-  width: 100%;
+  width: 99%;
   font-size: 10pt;
   color: #424242;
 }
 th {
   text-align: left;
+  font-size: 13px;
+  font-family: "Poppins", sans-serif;
+  color: #8d8d8d;
   background-color: #fffbf2;
   position: sticky;
   top: 0px;
-  padding-bottom: 5px;
+  padding-top: 10px;
+  padding-bottom: 15px;
   border-bottom: solid 2px #fadf63;
 }
 
@@ -710,6 +745,7 @@ td {
 }
 .trow {
   margin: 10px;
+  font-size: 15px;
   cursor: default;
   border: transparent solid 2px;
 }
@@ -718,14 +754,10 @@ td {
 }
 
 /* Buttons in the buttom of a card*/
-.button-container {
-  display: flex;
-  justify-content: center;
-}
 
 .button-container > button {
   margin-left: 15px;
-  margin-top: 15px;
+  margin-top: 5px;
 }
 
 /*-------- Upload (Profile_Image) -----------*/
@@ -768,8 +800,8 @@ td {
 .footer-container {
   display: flex;
   justify-content: center;
-  height: 100%;
   padding-top: 25px;
+  margin-top: 150px;
   border-top: solid #fadf63 2px;
 
   /*border: #fadf63 solid 2px;
@@ -829,10 +861,10 @@ td {
 
 .button-container {
   display: flex;
-  justify-content: left;
+  justify-content: right;
   margin-left: -15px;
-  margin-top: 40px;
-  margin-bottom: 40px;
+  margin-top: 20px;
+  margin-bottom: 10px;
 }
 
 /*-------- Create Excursion -----------*/

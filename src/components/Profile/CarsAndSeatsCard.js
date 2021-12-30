@@ -1,70 +1,70 @@
-import React, {useState, useEffect} from 'react';
-import TableScaffold from '../Cards/TableScaffold';
-import CarsAPI from '../API/CarsAPI';
+import React, { useState, useEffect } from "react";
+import TableScaffold from "../Cards/TableScaffold";
+import CarsAPI from "../API/CarsAPI";
 
-function CarsAndSeatsCard(props){
-    const [carsAndSeats,setCarsAndSeats] = useState([]);
-    const [selected, setSelected] = useState([]);
-    
-    function addElementToSelected(element){
-        setSelected((prevState)=> [...prevState,element]);
-        console.log(selected);
+function CarsAndSeatsCard(props) {
+  const [carsAndSeats, setCarsAndSeats] = useState([]);
+  const [selected, setSelected] = useState([]);
+
+  function addElementToSelected(element) {
+    setSelected((prevState) => [...prevState, element]);
+    console.log(selected);
+  }
+
+  async function handleDelete(e) {
+    e.preventDefault();
+    CarsAPI.deleteCar(selected).then(async () => {
+      const refetchedList = await CarsAPI.fetchCarsFromDB();
+      setCarsAndSeats(refetchedList);
+    });
+  }
+
+  useEffect(() => {
+    async function fetchData() {
+      setCarsAndSeats(await CarsAPI.fetchCarsFromDB());
     }
+    fetchData();
+    console.log("use Effect for fetchCarsFromDB called");
+  }, []);
 
-    async function handleDelete(e){
-        e.preventDefault();
-        CarsAPI.deleteCar(selected).then(async () => {
-            const refetchedList = await CarsAPI.fetchCarsFromDB();
-            setCarsAndSeats(refetchedList);
-        });
+  function disable() {
+    if (selected.length < 1) {
+      return true;
     }
+    return false;
+  }
 
-    useEffect(()=> {
-        async function fetchData(){
-            setCarsAndSeats(await CarsAPI.fetchCarsFromDB())
-        };
-        fetchData();
-        console.log("use Effect for fetchCarsFromDB called")
-    }, []) 
+  return (
+    <div className="card-container">
+      <div className="table-container">
+        <TableScaffold
+          onSelection={(selected) => addElementToSelected(selected)}
+          tkey={["carModel", "licensePlate", "carColor", "carSeats"]}
+          theaders={["Car", "License", "Color", "Seats"]}
+          tdata={carsAndSeats}
+        />
+      </div>
 
-    function disable() {
-        if (selected.length < 1) {
-            return true;
-        }
-        return false;
-    }
-
-    return (   
-        <div className="card-container">
-            <h4 style={{fontSize:"20px"}}>Cars and Seats</h4>
-            <div className="table-container">
-                <TableScaffold onSelection={(selected)=>addElementToSelected(selected)}
-                    tkey={[
-                        "carModel",
-                        "licensePlate",
-                        "carColor",
-                        "carSeats"
-                    ]}
-                    theaders={[
-                        "Car",
-                        "License",
-                        "Color",
-                        "Seats"
-                    ]} 
-                    tdata={carsAndSeats}
-                />
-            </div>
-            
-            <div className="button-container">
-                <button className="button-secondary-extra-small" onClick={handleDelete}
-                    disabled={disable()}>Delete</button>
-                <button className="button-secondary-extra-small"
-                    disabled={disable()}>Edit</button>
-                <button className="button-primary-extra-small" onClick={props.toggleCarItem}>Add</button>
-            </div>       
-        </div>
-    )
+      <div className="button-container">
+        <button
+          className="button-secondary-extra-small"
+          onClick={handleDelete}
+          disabled={disable()}
+        >
+          Delete
+        </button>
+        <button className="button-secondary-extra-small" disabled={disable()}>
+          Edit
+        </button>
+        <button
+          className="button-primary-extra-small"
+          onClick={props.toggleCarItem}
+        >
+          Add Car
+        </button>
+      </div>
+    </div>
+  );
 }
 
 export default CarsAndSeatsCard;
-    

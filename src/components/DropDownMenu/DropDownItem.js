@@ -1,38 +1,39 @@
+import { idempotency } from "parse";
 import { React, useState, useEffect } from "react";
 
 function DropDownItem(props) {
   const [selected, setSelected] = useState(false);
-  const [color, setColor] = useState("#FDF5D5");
+  const [unSelectedColor, setUnSelectedColor] = useState("#FDF5D5");
+  const [selectedColor, setSelectedColor] = useState("#FADF63");
+  const [count, setCount] = useState(0);
 
-  useEffect(() => {
-    console.log("changed color inside DropDown Item using useEffect");
-    if (selected === true) {
-      setColor("#FADF63");
-      props.addToArr(props.name);
-      console.log("added item to array: ", props.name);
+  function handleClick() {
+    setCount(count + 1);
+    console.log(count);
+    if (count % 2 === 1) {
+      console.log("unselected");
+      setSelected(false);
+      //props.removeDuty();
     } else {
-      setColor("#FDF5D5");
-      props.removeDuty(props.name);
+      console.log("selected");
+      setSelected(true);
+      //props.addToArr(props.name);
     }
-  }, [selected]);
+  }
 
   return (
     <div>
       <li
         className="drop-down-item"
         name={props.name}
-        style={{ backgroundColor: color }}
-        onClick={() => {
-          console.log(selected);
-
-          setSelected((prevState) => !prevState);
-
-          console.log("clicked a list item");
-          console.log(selected);
-        }}
+        style={
+          selected
+            ? { backgroundColor: selectedColor }
+            : { backgroundColor: unSelectedColor }
+        }
+        onClick={handleClick}
       >
-        <p className="DropDownItem-name">{props.name}</p>{" "}
-        {/*Dont think this class exists?*/}
+        <p>{props.name}</p>
       </li>
     </div>
   );
