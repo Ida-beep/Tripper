@@ -32,8 +32,6 @@ function AddFamilyPopup(props) {
     console.log("age was changed");
   }
 
-  handle;
-
   function handleSubmit(e) {
     e.preventDefault();
     FamilyMemberAPI.addFamilyMember(personData);
