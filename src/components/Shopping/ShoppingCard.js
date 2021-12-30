@@ -1,8 +1,8 @@
+import LongCard from "../Cards/LongCard";
 import React, { useState, useEffect } from "react";
-import LongCard from "../Cards/LongCard.js";
 import ExcursionAPI from "../API/ExcursionAPI.js";
 
-function ExcursionCard(props) {
+function ShoppingCard(props) {
   const [selected, setSelected] = useState([]);
   const [excursionInfo, setExcursionInfo] = useState([]);
 
@@ -10,7 +10,6 @@ function ExcursionCard(props) {
     async function fetchData() {
       setExcursionInfo(await ExcursionAPI.fetchExcursionFromDB());
     }
-
     fetchData();
     console.log("excursionCard useEffect called");
   }, []);
@@ -43,4 +42,4 @@ function ExcursionCard(props) {
   );
 }
 
-export default ExcursionCard;
+export default ShoppingCard;

@@ -1,30 +1,31 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import TableScaffold from "../Cards/TableScaffold";
-import CarsAPI from "../API/CarsAPI";
+import ShoppingAPI from "../API/ShoppingAPI";
 
-function CarsAndSeatsCard(props) {
-  const [carsAndSeats, setCarsAndSeats] = useState([]);
+function ShoppingListCard(props) {
+  const [shoppingList, setShoppingList] = useState([]);
   const [selected, setSelected] = useState([]);
+
+  async function handleDelete(e) {
+    e.preventDefault();
+    console.log("handle delete called");
+    ShoppingAPI.deleteShoppingItem(selected).then(async () => {
+      const refetchedList = await ShoppingAPI.fetchShoppingListFromDB();
+      setShoppingList(refetchedList);
+    });
+  }
 
   function addElementToSelected(element) {
     setSelected((prevState) => [...prevState, element]);
     console.log(selected);
   }
 
-  async function handleDelete(e) {
-    e.preventDefault();
-    CarsAPI.deleteCar(selected).then(async () => {
-      const refetchedList = await CarsAPI.fetchCarsFromDB();
-      setCarsAndSeats(refetchedList);
-    });
-  }
-
   useEffect(() => {
     async function fetchData() {
-      setCarsAndSeats(await CarsAPI.fetchCarsFromDB());
+      setShoppingList(await ShoppingAPI.fetchShoppingListFromDB());
     }
     fetchData();
-    console.log("use Effect for fetchCarsFromDB called");
+    console.log("Shoppinglist useEffect called");
   }, []);
 
   function disable() {
@@ -39,12 +40,11 @@ function CarsAndSeatsCard(props) {
       <div className="table-container">
         <TableScaffold
           onSelection={(selected) => addElementToSelected(selected)}
-          tkey={["carModel", "licensePlate", "carColor", "carSeats"]}
-          theaders={["Car", "License", "Color", "Seats"]}
-          tdata={carsAndSeats}
+          tkey={["itemName", "amount", "unit"]}
+          theaders={["Item", "Amount", "Unit"]}
+          tdata={shoppingList}
         />
       </div>
-
       <div className="button-container">
         <button
           className="button-secondary-extra-small"
@@ -56,15 +56,12 @@ function CarsAndSeatsCard(props) {
         <button className="button-secondary-extra-small" disabled={disable()}>
           Edit
         </button>
-        <button
-          className="button-primary-extra-small"
-          onClick={props.toggleCarItem}
-        >
-          Add Car
+        <button className="button-primary-extra-small" onClick={props.active}>
+          Add
         </button>
       </div>
     </div>
   );
 }
 
-export default CarsAndSeatsCard;
+export default ShoppingListCard;
