@@ -44,17 +44,18 @@ function AddFamilyPopup(props) {
     return false;
   }
 
+  function closeAndReset() {
+    props.toggleFamilyItem();
+    setAge();
+    setFirstName("");
+    setLastName("");
+  }
+
   const buttons = [
-    <button
-      className="button-secondary-extra-small"
-      onClick={props.toggleFamilyItem}
-    >
+    <button className="button-secondary-extra-small" onClick={closeAndReset}>
       Cancel
     </button>,
-    <button
-      className="button-secondary-extra-small"
-      onClick={props.toggleFamilyItem}
-    >
+    <button className="button-secondary-extra-small" onClick={closeAndReset}>
       Finish
     </button>,
     <button className="button-primary-extra-small" disabled={disable()}>
