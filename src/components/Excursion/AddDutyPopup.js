@@ -8,7 +8,9 @@ function AddDutyPopup(props) {
     const [name, setName] = useState();
     const [minRequired, setMinRequired] = useState();
     
-    const dutyData = [name, minRequired];
+    const dutyData = {
+        "name":name,
+        "minRequired":minRequired};
 
     function changeName(e) {
         e.preventDefault();

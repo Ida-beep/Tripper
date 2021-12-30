@@ -5,7 +5,7 @@ import API from "../API/API";
 import Footer from "../Footer";
 import { Link } from "react-router-dom";
 
-function Login(props) {
+function OrganiserLogin(props) {
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
 
@@ -75,19 +75,23 @@ function Login(props) {
 
               <br />
               <br />
-              <p style={{ textAlign: "center" }}>
-                <Link to="/SignUp">
-                  {" "}
-                  Don't Have an Account?{" "}
-                  <p style={{ color: "#1ea774" }}>Sign Up Here</p>{" "}
-                </Link>
-              </p>
-              <p style={{ textAlign: "center" }}>
-                <Link to="/Home">
-                  {" "}
-                  <p style={{ color: "#1ea774" }}>Go To Home Page</p>{" "}
-                </Link>
-              </p>
+              <div className="login-navigation">
+                <p style={{ textAlign: "center" }}>
+                  <Link to="/CreateExcursion">
+                    {" "}
+                    Want to create a new Excursion?{" "}
+                    <p style={{ color: "#1ea774", marginBottom: "30px" }}>
+                      Create Excursion Here
+                    </p>{" "}
+                  </Link>
+                </p>
+                <p style={{ textAlign: "center" }}>
+                  <Link to="/Home">
+                    {" "}
+                    <p style={{ color: "#1ea774" }}>Go To Home Page</p>{" "}
+                  </Link>
+                </p>
+              </div>
             </form>
           </div>
         </div>
@@ -97,4 +101,4 @@ function Login(props) {
   );
 }
 
-export default Login;
+export default OrganiserLogin;

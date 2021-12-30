@@ -1,5 +1,26 @@
 import { Parse } from 'parse';
 
+const createExcursion = async (
+  {excursionName, fromDate, toDate, location, description}) => {
+  
+  const newExcursion = new Parse.Object('Excursion');
+  newExcursion.set('excursionTitle', excursionName);
+  newExcursion.set('fromDate', new Date(fromDate));
+  newExcursion.set('toDate', new Date(toDate));
+  newExcursion.set('location', location);
+  newExcursion.set('description', description);
+  try {
+    const result = await newExcursion.save();
+    // Access the Parse Object attributes using the .GET method
+    console.log('Excursion created', result);
+    alert('Excursion created', result);
+    return result;
+  } catch (error) {
+    console.error('Error while creating Excursion: ', error);
+    alert("error: ", error)
+  }
+};
+
 const fetchExcursionFromDB = async () => {
     
     const User = Parse.User.current();
@@ -49,12 +70,6 @@ const fetchExcursionFromDB = async () => {
 }
 
 const fetchAllExcursionsFromDB = async () => {
-    
-  const User = Parse.User.current();
-  const queryUser = new Parse.Query("User");
-  const user = await queryUser.get(User.id);
-  const contactMember = await queryUser.get(user.id);
-  const excursionID = contactMember.get("excursionID");
 
   const query = new Parse.Query("Excursion");
   let excursions = await query.find();
@@ -64,11 +79,11 @@ const fetchAllExcursionsFromDB = async () => {
   for (let i = 0; i < excursions.length; i++) { 
       try {
           const excursion = await query.get(excursions[i].id);
-          
+          console.log("iiiiid: ", excursion.id)
           const excursionTitle = excursion.get("excursionTitle");
           
           const excursionObject = {
-              id: excursionID,
+              id: excursion.id,
               excursionTitle: excursionTitle,
           };
           excursionArr.push(excursionObject);
@@ -128,6 +143,8 @@ const updateExcursion = async ({
       }
   }
 
-export default {updateExcursion:updateExcursion,
+export default {
+  createExcursion:createExcursion,
+  updateExcursion:updateExcursion,
   fetchAllExcursionsFromDB:fetchAllExcursionsFromDB,
   fetchExcursionFromDB:fetchExcursionFromDB};
