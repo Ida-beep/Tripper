@@ -1,27 +1,34 @@
-
+import Parse from 'parse';
 import { useState } from 'react';
-
-//install react-icons --> npm install react-icons --save, use --save so the rest of the team can use it too
-//find react-icons here --> https://react-icons.github.io/react-icons/icons?name=fa 
-// Syngax for using react-icons: import { IconName } from "react-icons/fa";
-
 import { FaFileUpload } from 'react-icons/fa';
-//import {uploadImage } from './API';
-//import API from "./components/API";
 
 
 function Upload() {
 
     const [imageFile, setImageFile] = useState();
-
-   //e.target.files[0] --> to acces the files input [an array of files, first file uploaded is 0]
-    function handleFileUpload(e) {
-        setImageFile(e.target.files[0]);
-    }
-
-    // submitChanges={API.uploadImage}
-    return (
+    
+    async function fileUploadHandler(imageFile){
         
+        const Image = Parse.Object.extend('Image');
+        const newImage = new Image();
+
+        const file = new Parse.File(imageFile.name,imageFile);
+        newImage.set("file",file)
+        newImage.set("user",'ti8kJQvgJ4')
+        
+        try {
+            await newImage.save()
+            alert('The file has been saved to Back4app.')
+        } catch(error) {
+            console.log(error)
+        }       
+    }
+    function fileSelectedHandler(event){
+        setImageFile(event.target.files[0])
+        fileUploadHandler(event.target.files[0])
+    }
+    
+    return (  
         <div >
             <label className="image-container">       
             {imageFile && (
@@ -30,7 +37,7 @@ function Upload() {
              src={URL.createObjectURL(imageFile)}/> )} 
             </label>
 
-            <input type="file" name="profpic" id="input"  onChange={handleFileUpload} />
+            <input type="file" name="profpic" id="input"  onChange={fileSelectedHandler}/>
             <div className="label">
                 <label className="button-secondary-extra-small" htmlFor="input">
                <FaFileUpload /> 
