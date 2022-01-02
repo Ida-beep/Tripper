@@ -1,13 +1,12 @@
 import { Parse } from "parse";
-import { createContext } from "react";
 
 /**
  *  @public initializes connection with backedn Back4App
  */
 function initialize() {
   Parse.initialize(
-    "13P5xfkJUX5Nm04adG1gyTT3ojNywtRVQvEIuDPp",
-    "PHg9pqckfjEdAwy2OzooTHu15dDMx1ChhFDeC6UQ"
+    "txYcnk3LdCbPcDggqgiehGbHACOXlSMonSEMI3sa",
+    "ddgb2A9EdCLwOOLtCJaVmnfxCdOpF5iKdYFdgiMt"
   );
   Parse.serverURL = "https://parseapi.back4app.com/";
 }
