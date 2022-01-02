@@ -1,5 +1,5 @@
 import Parse from 'parse';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FaFileUpload } from 'react-icons/fa';
 
 
@@ -7,8 +7,29 @@ function Upload() {
 
     const [imageFile, setImageFile] = useState();
     
-    async function fileUploadHandler(imageFile){
+    // Returns URL for UserProfileImage
+    const fetchProfileImage = async () => {
+        const User = Parse.User.current();
+        const userId = User.id;
+      
+        let query = new Parse.Query('Image');
+        const results = await query.find();
         
+        for (let i = 0; i < results.length; i++){
+            if(results[i].get("user")=== userId){
+                setImageFile(results[i].get('file')._url)
+            }
+        }
+    };
+
+    // fetches profile pic on first render
+    useEffect(() => {
+        fetchProfileImage()
+      }, []);
+    
+
+    // Uploads Image to DataBase
+    async function fileUploadHandler(imageFile){
         const Image = Parse.Object.extend('Image');
         const newImage = new Image();
 
@@ -18,14 +39,18 @@ function Upload() {
         
         try {
             await newImage.save()
+            fetchProfileImage()
             alert('The file has been saved to Back4app.')
+            
         } catch(error) {
             console.log(error)
         }       
     }
+    
+    // Event is the file selected by the user - changes profile picture and uploads.
     function fileSelectedHandler(event){
-        setImageFile(event.target.files[0])
-        fileUploadHandler(event.target.files[0])
+        //setImageFile(event.target.files[0])
+        fileUploadHandler(event.target.files[0]);
     }
     
     return (  
@@ -34,7 +59,7 @@ function Upload() {
             {imageFile && (
              <img  alt=""
              style={{ maxWidth: "140px", maxHeight: "140px" }}
-             src={URL.createObjectURL(imageFile)}/> )} 
+             src={imageFile}/> )} 
             </label>
 
             <input type="file" name="profpic" id="input"  onChange={fileSelectedHandler}/>
