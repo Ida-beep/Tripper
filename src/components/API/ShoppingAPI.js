@@ -1,20 +1,20 @@
 import { Parse } from 'parse';
 
-const getCurrentExcursion = async () => {
+// const getCurrentExcursion = async () => {
 
-    let excursionID = "";
-    try {
-        const User = Parse.User.current();
-        const queryUser = new Parse.Query("User");
-        const user = await queryUser.get(User.id);
-        const contactMember = await queryUser.get(user.id);
-        excursionID = contactMember.get("excursionID");
-    } catch(error) {
-        console.log(error);
-    }
+//     let excursionID = "";
+//     try {
+//         const User = Parse.User.current();
+//         const queryUser = new Parse.Query("User");
+//         const user = await queryUser.get(User.id);
+//         const contactMember = await queryUser.get(user.id);
+//         excursionID = contactMember.get("excursionID");
+//     } catch(error) {
+//         console.log(error);
+//     }
     
-    return excursionID
-}
+//     return excursionID
+// }
 
 
 const fetchShoppingListFromDB = async () => {
@@ -51,11 +51,46 @@ const fetchShoppingListFromDB = async () => {
             
         } catch (error) {
             alert("FAILED to retrieve the shopping entry. Error: " + error.message);
-          }
+        }
     } 
-    
     return shoppingList
 }
+
+const updateShoppingItem = async (selected) => {
+    console.log("INSIDE UPDATE SHOPPING ITEM");
+    const query = new Parse.Query("ShoppingList");
+    console.log("ShoppingAPI: selected: ", selected);
+
+    try {
+        const User = Parse.User.current();
+        const queryUser = new Parse.Query("User");
+        const user = await queryUser.get(User.id);
+        const contactMember = await queryUser.get(user.id);
+        const excursionID = contactMember.get("excursionID");
+
+        const object = await query.get(selected.id);
+        object.set('itemName', selected.item);
+        object.set('amount', parseInt(selected.amount));
+        object.set('unit', selected.unit);
+        object.set('excursionID', excursionID);
+        try {
+            const response = await object.save();
+
+            console.log(response.get('itemName'));
+            console.log(response.get('amount'));
+            console.log(response.get('unit'));
+            console.log(response.get('excursionID'));
+            console.log('ShoppingList updated', response);
+            alert("Update successful");
+        } catch (error) {
+            console.error('Error while updating ShoppingList', error);
+            alert('Error while updating shoppinglist' + error)
+            }
+    } catch (error) {
+        console.error('Error while retrieving object ShoppingList', error);
+        alert('Error while retrieving object shoppinglist' +  error)
+    }
+  };
 
 const fetchPreviousShoppingListFromDB = async (excursionID) => {
     
@@ -94,7 +129,7 @@ const fetchPreviousShoppingListFromDB = async (excursionID) => {
             
         } catch (error) {
             alert("FAILED to retrieve the shopping entry. Error: " + error.message);
-          }
+        }
     } 
 
     console.log("shoppinglist: ", shoppingList)
@@ -169,9 +204,10 @@ async function deleteShoppingItem(items){
 }
 
 
-export default {addShoppingItem:addShoppingItem, 
+export default {
+    addShoppingItem:addShoppingItem, 
     fetchShoppingListFromDB:fetchShoppingListFromDB,
     deleteShoppingItem:deleteShoppingItem,
-    getCurrentExcursion:getCurrentExcursion,
     fetchPreviousShoppingListFromDB,
-    addMultipleShoppingItems:addMultipleShoppingItems};
+    addMultipleShoppingItems:addMultipleShoppingItems,
+    updateShoppingItem};

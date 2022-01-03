@@ -34,20 +34,20 @@ async function signup({ username, password, email }) {
   }
 }
 
-const getCurrentExcursion = async () => {
-  let excursionID = "";
-  try {
-    const User = Parse.User.current();
-    const queryUser = new Parse.Query("User");
-    const user = await queryUser.get(User.id);
-    const contactMember = await queryUser.get(user.id);
-    excursionID = contactMember.get("excursionID");
-  } catch (error) {
-    console.log(error);
-  }
+// const getCurrentExcursion = async () => {
+//   let excursionID = "";
+//   try {
+//     const User = Parse.User.current();
+//     const queryUser = new Parse.Query("User");
+//     const user = await queryUser.get(User.id);
+//     const contactMember = await queryUser.get(user.id);
+//     excursionID = contactMember.get("excursionID");
+//   } catch (error) {
+//     console.log(error);
+//   }
 
-  return excursionID;
-};
+//   return excursionID;
+// };
 
 //To keep in respective files for getting excursionID:
 // import API from './components/API/API'
@@ -68,6 +68,5 @@ const getCurrentExcursion = async () => {
 
 export default {
   signup: signup,
-  initialize: initialize,
-  getCurrentExcursion: getCurrentExcursion,
+  initialize: initialize
 };

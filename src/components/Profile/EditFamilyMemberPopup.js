@@ -5,6 +5,12 @@ import FamilyMemberAPI from "../API/FamilyMemberAPI";
 import ShortInput from "../Cards/ShortInput";
 import DropDownMenu from "../DropDownMenu/DropDownMenu";
 
+/**
+ * 
+ * @public This popup allows users to edit information about
+ * family members. 
+ */
+
 function EditFamilyMemberPopup(props) {
   const [familyM, setFamilyM] = useState([]);
   const [firstName, setFirstName] = useState();
@@ -88,21 +94,17 @@ function EditFamilyMemberPopup(props) {
   }
 
   const buttons = [
-    <button className="button-secondary-extra-small" onClick={props.editState}>
-      Cancel
-    </button>,
-    <button className="button-secondary-extra-small" onClick={props.editState}>
-      Finish
-    </button>,
+    <button className="button-secondary-extra-small" 
+      onClick={props.editState}>Cancel</button>,
+    <button className="button-secondary-extra-small" 
+      onClick={props.editState}>Finish</button>,
     <button
       className="button-primary-extra-small"
-      type="submit"
-      disabled={disable()}>
+      type="submit" disabled={disable()}>
       Save
     </button>,
   ];
 
-  //
   return (
     props.editFMActive && (
       <PopUp data={personData} submitChanges={handleSubmit} buttons={buttons}

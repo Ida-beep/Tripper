@@ -21,6 +21,7 @@ const createExcursion = async (
   }
 };
 
+/**Retrieves all previous excursions except for the current one. */
 const fetchExcursionFromDB = async () => {
     
     const User = Parse.User.current();
@@ -71,6 +72,12 @@ const fetchExcursionFromDB = async () => {
 
 const fetchAllExcursionsFromDB = async () => {
 
+  const User = Parse.User.current();
+  const queryUser = new Parse.Query("User");
+  const user = await queryUser.get(User.id);
+  const contactMember = await queryUser.get(user.id);
+  const excursionID = contactMember.get("excursionID");
+
   const query = new Parse.Query("Excursion");
   let excursions = await query.find();
 
@@ -78,6 +85,8 @@ const fetchAllExcursionsFromDB = async () => {
   
   for (let i = 0; i < excursions.length; i++) { 
       try {
+       
+        if (excursions[i].id !== excursionID) {
           const excursion = await query.get(excursions[i].id);
           console.log("iiiiid: ", excursion.id)
           const excursionTitle = excursion.get("excursionTitle");
@@ -87,6 +96,8 @@ const fetchAllExcursionsFromDB = async () => {
               excursionTitle: excursionTitle,
           };
           excursionArr.push(excursionObject);
+        }
+          
       } catch (error) {
           alert("FAILED to retrieve the Excursion entry entry. Error: " + error.message);
         }
