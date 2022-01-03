@@ -5,8 +5,13 @@ import { Parse } from "parse";
  */
 function initialize() {
   Parse.initialize(
+<<<<<<< HEAD
     "txYcnk3LdCbPcDggqgiehGbHACOXlSMonSEMI3sa",
     "ddgb2A9EdCLwOOLtCJaVmnfxCdOpF5iKdYFdgiMt"
+=======
+    "BWRXJVmbqMoffsZkk8sZYB2RNFMYU6YtQWTFa9zz",
+    "GAhsMf5ghBb1BHAimPuIw2oRv7sPGVmmvL1zg4rT"
+>>>>>>> 927f219f2bc5e84c074355ef98f753c5887f4152
   );
   Parse.serverURL = "https://parseapi.back4app.com/";
 }

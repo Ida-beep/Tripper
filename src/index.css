@@ -682,6 +682,10 @@ label {
   display: flex;
 }
 
+input[type='number']{
+  width: 60px;
+} 
+
 .popup-drop-down {
   display: flex;
   flex-direction: row;
@@ -695,6 +699,10 @@ label {
   justify-content: flex-end;
   padding-top: 25px;
 }
+
+/* #cancel-button {
+  align-self: flex-end;
+} */
 
 /* ---------------------Excursion CSS-------------------- */
 

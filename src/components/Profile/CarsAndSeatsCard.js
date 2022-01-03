@@ -4,12 +4,38 @@ import CarsAPI from "../API/CarsAPI";
 
 function CarsAndSeatsCard(props) {
   const [carsAndSeats, setCarsAndSeats] = useState([]);
-  const [selected, setSelected] = useState([]);
+  const [selected, setSelected] = useState();
 
   function addElementToSelected(element) {
-    setSelected((prevState) => [...prevState, element]);
+    setSelected(element);
     console.log(selected);
   }
+
+  /**
+   * UPDATE
+   */
+   useEffect(() => {
+    if (props.carDidUpdate === true) {
+      console.log(
+        "didupdate was passed to YouAndYourFamily with value :",
+        props.carDidUpdate
+      );
+      fetchAfterUpdate();
+      setSelected(null);
+      console.log("after update the list is: ", selected);
+      props.setCarDidUpdate(false);
+    }
+  }, [props.carDidUpdate]);
+
+  async function fetchAfterUpdate() {
+    const refetchedList = await CarsAPI.fetchCarsFromDB();
+    setCarsAndSeats(refetchedList);
+  }
+
+  useEffect(() => {
+    props.selectedCar(selected);
+    console.log("New selected useeffect to use in EditContactMember", selected);
+  }, [selected]);
 
   async function handleDelete(e) {
     e.preventDefault();
@@ -28,7 +54,7 @@ function CarsAndSeatsCard(props) {
   }, []);
 
   function disable() {
-    if (selected.length < 1) {
+    if (!selected) {
       return true;
     }
     return false;
@@ -53,7 +79,8 @@ function CarsAndSeatsCard(props) {
         >
           Delete
         </button>
-        <button className="button-secondary-extra-small" disabled={disable()}>
+        <button className="button-secondary-extra-small" 
+          disabled={disable()} onClick={props.editActive}>
           Edit
         </button>
         <button

@@ -17,7 +17,7 @@ const createExcursion = async (
     return result;
   } catch (error) {
     console.error('Error while creating Excursion: ', error);
-    alert("error: ", error)
+    alert("error: " + error)
   }
 };
 
