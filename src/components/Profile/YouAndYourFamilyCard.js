@@ -1,8 +1,3 @@
-// import React from 'react';
-// import ParticipantInfo from './ParticipantInfo';
-// import participantData from './data/participantData.js';
-// import OverviewCard from './OverviewCard';
-
 import React, { useEffect, useState } from "react";
 import TableScaffold from "../Cards/TableScaffold";
 import FamilyMemberAPI from "../API/FamilyMemberAPI";
@@ -37,7 +32,6 @@ function YouAndYourFamilyCard(props) {
     setAddingMember(true);
     const refetchedList = await FamilyMemberAPI.fetchFamilyMembersFromDB();
     setMemberAndFamily(refetchedList);
-    console.log(refetchedList);
   }
 
   /**

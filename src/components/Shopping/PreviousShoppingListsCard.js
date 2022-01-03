@@ -6,9 +6,6 @@ function PreviousShoppingListsCard(props) {
   const [excursions, setExcursions] = useState([]);
   const [selected, setSelected] = useState();
 
-  function addElementToSelected(element) {
-    setSelected(element);
-  }
 
   useEffect(() => {
     async function fetchData() {
@@ -35,7 +32,7 @@ function PreviousShoppingListsCard(props) {
     <div className="card-container">
       <div className="table-container">
         <TableScaffold
-          onSelection={(selected) => addElementToSelected(selected)}
+          onSelection={(selected) => setSelected(selected)}
           tkey={["excursionTitle"]}
           theaders={["Excursion"]}
           tdata={excursions}

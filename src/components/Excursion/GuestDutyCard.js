@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import TableScaffold from "../Cards/TableScaffold.js";
 import FamilyMemberAPI from "../API/FamilyMemberAPI.js";
 
-function XGuestDutyCard() {
-  // const partData = participantData.map(data => <XGuestDuty data={data}  />);
+function GuestDutyCard() {
+  // const partData = participantData.map(data => <GuestDuty data={data}  />);
   const [allGuests, setAllGuests] = useState([]);
   const [selected, setSelected] = useState([]);
 
@@ -56,4 +56,4 @@ function XGuestDutyCard() {
   );
 }
 
-export default XGuestDutyCard;
+export default GuestDutyCard;

@@ -129,5 +129,3 @@ function PreviousDutiesPopup(props) {
 }
 
 export default PreviousDutiesPopup;
-
-// onSelection={(selectedItem)=>addElementToSelected(selectedItem)}
