@@ -20,11 +20,6 @@ function ShoppingListCard(props) {
     console.log("New selected useeffect to use in EditCar", selected);
   }, [selected]);
 
-  function addElementToSelected(element) {
-    setSelected(element);
-    console.log(selected);
-  }
-
   useEffect(() => {
     async function fetchData() {
       setShoppingList(await ShoppingAPI.fetchShoppingListFromDB());
@@ -44,7 +39,7 @@ function ShoppingListCard(props) {
     <div className="card-container">
       <div className="table-container">
         <TableScaffold
-          onSelection={(selected) => addElementToSelected(selected)}
+          onSelection={(selected) => setSelected(selected)}
           tkey={["itemName", "amount", "unit"]}
           theaders={["Item", "Amount", "Unit"]}
           tdata={shoppingList}
@@ -53,18 +48,15 @@ function ShoppingListCard(props) {
       <div className="button-container">
         <button
           className="button-secondary-extra-small"
-          onClick={handleDelete}
-          disabled={disable()}
-        >
+          onClick={handleDelete}disabled={disable()}>
           Delete
         </button>
         <button className="button-secondary-extra-small" 
           disabled={disable()} onClick={props.editActive}>
           Edit
         </button>
-        <button className="button-primary-extra-small" onClick={props.addActive}>
-          Add
-        </button>
+        <button className="button-primary-extra-small" 
+          onClick={props.addActive}>Add</button>
       </div>
     </div>
   );

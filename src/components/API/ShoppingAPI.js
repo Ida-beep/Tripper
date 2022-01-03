@@ -207,7 +207,6 @@ const ShoppingAPI = {
     addShoppingItem, 
     fetchShoppingListFromDB,
     deleteShoppingItem,
-    getCurrentExcursion,
     fetchPreviousShoppingListFromDB,
     addMultipleShoppingItems};
 

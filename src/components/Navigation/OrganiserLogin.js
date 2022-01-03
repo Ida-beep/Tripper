@@ -43,13 +43,14 @@ function OrganiserLogin(props) {
 
   return (
     <>
-      <div className="page-container">
+      <div className="page-container" >
         <div className="signup-container">
-          <h4 style={{ color: "#1ea774" }}>Login </h4>
-          <p style={{ color: "#1ea774" }}>To plan your trip </p>
-          <div className="login-form">
-            <form onSubmit={handleLoginAttempt}>
-              <div className="long-input">
+          <h4 style={{ color: "#1ea774"}}>Login </h4>
+          <p style={{ color: "#1ea774"}}>To plan your trip </p>
+          <div className="login-form" >
+            <form onSubmit={handleLoginAttempt} >
+              <div className="long-input" 
+                style={{justifyContent:"center"}}>
                 <label>
                   <p>Username</p>
                   <input
@@ -59,7 +60,8 @@ function OrganiserLogin(props) {
                   />
                 </label>
               </div>
-              <div className="long-input">
+              <div className="long-input" 
+                style={{justifyContent:"center", paddingTop:"10px" }}>
                 <label>
                   <p>Password</p>
                   <input
@@ -69,7 +71,8 @@ function OrganiserLogin(props) {
                   />
                 </label>
               </div>
-              <button className="button-secondary-extra-small" type="submit">
+              <button className="button-secondary-extra-small" 
+                type="submit"  style={{marginTop:"30px", marginLeft:"85px" }}>
                 Login
               </button>
 
