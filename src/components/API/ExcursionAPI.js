@@ -143,8 +143,10 @@ const updateExcursion = async ({
       }
   }
 
-export default {
-  createExcursion:createExcursion,
-  updateExcursion:updateExcursion,
-  fetchAllExcursionsFromDB:fetchAllExcursionsFromDB,
-  fetchExcursionFromDB:fetchExcursionFromDB};
+const ExcursionAPI = {
+  createExcursion,
+  updateExcursion,
+  fetchAllExcursionsFromDB,
+  fetchExcursionFromDB};
+
+export default ExcursionAPI

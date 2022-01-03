@@ -1,5 +1,4 @@
 import { Parse } from "parse";
-import DutiesAPI from "./DutiesAPI";
 
 /**
  * @public getContactMember retrieves the current users contactpersoninformation
@@ -8,34 +7,6 @@ import DutiesAPI from "./DutiesAPI";
  *   Atm it's a simple string with same ID representing the current user.
  */
 
-// async function getContactMember(){
-//     const User = Parse.User.current();
-//     const id = User.id;
-
-//     const CM = Parse.Object.extend("ContactMember");
-//     const query = new Parse.Query(CM);
-
-//     query.equalTo("UserID_Placeholder",id)
-//     const results = await query.find();
-//     if(results.length === 1){
-//         const user = results[0];
-//         const email = user.get("Email");
-//         const firstName = user.get("FirstName");
-//         const lastName = user.get("LastName");
-//         const age = user.get("Age");
-//         const address = user.get("Address");
-//         const phone = user.get("Phone");
-//         const mobile = user.get("Mobile");
-//         const workPhone = user.get("WorkPhone");
-//         const zip = user.get("ZIP");
-//         const city = user.get("City");
-//         const duty1 = user.get("Duty1");
-//         const duty2 = user.get("Duty2");
-//         const duty3 = user.get("Duty3");
-//     const userObject = {firstName,lastName,age,address,mobile,phone,workPhone,email,duty1,duty2,duty3,zip,city};
-//     return userObject;
-//     }
-// }
 
 const signUp = async ({
   username,
@@ -74,7 +45,7 @@ const fetchContactMemberFromDB = async () => {
 
   const contactMember = await queryUser.get(user.id);
 
-  const username = contactMember.get("username");
+  // const username = contactMember.get("username"); NEVER USED
   const firstName = contactMember.get("firstName");
   const lastName = contactMember.get("lastName");
   const age = contactMember.get("age");
@@ -199,37 +170,11 @@ const updateContactMemberFromDB = async ({
   }
 };
 
-/** 
- 
- function uploadContactMemberImage({imageFile}) {
-   
-    try{
-
-        const Image = Parse.Object.extend("Image");
-        const newImage = new Image();
-
-        newImage.set("imageFile", imageFile);
-  
-        const file = new Parse.File(imageFile.name, imageFile);
-        newImage.set("file", file);
-
-
-        newImage.save()
-        .then((newImage)=>{
-        alert("has been uploaded"); 
-        }, (error)=> {
-        alert("Failed to create object, error code: "+ error.message);
-        });
-
-    } catch(error){
-        console.log(error);
-    }
-}
- */
-
-export default {
-  signUp: signUp,
-  fetchContactMemberFromDB: fetchContactMemberFromDB,
-  addContactMember: addContactMember,
-  updateContactMemberFromDB: updateContactMemberFromDB,
+const ContactMemberAPI = {
+  signUp,
+  fetchContactMemberFromDB,
+  addContactMember,
+  updateContactMemberFromDB,
 };
+
+export default ContactMemberAPI

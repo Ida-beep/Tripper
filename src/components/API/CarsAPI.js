@@ -91,8 +91,11 @@ async function deleteCar(cars){
     }
 }
 
-export default {
-    addCar:addCar,
-    deleteCar:deleteCar,
-    fetchCarsFromDB:fetchCarsFromDB
+
+const CarsAPI = {
+    addCar,
+    deleteCar,
+    fetchCarsFromDB
 };
+
+export default CarsAPI

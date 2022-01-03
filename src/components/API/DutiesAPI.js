@@ -135,10 +135,14 @@ async function deleteDuty(duties) {
   }
 }
 
-export default {
-  fetchPreviousDutyFromDB: fetchPreviousDutyFromDB,
-  deleteDuty: deleteDuty,
-  addDuty: addDuty,
-  fetchDutiesFromDB: fetchDutiesFromDB,
-  addMultipleDuties: addMultipleDuties,
-};
+
+
+const DutiesAPI = {
+  fetchPreviousDutyFromDB,
+  deleteDuty,
+  addDuty,
+  fetchDutiesFromDB,
+  addMultipleDuties
+}
+
+export default DutiesAPI
