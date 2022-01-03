@@ -1,5 +1,4 @@
 import { Parse } from "parse";
-import { createContext } from "react";
 
 /**
  *  @public initializes connection with backedn Back4App
@@ -66,8 +65,10 @@ const getCurrentExcursion = async () => {
 
 //   const currentExcursionID = createContext(excursionID);
 
-export default {
-  signup: signup,
-  initialize: initialize,
-  getCurrentExcursion: getCurrentExcursion,
-};
+const API = {
+  signup,
+  initialize,
+  getCurrentExcursion
+}
+
+export default API;
