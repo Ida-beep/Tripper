@@ -3,7 +3,6 @@ import LongInput from "./Cards/LongInput";
 import Footer from "./Footer";
 import DescriptionInput from "./Cards/DescriptionInput";
 import ExtraLongInput from "./Cards/ExtraLongInput";
-import DropDownMenu from "./DropDownMenu/DropDownMenu";
 import ExcursionAPI from "./API/ExcursionAPI";
 import ContactMemberAPI from "./API/ContactMemberAPI";
 import { useNavigate } from "react-router-dom";
@@ -20,9 +19,6 @@ function CreateExcursion() {
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
   const [email, setEmail] = useState();
-  // const [firstName, setFirstName] = useState();
-  // const [lastName, setLastName] = useState();
-  // const [age, setAge] = useState();
   const [isOrganiser, setIsOrganiser] = useState(true);
 
   const navigate = useNavigate();
@@ -59,35 +55,15 @@ function CreateExcursion() {
     setEmail(e.target.value);
   }
 
-  // function firstNameChange(e) {
-  //     setFirstName(e.target.value);
-  // }
-
-  // function lastNameChange(e) {
-  //     setLastName(e.target.value);
-  // }
-
-  // function ageChange(e) {
-  //     setAge(e.target.value);
-  // }
-
-  // function dutiesChange(e) {
-  //     setDuties(e.target.value);
-  // }
-
   async function handleSubmit(e) {
     e.preventDefault();
     console.log("create excursion handle submit called");
     let excursionID = "";
 
     ContactMemberAPI.signUp({
-      username,
-      password,
-      email,
-      isOrganiser,
-      excursionID,
-    }).then(
-      (loggedInUser) => {
+      username, password,email,
+      isOrganiser, excursionID,
+    }).then((loggedInUser) => {
         navigate(`/`);
         console.log("succes in signup");
       },
@@ -96,17 +72,13 @@ function CreateExcursion() {
       }
     );
     ExcursionAPI.createExcursion({
-      excursionName,
-      fromDate,
-      toDate,
-      location,
-      description,
+      excursionName,fromDate, toDate,
+      location, description,
     }).then(
       (excursion) => {
         const user = Parse.User.current();
         user.set("excursionID", excursion.id);
-        user.save().then(
-          () => {
+        user.save().then(() => {
             console.log("succes in saving excursionID");
           },
           (error) => {
@@ -118,20 +90,12 @@ function CreateExcursion() {
         console.log("failed to create excursion OR set excursionID of user");
       }
     );
-
-    /* excursionID = excursion.id; */
   }
 
   function disable() {
-    if (
-      !excursionName ||
-      !fromDate ||
-      !toDate ||
-      !location ||
-      !description ||
-      !username ||
-      !password ||
-      !email
+    if (!excursionName || !fromDate ||
+      !toDate || !location || !description ||
+      !username || !password || !email
     ) {
       return true;
     }
@@ -207,12 +171,6 @@ function CreateExcursion() {
                 />
               </div>
 
-              {/* <div className="input-section">
-                            <LongInput title="First name" value={firstName} type="text" changeValue={firstNameChange}  />
-                            <LongInput title="Last name" value={lastName} type="text" changeValue={lastNameChange}  />
-                            <LongInput title="Age" value={age} type="number" changeValue={ageChange}  />
-                        </div> */}
-
               <button
                 className="button-secondary-extra-small"
                 type="submit"
@@ -223,8 +181,7 @@ function CreateExcursion() {
               </button>
               <p style={{ textAlign: "center" }}>
                 <Link to="/OrganiserLogin">
-                  {" "}
-                  Want to login or plan existing excursion?{" "}
+                  {" "} Want to login or plan existing excursion?{" "}
                   <p style={{ color: "#1ea774", marginBottom: "30px" }}>
                     Login Here!
                   </p>{" "}
@@ -232,8 +189,7 @@ function CreateExcursion() {
               </p>
               <p style={{ textAlign: "center" }}>
                 <Link to="/Home">
-                  {" "}
-                  <p style={{ color: "#1ea774" }}>Go To Home Page</p>{" "}
+                  {" "} <p style={{ color: "#1ea774" }}>Go To Home Page</p>{" "}
                 </Link>
               </p>
             </form>

@@ -15,7 +15,7 @@ function YouAndYourFamilyCard(props) {
   const [selected, setSelected] = useState([]);
   const [memberAndFamiliy, setMemberAndFamily] = useState([]);
   const [deleteMember, setDeleteMember] = useState(false);
-  const [confirmedDeletion, setconfirmedDeletion] = useState(false);
+  const [confirmedDeletion, setConfirmedDeletion] = useState(false);
   const [addingMember, setAddingMember] = useState(false);
 
   function addElementToSelected(element) {
@@ -109,7 +109,7 @@ function YouAndYourFamilyCard(props) {
   useEffect(() => {
     if (props.onConfirmation === true) {
       fetchUpdateAfterDeletion();
-      setconfirmedDeletion(false);
+      setConfirmedDeletion(false);
       removeAllSelected();
     }
   }, [props.onConfirmation]);

@@ -4,7 +4,7 @@ import ShoppingAPI from "../API/ShoppingAPI";
 
 function ShoppingListCard(props) {
   const [shoppingList, setShoppingList] = useState([]);
-  const [selected, setSelected] = useState([]);
+  const [selected, setSelected] = useState();
 
   async function handleDelete(e) {
     e.preventDefault();
@@ -15,8 +15,13 @@ function ShoppingListCard(props) {
     });
   }
 
+  useEffect(() => {
+    props.selectedShoppingItem(selected);
+    console.log("New selected useeffect to use in EditCar", selected);
+  }, [selected]);
+
   function addElementToSelected(element) {
-    setSelected((prevState) => [...prevState, element]);
+    setSelected(element);
     console.log(selected);
   }
 
@@ -29,7 +34,7 @@ function ShoppingListCard(props) {
   }, []);
 
   function disable() {
-    if (selected.length < 1) {
+    if (!selected) {
       return true;
     }
     return false;
@@ -53,10 +58,11 @@ function ShoppingListCard(props) {
         >
           Delete
         </button>
-        <button className="button-secondary-extra-small" disabled={disable()}>
+        <button className="button-secondary-extra-small" 
+          disabled={disable()} onClick={props.editActive}>
           Edit
         </button>
-        <button className="button-primary-extra-small" onClick={props.active}>
+        <button className="button-primary-extra-small" onClick={props.addActive}>
           Add
         </button>
       </div>

@@ -45,7 +45,7 @@ function PreviousShoppingListsCard(props) {
         <button
           className="button-primary-extra-small"
           disabled={disable()}
-          onClick={props.active}
+          onClick={props.openActive}
         >
           Open
         </button>

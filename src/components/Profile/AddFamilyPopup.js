@@ -29,7 +29,6 @@ function AddFamilyPopup(props) {
   function changeAge(e) {
     e.preventDefault();
     setAge(e.target.value);
-    console.log("age was changed");
   }
 
   function handleSubmit(e) {

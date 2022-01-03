@@ -69,6 +69,7 @@ function Profile() {
         title="Add Car"
       />
       <EditCarPopup
+        title="Edit Car Information"
         selectedCar={selectedCar}
         carDidUpdate={(carDidUpdate) => setCarDidUpdate(carDidUpdate)}
         editCarActive={editCarActive}

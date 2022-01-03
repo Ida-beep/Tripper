@@ -44,9 +44,6 @@ const fetchDutiesFromDB = async () => {
 };
 
 const fetchPreviousDutyFromDB = async (id) => {
-  //
-
-  console.log("selected excursion: ", id);
 
   const dutyCollection = [];
   const query = new Parse.Query("Duties");
