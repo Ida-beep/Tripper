@@ -101,7 +101,7 @@ const updateCar = async (selected) => {
       const object = await query.get(selected.id);
       object.set('carModel', selected.carModel);
       object.set('licensePlate', selected.licenseNumber);
-      object.set('carSeats', selected.seats);
+      object.set('carSeats', parseInt(selected.seats));
       object.set('owner', Parse.User.current().id);
       object.set('carColor', selected.color);
       try {
@@ -116,6 +116,7 @@ const updateCar = async (selected) => {
         console.log(response.get('owner'));
         console.log(response.get('carColor'));
         console.log('Car updated', response);
+        alert('car updated');
       } catch (error) {
         console.error('Error while updating Car', error);
         alert('Error while updating Car' + error)

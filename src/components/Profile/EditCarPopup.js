@@ -10,7 +10,7 @@ function EditCarPopup(props) {
     const [seats, setSeats] = useState();
     const [id, setId] = useState();
     const [selectedCar, setSelectedCar] = useState();
-    const carData = {carModel, licenseNumber, color, seats};
+    const carData = {id, carModel, licenseNumber, color, seats};
 
     useEffect(() => {
       if (typeof props.selectedCar === "undefined") {
@@ -21,14 +21,15 @@ function EditCarPopup(props) {
     }, [props.selectedCar]);
   
     useEffect(() => {
-      if (typeof selectedCar !== "undefined") {
-        console.log("selected car", selectedCar);
+      console.log("boooooolean value: " + typeof selectedCar !== "undefined")
+      if (selectedCar) {
+        console.log("seeeeeeeeeeeeelected car", selectedCar);
         setCarModel(selectedCar.carModel);
         setLicenseNumber(selectedCar.licensePlate);
         setColor(selectedCar.carColor);
         setSeats(selectedCar.carSeats);
         setId(selectedCar.id);
-        console.log("id of selected is: ", id);
+        console.log("id of selected is: ", selectedCar.id);
       }
     }, [selectedCar]);
 
@@ -71,7 +72,7 @@ function EditCarPopup(props) {
       CarsAPI.updateCar(carData).then(
         () => {
           console.log("succesfully called update");
-          props.didUpdate(true);
+          props.carDidUpdate(true);
         },
         (error) => {
           console.log("error in update: ", error.code);
