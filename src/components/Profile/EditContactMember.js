@@ -54,20 +54,12 @@ function EditContactMember(props) {
   const [workPhone, setWorkPhone] = useState();
   const [duties, setDuties] = useState([]);
 
+  //Add duties once dropdown has been added
+  //duties.length < 1
   function disable() {
-    if (
-      !firstName ||
-      !lastName ||
-      !email ||
-      !age ||
-      !street ||
-      !zip ||
-      !city ||
-      !mobile ||
-      !phone ||
-      !workPhone ||
-      !duties
-    ) {
+    if ( !firstName || !lastName || !email ||
+      !age || !street || !zip || !city ||
+      !mobile || !phone || !workPhone) {
       return true;
     }
     return false;
@@ -132,17 +124,8 @@ function EditContactMember(props) {
     e.preventDefault();
     console.log("update ebing called");
     ContactMemberAPI.updateContactMemberFromDB({
-      firstName,
-      lastName,
-      age,
-      duties,
-      email,
-      street,
-      workPhone,
-      phone,
-      mobile,
-      zip,
-      city,
+      firstName, lastName, age, duties, email,
+      street, workPhone, phone, mobile, zip, city,
     });
   }
 
@@ -190,7 +173,7 @@ function EditContactMember(props) {
             title="Age"
             value={age}
             changeValue={changeAge}
-            type="text"
+            type="number"
           />
         </div>
         <div className="input-section">
@@ -218,7 +201,7 @@ function EditContactMember(props) {
             title="Zip"
             value={zip}
             changeValue={changeZip}
-            type="text"
+            type="number"
           />
         </div>
         <div className="input-section">

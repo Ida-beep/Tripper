@@ -6,8 +6,8 @@ import { createContext } from "react";
  */
 function initialize() {
   Parse.initialize(
-    "13P5xfkJUX5Nm04adG1gyTT3ojNywtRVQvEIuDPp",
-    "PHg9pqckfjEdAwy2OzooTHu15dDMx1ChhFDeC6UQ"
+    "BWRXJVmbqMoffsZkk8sZYB2RNFMYU6YtQWTFa9zz",
+    "GAhsMf5ghBb1BHAimPuIw2oRv7sPGVmmvL1zg4rT"
   );
   Parse.serverURL = "https://parseapi.back4app.com/";
 }

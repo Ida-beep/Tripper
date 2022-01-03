@@ -97,8 +97,7 @@ function EditFamilyMemberPopup(props) {
     <button
       className="button-primary-extra-small"
       type="submit"
-      disabled={disable()}
-    >
+      disabled={disable()}>
       Save
     </button>,
   ];
@@ -106,7 +105,8 @@ function EditFamilyMemberPopup(props) {
   //
   return (
     props.editFMActive && (
-      <PopUp data={personData} submitChanges={handleSubmit} buttons={buttons}>
+      <PopUp data={personData} submitChanges={handleSubmit} buttons={buttons}
+        title="Edit Family Member">
         <div className="input-section">
           <LongInput
             title="First Name"
