@@ -37,13 +37,8 @@ import DutiesAPI from "./DutiesAPI";
 //     }
 // }
 
-const signUp = async ({
-  username,
-  password,
-  email,
-  isOrganiser,
-  excursionID,
-}) => {
+const signUp = async ({ username, password, email,
+  isOrganiser, excursionID, }) => {
   console.log("started signup process");
   const user = new Parse.User();
   user.set("username", username);
@@ -67,6 +62,8 @@ const signUp = async ({
 
 const fetchContactMemberFromDB = async () => {
   const User = Parse.User.current();
+
+  console.log("uuuuser:" + User);
   const id = User.id;
 
   const queryUser = new Parse.Query("User");
@@ -104,19 +101,9 @@ const fetchContactMemberFromDB = async () => {
   return contactMemberData;
 };
 
-function addContactMember({
-  firstName,
-  lastName,
-  age,
-  duties,
-  email,
-  street,
-  workPhone,
-  phone,
-  mobilePhone,
-  zip,
-  city,
-}) {
+function addContactMember({ firstName, lastName, age,
+  duties, email, street, workPhone, phone, mobilePhone,
+  zip, city, }) {
   try {
     const ContactMember = Parse.Object.extend("User");
     const contactMember = new ContactMember();
@@ -146,18 +133,10 @@ function addContactMember({
 }
 
 const updateContactMemberFromDB = async ({
-  firstName,
-  lastName,
-  age,
-  duties,
-  email,
-  street,
-  workPhone,
-  phone,
-  mobile,
-  zip,
-  city,
-}) => {
+  firstName, lastName, age, duties,
+  email, street, workPhone, phone,
+  mobile, zip, city}) => {
+
   const User = new Parse.User();
   const query = new Parse.Query(User);
 

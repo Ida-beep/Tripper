@@ -91,8 +91,44 @@ async function deleteCar(cars){
     }
 }
 
+const updateCar = async (selected) => {
+    console.log("INSIDE UPDATE CAR");
+    const query = new Parse.Query("Car");
+    console.log("CarAPI: selected: ", selected);
+    
+    try {
+      // here you put the objectId that you want to update
+      const object = await query.get(selected.id);
+      object.set('carModel', selected.carModel);
+      object.set('licensePlate', selected.licenseNumber);
+      object.set('carSeats', selected.seats);
+      object.set('owner', Parse.User.current().id);
+      object.set('carColor', selected.color);
+      try {
+        const response = await object.save();
+        // You can use the "get" method to get the value of an attribute
+        // Ex: response.get("<ATTRIBUTE_NAME>")
+        // Access the Parse Object attributes using the .GET method
+        console.log(response.get('carModel'));
+        console.log(response.get('licensePlate'));
+        console.log(response.get('carSeats'));
+        console.log(response.get('passengers'));
+        console.log(response.get('owner'));
+        console.log(response.get('carColor'));
+        console.log('Car updated', response);
+      } catch (error) {
+        console.error('Error while updating Car', error);
+        alert('Error while updating Car' + error)
+        }
+      } catch (error) {
+        console.error('Error while retrieving object Car', error);
+        alert('Error while retrieving object Car' +  error)
+      }
+  };
+
 export default {
     addCar:addCar,
     deleteCar:deleteCar,
-    fetchCarsFromDB:fetchCarsFromDB
+    fetchCarsFromDB:fetchCarsFromDB,
+    updateCar:updateCar
 };

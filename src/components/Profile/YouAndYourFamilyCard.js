@@ -161,8 +161,7 @@ function YouAndYourFamilyCard(props) {
       </div>
 
       <div className="button-container">
-        <button
-          className="button-secondary-extra-small"
+        <button className="button-secondary-extra-small"
           onClick={handleDelete}
           disabled={disable()}
         >

@@ -24,7 +24,7 @@
 
 - Unable to deselect items in table scaffolds
 
-- updateExursion working, but is a little glitchy due to dates.. 
+- updateExursion working, but is a little glitchy due to date inputs.. 
     might need to fix later.
 
 - Select in tableScaffold acting funky 
