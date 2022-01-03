@@ -179,7 +179,7 @@ function CreateExcursion() {
               >
                 Create Excursion &amp; User
               </button>
-              <p style={{ textAlign: "center" }}>
+              <p style={{ textAlign: "left", marginTop:"30px" }}>
                 <Link to="/OrganiserLogin">
                   {" "} Want to login or plan existing excursion?{" "}
                   <p style={{ color: "#1ea774", marginBottom: "30px" }}>
@@ -187,7 +187,7 @@ function CreateExcursion() {
                   </p>{" "}
                 </Link>
               </p>
-              <p style={{ textAlign: "center" }}>
+              <p style={{ textAlign: "left" }}>
                 <Link to="/Home">
                   {" "} <p style={{ color: "#1ea774" }}>Go To Home Page</p>{" "}
                 </Link>

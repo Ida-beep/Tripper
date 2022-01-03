@@ -203,11 +203,11 @@ async function deleteShoppingItem(items){
     }
 }
 
-
-export default {
-    addShoppingItem:addShoppingItem, 
-    fetchShoppingListFromDB:fetchShoppingListFromDB,
-    deleteShoppingItem:deleteShoppingItem,
+const ShoppingAPI = {
+    addShoppingItem, 
+    fetchShoppingListFromDB,
+    deleteShoppingItem,
     fetchPreviousShoppingListFromDB,
-    addMultipleShoppingItems:addMultipleShoppingItems,
-    updateShoppingItem};
+    addMultipleShoppingItems};
+
+export default ShoppingAPI
