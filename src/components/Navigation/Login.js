@@ -5,6 +5,8 @@ import API from "../API/API";
 import Footer from "../Footer";
 import { Link } from "react-router-dom";
 
+import ImgLogo from "../ImgLogo";
+
 function Login(props) {
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
@@ -45,6 +47,7 @@ function Login(props) {
     <>
       <div className="page-container">
         <div className="signup-container">
+          <ImgLogo />
           <h4 style={{ color: "#1ea774" }}>Login </h4>
           <p style={{ color: "#1ea774" }}>To plan your trip </p>
           <div className="login-form">

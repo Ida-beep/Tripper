@@ -14,6 +14,8 @@ import LongInput from "./Cards/LongInput";
 import ContactMemberAPI from "./API/ContactMemberAPI.js";
 // import API from "./API/API.js";
 
+import ImgLogo from "./ImgLogo.js";
+
 function SignUp() {
   const [username, setUsername] = useState();
   const [excursionID, setExcursionID] = useState();
@@ -90,6 +92,7 @@ function SignUp() {
     <>
       <div className="page-container">
         <div className="signup-container">
+        <ImgLogo />
           <h4 style={{ color: "#1ea774" }}>Sign Up </h4>
           <p style={{ color: "#1ea774" }}>For Existing Excursion </p>
 

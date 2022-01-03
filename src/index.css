@@ -719,7 +719,7 @@ input[type='number']{
   width: 436px;
   min-width: 436px;
   margin: 0px 10px;
-  border: solid #fadf63 2px;
+  border: solid #fadf63 4px; /* ----*/     
 }
 
 /* ------------TABLE RELATED STYLING--------*/
@@ -883,4 +883,44 @@ td {
   flex-direction: column;
   margin: 50px 20px;
   padding: 80px;
+}
+
+
+
+
+
+
+/*-------- Home/Welcome Page / Animation  -----------*/
+
+
+.image-car-container {
+  display: flex;
+  justify-content: center;
+}
+/*RENAMING*/
+.image-car-container {
+  padding: 10px;
+  /*background-color: #fffbf2;*/
+  width: 450px;
+  min-width: 450px;
+  margin: 0px 10px;
+  /*border: solid #fadf63 1px;*/
+}
+
+
+
+
+
+.image-logo-container {
+  display: flex;
+  justify-content: center;
+}
+/*RENAMING*/
+.image-logo-container {
+  padding: 10px;
+  /*background-color: #fffbf2;*/
+  width: 60px;
+  min-width: 60px;
+  margin: 0px 10px;
+  /*border: solid #fadf63 1px;*/
 }
