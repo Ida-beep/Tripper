@@ -91,16 +91,6 @@ async function deleteCar(cars){
     }
 }
 
-<<<<<<< HEAD
-
-const CarsAPI = {
-    addCar,
-    deleteCar,
-    fetchCarsFromDB
-};
-
-export default CarsAPI
-=======
 const updateCar = async (selected) => {
     console.log("INSIDE UPDATE CAR");
     const query = new Parse.Query("Car");
@@ -143,4 +133,3 @@ export default {
     fetchCarsFromDB:fetchCarsFromDB,
     updateCar:updateCar
 };
->>>>>>> 927f219f2bc5e84c074355ef98f753c5887f4152
