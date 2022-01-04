@@ -22,8 +22,8 @@ function Excursion() {
   const [addPrevious, setAddPrevious] = useState(false);
 
   useEffect(() => {
-    console.log("The list should update?: ", addPrevious);
-  }, [addPrevious]);
+    console.log("is PreviousPopup active?: ", previousDutiesActive);
+  }, [previousDutiesActive]);
 
   function returnSelected(selected) {
     console.log("selected: ", selected);
