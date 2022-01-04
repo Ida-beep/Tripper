@@ -21,12 +21,19 @@ function DutiesCard(props) {
 
   function removeAllSelected() {
     if (typeof selected !== "undefined") {
-      selected.forEach((n) => {
-        selected.splice(n);
-      });
+      for (let i = 0; i < selected.length; i++) {
+        selected.splice(selected[i]);
+      }
       console.log("the content of selected-array is now: ", selected);
     }
   }
+
+  /*   useEffect(() => {
+    if (props.isFinished === true) {
+      console.log("NOW we should update the list!");
+      props.onFinishAddingPrev(false);
+    }
+  }, [props.isFinished]); */
 
   useEffect(() => {
     props.setDeletionHappening(false);
@@ -41,21 +48,20 @@ function DutiesCard(props) {
     }
   }, [props.deletionConfirmed]);
 
-  /*   useEffect(() => {
+  useEffect(() => {
     if (props.addPrevious === true) {
       fetchUpdatedDuties();
       console.log("after updating the list is now: ", selected);
       removeAllSelected();
       props.setAddPrevious(false);
     }
-  }, [props.addPrevious]); */
+  }, [props.addPrevious]);
 
-  /*   useEffect(() => {
+  useEffect(() => {
     console.log("DUTIES CARD : Added duties with value ", props.onDutiesAdded);
     fetchUpdatedDuties();
     props.addingDuty(false);
-  }, [props.onDutiesAdded]); */
-
+  }, [props.onDutiesAdded]);
 
   function addElementToSelected(element) {
     // setSelected(element);
@@ -106,17 +112,21 @@ function DutiesCard(props) {
       <div className="button-container">
         <button
           className="button-secondary-extra-small"
-          onClick={handleDelete} disabled={disableDelete()}>
+          onClick={handleDelete}
+          disabled={disableDelete()}
+        >
           Delete
         </button>
         <button
           className="button-secondary-extra-small"
-          onClick={props.previousActive}>
+          onClick={props.previousActive}
+        >
           Find Previous
         </button>
         <button
           className="button-primary-extra-small"
-          onClick={props.addActive}>
+          onClick={props.addActive}
+        >
           Add Duty
         </button>
       </div>

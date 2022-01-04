@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+/* import React, { useState } from "react";
 import { useEffect } from "react";
 import Image from "../../assets/norwegian_fjord.png";
 import ShoppingCard from "./ShoppingCard";
@@ -10,18 +10,18 @@ import PreviousShoppingListsCard from "./PreviousShoppingListsCard";
 import Footer from "../Footer.js";
 import ShoppingAPI from "../API/ShoppingAPI";
 import PreviousShoppingListPopup from "./PreviousShoppingListPopup";
-import EditShoppingPopup from "./EditShoppingPopup";
+import EditShoppingPopup from "./EditShoppingPopup"; */
 
-function Shopping() {
-  /**
-   * @public Shopping renders the Shopping page containing the shopping list
-   * from the current excursion, as well as access to lists from previous
-   * excursions, in which you can add shopping items from those lists to
-   * your current shopping list.
-   *
-   */
+/* function Shopping() { */
+/**
+ * @public Shopping renders the Shopping page containing the shopping list
+ * from the current excursion, as well as access to lists from previous
+ * excursions, in which you can add shopping items from those lists to
+ * your current shopping list.
+ *
+ */
 
-  const [showShoppingPopUp, setShowShoppingPopUp] = useState(false);
+/*   const [showShoppingPopUp, setShowShoppingPopUp] = useState(false);
   const [showPreviousShopping, setShowPreviousShopping] = useState(false);
   const [showEditShoppingPopUp, setShowEditShoppingPopUp] = useState(false);
   const [selectedExcursion, setSelectedExcursion] = useState();
@@ -30,11 +30,11 @@ function Shopping() {
 
   /**Returns the last selected elements from the cards. */
 
-  useEffect(() => {
+/*   useEffect(() => {
     console.log("last selected: ", selectedExcursion);
-  }, [selectedExcursion]);
+  }, [selectedExcursion]); */
 
-  return (
+/* return (
     <>
       <div className="excursion">
         <img className="photo-header-image" src={Image} alt="NorwegianFjord" />
@@ -54,11 +54,12 @@ function Shopping() {
           trigger={showEditShoppingPopUp}
           selectedShoppingItem={selectedShoppingItem}
           editState={() => setShowEditShoppingPopUp(false)}
-          shoppingItemDidUpdate={(shoppingItemDidUpdate) => 
-              setShoppingItemDidUpdate(shoppingItemDidUpdate)}
-          />
+          shoppingItemDidUpdate={(shoppingItemDidUpdate) =>
+            setShoppingItemDidUpdate(shoppingItemDidUpdate)
+          }
+        />
         <div className="page-container">
-          <ShoppingCard /> {/*Add props */}
+          <ShoppingCard />
         </div>
         <div className="page-container">
           <div className="duties-headline">
@@ -71,13 +72,17 @@ function Shopping() {
           </div>
         </div>
         <div className="cards-container">
-          <ShoppingListCard 
-            selectedShoppingItem={
-              (shoppingItem) => {setSelectedShoppingItem(shoppingItem)}}
-            addActive={() => setShowShoppingPopUp(true)} 
-            editActive={() => setShowEditShoppingPopUp(true)}/>
+          <ShoppingListCard
+            selectedShoppingItem={(shoppingItem) => {
+              setSelectedShoppingItem(shoppingItem);
+            }}
+            addActive={() => setShowShoppingPopUp(true)}
+            editActive={() => setShowEditShoppingPopUp(true)}
+          />
           <PreviousShoppingListsCard
-            selected={(excursion) => {setSelectedExcursion(excursion);}}
+            selected={(excursion) => {
+              setSelectedExcursion(excursion);
+            }}
             openActive={() => setShowPreviousShopping(true)}
           />
         </div>
@@ -85,5 +90,5 @@ function Shopping() {
       <Footer />
     </>
   );
-}
-export default Shopping;
+} */
+/* export default Shopping; */
