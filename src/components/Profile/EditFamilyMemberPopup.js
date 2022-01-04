@@ -95,9 +95,7 @@ function EditFamilyMemberPopup(props) {
 
   const buttons = [
     <button className="button-secondary-extra-small" 
-      onClick={props.editState}>Cancel</button>,
-    <button className="button-secondary-extra-small" 
-      onClick={props.editState}>Finish</button>,
+      onClick={props.editState}>Back</button>,
     <button
       className="button-primary-extra-small"
       type="submit" disabled={disable()}>
