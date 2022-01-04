@@ -63,6 +63,11 @@ function PreviousDutiesPopup(props) {
     setSelectedExcursion(element);
   }
 
+  /*   function finishAddingPrevItems() {
+    props.editState;
+    props.onFinishAddingPrev(true);
+  }
+ */
   const buttons = [
     <button className="button-secondary-extra-small" onClick={props.editState}>
       Cancel

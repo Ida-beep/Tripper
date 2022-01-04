@@ -81,6 +81,18 @@ function ExcursionCard(props) {
     console.log("excursionCard useEffect called");
   }, []);
 
+  useEffect(() => {
+    console.log("Value of show shopping is:", props.showShopping);
+  }, [props.showShopping]);
+
+  function closeShopping() {
+    props.setShowShopping(false);
+  }
+
+  function openShopping() {
+    props.setShowShopping(true);
+  }
+
   let subtitle =
     excursionInfo.fromDate +
     " - " +
@@ -92,18 +104,39 @@ function ExcursionCard(props) {
     <LongCard active={props.active}>
       <div className="excursion-card">
         <div className="excursion-card-main-content">
-          <h4>{excursionInfo.excursionTitle}</h4>
-          <p className="subtitle">{subtitle}</p>
+          <h4 style={{ fontSize: "20px" }}>{excursionInfo.excursionTitle}</h4>
+          <p style={{ fontSize: "16px" }} className="subtitle">
+            {subtitle}
+          </p>
           <p>{excursionInfo.description}</p>
           <br></br>
-          <p>
-            Total number of participants (incl. organisers): {totalParticipants}
-          </p>
-          <p>Average Age: {avgAge}</p>
+          <div className="statistics">
+            <div className="statistics-item">
+              <p>Participants:</p>
+              <p style={{ fontSize: "20px", color: "#0c6d4a" }}>
+                <b>{totalParticipants}</b>
+              </p>
+            </div>
+            <div className="statistics-item">
+              <p>Average Age: </p>
+              <p style={{ fontSize: "20px", color: "#0c6d4a" }}>
+                <b>{avgAge}</b>
+              </p>
+            </div>
+          </div>
           {/*          <p>Amount under 18: {amountUnderEighteen}</p> */}
         </div>
       </div>
       <div className="edit-button-container">
+        <button
+          className="button-secondary-extra-small"
+          onClick={closeShopping}
+        >
+          Duties
+        </button>
+        <button className="button-secondary-extra-small" onClick={openShopping}>
+          Shopping
+        </button>
         <button disabled={true} className="button-secondary-extra-small">
           Send Out Invite!
         </button>

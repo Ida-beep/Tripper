@@ -451,7 +451,13 @@ a {
   height: auto;
   background-color: #fdf5d5;
 }
-
+.statistics {
+  display: flex;
+  flex-direction: row;
+}
+.statistics-item {
+  margin: 10px;
+}
 .long-card {
   display: flex;
   margin: 25px;
@@ -459,7 +465,7 @@ a {
   width: 932px;
   height: auto;
   background-color: #fffbf2;
-  border: #fadf63 solid 2px;
+  border: #fadf63 solid 2.25px;
 }
 
 .contact-person-card {
@@ -486,16 +492,6 @@ a {
   display: flex;
   flex-direction: column;
   flex: 2;
-}
-.duties-headline {
-  color: #0c6d4a;
-  padding: 10px;
-  width: 925px;
-  display: flex;
-  align-items: flex-start;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  flex-direction: column;
 }
 
 .shopping-card-main-content {
@@ -682,9 +678,9 @@ label {
   display: flex;
 }
 
-input[type='number']{
+input[type="number"] {
   width: 60px;
-} 
+}
 
 .popup-drop-down {
   display: flex;
@@ -715,13 +711,37 @@ input[type='number']{
 /*RENAMING*/
 .card-container {
   padding: 10px 10px;
-  background-color: #fffbf2;
+  background-color: #fefbec;
   width: 436px;
   min-width: 436px;
   margin: 0px 10px;
-  border: solid #fadf63 4px; /* ----*/     
+  border-bottom: #fadf63 solid 2.25px;
+  border-right: #fadf63 solid 2.25px;
+  border-left: #fadf63 solid 2.25px;
 }
+/* .cards-container-background {
+  background-color: #fee2a3;
+  margin-left: 300px;
+  margin-right: 300px;
+  padding-bottom: 10px;
+  padding-top: 10px;
+} */
 
+.duties-headline {
+  /* background-color: #fee2a3; */
+  color: #0c6d4a;
+  padding: 10px;
+  width: 917px;
+  display: flex;
+  align-items: flex-start;
+  margin-top: 20px;
+  padding-bottom: 50px;
+  flex-direction: column;
+  border-top: #fadf63 solid 2.25px;
+  border-right: #fadf63 solid 2.25px;
+  border-left: #fadf63 solid 2.25px;
+  border-bottom: #fadf63 solid 2.25px;
+}
 /* ------------TABLE RELATED STYLING--------*/
 .table-container {
   height: 250px;
@@ -736,7 +756,7 @@ table {
 }
 th {
   text-align: left;
-  font-size: 13px;
+  font-size: 12px;
   font-family: "Poppins", sans-serif;
   color: #8d8d8d;
   background-color: #fffbf2;
@@ -753,7 +773,7 @@ td {
 }
 .trow {
   margin: 10px;
-  font-size: 15px;
+  font-size: 16px;
   cursor: default;
   border: transparent solid 2px;
 }
@@ -877,13 +897,7 @@ td {
   padding: 80px;
 }
 
-
-
-
-
-
 /*-------- Home/Welcome Page / Animation  -----------*/
-
 
 .image-car-container {
   display: flex;

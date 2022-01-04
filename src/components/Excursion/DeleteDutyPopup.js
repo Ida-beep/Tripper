@@ -25,8 +25,10 @@ function DeleteDutyPopup(props) {
   return (
     props.showDeleteDutyPopup && (
       <PopUp submitChanges={handleSubmit} buttons={buttons}>
-        <div className="input-section">
-          <p>Are you sure you want to delete {props.dutyToDelete.name} ?</p>
+        <div key={props.dutyToDelete.name} className="input-section">
+          <p>
+            Are you sure you want to delete <b>{props.dutyToDelete.name}</b> ?
+          </p>
         </div>
       </PopUp>
     )
