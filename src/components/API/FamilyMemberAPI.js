@@ -193,8 +193,34 @@ async function deleteFamilyMember(familyMembers) {
   }
 }
 
+async function deleteOneFamilyMember(familyMember) {
+  const member = familyMember;
+
+    const familyMemberID = member.id;
+    const FamilyMember = Parse.Object.extend("FamilyMember");
+    const query = new Parse.Query(FamilyMember);
+
+    query.equalTo("objectId", familyMemberID);
+    let result = await query.find();
+    result = result[0];
+
+    if (result !== null) {
+      result.destroy().then(
+        () => {
+          alert(" family members succesfully deleted ");
+        },
+        (error) => {
+          alert("failed to delete with error-code : " + error.code);
+        }
+      );
+    } else {
+      console.log("deletion didn't happen since the result is null");
+    }
+}
+
 const FamilyMemberAPI = {
   fetchFamilyMembersFromDB,
+  deleteOneFamilyMember,
   updateFamilyMember,
   addFamilyMember,
   deleteFamilyMember,

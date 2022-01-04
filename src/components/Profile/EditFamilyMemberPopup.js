@@ -25,12 +25,12 @@ function EditFamilyMemberPopup(props) {
     if (typeof props.selectedMember === "undefined") {
       return;
     } else {
-      setSelectedMember(props.selectedMember[props.selectedMember.length - 1]);
+      setSelectedMember(props.selectedMember);
     }
   }, [props.selectedMember]);
 
   useEffect(() => {
-    if (typeof selectedMember !== "undefined") {
+    if (selectedMember) {
       setFirstName(selectedMember.firstName);
       setLastName(selectedMember.lastName);
       setAge(selectedMember.age);

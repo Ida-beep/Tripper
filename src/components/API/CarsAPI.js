@@ -70,25 +70,24 @@ function addCar(data){
     }
 }
 
-async function deleteCar(cars){
-    for(let i=0; i < cars.length;i++){
-        const car = cars[i];
+async function deleteCar(Car){
+    console.log("inside delete carrrrrr")
+    const car = Car;
 
-        const carID = car.id;
-        const ShoppingList = Parse.Object.extend("Car");
-        const query = new Parse.Query(ShoppingList);
-    
-        query.equalTo("objectId",carID)
-        let result = await query.find();
-        result = result[0];
+    const carID = car.id;
+    const ShoppingList = Parse.Object.extend("Car");
+    const query = new Parse.Query(ShoppingList);
 
-        result.destroy()
-        .then(()=>{
-            alert("Car successfully deleted ");
-        }, (error)=>{
-            alert("failed to delete with error-code : " + error.code);
-        })
-    }
+    query.equalTo("objectId",carID)
+    let result = await query.find();
+    result = result[0];
+
+    result.destroy()
+    .then(()=>{
+        alert("Car successfully deleted ");
+    }, (error)=>{
+        alert("failed to delete with error-code : " + error.code);
+    })
 }
 
 const updateCar = async (selected) => {
