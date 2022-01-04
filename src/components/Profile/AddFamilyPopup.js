@@ -52,13 +52,10 @@ function AddFamilyPopup(props) {
 
   const buttons = [
     <button className="button-secondary-extra-small" onClick={closeAndReset}>
-      Cancel
-    </button>,
-    <button className="button-secondary-extra-small" onClick={closeAndReset}>
-      Finish
+      Back
     </button>,
     <button className="button-primary-extra-small" disabled={disable()}>
-      Add
+      Save
     </button>,
   ];
 
