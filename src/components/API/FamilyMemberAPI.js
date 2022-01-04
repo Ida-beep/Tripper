@@ -8,7 +8,6 @@ const fetchFamilyMembersFromDB = async () => {
   const query = new Parse.Query("FamilyMember");
 
   let allFamilyMembersfromDB = await query.find();
-
   for (let i = 0; i < allFamilyMembersfromDB.length; i++) {
     try {
       const familyMember = await query.get(allFamilyMembersfromDB[i].id);
@@ -36,6 +35,76 @@ const fetchFamilyMembersFromDB = async () => {
   return familyMemberCollection;
 };
 
+/**
+ * REST API call to get all familyMembers in the DB
+ */
+async function getAllFamilyMembersREST() {
+  try {
+    const response = await fetch(
+      "https://parseapi.back4app.com/parse/classes/FamilyMember",
+      {
+        method: "GET",
+        headers: {
+          "X-Parse-Application-Id": "BWRXJVmbqMoffsZkk8sZYB2RNFMYU6YtQWTFa9zz",
+          "X-Parse-REST-API-Key": "Oo6W88C7LWuQehuIUUx4EVliOONWKjC1Knkub8Zj",
+        },
+      }
+    );
+    const content = await response.json();
+    console.log("testing GET in getFamilyMembers(): ", content);
+  } catch (error) {
+    console.log(error.message);
+  }
+}
+
+/**
+ * This method is used to find all familyMembers currently participating in the excursion
+ * that the User is also currently enrolled in
+ */
+async function fetchAllFamilyMembersInExcursion() {
+  const familyMemberCollection = [];
+  try {
+    const User = Parse.User.current();
+    const queryUser = new Parse.Query("User");
+    const user = await queryUser.get(User.id);
+    const contactMember = await queryUser.get(user.id);
+    const excursionID = contactMember.get("excursionID");
+
+    const queryFamilyMembers = new Parse.Query("FamilyMember");
+    let allFamilyMembersfromDB = await queryFamilyMembers.find();
+
+    for (let i = 0; i < allFamilyMembersfromDB.length; i++) {
+      try {
+        const familyMember = await queryFamilyMembers.get(
+          allFamilyMembersfromDB[i].id
+        );
+
+        if (familyMember.get("excursionID") === excursionID) {
+          const id = allFamilyMembersfromDB[i].id;
+          const firstName = familyMember.get("firstName");
+          const lastName = familyMember.get("lastName");
+          const age = familyMember.get("age");
+          const duties = familyMember.get("duties");
+
+          const familyMemberObject = {
+            id: id,
+            firstName: firstName,
+            lastName: lastName,
+            age: age,
+            duties: duties,
+          };
+          familyMemberCollection.push(familyMemberObject);
+        }
+      } catch (error) {
+        console.log(error.code);
+      }
+    }
+  } catch (error) {
+    console.log(error.code);
+  }
+  console.log(familyMemberCollection);
+  return familyMemberCollection;
+}
 
 function addFamilyMember({ firstName, lastName, age, duties }) {
   try {
@@ -50,6 +119,7 @@ function addFamilyMember({ firstName, lastName, age, duties }) {
     familyMember.set("age", ageInt);
     familyMember.set("duties", duties);
     familyMember.set("contactPersonID", id);
+    familyMember.set("excursionID", Parse.User.current().excursionID);
 
     familyMember.save().then(
       (familyMember) => {
@@ -105,11 +175,11 @@ async function deleteFamilyMember(familyMembers) {
     const query = new Parse.Query(FamilyMember);
 
     query.equalTo("objectId", familyMemberID);
-    let result = await query.find();
-    result = result[0];
+    let response = await query.find();
+    response = response[0];
 
-    if (result !== null) {
-      result.destroy().then(
+    if (response !== null) {
+      response.destroy().then(
         () => {
           alert(" family members succesfully deleted ");
         },
@@ -118,7 +188,7 @@ async function deleteFamilyMember(familyMembers) {
         }
       );
     } else {
-      console.log("deletion didn't happen since the result is null");
+      console.log("deletion didn't happen since the response is null");
     }
   }
 }
@@ -128,5 +198,7 @@ const FamilyMemberAPI = {
   updateFamilyMember,
   addFamilyMember,
   deleteFamilyMember,
+  getAllFamilyMembersREST,
+  fetchAllFamilyMembersInExcursion,
 };
-export default FamilyMemberAPI
+export default FamilyMemberAPI;
