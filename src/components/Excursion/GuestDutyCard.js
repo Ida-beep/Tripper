@@ -10,10 +10,10 @@ function GuestDutyCard() {
   // Renders GuestsOverview from DB
   useEffect(() => {
     async function fetchData() {
-      setAllGuests(await FamilyMemberAPI.fetchFamilyMembersFromDB());
+      setAllGuests(await FamilyMemberAPI.fetchAllFamilyMembersInExcursion());
     }
     fetchData();
-    console.log("guestdutycard called");
+    console.log("guestdutycard called :", allGuests);
   }, []);
 
   function addElementToSelected(element) {
@@ -35,6 +35,7 @@ function GuestDutyCard() {
           tkey={["firstName", "age", "duties"]}
           theaders={["Participant", "Age", "Duty Preferences"]}
           tdata={allGuests}
+          onSelection={(member) => addElementToSelected(member)}
         />
       </div>
 

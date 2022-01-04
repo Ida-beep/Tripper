@@ -5713,6 +5713,13 @@
     "follow-redirects" "^1.0.0"
     "requires-port" "^1.0.0"
 
+"httplib@^1.0.0":
+  "integrity" "sha1-ltXd5AT0IjEsjwdFV2ilMpG5Cqo="
+  "resolved" "https://registry.npmjs.org/httplib/-/httplib-1.0.0.tgz"
+  "version" "1.0.0"
+  dependencies:
+    "promise" "^8.0.1"
+
 "https-browserify@^1.0.0":
   "integrity" "sha1-7AbBDgo0wPL68Zn3/X/Hj//QPHM="
   "resolved" "https://registry.npmjs.org/https-browserify/-/https-browserify-1.0.0.tgz"
@@ -9057,7 +9064,7 @@
   "resolved" "https://registry.npmjs.org/promise-inflight/-/promise-inflight-1.0.1.tgz"
   "version" "1.0.1"
 
-"promise@^8.1.0":
+"promise@^8.0.1", "promise@^8.1.0":
   "integrity" "sha512-W04AqnILOL/sPRXziNicCjSNRruLAuIHEOVBazepu0545DDNGYHz7ar9ZgZ1fMU8/MA4mVxp5rkBWRi6OXIy3Q=="
   "resolved" "https://registry.npmjs.org/promise/-/promise-8.1.0.tgz"
   "version" "8.1.0"

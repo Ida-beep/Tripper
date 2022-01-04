@@ -41,21 +41,31 @@ function DutiesCard(props) {
     }
   }, [props.deletionConfirmed]);
 
-  useEffect(() => {
+  /*   useEffect(() => {
     if (props.addPrevious === true) {
       fetchUpdatedDuties();
       console.log("after updating the list is now: ", selected);
       removeAllSelected();
       props.setAddPrevious(false);
     }
-  }, [props.addPrevious]);
+  }, [props.addPrevious]); */
 
-  useEffect(() => {
+  /*   useEffect(() => {
     console.log("DUTIES CARD : Added duties with value ", props.onDutiesAdded);
     fetchUpdatedDuties();
     props.addingDuty(false);
-  }, [props.onDutiesAdded]);
+  }, [props.onDutiesAdded]); */
 
+
+  function addElementToSelected(element) {
+    // setSelected(element);
+    setSelected((prevState) => [...prevState, element]);
+    console.log("selected: ", selected);
+  }
+
+  /**
+   * Fetch all duties on first render
+   */
   useEffect(() => {
     async function fetchData() {
       setAllDuties(await DutiesAPI.fetchDutiesFromDB());
