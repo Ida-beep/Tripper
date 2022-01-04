@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import AddFamilyPopup from "./AddFamilyPopup";
 import YouAndYourFamilyCard from "./YouAndYourFamilyCard";
 import ContactMemberCard from "./ContactMemberCard";
@@ -69,6 +69,7 @@ function Profile() {
         title="Add Car"
       />
       <EditCarPopup
+        title="Edit Car Information"
         selectedCar={selectedCar}
         carDidUpdate={(carDidUpdate) => setCarDidUpdate(carDidUpdate)}
         editCarActive={editCarActive}

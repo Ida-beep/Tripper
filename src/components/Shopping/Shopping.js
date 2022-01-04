@@ -10,6 +10,7 @@ import PreviousShoppingListsCard from "./PreviousShoppingListsCard";
 import Footer from "../Footer.js";
 import ShoppingAPI from "../API/ShoppingAPI";
 import PreviousShoppingListPopup from "./PreviousShoppingListPopup";
+import EditShoppingPopup from "./EditShoppingPopup";
 
 function Shopping() {
   /**
@@ -22,17 +23,16 @@ function Shopping() {
 
   const [showShoppingPopUp, setShowShoppingPopUp] = useState(false);
   const [showPreviousShopping, setShowPreviousShopping] = useState(false);
-  const [lastSelected, setLastSelected] = useState();
+  const [showEditShoppingPopUp, setShowEditShoppingPopUp] = useState(false);
+  const [selectedExcursion, setSelectedExcursion] = useState();
+  const [selectedShoppingItem, setSelectedShoppingItem] = useState();
+  const [shoppingItemDidUpdate, setShoppingItemDidUpdate] = useState();
 
   /**Returns the last selected elements from the cards. */
-  function returnSelected(selected) {
-    console.log("selected: ", selected);
-    setLastSelected(selected);
-  }
 
   useEffect(() => {
-    console.log("last selected: ", lastSelected);
-  }, [lastSelected]);
+    console.log("last selected: ", selectedExcursion);
+  }, [selectedExcursion]);
 
   return (
     <>
@@ -46,9 +46,17 @@ function Shopping() {
         <PreviousShoppingListPopup
           title="Select Shopping Items"
           trigger={showPreviousShopping}
-          excursionID={lastSelected}
+          selectedExcursion={selectedExcursion}
           editState={() => setShowPreviousShopping(false)}
         />
+        <EditShoppingPopup
+          title="Edit Shopping Item"
+          trigger={showEditShoppingPopUp}
+          selectedShoppingItem={selectedShoppingItem}
+          editState={() => setShowEditShoppingPopUp(false)}
+          shoppingItemDidUpdate={(shoppingItemDidUpdate) => 
+              setShoppingItemDidUpdate(shoppingItemDidUpdate)}
+          />
         <div className="page-container">
           <ShoppingCard /> {/*Add props */}
         </div>
@@ -63,10 +71,14 @@ function Shopping() {
           </div>
         </div>
         <div className="cards-container">
-          <ShoppingListCard active={() => setShowShoppingPopUp(true)} />
+          <ShoppingListCard 
+            selectedShoppingItem={
+              (shoppingItem) => {setSelectedShoppingItem(shoppingItem)}}
+            addActive={() => setShowShoppingPopUp(true)} 
+            editActive={() => setShowEditShoppingPopUp(true)}/>
           <PreviousShoppingListsCard
-            selected={returnSelected}
-            active={() => setShowPreviousShopping(true)}
+            selected={(excursion) => {setSelectedExcursion(excursion);}}
+            openActive={() => setShowPreviousShopping(true)}
           />
         </div>
       </div>

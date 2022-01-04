@@ -3,23 +3,30 @@ import ShoppingAPI from "../API/ShoppingAPI";
 import PopUp from "../Cards/PopUp";
 import TableScaffold from "../Cards/TableScaffold";
 
+/**
+ * @public 
+ * This component returns a popup that gives a list of
+ * shopping items from a previous excursion that has been 
+ * selected.
+ */
 function PreviousShoppingListPopup(props) {
   const [selectedItem, setSelectedItem] = useState([]);
   const [shoppingItems, setShoppingItems] = useState([]);
 
+  /**Retrieves data from the selected item. */
   useEffect(() => {
-    if (typeof props.excursionID !== "undefined") {
+    if (typeof props.selectedExcursion !== "undefined") {
       async function fetchData() {
         setShoppingItems(
           await ShoppingAPI.fetchPreviousShoppingListFromDB(
-            props.excursionID.id
+            props.selectedExcursion.id
           )
         );
       }
       fetchData();
       console.log("Previous Shoppinglist useEffect called");
     }
-  }, [props.excursionID]);
+  }, [props.selectedExcursion]);
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -38,15 +45,12 @@ function PreviousShoppingListPopup(props) {
   }
 
   const buttons = [
-    <button className="button-secondary-extra-small" onClick={props.editState}>
-      Cancel
-    </button>,
-    <button className="button-secondary-extra-small" onClick={props.editState}>
-      Finish
-    </button>,
-    <button className="button-primary-extra-small" disabled={disable()}>
-      Add Selected
-    </button>,
+    <button className="button-secondary-extra-small" 
+      onClick={props.editState}>Cancel</button>,
+    <button className="button-secondary-extra-small" 
+      onClick={props.editState}>Finish</button>,
+    <button className="button-primary-extra-small" 
+      disabled={disable()}>Add Selected</button>,
   ];
 
   return (

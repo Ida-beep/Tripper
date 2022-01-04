@@ -62,7 +62,7 @@ function Login(props) {
                   />
                 </label>
               </div>
-              <div className="long-input">
+              <div className="long-input" style={{marginTop:"10px"}}>
                 <label>
                   <p>Password</p>
                   <input
@@ -72,7 +72,8 @@ function Login(props) {
                   />
                 </label>
               </div>
-              <button className="button-secondary-extra-small" type="submit">
+              <button className="button-secondary-extra-small" 
+                type="submit" style={{marginLeft:"50px", marginTop:"30px"}}>
                 Login
               </button>
 

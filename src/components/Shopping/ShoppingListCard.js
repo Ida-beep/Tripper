@@ -4,7 +4,7 @@ import ShoppingAPI from "../API/ShoppingAPI";
 
 function ShoppingListCard(props) {
   const [shoppingList, setShoppingList] = useState([]);
-  const [selected, setSelected] = useState([]);
+  const [selected, setSelected] = useState();
 
   async function handleDelete(e) {
     e.preventDefault();
@@ -15,10 +15,10 @@ function ShoppingListCard(props) {
     });
   }
 
-  function addElementToSelected(element) {
-    setSelected((prevState) => [...prevState, element]);
-    console.log(selected);
-  }
+  useEffect(() => {
+    props.selectedShoppingItem(selected);
+    console.log("New selected useeffect to use in EditCar", selected);
+  }, [selected]);
 
   useEffect(() => {
     async function fetchData() {
@@ -29,7 +29,7 @@ function ShoppingListCard(props) {
   }, []);
 
   function disable() {
-    if (selected.length < 1) {
+    if (!selected) {
       return true;
     }
     return false;
@@ -39,7 +39,7 @@ function ShoppingListCard(props) {
     <div className="card-container">
       <div className="table-container">
         <TableScaffold
-          onSelection={(selected) => addElementToSelected(selected)}
+          onSelection={(selected) => setSelected(selected)}
           tkey={["itemName", "amount", "unit"]}
           theaders={["Item", "Amount", "Unit"]}
           tdata={shoppingList}
@@ -48,17 +48,15 @@ function ShoppingListCard(props) {
       <div className="button-container">
         <button
           className="button-secondary-extra-small"
-          onClick={handleDelete}
-          disabled={disable()}
-        >
+          onClick={handleDelete}disabled={disable()}>
           Delete
         </button>
-        <button className="button-secondary-extra-small" disabled={disable()}>
+        <button className="button-secondary-extra-small" 
+          disabled={disable()} onClick={props.editActive}>
           Edit
         </button>
-        <button className="button-primary-extra-small" onClick={props.active}>
-          Add
-        </button>
+        <button className="button-primary-extra-small" 
+          onClick={props.addActive}>Add</button>
       </div>
     </div>
   );

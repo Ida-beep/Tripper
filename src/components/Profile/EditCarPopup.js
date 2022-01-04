@@ -21,9 +21,7 @@ function EditCarPopup(props) {
     }, [props.selectedCar]);
   
     useEffect(() => {
-      console.log("boooooolean value: " + typeof selectedCar !== "undefined")
       if (selectedCar) {
-        console.log("seeeeeeeeeeeeelected car", selectedCar);
         setCarModel(selectedCar.carModel);
         setLicenseNumber(selectedCar.licensePlate);
         setColor(selectedCar.carColor);
@@ -59,12 +57,10 @@ function EditCarPopup(props) {
     function changeColor(e) {
       e.preventDefault();
       setColor(e.target.value);
-      console.log("color was changed");
     }
     function changeSeats(e) {
       e.preventDefault();
       setSeats(e.target.value);
-      console.log("color was changed");
     }
 
     function handleSubmit(e) {

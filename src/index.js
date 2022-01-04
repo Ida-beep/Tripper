@@ -7,6 +7,7 @@ import API from './components/API/API.js';
 
 API.initialize();
 
+
 ReactDOM.render(
   <React.StrictMode>
     <App />

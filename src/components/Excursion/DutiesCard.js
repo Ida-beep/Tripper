@@ -56,6 +56,7 @@ function DutiesCard(props) {
     props.addingDuty(false);
   }, [props.onDutiesAdded]); */
 
+
   function addElementToSelected(element) {
     // setSelected(element);
     setSelected((prevState) => [...prevState, element]);
@@ -96,33 +97,26 @@ function DutiesCard(props) {
     <div className="card-container">
       <div className="table-container">
         <TableScaffold
-          onSelection={(selected) => addElementToSelected(selected)}
-          // Pass the key name from database object in array matching headers
+          onSelection={(selected) => setSelected(selected)}
           tkey={["name", "minRequired", "peopleAssigned"]}
-          //Pass Real headers in array
           theaders={["Duty", "Min. participants", "People Assigned"]}
-          // Pass object data source
           tdata={allDuties}
         />
       </div>
       <div className="button-container">
         <button
           className="button-secondary-extra-small"
-          onClick={handleDelete}
-          disabled={disableDelete()}
-        >
+          onClick={handleDelete} disabled={disableDelete()}>
           Delete
         </button>
         <button
           className="button-secondary-extra-small"
-          onClick={props.previousActive}
-        >
+          onClick={props.previousActive}>
           Find Previous
         </button>
         <button
           className="button-primary-extra-small"
-          onClick={props.addActive}
-        >
+          onClick={props.addActive}>
           Add Duty
         </button>
       </div>

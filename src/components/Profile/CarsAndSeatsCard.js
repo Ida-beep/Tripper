@@ -34,7 +34,7 @@ function CarsAndSeatsCard(props) {
 
   useEffect(() => {
     props.selectedCar(selected);
-    console.log("New selected useeffect to use in EditContactMember", selected);
+    console.log("New selected useeffect to use in EditCar", selected);
   }, [selected]);
 
   async function handleDelete(e) {

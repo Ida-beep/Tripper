@@ -65,6 +65,7 @@ const getCurrentExcursion = async () => {
 
 //   const currentExcursionID = createContext(excursionID);
 
+
 const API = {
   signup,
   initialize,

@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Footer from "./Footer.js";
-import Image from "../assets/car.png";
 
 import ImgTripCar from "./ImgTripCar.js";
 
@@ -10,7 +9,7 @@ function Home() {
     <>
       <div className="page-container">
         <div className="welcome-page">
-          <div className="welcome-content">
+          <div className="welcome-content" style={{marginTop:"130px"}}>
             <h4 style={{ color: "#1ea774" }}>Welcome to Tripper!</h4>
             <p style={{ color: "#1ea774" }}>
               Start planning your next Excursion today{" "}
@@ -32,7 +31,6 @@ function Home() {
               </Link>
             </div>
           </div>
-          {/* <img className="" src={Image} alt="car"/> */}
         </div>
       </div>
       <Footer />

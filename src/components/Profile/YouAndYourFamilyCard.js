@@ -1,8 +1,3 @@
-// import React from 'react';
-// import ParticipantInfo from './ParticipantInfo';
-// import participantData from './data/participantData.js';
-// import OverviewCard from './OverviewCard';
-
 import React, { useEffect, useState } from "react";
 import TableScaffold from "../Cards/TableScaffold";
 import FamilyMemberAPI from "../API/FamilyMemberAPI";
@@ -15,7 +10,7 @@ function YouAndYourFamilyCard(props) {
   const [selected, setSelected] = useState([]);
   const [memberAndFamiliy, setMemberAndFamily] = useState([]);
   const [deleteMember, setDeleteMember] = useState(false);
-  const [confirmedDeletion, setconfirmedDeletion] = useState(false);
+  const [confirmedDeletion, setConfirmedDeletion] = useState(false);
   const [addingMember, setAddingMember] = useState(false);
 
   function addElementToSelected(element) {
@@ -37,7 +32,6 @@ function YouAndYourFamilyCard(props) {
     setAddingMember(true);
     const refetchedList = await FamilyMemberAPI.fetchFamilyMembersFromDB();
     setMemberAndFamily(refetchedList);
-    console.log(refetchedList);
   }
 
   /**
@@ -109,7 +103,7 @@ function YouAndYourFamilyCard(props) {
   useEffect(() => {
     if (props.onConfirmation === true) {
       fetchUpdateAfterDeletion();
-      setconfirmedDeletion(false);
+      setConfirmedDeletion(false);
       removeAllSelected();
     }
   }, [props.onConfirmation]);
