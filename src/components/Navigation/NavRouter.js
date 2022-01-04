@@ -6,7 +6,7 @@ import Login from "./Login";
 import OrganiserLogin from "./OrganiserLogin";
 import SignUp from "../SignUp";
 import Home from "../Home";
-import Shopping from "../Shopping/Shopping";
+import Shopping from "../Excursion/Shopping";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import CreateExcursion from "../CreateExcursion";
 
@@ -21,7 +21,7 @@ function NavRouter() {
         <Route path="/" element={<Excursion />} />
         {/* <Route path="/Excursion" element={<Excursion />} /> */}
         <Route path="/Profile" element={<Profile />} />
-        <Route path="/Shopping" element={<Shopping />} />
+        {/* <Route path="/Shopping" element={<Shopping />} /> */}
         <Route path="/Login" element={<Login />} />
         <Route path="/CreateExcursion" element={<CreateExcursion />} />
         <Route path="/OrganiserLogin" element={<OrganiserLogin />} />

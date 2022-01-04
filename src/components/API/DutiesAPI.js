@@ -37,14 +37,13 @@ const fetchDutiesFromDB = async () => {
         dutyCollection.push(dutyObject);
       }
     } catch (error) {
-      alert(`FAILED to retrieve the DUTY entry. Error: ${error.message}`);
+      console.log(`FAILED to retrieve the DUTY entry. Error: ${error.message}`);
     }
   }
   return dutyCollection;
 };
 
 const fetchPreviousDutyFromDB = async (id) => {
-
   const dutyCollection = [];
   const query = new Parse.Query("Duties");
 
@@ -133,14 +132,12 @@ async function deleteDuty(duty) {
   }
 }
 
-
-
 const DutiesAPI = {
   fetchPreviousDutyFromDB,
   deleteDuty,
   addDuty,
   fetchDutiesFromDB,
-  addMultipleDuties
-}
+  addMultipleDuties,
+};
 
-export default DutiesAPI
+export default DutiesAPI;
