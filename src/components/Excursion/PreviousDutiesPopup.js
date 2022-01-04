@@ -11,38 +11,37 @@ function PreviousDutiesPopup(props) {
   const [selectedDuties, setSelectedDuties] = useState([]);
 
   useEffect(() => {
-    try {
-      async function fetchData() {
-        setExcursions(await ExcursionAPI.fetchAllExcursionsFromDB());
-      }
-      fetchData();
-      console.log("Previous shopping lists useEffect called");
-    } catch (error) {
-      console.log("couldn't read prevDuties");
+    async function fetchData() {
+      ExcursionAPI.fetchAllExcursionsFromDB().then(
+        (result) => {
+          console.log("Fetching prev Excursion: ", result);
+          setExcursions(result);
+        },
+        (error) => {
+          console.log(error.code);
+        }
+      );
     }
+    fetchData();
+    console.log("USEEFFECT: fetched these: ", excursions);
+    console.log("Previous shopping lists useEffect called");
   }, []);
 
   function handleSubmit(e) {
     console.log("selected duties: ", selectedDuties);
     e.preventDefault();
     console.log("handleSubmit called");
-    DutiesAPI.addMultipleDuties(selectedDuties[selectedDuties.length - 1]);
+    DutiesAPI.addMultipleDuties(selectedDuties);
   }
 
-  /**  this one creates an infinite loop 
-    - what I used to get the arrowbutton working*/
-  // function openExcursion() {
-  //     if (typeof selectedExcursion !== "undefined") {
-  //         async function fetchData(){
-  //             const id = selectedExcursion.id
-  //             setExcursionDuties(await DutiesAPI.fetchPreviousDutyFromDB(id))
-  //         };
-  //         fetchData();
-  //         console.log("openExcrsion called");
-  //     }
-  // }
+  function setDutyElementToSelected(element) {
+    setSelectedDuties((prevState) => [...prevState, element]);
+  }
 
-  /*   CAREFUL: useEffect(() => {
+  /**
+   * Fetching data from Previous Excursions
+   */
+  useEffect(() => {
     if (typeof selectedExcursion !== "undefined") {
       async function fetchData() {
         const id = selectedExcursion.id;
@@ -51,7 +50,7 @@ function PreviousDutiesPopup(props) {
       fetchData();
       console.log("openExcrsion called");
     }
-  }, [selectedExcursion]); */
+  }, [selectedExcursion]);
 
   function disableArrow() {
     if (!selectedExcursion) {
@@ -64,37 +63,26 @@ function PreviousDutiesPopup(props) {
     setSelectedExcursion(element);
   }
 
-  function setDutyElementToSelected(element) {
-    setSelectedDuties((prevState) => [...prevState, element]);
-    setSelectedDuties(element);
-  }
-
-  function handleAdd() {
-    props.setAddPrevious(true);
-  }
-
   const buttons = [
     <button className="button-secondary-extra-small" onClick={props.editState}>
       Cancel
     </button>,
+    <button className="button-primary-extra-small">Add Selected</button>,
     <button className="button-secondary-extra-small" onClick={props.editState}>
       Finish
-    </button>,
-    <button className="button-primary-extra-small" onClick={handleAdd}>
-      Add Selected
     </button>,
   ];
 
   return (
     props.trigger && (
       <PopUp
-        title={props.title}
         editState={props.editState}
         submitChanges={handleSubmit}
         buttons={buttons}
       >
         <div className="cards-container">
           <div style={{ marginTop: "20px" }} className="card-container">
+            <h4 style={{ fontSize: "20px" }}>Choose Excursion</h4>
             <div className="table-container">
               <TableScaffold
                 onSelection={(selectedItem) =>
@@ -108,20 +96,20 @@ function PreviousDutiesPopup(props) {
           </div>
           <button
             className="button-secondary-extra-small"
-            disabled={disableArrow()}
+            disabled={true}
             type="button"
           >
             →
           </button>
-          {/* onClick={openExcursion()} */}
           <div style={{ marginTop: "20px" }} className="card-container">
+            <h4 style={{ fontSize: "20px" }}>Duties</h4>
             <div className="table-container">
               <TableScaffold
                 onSelection={(selectedItem) =>
                   setDutyElementToSelected(selectedItem)
                 }
                 tkey={["name", "minRequired"]}
-                theaders={["Duty", "Min. guests"]}
+                theaders={["Duty", "Min. Participants"]}
                 tdata={excursionDuties}
               />
             </div>
@@ -133,5 +121,3 @@ function PreviousDutiesPopup(props) {
 }
 
 export default PreviousDutiesPopup;
-
-// onSelection={(selectedItem)=>addElementToSelected(selectedItem)}

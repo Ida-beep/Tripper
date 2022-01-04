@@ -12,19 +12,19 @@ function TableScaffold(props) {
     return <th key={header.id}>{header}</th>;
   });
 
+  console.log("COnsumed data inside tablescaffold :", props.tdata);
   // Takes props object and return as tabledata
   const rowData = props.tdata.map((tdata) => {
+    console.log("TABLESCAFFOLD:", tdata);
     const rowDataValue = props.tkey.map((header) => {
-      if (!tdata[header].constructor === "undefined") {
-        if (tdata[header].constructor === Array) {
-          let tableDatalist = "";
-          for (let i = 0; i < tdata[header].length; i++) {
-            tableDatalist += tdata[header][i] + " ";
-          }
-          return <td key={"tableDataList"}>{tableDatalist}</td>;
+      if (tdata[header].constructor === Array) {
+        let tableDatalist = "";
+        for (let i = 0; i < tdata[header].length; i++) {
+          tableDatalist += tdata[header][i] + " ";
         }
-        return <td key={tdata[header].id}>{tdata[header]}</td>;
+        return <td key={"tableDataList"}>{tableDatalist}</td>;
       }
+      return <td key={tdata[header].id}>{tdata[header]}</td>;
     });
     return (
       <tr
