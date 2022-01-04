@@ -117,6 +117,7 @@ function EditExcursion(props) {
   return (
     props.trigger && (
       <PopUp
+        title="Edit Excursion"
         editState={props.editState}
         submitChanges={handleSubmit}
         buttons={buttons}

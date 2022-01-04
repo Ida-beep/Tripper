@@ -52,6 +52,7 @@ function AddDutyPopup(props) {
   return (
     props.trigger && (
       <PopUp
+        title="Add Duty"
         data={dutyData}
         editState={props.editState}
         submitChanges={handleSubmit}
