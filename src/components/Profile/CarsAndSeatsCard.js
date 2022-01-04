@@ -2,43 +2,67 @@ import React, { useState, useEffect } from "react";
 import TableScaffold from "../Cards/TableScaffold";
 import CarsAPI from "../API/CarsAPI";
 
+/**
+ * @public CarsAndSeatsCard displays information about the 
+ * cars and allows the user to add, edit and delete cars.
+ */
+
 function CarsAndSeatsCard(props) {
   const [carsAndSeats, setCarsAndSeats] = useState([]);
   const [selected, setSelected] = useState();
-
-  function addElementToSelected(element) {
-    setSelected(element);
-    console.log(selected);
-  }
-
-  /**
-   * UPDATE
-   */
-   useEffect(() => {
-    if (props.carDidUpdate === true) {
-      console.log(
-        "didupdate was passed to YouAndYourFamily with value :",
-        props.carDidUpdate
-      );
-      fetchAfterUpdate();
-      setSelected(null);
-      console.log("after update the list is: ", selected);
-      props.setCarDidUpdate(false);
-    }
-  }, [props.carDidUpdate]);
-
-  async function fetchAfterUpdate() {
-    const refetchedList = await CarsAPI.fetchCarsFromDB();
-    setCarsAndSeats(refetchedList);
-  }
+  const [deleteCar, setDeleteCar] = useState(false);
+  const [addingCar, setAddingCar] = useState(false);
+  const [confirmedDeletion, setConfirmedDeletion] = useState(false);
 
   useEffect(() => {
     props.selectedCar(selected);
     console.log("New selected useeffect to use in EditCar", selected);
   }, [selected]);
 
-  async function handleDelete(e) {
-    e.preventDefault();
+  //UPDATES LIST OF CARS
+  async function fetchData() {
+    setCarsAndSeats(await CarsAPI.fetchCarsFromDB());
+  }
+  
+  useEffect(() => {
+    fetchData();
+    console.log("use Effect for fetchCarsFromDB called");
+  }, []);
+
+  //UPDATE AFTER EDITING CAR
+  useEffect(() => {
+    if (props.carDidUpdate === true) {
+      fetchData();
+      setSelected(null);
+      props.setCarDidUpdate(false);
+    }
+  }, [props.carDidUpdate]);
+
+  //UPDATE AFTER ADDING NEW CAR
+  useEffect(() => {
+    setAddingCar(true);
+    fetchData();
+    setAddingCar(false);
+  }, [props.showCarPopup]);
+
+  
+  // ----For deleting item
+  useEffect(() => {
+    console.log("Now reset of selected-array should start");
+    setSelected(null);
+  }, [props.isCanceled]);
+
+  useEffect(() => {
+    if (props.onConfirmation === true) {
+      console.log("inside on confirmation use effect")
+      fetchUpdateAfterDeletion();
+      setConfirmedDeletion(false);
+      setSelected(null);
+    }
+  }, [props.onConfirmation]);
+
+  function fetchUpdateAfterDeletion() {
+    console.log("fetchupdateafterdeletion function")
     CarsAPI.deleteCar(selected).then(async () => {
       const refetchedList = await CarsAPI.fetchCarsFromDB();
       setCarsAndSeats(refetchedList);
@@ -46,12 +70,36 @@ function CarsAndSeatsCard(props) {
   }
 
   useEffect(() => {
-    async function fetchData() {
-      setCarsAndSeats(await CarsAPI.fetchCarsFromDB());
+    console.log("Checking if deletion should bein");
+    if (deleteCar === true) {
+      console.log("deletion process begun, deleting :", selected);
+      props.onDeletion(true);
+      console.log("deletion was set to truuuuee: ")
+      props.carToDelete(selected);
+      setDeleteCar(false);
+    } else {
+      console.log("deletion didn't begin/ already happened");
     }
-    fetchData();
-    console.log("use Effect for fetchCarsFromDB called");
-  }, []);
+  }, [deleteCar]);
+
+  // function handleDelete(e) {
+  //   console.log("handleDelete called, selected car passed on to Profile");
+  //   e.preventDefault();
+  //   setDeleteCar(true);
+  //   console.log("delete caaar" + deleteCar);
+  // }
+
+  // async function handleDelete(e) {
+  //   e.preventDefault();
+  //   CarsAPI.deleteCar(selected).then(async () => {
+  //     const refetchedList = await CarsAPI.fetchCarsFromDB();
+  //     setCarsAndSeats(refetchedList);
+  //   });
+  // }
+
+  function handleDelete(e) {
+
+  }
 
   function disable() {
     if (!selected) {
@@ -64,7 +112,7 @@ function CarsAndSeatsCard(props) {
     <div className="card-container">
       <div className="table-container">
         <TableScaffold
-          onSelection={(selected) => addElementToSelected(selected)}
+          onSelection={(selected) => setSelected(selected)}
           tkey={["carModel", "licensePlate", "carColor", "carSeats"]}
           theaders={["Car", "License", "Color", "Seats"]}
           tdata={carsAndSeats}
@@ -74,7 +122,7 @@ function CarsAndSeatsCard(props) {
       <div className="button-container">
         <button
           className="button-secondary-extra-small"
-          onClick={handleDelete}
+          onClick={props.deleteActive}
           disabled={disable()}
         >
           Delete

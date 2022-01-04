@@ -109,7 +109,6 @@ function PreviousDutiesPopup(props) {
           >
             →
           </button>
-          {/* onClick={openExcursion()} */}
           <div style={{ marginTop: "20px" }} className="card-container">
             <div className="table-container">
               <TableScaffold

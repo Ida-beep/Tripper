@@ -1,23 +1,29 @@
 import React, { useState, useEffect } from "react";
 import PopUp from "../Cards/PopUp";
 
-function DeletePopup(props) {
-  
+function DeleteCarPopup(props) {
   function handleSubmit(e) {
-    console.log("delete popup handle submit called");
     e.preventDefault();
     console.log("confirm was pushed with :", props.itemToDelete);
     props.onConfirmation(true);
-    props.closePopup(false);
-    console.log("show delete car popup: ", props.showDeletePopup)
+    props.toggleDeletePopup(false);
   }
 
   function handleCancel(e) {
     e.preventDefault();
     console.log("cancel was called");
     props.onCancel(true);
-    props.closePopup(false);
+    props.toggleDeletePopup(false);
   }
+
+  useEffect(() => {
+   
+    if (props.itemToDelete) {
+      console.log("selecteeed car: ", props.itemToDelete)
+      const carText = props.text
+      console.log("caaar text inside useEffect", carText)
+    }
+  }, [props.itemToDelete]);
 
   /**
    * TODO: These buttons need to get added functionality, cancel should not run delete
@@ -32,6 +38,10 @@ function DeletePopup(props) {
     </button>,
   ];
 
+  useEffect(() => {
+    console.log("prop text: ", props.text);
+  }, [])
+
   return (
     props.showDeletePopup && (
       <PopUp submitChanges={handleSubmit} buttons={buttons}>
@@ -45,4 +55,4 @@ function DeletePopup(props) {
   );
 }
 
-export default DeletePopup;
+export default DeleteCarPopup;
