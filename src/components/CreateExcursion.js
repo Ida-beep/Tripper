@@ -9,6 +9,12 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { Parse } from "parse";
 
+/**
+ * @public This component is responsible for creating an
+ * excursion, along with it's initial organiser. 
+ * 
+ */
+
 function CreateExcursion() {
   const [excursionName, setExcursionName] = useState();
   const [fromDate, setFromDate] = useState();
@@ -61,42 +67,38 @@ function CreateExcursion() {
     console.log("create excursion handle submit called");
     let excursionID = "";
 
-    ContactMemberAPI.signUp({
-      username, password,email,
-      isOrganiser, excursionID,
-    }).then((loggedInUser) => {
-        navigate(`/`);
-        console.log("succes in signup");
-      },
-      (error) => {
-        console.log("Didn't login with error code: ", error.code);
-      }
-    );
     ExcursionAPI.createExcursion({
       excursionName,fromDate, toDate,
       location, description,
     }).then(
       (excursion) => {
         setExcursionID(excursion.id);
-        /*         const user = Parse.User.current();
-        user.set("excursionID", excursion.id);
-        console.log.log(
-          "DEBUGGING: the newly create excursionID is: ",
-          excursion.id
-        );
-        user.save().then(() => {
-            console.log("succes in saving excursionID");
-          },
-          (error) => {
-            console.log("failed at saving excursionID: ", error.code);
-          }
-        ); */
       },
       (error) => {
         console.log("failed to create excursion OR set excursionID of user");
       }
     );
   }
+
+  /**This useEffect ensures that an organiser is never signed up 
+   * before an excursion is created. This ensures that the contact
+   * member is always associated with an excursion.
+   */
+  useEffect(() => {
+    if (excursionID) {
+      ContactMemberAPI.signUp({
+        username, password,email,
+        isOrganiser, excursionID,
+      }).then((loggedInUser) => {
+          navigate(`/`);
+          console.log("succes in signup");
+        },
+        (error) => {
+          console.log("Didn't login with error code: ", error.code);
+        }
+      );
+    }
+  }, [excursionID])
 
   useEffect(() => {
     console.log(excursionID);
@@ -186,6 +188,7 @@ function CreateExcursion() {
                 type="submit"
                 variant="primary"
                 disabled={disable()}
+                style={{marginLeft:"0px", marginTop:"15px"}}
               >
                 Create Excursion &amp; User
               </button>
