@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import LongInput from "./Cards/LongInput";
 import Footer from "./Footer";
 import DescriptionInput from "./Cards/DescriptionInput";
@@ -24,6 +24,7 @@ function CreateExcursion() {
   // const [lastName, setLastName] = useState();
   // const [age, setAge] = useState();
   const [isOrganiser, setIsOrganiser] = useState(true);
+  const [excursionID, setExcursionID] = useState();
 
   const navigate = useNavigate();
 
@@ -103,8 +104,13 @@ function CreateExcursion() {
       description,
     }).then(
       (excursion) => {
-        const user = Parse.User.current();
+        setExcursionID(excursion.id);
+        /*         const user = Parse.User.current();
         user.set("excursionID", excursion.id);
+        console.log.log(
+          "DEBUGGING: the newly create excursionID is: ",
+          excursion.id
+        );
         user.save().then(
           () => {
             console.log("succes in saving excursionID");
@@ -112,7 +118,7 @@ function CreateExcursion() {
           (error) => {
             console.log("failed at saving excursionID: ", error.code);
           }
-        );
+        ); */
       },
       (error) => {
         console.log("failed to create excursion OR set excursionID of user");
@@ -121,6 +127,10 @@ function CreateExcursion() {
 
     /* excursionID = excursion.id; */
   }
+
+  useEffect(() => {
+    console.log(excursionID);
+  }, [excursionID]);
 
   function disable() {
     if (

@@ -11,11 +11,15 @@ function PreviousDutiesPopup(props) {
   const [selectedDuties, setSelectedDuties] = useState([]);
 
   useEffect(() => {
-    async function fetchData() {
-      setExcursions(await ExcursionAPI.fetchAllExcursionsFromDB());
+    try {
+      async function fetchData() {
+        setExcursions(await ExcursionAPI.fetchAllExcursionsFromDB());
+      }
+      fetchData();
+      console.log("Previous shopping lists useEffect called");
+    } catch (error) {
+      console.log("couldn't read prevDuties");
     }
-    fetchData();
-    console.log("Previous shopping lists useEffect called");
   }, []);
 
   function handleSubmit(e) {
@@ -38,7 +42,7 @@ function PreviousDutiesPopup(props) {
   //     }
   // }
 
-  CAREFUL: useEffect(() => {
+  /*   CAREFUL: useEffect(() => {
     if (typeof selectedExcursion !== "undefined") {
       async function fetchData() {
         const id = selectedExcursion.id;
@@ -47,7 +51,7 @@ function PreviousDutiesPopup(props) {
       fetchData();
       console.log("openExcrsion called");
     }
-  }, [selectedExcursion]);
+  }, [selectedExcursion]); */
 
   function disableArrow() {
     if (!selectedExcursion) {
@@ -62,7 +66,7 @@ function PreviousDutiesPopup(props) {
 
   function setDutyElementToSelected(element) {
     setSelectedDuties((prevState) => [...prevState, element]);
-    //setSelectedDuties(element);
+    setSelectedDuties(element);
   }
 
   function handleAdd() {
