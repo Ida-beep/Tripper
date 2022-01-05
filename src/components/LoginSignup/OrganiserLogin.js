@@ -4,21 +4,25 @@ import { useNavigate } from "react-router-dom";
 import Footer from "../Navigation/Footer";
 import { Link } from "react-router-dom";
 
+/**
+ * Handles login for organisers (not participants)
+ */
 function OrganiserLogin(props) {
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
   const navigate = useNavigate();
 
+  /**
+   * Logs in and redirects the user to Excursion page
+   */
   function handleLoginAttempt(e) {
     e.preventDefault();
-    console.log("handleLoginAttempt was called");
-
     const user = new Parse.User();
     user.setPassword(password);
     user.setUsername(username);
     user.logIn().then(
       (loggedInUser) => {
-        console.log(loggedInUser);
+        console.log("Succesfull login with :", loggedInUser);
         navigate(`/`);
       },
       (error) => {

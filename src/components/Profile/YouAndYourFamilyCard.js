@@ -3,9 +3,8 @@ import TableScaffold from "../Cards/TableScaffold";
 import FamilyMemberAPI from "../API/FamilyMemberAPI";
 
 /**
-    @public YouAndYourFamilyCard shows all relevant participating members of a family
+ * YouAndYourFamilyCard shows all relevant participating members of a family
  */
-
 function YouAndYourFamilyCard(props) {
   const [memberAndFamiliy, setMemberAndFamily] = useState([]);
   const [selected, setSelected] = useState();
@@ -17,16 +16,17 @@ function YouAndYourFamilyCard(props) {
     props.selectedMember(selected);
   }, [selected]);
 
-  //UPDATES LIST OF FAMILY MEMBERS
+  /**
+   * Updates list of FamilyMembers
+   */
   async function fetchData() {
     setMemberAndFamily(await FamilyMemberAPI.fetchFamilyMembersFromDB());
   }
   useEffect(() => {
     fetchData();
   }, []);
-  
 
-  /** UPDATE AFTER ADDING
+  /**
    * Runs when a new FamilyMembers is succesfully added, and a user has
    * pushed the Finish button inside AddFamilyPopup.js. It refetches the new
    * list of FamilyMembers
@@ -37,17 +37,20 @@ function YouAndYourFamilyCard(props) {
     setAddingMember(false);
   }, [props.onAddingFamilyMembers]);
 
-  
-  //Fetch after DELETE
+  /**
+   * Updates list after deletions on FamilyMembers
+   */
   function fetchUpdateAfterDeletion() {
-    const lastSelected = selected[0]
+    const lastSelected = selected[0];
     FamilyMemberAPI.deleteOneFamilyMember(selected).then(async () => {
       const refetchedList = await FamilyMemberAPI.fetchFamilyMembersFromDB();
       setMemberAndFamily(refetchedList);
     });
   }
 
-  //UPDATE AFTER EDITING FAMILY MEMBER
+  /**
+   * Updates list after edit on FamilyMembers
+   */
   useEffect(() => {
     if (props.didUpdate === true) {
       fetchData();
@@ -56,14 +59,12 @@ function YouAndYourFamilyCard(props) {
     }
   }, [props.didUpdate]);
 
-  
   useEffect(() => {
     setSelected(null);
   }, [props.isCanceled]);
 
   /**
-   * Here the FamilyMember is being deleted from the DB, and an updated list
-   * is fetched from the DB
+   * The FamilyMember is deleted from DB, and an updated list is fetched
    */
   useEffect(() => {
     if (props.onConfirmation === true) {
@@ -73,28 +74,22 @@ function YouAndYourFamilyCard(props) {
     }
   }, [props.onConfirmation]);
 
-  //HandleDelete triggers the boolean value of deleteMember to be passed to Profile.js
+  /**
+   * Checks if deletion should begin
+   */
   useEffect(() => {
-    console.log("Checking if deletion should bein");
     if (deleteMember === true) {
-      console.log("deletion process begun, deleting :", selected);
       props.onDeletion(deleteMember);
       props.memberToDelete(selected);
       setDeleteMember(false);
     } else {
-      console.log("deletion didn't begin/ already happened");
+      console.log("Deletion didn't begin/ already happened");
     }
   }, [deleteMember]);
-  
-  //Handles local state and passes them on
-  async function handleDelete(e) {
-    console.log("handleDelete called, selected member passed on to Profile");
-    e.preventDefault();
-    setDeleteMember(true);
-    console.log("delete meeeember" + deleteMember)
-  }
 
-  //Returns boolean based on if any members is selected
+  /**
+   * Returns boolean based on if any members is selected
+   */
   function disable() {
     if (!selected) {
       return true;
@@ -114,7 +109,8 @@ function YouAndYourFamilyCard(props) {
       </div>
 
       <div className="button-container">
-        <button className="button-secondary-extra-small"
+        <button
+          className="button-secondary-extra-small"
           onClick={props.deleteActive}
           disabled={disable()}
         >

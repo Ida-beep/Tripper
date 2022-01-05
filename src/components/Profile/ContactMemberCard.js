@@ -15,7 +15,6 @@ function ContactMemberCard(props) {
   const [city, setCity] = useState();
 
   async function fetchData() {
-    console.log("contactmember api called");
     ContactMemberAPI.fetchContactMemberFromDB().then((userObject) => {
       setFirstName(userObject.firstName);
       setLastName(userObject.lastName);

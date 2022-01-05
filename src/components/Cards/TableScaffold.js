@@ -1,5 +1,5 @@
 /**
- * @public TableScaffold formats input to fit to Card.js.
+ * TableScaffold formats input to fit to Card.js.
  *      theaders    =   [pass an array of strings containing the headers to Display]
         tdata       =   {pass an object}
         tkey        =   [pass an array of the keys the tdata should display] - should match the headers

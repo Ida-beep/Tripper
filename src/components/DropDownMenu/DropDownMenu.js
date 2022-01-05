@@ -5,7 +5,7 @@ import DutiesAPI from "../API/DutiesAPI.js";
 import DropDownItem from "./DropDownItem";
 
 /**
- * @public DropDownMenu takes all duties from backend and displays them as DropDownItems.
+ * DropDownMenu takes all duties from backend and displays them as DropDownItems.
  * You can select an amount of Duties that will be saved as you preferred duties (selectedDuties).
  */
 

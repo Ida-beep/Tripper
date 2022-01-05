@@ -7,7 +7,7 @@ import ContactMemberAPI from "../API/ContactMemberAPI.js";
 import ImgLogo from "../Img/ImgLogo.js";
 
 /**
- * @public SignUp creates a new user object in the database (back4app)
+ * SignUp creates a new participant object in the database (back4app)
  * username + password can afterwards be used on the login screen to login
  */
 function SignUp() {
@@ -17,9 +17,11 @@ function SignUp() {
   const [email, setEmail] = useState();
   const [isOrganiser, setIsOrganiser] = useState(false);
 
+  /**
+   * Signs up the participant with their information and excursionID
+   */
   async function handleSubmit(e) {
     e.preventDefaul();
-    console.log("create account called");
     ContactMemberAPI.signUp({
       username,
       password,

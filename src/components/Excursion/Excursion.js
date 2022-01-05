@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Image from "../../assets/norwegian_fjord.png";
 import ExcursionCard from "./ExcursionCard.js";
 import EditExcursion from "./EditExcursion";
@@ -14,7 +14,12 @@ import PreviousShoppingListsCard from "./PreviousShoppingListsCard";
 import PreviousShoppingListPopup from "./PreviousShoppingListPopup";
 import EditShoppingPopup from "./EditShoppingPopup";
 
+/**
+ * Excursion shows Duties, Participants and ShoppingList relevant
+ * for a given Excursion. There's also a description of the excursion.
+ */
 function Excursion(props) {
+  /** Varibales related to Duties */
   const [editExcursionActive, setExcursionEditActive] = useState(false);
   const [dutiesPopupActive, setDutiesPopupAcitve] = useState(false);
   const [previousDutiesActive, setPreviousDutiesActive] = useState(false);
@@ -25,34 +30,34 @@ function Excursion(props) {
   const [deletionConfirmed, setDeletionConfirmed] = useState(false);
   const [addPrevious, setAddPrevious] = useState(false);
   const [finishAddinPrev, setFinishAddingPrev] = useState(false);
+  /** Varibales related to Shopping */
   const [showShopping, setShowShopping] = useState(false);
-
   const [showShoppingPopUp, setShowShoppingPopUp] = useState(false);
   const [showPreviousShopping, setShowPreviousShopping] = useState(false);
   const [showEditShoppingPopUp, setShowEditShoppingPopUp] = useState(false);
   const [selectedExcursion, setSelectedExcursion] = useState();
   const [selectedShoppingItem, setSelectedShoppingItem] = useState();
   const [shoppingItemDidUpdate, setShoppingItemDidUpdate] = useState();
-
-  //Button styles
+  /** Varibales related to Button styling */
   const [dutiesButtonStyle, setDutiesButtonStyle] = useState("selected");
   const [shoppingButtonStyle, setShoppingButtonStyle] = useState("unselected");
 
-  useEffect(() => {
-    console.log("Show Shopping? : ", showShopping);
-  }, [showShopping]);
-
   function returnSelected(selected) {
-    console.log("selected: ", selected);
     setLastSelected(selected);
   }
 
+  /**
+   * Closes Shopping-related Cards, Opens Duty-related Cards
+   */
   function closeShopping() {
     setShowShopping(false);
     setDutiesButtonStyle("selected");
     setShoppingButtonStyle("unselected");
   }
 
+  /**
+   * Opens Shopping-related Cards, Closes Duty-related Cards
+   */
   function openShopping() {
     setShowShopping(true);
     setDutiesButtonStyle("unselected");

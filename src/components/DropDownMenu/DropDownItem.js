@@ -6,14 +6,14 @@ function DropDownItem(props) {
   const [selectedColor, setSelectedColor] = useState("#FADF63");
   const [count, setCount] = useState(0);
 
+  /**
+   * On handleClick() the user can select or de-select items on the dropdown
+   */
   function handleClick() {
     setCount(count + 1);
-    console.log(count);
     if (count % 2 === 1) {
-      console.log("unselected");
       setSelected(false);
     } else {
-      console.log("selected");
       setSelected(true);
     }
   }

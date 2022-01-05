@@ -7,7 +7,7 @@ import LongInput from "../Cards/LongInput.js";
 import ShortInput from "../Cards/ShortInput.js";
 
 /**
- * @public AddFamilyPopup defines the content of the popup to
+ * AddFamilyPopup defines the content of the popup to
  * add family items, using its parent PopUp.js
  *
  */

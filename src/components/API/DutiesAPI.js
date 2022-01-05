@@ -87,7 +87,7 @@ async function addDuty(data) {
       }
     );
   } catch (error) {
-    console.log("failed to add duty:", error.code);
+    console.log("Failed to add duty:", error.code);
   }
 }
 

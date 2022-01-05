@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
 import PopUp from "../Cards/PopUp";
-
+/**
+ * Handles final deletion of Car
+ */
 function DeleteCarPopup(props) {
   function handleSubmit(e) {
     e.preventDefault();
-    console.log("confirm was pushed with :", props.itemToDelete);
     props.onConfirmation(true);
     props.toggleDeletePopup(false);
   }
@@ -17,9 +18,7 @@ function DeleteCarPopup(props) {
 
   useEffect(() => {
     if (props.itemToDelete) {
-      console.log("selecteeed car: ", props.itemToDelete);
       const carText = props.text;
-      console.log("caaar text inside useEffect", carText);
     }
   }, [props.itemToDelete]);
 
@@ -31,10 +30,6 @@ function DeleteCarPopup(props) {
       Confirm
     </button>,
   ];
-
-  useEffect(() => {
-    console.log("prop text: ", props.text);
-  }, []);
 
   return (
     props.showDeletePopup && (
