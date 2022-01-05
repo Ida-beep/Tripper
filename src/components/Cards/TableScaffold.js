@@ -1,21 +1,14 @@
-/* 
- Takes three props and returns a table based on a passed object.
-    Props to pass
-        theaders    =   [pass an array of strings containing the headers to Display]
+/**
+ * @public TableScaffold formats input to fit to Card.js.
+ *      theaders    =   [pass an array of strings containing the headers to Display]
         tdata       =   {pass an object}
-        tkey        =   [pass an array of the keys the tdata should display] - should match the headers 
-*/
-
+        tkey        =   [pass an array of the keys the tdata should display] - should match the headers
+ */
 function TableScaffold(props) {
-  // Takes props array and return as tableheaders
   const rowHeaders = props.theaders.map((header) => {
     return <th key={header.id}>{header}</th>;
   });
-
-  console.log("COnsumed data inside tablescaffold :", props.tdata);
-  // Takes props object and return as tabledata
   const rowData = props.tdata.map((tdata) => {
-    console.log("TABLESCAFFOLD:", tdata);
     const rowDataValue = props.tkey.map((header) => {
       if (tdata[header].constructor === Array) {
         let tableDatalist = "";
