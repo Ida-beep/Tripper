@@ -9,11 +9,9 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 /**
- * @public This component is responsible for creating an
- * excursion, along with it's initial organiser.
- *
+ * This component is responsible for creating an
+ * excursion, along with it's initial organisers
  */
-
 function CreateExcursion() {
   const [excursionName, setExcursionName] = useState();
   const [fromDate, setFromDate] = useState();
@@ -63,9 +61,6 @@ function CreateExcursion() {
 
   async function handleSubmit(e) {
     e.preventDefault();
-    console.log("create excursion handle submit called");
-    /* let excursionID = ""; */
-
     ExcursionAPI.createExcursion({
       excursionName,
       fromDate,
@@ -77,12 +72,13 @@ function CreateExcursion() {
         setExcursionID(excursion.id);
       },
       (error) => {
-        console.log("failed to create excursion OR set excursionID of user");
+        console.log("Failed to create excursion OR set excursionID of user");
       }
     );
   }
 
-  /**This useEffect ensures that an organiser is never signed up
+  /**
+   * This useEffect ensures that an organiser is never signed up
    * before an excursion is created. This ensures that the contact
    * member is always associated with an excursion.
    */
@@ -97,10 +93,10 @@ function CreateExcursion() {
       }).then(
         (loggedInUser) => {
           navigate(`/`);
-          console.log("succes in signup");
+          console.log("Succes in signup");
         },
         (error) => {
-          console.log("Didn't login with error code: ", error.code);
+          console.log("Failed to login with error code: ", error.code);
         }
       );
     }

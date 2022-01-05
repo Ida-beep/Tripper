@@ -32,7 +32,6 @@ function AddCarPopup(props) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log("handleSubmit called");
     CarsAPI.addCar(carData);
   }
 

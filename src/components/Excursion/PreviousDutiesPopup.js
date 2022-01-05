@@ -4,12 +4,18 @@ import TableScaffold from "../Cards/TableScaffold";
 import ExcursionAPI from "../API/ExcursionAPI";
 import DutiesAPI from "../API/DutiesAPI";
 
+/**
+ * Lists previous excursion and their shopping lists
+ */
 function PreviousDutiesPopup(props) {
   const [excursions, setExcursions] = useState([]);
   const [selectedExcursion, setSelectedExcursion] = useState();
   const [excursionDuties, setExcursionDuties] = useState([]);
   const [selectedDuties, setSelectedDuties] = useState([]);
 
+  /**
+   * Fetched All Excursion from database
+   */
   useEffect(() => {
     async function fetchData() {
       ExcursionAPI.fetchAllExcursionsFromDB().then(
@@ -24,17 +30,23 @@ function PreviousDutiesPopup(props) {
     fetchData();
   }, []);
 
+  /**
+   * Submits selected duties
+   */
   function handleSubmit(e) {
     e.preventDefault();
     DutiesAPI.addMultipleDuties(selectedDuties);
   }
 
+  /**
+   * Adds an element to the array of duties
+   */
   function setDutyElementToSelected(element) {
     setSelectedDuties((prevState) => [...prevState, element]);
   }
 
   /**
-   * Fetching data from Previous Excursions
+   * Fetches data from Previous Excursions
    */
   useEffect(() => {
     if (typeof selectedExcursion !== "undefined") {
@@ -43,10 +55,12 @@ function PreviousDutiesPopup(props) {
         setExcursionDuties(await DutiesAPI.fetchPreviousDutyFromDB(id));
       }
       fetchData();
-      console.log("openExcrsion called");
     }
   }, [selectedExcursion]);
 
+  /**
+   * Sets the selected Excursion as selected
+   */
   function setExcursionElementToSelected(element) {
     setSelectedExcursion(element);
   }

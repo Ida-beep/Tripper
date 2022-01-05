@@ -4,16 +4,16 @@ import PopUp from "../Cards/PopUp";
 import TableScaffold from "../Cards/TableScaffold";
 
 /**
- * @public 
  * This component returns a popup that gives a list of
- * shopping items from a previous excursion that has been 
- * selected.
+ * shopping items from a previous excursion that has been selected.
  */
 function PreviousShoppingListPopup(props) {
   const [selectedItem, setSelectedItem] = useState([]);
   const [shoppingItems, setShoppingItems] = useState([]);
 
-  /**Retrieves data from the selected item. */
+  /**
+   * Retrieves data from the selected item
+   */
   useEffect(() => {
     if (typeof props.selectedExcursion !== "undefined") {
       async function fetchData() {
@@ -24,13 +24,11 @@ function PreviousShoppingListPopup(props) {
         );
       }
       fetchData();
-      console.log("Previous Shoppinglist useEffect called");
     }
   }, [props.selectedExcursion]);
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log("handleSubmit called");
     ShoppingAPI.addMultipleShoppingItems(selectedItem);
   }
   function disable() {
@@ -45,10 +43,12 @@ function PreviousShoppingListPopup(props) {
   }
 
   const buttons = [
-    <button className="button-secondary-extra-small" 
-      onClick={props.editState}>Back</button>,
-    <button className="button-primary-extra-small" 
-      disabled={disable()}>Add Selected</button>
+    <button className="button-secondary-extra-small" onClick={props.editState}>
+      Back
+    </button>,
+    <button className="button-primary-extra-small" disabled={disable()}>
+      Add Selected
+    </button>,
   ];
 
   return (

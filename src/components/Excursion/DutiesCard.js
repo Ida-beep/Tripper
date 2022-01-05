@@ -2,24 +2,36 @@ import React, { useState, useEffect } from "react";
 import TableScaffold from "../Cards/TableScaffold";
 import DutiesAPI from "../API/DutiesAPI";
 
+/**
+ * DutiesCard lists all duties of an Excursion
+ */
 function DutiesCard(props) {
   const [allDuties, setAllDuties] = useState([]);
   const [selected, setSelected] = useState();
+  const deletionConfirmed = props.deletionConfirmed;
 
+  /**
+   * Fetches updated duty list
+   */
   async function fetchUpdatedDuties() {
     const refetchedList = await DutiesAPI.fetchDutiesFromDB();
     setAllDuties(refetchedList);
   }
 
+  /**
+   * Removes all selected items from array
+   */
   function removeAllSelected() {
     if (typeof selected !== "undefined") {
       for (let i = 0; i < selected.length; i++) {
         selected.splice(selected[i]);
       }
-      console.log("the content of selected-array is now: ", selected);
     }
   }
 
+  /**
+   * Check that deletetion is happening
+   */
   useEffect(() => {
     props.setDeletionHappening(false);
     props.toggleDeletePopup(false);
@@ -27,32 +39,37 @@ function DutiesCard(props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [allDuties]);
 
+  /**
+   * Deletes duties and refetches the list of duties
+   */
   useEffect(() => {
     function fetchUpdateAfterDeletion() {
-      console.log("deleting: ", selected);
       DutiesAPI.deleteDuty(selected).then(async () => {
         const refetchedList = await DutiesAPI.fetchDutiesFromDB();
         setAllDuties(refetchedList);
       });
     }
-    if (props.deletionConfirmed === true) {
-      console.log("The deletion is confirmed?: ", props.deletionConfirmed);
+    if (deletionConfirmed === true) {
       fetchUpdateAfterDeletion();
     }
-  }, [props.deletionConfirmed]);
+  }, [deletionConfirmed]);
 
+  /**
+   * Fetches new list of duties, and resets the list of selected items
+   */
   useEffect(() => {
     if (props.addPrevious === true) {
       fetchUpdatedDuties();
-      console.log("after updating the list is now: ", selected);
       removeAllSelected();
       props.setAddPrevious(false);
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }
   }, [props.addPrevious]);
 
+  /**
+   * Fetches new list of duties after a new one is added
+   */
   useEffect(() => {
-    console.log("DUTIES CARD : Added duties with value ", props.onDutiesAdded);
     fetchUpdatedDuties();
     props.addingDuty(false);
   }, [props.onDutiesAdded]);
@@ -65,16 +82,20 @@ function DutiesCard(props) {
       setAllDuties(await DutiesAPI.fetchDutiesFromDB());
     }
     fetchData();
-    console.log("DutiesCard useEffect called");
   }, []);
 
+  /**
+   * Handles delete by toggleing deletePopup
+   */
   async function handleDelete(e) {
     e.preventDefault();
     props.toggleDeletePopup(true);
-    console.log("DUTIES CARD: selected to be deleted ", selected);
     props.setDutyToDelete(selected);
   }
 
+  /**
+   * Determins whether a button should be disabled or enabled
+   */
   function disableDelete() {
     if (!selected) {
       return true;
