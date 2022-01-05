@@ -67,9 +67,8 @@ function Profile() {
 
   return (
     <div className="profile">
-      
       <img className="photo-header-image" src={Image} alt="NorwegianFjord" />
-      
+
       <AddFamilyPopup
         showAddFamilyPopup={showAddFamilyPopup}
         toggleFamilyItem={() => setShowAddFamilyPopup(false)}
@@ -126,10 +125,12 @@ function Profile() {
           active={() => setShowEditContactMember(true)}
         />
       </div>
-      
+
       <div className="page-container">
         <div className="profile-headline">
-          <h4 style={{ fontSize: "16px" }}>Your Family and Transportation</h4>
+          <h4 style={{ fontSize: "16px", color: "#1ea774" }}>
+            Your Family and Transportation
+          </h4>
           <p>Here you can add your family members. You can also add you car</p>
         </div>
       </div>
