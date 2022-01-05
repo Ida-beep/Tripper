@@ -45,9 +45,11 @@ function EditShoppingPopup(props) {
 
     const buttons = [
         <button className="button-secondary-extra-small" 
-          onClick={props.editState}>Cancel</button>,
-        <button className="button-secondary-extra-small" 
-          onClick={props.editState}>Finish</button>,
+          onClick={props.editState}>Back</button>,
+        <button className="button-primary-extra-small"
+          type="submit" disabled={disable()}>
+          Save
+        </button>
     ];
 
     function changeItem(e) {
@@ -86,11 +88,7 @@ function EditShoppingPopup(props) {
                     changeValue={changeAmount} value={amount} />
                 <LongInput title="Unit" type="text"
                     changeValue={changeUnit} value={unit} />
-                <button className="button-primary-extra-small"
-                    type="submit" disabled={disable()}
-                    style={{marginTop:"22px"}}>
-                    Save
-                </button>
+
             </div>   
         </PopUp>
     );

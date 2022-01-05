@@ -14,7 +14,6 @@ function PreviousDutiesPopup(props) {
     async function fetchData() {
       ExcursionAPI.fetchAllExcursionsFromDB().then(
         (result) => {
-          console.log("Fetching prev Excursion: ", result);
           setExcursions(result);
         },
         (error) => {
@@ -23,14 +22,10 @@ function PreviousDutiesPopup(props) {
       );
     }
     fetchData();
-    console.log("USEEFFECT: fetched these: ", excursions);
-    console.log("Previous shopping lists useEffect called");
   }, []);
 
   function handleSubmit(e) {
-    console.log("selected duties: ", selectedDuties);
     e.preventDefault();
-    console.log("handleSubmit called");
     DutiesAPI.addMultipleDuties(selectedDuties);
   }
 
@@ -52,30 +47,15 @@ function PreviousDutiesPopup(props) {
     }
   }, [selectedExcursion]);
 
-  function disableArrow() {
-    if (!selectedExcursion) {
-      return true;
-    }
-    return false;
-  }
-
   function setExcursionElementToSelected(element) {
     setSelectedExcursion(element);
   }
 
-  /*   function finishAddingPrevItems() {
-    props.editState;
-    props.onFinishAddingPrev(true);
-  }
- */
   const buttons = [
     <button className="button-secondary-extra-small" onClick={props.editState}>
-      Cancel
+      Back
     </button>,
     <button className="button-primary-extra-small">Add Selected</button>,
-    <button className="button-secondary-extra-small" onClick={props.editState}>
-      Finish
-    </button>,
   ];
 
   return (

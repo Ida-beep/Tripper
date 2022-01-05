@@ -37,18 +37,13 @@ function AddDutyPopup(props) {
 
   const buttons = [
     <button className="button-secondary-extra-small" onClick={props.editState}>
-      Cancel
-    </button>,
-    <button className="button-secondary-extra-small" onClick={props.editState}>
-      Finish
+      Back
     </button>,
     <button className="button-primary-extra-small" disabled={disable()}>
       Add
-    </button>,
+    </button>
   ];
 
-  //editState={props.toggleContactMember}
-  //placeholder to longinput
   return (
     props.trigger && (
       <PopUp

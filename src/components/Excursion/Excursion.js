@@ -35,6 +35,10 @@ function Excursion() {
   const [selectedShoppingItem, setSelectedShoppingItem] = useState();
   const [shoppingItemDidUpdate, setShoppingItemDidUpdate] = useState();
 
+  //Button styles
+  const [dutiesButtonStyle, setDutiesButtonStyle] = useState("selected");
+  const [shoppingButtonStyle, setShoppingButtonStyle] = useState("unselected");
+
   useEffect(() => {
     console.log("Show Shopping? : ", showShopping);
   }, [showShopping]);
@@ -43,6 +47,19 @@ function Excursion() {
     console.log("selected: ", selected);
     setLastSelected(selected);
   }
+
+  function closeShopping() {
+    setShowShopping(false);
+    setDutiesButtonStyle("selected");
+    setShoppingButtonStyle("unselected");
+  }
+
+  function openShopping() {
+    setShowShopping(true);
+    setDutiesButtonStyle("unselected");
+    setShoppingButtonStyle("selected");
+  }
+ 
 
   return (
     <div>
@@ -56,11 +73,22 @@ function Excursion() {
             showShopping={showShopping}
           />
         </div>
-
+        <div className="nav-container">
+          <button 
+            className={dutiesButtonStyle} onClick={closeShopping}>
+            Duties
+          </button>
+          <button
+            className={shoppingButtonStyle} onClick={openShopping}>
+            Shopping
+          </button>
+        </div>
         <div className="page-container">
+        
           {showShopping ? (
-            <div className="duties-headline">
-              <h4 style={{ fontSize: "16px" }}>Your Shopping List</h4>
+            <div className="duties-headline" style={{}}>
+              
+              <h4 style={{ fontSize: "16px", color:"#1ea774" }}>Your Shopping List</h4>
               <p style={{ width: "464px" }}>
                 Here you can view your current shopping items. You can change it
                 by adding items to it, or you can search for shoppings lists
@@ -69,7 +97,7 @@ function Excursion() {
             </div>
           ) : (
             <div className="duties-headline">
-              <h4 style={{ fontSize: "16px" }}>Duties and Participants</h4>
+              <h4 style={{ fontSize: "16px", color:"#1ea774" }}>Duties and Participants</h4>
               <p style={{ width: "464px" }}>
                 Here you can add duties to your excursion and assign partcipants
                 to join them. You can always go back and try again!
@@ -124,8 +152,9 @@ function Excursion() {
             }
           />
           <div className="cards-container-background">
+          
             {showShopping ? (
-              <div className="cards-container">
+              <div className="cards-container" >
                 <ShoppingListCard
                   selectedShoppingItem={(shoppingItem) => {
                     setSelectedShoppingItem(shoppingItem);

@@ -129,7 +129,7 @@ function Profile() {
       </div>
       
       <div className="page-container">
-        <div className="duties-headline">
+        <div className="profile-headline">
           <h4 style={{ fontSize: "16px" }}>Your Family and Transportation</h4>
           <p>Here you can add your family members. You can also add you car</p>
         </div>
