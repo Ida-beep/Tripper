@@ -103,6 +103,9 @@ function DutiesCard(props) {
     return false;
   }
 
+
+  console.log("dutieees card")
+
   return (
     <div className="card-container">
       <div className="table-container">
@@ -111,6 +114,10 @@ function DutiesCard(props) {
           tkey={["name", "minRequired", "peopleAssigned"]}
           theaders={["Duty", "Min. participants", "People Assigned"]}
           tdata={allDuties}
+          tBodyKey="dutiesBody"
+          tTableKey="dutiesTable"
+          tHeadKey="dutiesHead"
+          key="DutiesCard"
         />
       </div>
       <div className="button-container">

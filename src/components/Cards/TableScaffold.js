@@ -4,38 +4,44 @@
         tdata       =   {pass an object}
         tkey        =   [pass an array of the keys the tdata should display] - should match the headers
  */
+
 function TableScaffold(props) {
-  const rowHeaders = props.theaders.map((header) => {
-    return <th key={header.id}>{header}</th>;
+  const rowHeaders = props.theaders.map((header, index) => {
+    return <th key={header}>{header}</th>;
   });
   const rowData = props.tdata.map((tdata) => {
-    const rowDataValue = props.tkey.map((header) => {
+    const rowDataValue = props.tkey.map((header, index) => {
       if (tdata[header].constructor === Array) {
         let tableDatalist = "";
         for (let i = 0; i < tdata[header].length; i++) {
           tableDatalist += tdata[header][i] + " ";
         }
-        return <td key={"tableDataList"}>{tableDatalist}</td>;
+        return <td key={tdata.id}>{tableDatalist}</td>;
       }
-      return <td key={tdata[header].id}>{tdata[header]}</td>;
+      return <td key={index}>{tdata[header]}</td>;
     });
     return (
       <tr
         className="trow"
         onClick={() => props.onSelection(tdata)}
-        key={props.tdata.id}
+        key={props.tdata}
       >
         {rowDataValue}
       </tr>
     );
   });
 
+  console.log("rooww data:", rowData)
+  console.log("table keyyyy", props.tTableKey)
+  console.log("body keyyyy", props.tBodyKey)
+  console.log("head keyyyy", props.tHeadKey)
+
   return (
-    <table>
-      <thead>
+    <table key={props.tTableKey}>
+      <thead key={props.tHeadKey}> 
         <tr>{rowHeaders}</tr>
       </thead>
-      <tbody>{rowData}</tbody>
+      <tbody key={props.tBodyKey}>{rowData}</tbody>
     </table>
   );
 }

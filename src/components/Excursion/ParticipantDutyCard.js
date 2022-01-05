@@ -36,6 +36,10 @@ function ParticipantDutyCard() {
           theaders={["Participant", "Age", "Duty Preferences"]}
           tdata={allGuests}
           onSelection={(member) => addElementToSelected(member)}
+          tBodyKey="participantBody"
+          tTableKey="participantTable"
+          tHeadKey="participantHead"
+          key="ParticipantDutyCard"
         />
       </div>
 

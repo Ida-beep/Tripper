@@ -1,4 +1,5 @@
 import { Parse } from "parse";
+import API from "./API"
 
 const fetchFamilyMembersFromDB = async () => {
   const contactPerson = Parse.User.current();
@@ -104,7 +105,7 @@ async function fetchAllFamilyMembersInExcursion() {
   return familyMemberCollection;
 }
 
-function addFamilyMember({ firstName, lastName, age, duties }) {
+async function addFamilyMember({ firstName, lastName, age, duties }) {
   try {
     const User = Parse.User.current();
     const id = User.id;
@@ -112,12 +113,18 @@ function addFamilyMember({ firstName, lastName, age, duties }) {
     const FamilyMember = Parse.Object.extend("FamilyMember");
     const familyMember = new FamilyMember();
 
+    //Getting excursion ID of current user
+    const queryUser = new Parse.Query("User");
+    const user = await queryUser.get(User.id);
+    const contactMember = await queryUser.get(user.id);
+    const excursionID = contactMember.get("excursionID");
+
     familyMember.set("firstName", firstName);
     familyMember.set("lastName", lastName);
     familyMember.set("age", ageInt);
     familyMember.set("duties", duties);
     familyMember.set("contactPersonID", id);
-    familyMember.set("excursionID", Parse.User.current().excursionID);
+    familyMember.set("excursionID", excursionID);
 
     familyMember.save().then(
       (familyMember) => {
@@ -152,34 +159,7 @@ const updateFamilyMember = async (selected) => {
   }
 };
 
-async function deleteFamilyMember(familyMembers) {
-  for (let i = 0; i < familyMembers.length; i++) {
-    const member = familyMembers[i];
-
-    const familyMemberID = member.id;
-    const FamilyMember = Parse.Object.extend("FamilyMember");
-    const query = new Parse.Query(FamilyMember);
-
-    query.equalTo("objectId", familyMemberID);
-    let response = await query.find();
-    response = response[0];
-
-    if (response !== null) {
-      response.destroy().then(
-        () => {
-          alert(" family members succesfully deleted ");
-        },
-        (error) => {
-          alert("failed to delete with error-code : " + error.code);
-        }
-      );
-    } else {
-      console.log("deletion didn't happen since the response is null");
-    }
-  }
-}
-
-async function deleteOneFamilyMember(familyMember) {
+async function deleteFamilyMember(familyMember) {
   const member = familyMember;
 
   const familyMemberID = member.id;
@@ -206,10 +186,9 @@ async function deleteOneFamilyMember(familyMember) {
 
 const FamilyMemberAPI = {
   fetchFamilyMembersFromDB,
-  deleteOneFamilyMember,
+  deleteFamilyMember,
   updateFamilyMember,
   addFamilyMember,
-  deleteFamilyMember,
   getAllFamilyMembersREST,
   fetchAllFamilyMembersInExcursion,
 };

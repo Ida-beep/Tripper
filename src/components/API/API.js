@@ -32,25 +32,9 @@ async function signup({ username, password, email }) {
   }
 }
 
-const getCurrentExcursion = async () => {
-  let excursionID = "";
-  try {
-    const User = Parse.User.current();
-    const queryUser = new Parse.Query("User");
-    const user = await queryUser.get(User.id);
-    const contactMember = await queryUser.get(user.id);
-    excursionID = contactMember.get("excursionID");
-  } catch (error) {
-    console.log(error);
-  }
-
-  return excursionID;
-};
-
 const API = {
   signup,
-  initialize,
-  getCurrentExcursion,
+  initialize
 };
 
 export default API;

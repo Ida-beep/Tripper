@@ -49,6 +49,10 @@ function ShoppingListCard(props) {
           tkey={["itemName", "amount", "unit"]}
           theaders={["Item", "Amount", "Unit"]}
           tdata={shoppingList}
+          tBodyKey="shoppingBody"
+          tTableKey="shoppingTable"
+          tHeadKey="shoppingHead"
+          key="ShoppingListCard"
         />
       </div>
       <div className="button-container">

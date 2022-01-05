@@ -90,6 +90,10 @@ function PreviousDutiesPopup(props) {
                 tkey={["excursionTitle"]}
                 theaders={["Excursion"]}
                 tdata={excursions}
+                tBodyKey="popupDutiesBody"
+                tTableKey="popupDutiesTable"
+                tHeadKey="popupDutiesHead"
+                key="PreviousDutyCard"
               />
             </div>
           </div>
@@ -110,6 +114,10 @@ function PreviousDutiesPopup(props) {
                 tkey={["name", "minRequired"]}
                 theaders={["Duty", "Min. Participants"]}
                 tdata={excursionDuties}
+                tBodyKey="popupExcursionBody"
+                tTableKey="popupExcursionTable"
+                tHeadKey="popupExcursionHead"
+                key="PreviousDutyPopup"
               />
             </div>
           </div>
