@@ -43,7 +43,9 @@ function ContactMemberCard(props) {
         </div>
         <div className="contact-member-info">
           <div className="contact-member-name">
-            <h4 style={{ fontSize: "20px" }}>{firstName + " " + lastName}</h4>
+            <h4 style={{ fontSize: "20px", color: "#1ea774" }}>
+              {firstName + " " + lastName}
+            </h4>
           </div>
           <div className="address-and-email">
             <p>

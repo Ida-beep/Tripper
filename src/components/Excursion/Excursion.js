@@ -2,12 +2,11 @@ import React, { useState, useEffect } from "react";
 import Image from "../../assets/norwegian_fjord.png";
 import ExcursionCard from "./ExcursionCard.js";
 import EditExcursion from "./EditExcursion";
-import GuestDutyCard from "./GuestDutyCard";
+import GuestDutyCard from "./ParticipantDutyCard";
 import DutiesCard from "./DutiesCard";
 import AddDutyPopup from "./AddDutyPopup";
 import PreviousDutiesPopup from "./PreviousDutiesPopup";
 import Footer from "../Navigation/Footer";
-import { FaHourglassEnd } from "react-icons/fa";
 import DeleteDutyPopup from "./DeleteDutyPopup";
 import ShoppingListCard from "./ShoppingListCard";
 import AddShoppingItem from "./AddShoppingItem";
@@ -59,7 +58,6 @@ function Excursion(props) {
     setDutiesButtonStyle("unselected");
     setShoppingButtonStyle("selected");
   }
- 
 
   return (
     <div>
@@ -75,30 +73,30 @@ function Excursion(props) {
           />
         </div>
         <div className="nav-container">
-          <button 
-            className={dutiesButtonStyle} onClick={closeShopping}>
+          <button className={dutiesButtonStyle} onClick={closeShopping}>
             Duties
           </button>
-          <button
-            className={shoppingButtonStyle} onClick={openShopping}>
+          <button className={shoppingButtonStyle} onClick={openShopping}>
             Shopping
           </button>
         </div>
         <div className="page-container">
-        
           {showShopping ? (
             <div className="duties-headline" style={{}}>
-              
-              <h4 style={{ fontSize: "16px", color:"#1ea774" }}>Your Shopping List</h4>
+              <h4 style={{ fontSize: "16px", color: "#1ea774" }}>
+                Your Shopping List
+              </h4>
               <p style={{ width: "464px" }}>
                 Here you can view your current shopping items. You can change it
-                by adding items to it, or you can search for shoppings lists
-                from previous trips
+                by adding items to it, or you can search for ealier shopping
+                lists
               </p>
             </div>
           ) : (
             <div className="duties-headline">
-              <h4 style={{ fontSize: "16px", color:"#1ea774" }}>Duties and Participants</h4>
+              <h4 style={{ fontSize: "16px", color: "#1ea774" }}>
+                Duties and Participants
+              </h4>
               <p style={{ width: "464px" }}>
                 Here you can add duties to your excursion and assign partcipants
                 to join them. You can always go back and try again!
@@ -153,9 +151,8 @@ function Excursion(props) {
             }
           />
           <div className="cards-container-background">
-          
             {showShopping ? (
-              <div className="cards-container" >
+              <div className="cards-container">
                 <ShoppingListCard
                   selectedShoppingItem={(shoppingItem) => {
                     setSelectedShoppingItem(shoppingItem);

@@ -12,41 +12,25 @@ import DropDownItem from "./DropDownItem";
 function DropDownMenu() {
   let displayedDuties = [];
   const [selectedDuties, setSelectedDuties] = useState([]);
-  const [open, setOpen] = useState(false);
-
-  /*   function addToArr(name) {
-    console.log(name);
-    if (selectedDuties.length < 3) {
-      setSelectedDuties((prevState) => [...prevState, name]);
-    }
-  } */
-  /*  function removeDuty(name) {
-    console.log(selectedDuties);
-    let index = selectedDuties.indexOf(name);
-    selectedDuties.splice(index, 1);
-    console.log(selectedDuties);
-  } */
-
-  function mapDuties(fetchedDutyList) {
-    console.log("mapping duties.. : " + fetchedDutyList.length);
-    for (let i = 0; i < fetchedDutyList.length; i++) {
-      displayedDuties.push(
-        <DropDownItem
-          key={fetchedDutyList[i].id}
-          name={fetchedDutyList[i].name}
-          isSelected={(duty) =>
-            setSelectedDuties((prevState) => [...prevState, duty])
-          }
-        />
-      );
-    }
-  }
 
   useEffect(() => {
+    function mapDuties(fetchedDutyList) {
+      for (let i = 0; i < fetchedDutyList.length; i++) {
+        displayedDuties.push(
+          <DropDownItem
+            key={fetchedDutyList[i].id}
+            name={fetchedDutyList[i].name}
+            isSelected={(duty) =>
+              setSelectedDuties((prevState) => [...prevState, duty])
+            }
+          />
+        );
+      }
+    }
     DutiesAPI.fetchDutiesFromDB().then((result) => {
-      console.log("the result of API call is: ", result);
       mapDuties(result);
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return <DropDown>{displayedDuties}</DropDown>;

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import PopUp from "../Cards/PopUp";
 
 function DeleteCarPopup(props) {
@@ -11,24 +11,18 @@ function DeleteCarPopup(props) {
 
   function handleCancel(e) {
     e.preventDefault();
-    console.log("cancel was called");
     props.onCancel(true);
     props.toggleDeletePopup(false);
   }
 
   useEffect(() => {
-   
     if (props.itemToDelete) {
-      console.log("selecteeed car: ", props.itemToDelete)
-      const carText = props.text
-      console.log("caaar text inside useEffect", carText)
+      console.log("selecteeed car: ", props.itemToDelete);
+      const carText = props.text;
+      console.log("caaar text inside useEffect", carText);
     }
   }, [props.itemToDelete]);
 
-  /**
-   * TODO: These buttons need to get added functionality, cancel should not run delete
-   * in API as it seems to go now
-   */
   const buttons = [
     <button className="button-secondary-extra-small" onClick={handleCancel}>
       Cancel
@@ -40,15 +34,13 @@ function DeleteCarPopup(props) {
 
   useEffect(() => {
     console.log("prop text: ", props.text);
-  }, [])
+  }, []);
 
   return (
     props.showDeletePopup && (
       <PopUp submitChanges={handleSubmit} buttons={buttons}>
         <div className="input-section">
-          <p>
-            Are you sure you want to delete {props.text}?
-          </p>
+          <p>Are you sure you want to delete {props.text}?</p>
         </div>
       </PopUp>
     )

@@ -7,7 +7,6 @@ import ExcursionAPI from "../API/ExcursionAPI";
 import ContactMemberAPI from "../API/ContactMemberAPI";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { Parse } from "parse";
 
 /**
  * @public This component is responsible for creating an
@@ -65,7 +64,7 @@ function CreateExcursion() {
   async function handleSubmit(e) {
     e.preventDefault();
     console.log("create excursion handle submit called");
-    let excursionID = "";
+    /* let excursionID = ""; */
 
     ExcursionAPI.createExcursion({
       excursionName,
@@ -105,10 +104,7 @@ function CreateExcursion() {
         }
       );
     }
-  }, [excursionID]);
-
-  useEffect(() => {
-    console.log(excursionID);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [excursionID]);
 
   function disable() {

@@ -1,5 +1,4 @@
-// import { idempotency } from "parse";
-import { React, useState,} from "react";
+import { React, useState } from "react";
 
 function DropDownItem(props) {
   const [selected, setSelected] = useState(false);
@@ -13,11 +12,9 @@ function DropDownItem(props) {
     if (count % 2 === 1) {
       console.log("unselected");
       setSelected(false);
-      //props.removeDuty();
     } else {
       console.log("selected");
       setSelected(true);
-      //props.addToArr(props.name);
     }
   }
 

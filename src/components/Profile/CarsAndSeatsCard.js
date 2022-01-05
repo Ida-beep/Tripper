@@ -3,10 +3,9 @@ import TableScaffold from "../Cards/TableScaffold";
 import CarsAPI from "../API/CarsAPI";
 
 /**
- * @public CarsAndSeatsCard displays information about the 
+ * @public CarsAndSeatsCard displays information about the
  * cars and allows the user to add, edit and delete cars.
  */
-
 function CarsAndSeatsCard(props) {
   const [carsAndSeats, setCarsAndSeats] = useState([]);
   const [selected, setSelected] = useState();
@@ -19,17 +18,21 @@ function CarsAndSeatsCard(props) {
     console.log("New selected useeffect to use in EditCar", selected);
   }, [selected]);
 
-  //UPDATES LIST OF CARS
+  /**
+   * @public Updates the current list of Cars
+   */
   async function fetchData() {
     setCarsAndSeats(await CarsAPI.fetchCarsFromDB());
   }
-  
+
   useEffect(() => {
     fetchData();
     console.log("use Effect for fetchCarsFromDB called");
   }, []);
 
-  //UPDATE AFTER EDITING CAR
+  /**
+   * @public Updates after Car is edited
+   */
   useEffect(() => {
     if (props.carDidUpdate === true) {
       fetchData();
@@ -38,23 +41,24 @@ function CarsAndSeatsCard(props) {
     }
   }, [props.carDidUpdate]);
 
-  //UPDATE AFTER ADDING NEW CAR
+  /**
+   * @public Updates after a new Car is added
+   */
   useEffect(() => {
     setAddingCar(true);
     fetchData();
     setAddingCar(false);
   }, [props.showCarPopup]);
 
-  
-  // ----For deleting item
+  /**
+   * @public Sets the selected to null after deletion
+   */
   useEffect(() => {
-    console.log("Now reset of selected-array should start");
     setSelected(null);
   }, [props.isCanceled]);
 
   useEffect(() => {
     if (props.onConfirmation === true) {
-      console.log("inside on confirmation use effect")
       fetchUpdateAfterDeletion();
       setConfirmedDeletion(false);
       setSelected(null);
@@ -62,7 +66,6 @@ function CarsAndSeatsCard(props) {
   }, [props.onConfirmation]);
 
   function fetchUpdateAfterDeletion() {
-    console.log("fetchupdateafterdeletion function")
     CarsAPI.deleteCar(selected).then(async () => {
       const refetchedList = await CarsAPI.fetchCarsFromDB();
       setCarsAndSeats(refetchedList);
@@ -74,7 +77,7 @@ function CarsAndSeatsCard(props) {
     if (deleteCar === true) {
       console.log("deletion process begun, deleting :", selected);
       props.onDeletion(true);
-      console.log("deletion was set to truuuuee: ")
+      console.log("deletion was set to truuuuee: ");
       props.carToDelete(selected);
       setDeleteCar(false);
     } else {
@@ -97,9 +100,7 @@ function CarsAndSeatsCard(props) {
   //   });
   // }
 
-  function handleDelete(e) {
-
-  }
+  function handleDelete(e) {}
 
   function disable() {
     if (!selected) {
@@ -127,8 +128,11 @@ function CarsAndSeatsCard(props) {
         >
           Delete
         </button>
-        <button className="button-secondary-extra-small" 
-          disabled={disable()} onClick={props.editActive}>
+        <button
+          className="button-secondary-extra-small"
+          disabled={disable()}
+          onClick={props.editActive}
+        >
           Edit
         </button>
         <button

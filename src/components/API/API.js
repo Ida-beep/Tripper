@@ -5,14 +5,13 @@ import { Parse } from "parse";
  */
 function initialize() {
   Parse.initialize(
-    "BWRXJVmbqMoffsZkk8sZYB2RNFMYU6YtQWTFa9zz",
-    "GAhsMf5ghBb1BHAimPuIw2oRv7sPGVmmvL1zg4rT"
+    "VHKvgZrf97Mkc0QqTfv4aWWhYFmQZiuqYjxIvJso",
+    "n8myY0zcPwBbNv1lcuKm4e74aCKxPHXWcX59suCH"
   );
   Parse.serverURL = "https://parseapi.back4app.com/";
 }
 async function signup({ username, password, email }) {
   try {
-    console.log("signup called");
     const ContactMember = Parse.Object.extend("User");
     const contactMember = new ContactMember();
 
@@ -48,28 +47,10 @@ const getCurrentExcursion = async () => {
   return excursionID;
 };
 
-//To keep in respective files for getting excursionID:
-// import API from './components/API/API'
-// import React, {useState, useEffect, createContext} from 'react'
-// const [excursionID, setExcursionID] = useState();
-
-//   async function getID() {
-//       let currentEx = await API.getCurrentExcursion()
-//       setExcursionID(currentEx);
-//   }
-
-//   useEffect(()=> {
-//       getID()
-//       console.log("excursionID", excursionID);
-//   }, [excursionID]);
-
-//   const currentExcursionID = createContext(excursionID);
-
-
 const API = {
   signup,
   initialize,
-  getCurrentExcursion
-}
+  getCurrentExcursion,
+};
 
 export default API;

@@ -16,12 +16,9 @@ const createExcursion = async ({
 
   try {
     const result = await newExcursion.save();
-    console.log("Excursion created", result);
     alert("Excursion created", result);
-
     return result;
   } catch (error) {
-    console.error("Error while creating Excursion: ", error);
     alert("error: " + error);
   }
 };
@@ -49,9 +46,9 @@ async function creatExcursionREST({ excursionName, location, description }) {
       }
     );
     const content = await response.json();
-    console.log("testing POST in createExcursionREST() : ", content);
+    console.log("Succesfull response", response, content);
   } catch (error) {
-    console.log("Could do REST POST call: ", error.message);
+    console.log("Could not do REST POST call: ", error.message);
   }
 }
 
@@ -61,11 +58,8 @@ const fetchExcursionFromDB = async () => {
   const user = await queryUser.get(User.id);
   const contactMember = await queryUser.get(user.id);
   const excursionID = contactMember.get("excursionID");
-  console.log("The excursionID of the excursion is: ", excursionID);
-
   const query = new Parse.Query("Excursion");
   let excursions = await query.find();
-
   let excursionInfo = {};
 
   for (let i = 0; i < excursions.length; i++) {
@@ -94,9 +88,7 @@ const fetchExcursionFromDB = async () => {
         excursionInfo = excursionObject;
       }
     } catch (error) {
-      alert(
-        "FAILED to retrieve the Excursion entry entry. Error: " + error.message
-      );
+      alert("Failed to retrieve the Excursion entry. Error: " + error.message);
     }
   }
   return excursionInfo;
@@ -105,24 +97,19 @@ const fetchExcursionFromDB = async () => {
 const fetchAllExcursionsFromDB = async () => {
   const query = new Parse.Query("Excursion");
   let excursions = await query.find();
-
   let excursionArr = [];
 
   for (let i = 0; i < excursions.length; i++) {
     try {
       const excursion = await query.get(excursions[i].id);
-      console.log("iiiiid: ", excursion.id);
       const excursionTitle = excursion.get("excursionTitle");
-
       const excursionObject = {
         id: excursion.id,
         excursionTitle: excursionTitle,
       };
       excursionArr.push(excursionObject);
     } catch (error) {
-      alert(
-        "FAILED to retrieve the Excursion entry entry. Error: " + error.message
-      );
+      alert("Failed to retrieve the Excursion entry. Error: " + error.message);
     }
   }
   return excursionArr;
@@ -136,23 +123,15 @@ const updateExcursion = async ({
   description,
 }) => {
   const query = new Parse.Query("Excursion");
-  console.log("excursion title: " + excursionTitle);
-  console.log("date from: " + dateFrom);
-  console.log("date to: " + dateTo);
-  console.log("location: " + location);
-  console.log("description: " + description);
 
   try {
-    // here you put the objectId that you want to update
     const User = Parse.User.current();
     const queryUser = new Parse.Query("User");
     const user = await queryUser.get(User.id);
     const contactMember = await queryUser.get(user.id);
     const excursionID = contactMember.get("excursionID");
-
-    console.log("inside try with clause");
-
     const object = await query.get(excursionID);
+
     object.set("excursionTitle", excursionTitle);
     object.set("fromDate", new Date(dateFrom));
     object.set("toDate", new Date(dateTo));
@@ -161,21 +140,12 @@ const updateExcursion = async ({
     try {
       const response = await object.save().then(
         () => {
-          alert("Info successfully updated");
+          alert("Info successfully updated", response);
         },
         (error) => {
           alert("failed to update with error-code : " + error);
         }
       );
-      // You can use the "get" method to get the value of an attribute
-      // Ex: response.get("<ATTRIBUTE_NAME>")
-      // Access the Parse Object attributes using the .GET method
-      console.log(response.get("excursionTitle"));
-      console.log(response.get("fromDate"));
-      console.log(response.get("toDate"));
-      console.log(response.get("location"));
-      console.log(response.get("description"));
-      console.log("Excursion updated", response);
     } catch (error) {
       console.error("Error while updating Excursion", error);
     }

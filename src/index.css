@@ -175,7 +175,7 @@ li {
   font-size: 10pt;
   font-weight: 500;
   border: solid #fadf63 2.25px;
-  border-bottom:none;
+  border-bottom: none;
   color: #424242;
   background-color: transparent;
   padding-left: 207.4px;
@@ -288,14 +288,12 @@ li {
   flex-direction: row;
   width: 900px;
   justify-content: space-evenly;
-/* 
+  /* 
   display: flex; */
-  
+
   /* justify-content: center;
   width: 100%; */
 }
-
-
 
 .photo-header-image {
   width: 1450px;
@@ -332,7 +330,6 @@ a {
   justify-content: center;
   align-content: center;
 }
-
 
 .login-form {
   display: flex;
@@ -707,20 +704,20 @@ label {
   display: flex;
   position: absolute;
   top: 0;
-  justify-items: center;
+  left: 0;
+  justify-content: center;
   z-index: 1;
-  width: 200%;
-  height: 100%;
+  width: 100%;
+  height: 170%;
   background-color: rgba(0, 0, 0, 0.2);
 }
 .popup-content {
   display: flex;
   flex-direction: column;
-
+  /* align-self: center; */
   background-color: #fffbf2;
   position: absolute;
-  top: 15%;
-  left: 15%;
+  top: 17%;
   padding: 50px;
   border-radius: 5px;
   border: 1px solid #fadf63;
@@ -784,9 +781,7 @@ input[type="number"] {
   background-color: #fefbec;
   width: 436px;
   min-width: 436px;
-  border-bottom: #fadf63 solid 2.25px;
-  border-right: #fadf63 solid 2.25px;
-  border-left: #fadf63 solid 2.25px;
+  border: #fadf63 solid 2.25px;
   margin-left: -1.4px;
   margin-right: -1.4px;
 }
@@ -794,13 +789,13 @@ input[type="number"] {
 .duties-headline {
   color: #0c6d4a;
   padding: 10px;
-  padding-bottom: 50px;
+  padding-bottom: 40px;
   padding-left: 35px;
   padding-top: 20px;
   width: 892px;
   display: flex;
   align-items: flex-start;
-  
+
   flex-direction: column;
   border-right: #fadf63 solid 2.25px;
   border-left: #fadf63 solid 2.25px;
@@ -810,13 +805,13 @@ input[type="number"] {
 .profile-headline {
   color: #0c6d4a;
   padding: 10px;
-  padding-bottom: 50px;
+  padding-bottom: 40px;
   padding-left: 35px;
-  padding-top: 20px;
+  padding-top: 30px;
   width: 892px;
   display: flex;
   align-items: flex-start;
-  
+
   flex-direction: column;
   border-top: #fadf63 solid 2.25px;
   border-right: #fadf63 solid 2.25px;

@@ -2,23 +2,19 @@ import React, { useState, useEffect } from "react";
 import TableScaffold from "../Cards/TableScaffold.js";
 import FamilyMemberAPI from "../API/FamilyMemberAPI.js";
 
-function GuestDutyCard() {
-  // const partData = participantData.map(data => <GuestDuty data={data}  />);
+function ParticipantDutyCard() {
   const [allGuests, setAllGuests] = useState([]);
   const [selected, setSelected] = useState([]);
 
-  // Renders GuestsOverview from DB
   useEffect(() => {
     async function fetchData() {
       setAllGuests(await FamilyMemberAPI.fetchAllFamilyMembersInExcursion());
     }
     fetchData();
-    console.log("guestdutycard called :", allGuests);
   }, []);
 
   function addElementToSelected(element) {
     setSelected((prevState) => [...prevState, element]);
-    console.log("selected: ", selected);
   }
 
   function disableAssignSelected() {
@@ -57,4 +53,4 @@ function GuestDutyCard() {
   );
 }
 
-export default GuestDutyCard;
+export default ParticipantDutyCard;
