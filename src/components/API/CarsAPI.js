@@ -98,7 +98,6 @@ const updateCar = async (selected) => {
     object.set("owner", Parse.User.current().id);
     object.set("carColor", selected.color);
     try {
-      //const response = await object.save();
       alert("Car updated");
     } catch (error) {
       console.error("Error while updating Car", error);

@@ -8,27 +8,20 @@ import ShortInput from "../Cards/ShortInput";
 import ExtraLongInput from "../Cards/ExtraLongInput";
 
 /**
- * @public EditContactMembern defines the content of the popup to
+ * EditContactMembern defines the content of the popup to
  * edit contact person information, using its parent Popup.js
- *
- * TO DO
- * - How to prevent overwriting of data when editing contact member information
  */
-
 function EditContactMember(props) {
   const [contactP, setContactP] = useState([]);
 
   useEffect(() => {
     async function fetchData() {
       setContactP(await ContactMemberAPI.fetchContactMemberFromDB());
-      console.log("fetched the following :", contactP);
     }
     fetchData();
-    console.log("EditContactMember useeffect called ");
   }, []);
 
   useEffect(() => {
-    console.log("changed info on ContactPerson");
     setFirstName(contactP.firstName);
     setLastName(contactP.lastName);
     setAge(contactP.age);
@@ -54,12 +47,19 @@ function EditContactMember(props) {
   const [workPhone, setWorkPhone] = useState();
   const [duties, setDuties] = useState([]);
 
-  //Add duties once dropdown has been added
-  //duties.length < 1
   function disable() {
-    if ( !firstName || !lastName || !email ||
-      !age || !street || !zip || !city ||
-      !mobile || !phone || !workPhone) {
+    if (
+      !firstName ||
+      !lastName ||
+      !email ||
+      !age ||
+      !street ||
+      !zip ||
+      !city ||
+      !mobile ||
+      !phone ||
+      !workPhone
+    ) {
       return true;
     }
     return false;
@@ -122,10 +122,18 @@ function EditContactMember(props) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log("update ebing called");
     ContactMemberAPI.updateContactMemberFromDB({
-      firstName, lastName, age, duties, email,
-      street, workPhone, phone, mobile, zip, city,
+      firstName,
+      lastName,
+      age,
+      duties,
+      email,
+      street,
+      workPhone,
+      phone,
+      mobile,
+      zip,
+      city,
     });
   }
 

@@ -2,23 +2,25 @@ import React, { useEffect, useState } from "react";
 import TableScaffold from "../Cards/TableScaffold";
 import ExcursionAPI from "../API/ExcursionAPI";
 
+/**
+ * Lists previous shoppings lists
+ */
 function PreviousShoppingListsCard(props) {
   const [excursions, setExcursions] = useState([]);
   const [selected, setSelected] = useState();
-
 
   useEffect(() => {
     async function fetchData() {
       setExcursions(await ExcursionAPI.fetchAllExcursionsFromDB());
     }
     fetchData();
-    console.log("Previous shopping lists useEffect called");
   }, []);
 
-  //Returns selected data to Excursion component
+  /**
+   * Returns selected data to Excursion component
+   */
   useEffect(() => {
     props.selected(selected);
-    console.log("selected in previous: ", selected);
   }, [selected]);
 
   function disable() {

@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect } from "react";
 import AddFamilyPopup from "./AddFamilyPopup";
 import YouAndYourFamilyCard from "./YouAndYourFamilyCard";
 import ContactMemberCard from "./ContactMemberCard";
@@ -12,17 +12,15 @@ import EditFamilyMemberPopup from "./EditFamilyMemberPopup";
 import DeletePopup from "./DeletePopup";
 import Footer from "../Navigation/Footer.js";
 import EditCarPopup from "./EditCarPopup";
-import DeleteCarPopup from "./DeleteCarPopup";
 
 /**
- *  @public Profile displays the different Card types and formats them
+ *  Profile displays the different Card types and formats them
  */
 
 function Profile() {
-  //ContactMember useStates
+  /**ContactMember useStates*/
   const [showEditContactMember, setShowEditContactMember] = useState(false);
-
-  //YouAndYourFamilyCard
+  /**YouAndYourFamilyCard*/
   const [showAddFamilyPopup, setShowAddFamilyPopup] = useState(false);
   const [editFMActive, setEditFMActive] = useState(false);
   const [didUpdate, setDidUpdate] = useState(false);
@@ -33,8 +31,7 @@ function Profile() {
   const [cancelDelete, setCancelDelete] = useState(false);
   const [memberName, setMemberName] = useState("");
   const [showDeleteFMPopup, setShowDeleteFMPopup] = useState(false);
-
-  //CarsAndSeats useStates
+  /**CarsAndSeats useStates*/
   const [showCarPopup, setShowCarPopup] = useState(false);
   const [editCarActive, setEditCarActive] = useState(false);
   const [carDidUpdate, setCarDidUpdate] = useState(false);
@@ -45,10 +42,6 @@ function Profile() {
   const [confirmedCarDeletion, setConfirmedCarDeletion] = useState();
   const [cancelCarDelete, setCancelCarDelete] = useState(false);
   const [carName, setCarName] = useState("");
-
-  useEffect(() => {
-    console.log("PROFILE: value of update is : ", deleteCar);
-  }, [deleteCar]);
 
   useEffect(() => {
     if (selectedCar) {

@@ -2,6 +2,10 @@ import React, { useState, useEffect } from "react";
 import TableScaffold from "../Cards/TableScaffold.js";
 import FamilyMemberAPI from "../API/FamilyMemberAPI.js";
 
+/**
+ * Lists Participants who are going to the given excursion with their
+ * duty preferences that they selected
+ */
 function ParticipantDutyCard() {
   const [allGuests, setAllGuests] = useState([]);
   const [selected, setSelected] = useState([]);

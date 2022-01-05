@@ -2,19 +2,21 @@ import React, { useState, useEffect } from "react";
 import LongCard from "../Cards/LongCard.js";
 import ExcursionAPI from "../API/ExcursionAPI.js";
 
+/**
+ * Show basic information of the given excursion such as title, data and description
+ */
 function ExcursionCard(props) {
   const [excursionInfo, setExcursionInfo] = useState([]);
 
+  /**
+   * Fetched Excursion from database
+   */
   useEffect(() => {
     async function fetchData() {
       setExcursionInfo(await ExcursionAPI.fetchExcursionFromDB());
     }
     fetchData();
   }, []);
-
-  useEffect(() => {
-    console.log("Value of show shopping is:", props.showShopping);
-  }, [props.showShopping]);
 
   let subtitle =
     excursionInfo.fromDate +

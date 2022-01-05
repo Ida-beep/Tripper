@@ -6,26 +6,32 @@ function ShoppingListCard(props) {
   const [shoppingList, setShoppingList] = useState([]);
   const [selected, setSelected] = useState();
 
+  /**
+   * Deletes shopping item
+   */
   async function handleDelete(e) {
     e.preventDefault();
-    console.log("handle delete called");
     ShoppingAPI.deleteShoppingItem(selected).then(async () => {
       const refetchedList = await ShoppingAPI.fetchShoppingListFromDB();
       setShoppingList(refetchedList);
     });
   }
 
+  /**
+   * Sets the selected shopping item as selected
+   */
   useEffect(() => {
     props.selectedShoppingItem(selected);
-    console.log("New selected useeffect to use in EditCar", selected);
   }, [selected]);
 
+  /**
+   * Fetches shoppinglist from database
+   */
   useEffect(() => {
     async function fetchData() {
       setShoppingList(await ShoppingAPI.fetchShoppingListFromDB());
     }
     fetchData();
-    console.log("Shoppinglist useEffect called");
   }, []);
 
   function disable() {
@@ -52,15 +58,24 @@ function ShoppingListCard(props) {
       <div className="button-container">
         <button
           className="button-secondary-extra-small"
-          onClick={handleDelete}disabled={disable()}>
+          onClick={handleDelete}
+          disabled={disable()}
+        >
           Delete
         </button>
-        <button className="button-secondary-extra-small" 
-          disabled={disable()} onClick={props.editActive}>
+        <button
+          className="button-secondary-extra-small"
+          disabled={disable()}
+          onClick={props.editActive}
+        >
           Edit
         </button>
-        <button className="button-primary-extra-small" 
-          onClick={props.addActive}>Add</button>
+        <button
+          className="button-primary-extra-small"
+          onClick={props.addActive}
+        >
+          Add
+        </button>
       </div>
     </div>
   );

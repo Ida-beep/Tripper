@@ -3,7 +3,7 @@ import TableScaffold from "../Cards/TableScaffold";
 import CarsAPI from "../API/CarsAPI";
 
 /**
- * @public CarsAndSeatsCard displays information about the
+ * CarsAndSeatsCard displays information about the
  * cars and allows the user to add, edit and delete cars.
  */
 function CarsAndSeatsCard(props) {
@@ -13,25 +13,29 @@ function CarsAndSeatsCard(props) {
   const [addingCar, setAddingCar] = useState(false);
   const [confirmedDeletion, setConfirmedDeletion] = useState(false);
 
+  /**
+   * Passes selected props to parent
+   */
   useEffect(() => {
     props.selectedCar(selected);
-    console.log("New selected useeffect to use in EditCar", selected);
   }, [selected]);
 
   /**
-   * @public Updates the current list of Cars
+   * Updates the current list of Cars
    */
   async function fetchData() {
     setCarsAndSeats(await CarsAPI.fetchCarsFromDB());
   }
 
+  /**
+   * Fetches all data at initial page render
+   */
   useEffect(() => {
     fetchData();
-    console.log("use Effect for fetchCarsFromDB called");
   }, []);
 
   /**
-   * @public Updates after Car is edited
+   * Updates after Car is edited
    */
   useEffect(() => {
     if (props.carDidUpdate === true) {
@@ -42,7 +46,7 @@ function CarsAndSeatsCard(props) {
   }, [props.carDidUpdate]);
 
   /**
-   * @public Updates after a new Car is added
+   * Updates after a new Car is added
    */
   useEffect(() => {
     setAddingCar(true);
@@ -51,12 +55,15 @@ function CarsAndSeatsCard(props) {
   }, [props.showCarPopup]);
 
   /**
-   * @public Sets the selected to null after deletion
+   * Sets the selected to null after deletion
    */
   useEffect(() => {
     setSelected(null);
   }, [props.isCanceled]);
 
+  /**
+   * Check if the users has confirmed to delete
+   */
   useEffect(() => {
     if (props.onConfirmation === true) {
       fetchUpdateAfterDeletion();
@@ -72,35 +79,18 @@ function CarsAndSeatsCard(props) {
     });
   }
 
+  /**
+   * Checks whether deletion should begin
+   */
   useEffect(() => {
-    console.log("Checking if deletion should bein");
     if (deleteCar === true) {
-      console.log("deletion process begun, deleting :", selected);
       props.onDeletion(true);
-      console.log("deletion was set to truuuuee: ");
       props.carToDelete(selected);
       setDeleteCar(false);
     } else {
-      console.log("deletion didn't begin/ already happened");
+      console.log("Deletion didn't begin/ already happened");
     }
   }, [deleteCar]);
-
-  // function handleDelete(e) {
-  //   console.log("handleDelete called, selected car passed on to Profile");
-  //   e.preventDefault();
-  //   setDeleteCar(true);
-  //   console.log("delete caaar" + deleteCar);
-  // }
-
-  // async function handleDelete(e) {
-  //   e.preventDefault();
-  //   CarsAPI.deleteCar(selected).then(async () => {
-  //     const refetchedList = await CarsAPI.fetchCarsFromDB();
-  //     setCarsAndSeats(refetchedList);
-  //   });
-  // }
-
-  function handleDelete(e) {}
 
   function disable() {
     if (!selected) {

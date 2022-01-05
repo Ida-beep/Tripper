@@ -3,9 +3,11 @@ import { Parse } from "parse";
 import { useNavigate } from "react-router-dom";
 import Footer from "../Navigation/Footer";
 import { Link } from "react-router-dom";
-
 import ImgLogo from "../Img/ImgLogo";
 
+/**
+ * Handles login for participants (not organisers)
+ */
 function Login(props) {
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
@@ -13,18 +15,16 @@ function Login(props) {
 
   function handleLoginAttempt(e) {
     e.preventDefault();
-    console.log("handleLoginAttempt was called");
-
     const user = new Parse.User();
     user.setPassword(password);
     user.setUsername(username);
     user.logIn().then(
       (loggedInUser) => {
-        console.log(loggedInUser);
+        console.log("Succesful login with: ", loggedInUser);
         navigate(`/`);
       },
       (error) => {
-        alert("login not successfull with errorcode: " + error.code);
+        alert("Failed to login with errorcode: " + error.code);
       }
     );
   }

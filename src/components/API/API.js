@@ -1,7 +1,7 @@
 import { Parse } from "parse";
 
 /**
- *  @public initializes connection with backedn Back4App
+ *  Initializes connection with backedn Back4App
  */
 function initialize() {
   Parse.initialize(
@@ -21,7 +21,7 @@ async function signup({ username, password, email }) {
 
     contactMember.save().then(
       (contactMember) => {
-        alert("User was submitted: " + username);
+        alert("User was submitted: " + username, contactMember);
       },
       (error) => {
         alert("Failed to create object, error code: " + error.message);

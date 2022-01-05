@@ -2,8 +2,10 @@ import LongCard from "../Cards/LongCard";
 import React, { useState, useEffect } from "react";
 import ExcursionAPI from "../API/ExcursionAPI.js";
 
+/**
+ *
+ */
 function ShoppingCard(props) {
-  const [selected, setSelected] = useState([]);
   const [excursionInfo, setExcursionInfo] = useState([]);
 
   useEffect(() => {
@@ -11,7 +13,6 @@ function ShoppingCard(props) {
       setExcursionInfo(await ExcursionAPI.fetchExcursionFromDB());
     }
     fetchData();
-    console.log("excursionCard useEffect called");
   }, []);
 
   let subtitle =

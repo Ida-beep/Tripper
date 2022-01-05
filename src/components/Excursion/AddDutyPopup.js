@@ -3,10 +3,12 @@ import PopUp from "../Cards/PopUp";
 import LongInput from "../Cards/LongInput";
 import DutiesAPI from "../API/DutiesAPI";
 
+/**
+ * A popup that allows the user to add new duties
+ */
 function AddDutyPopup(props) {
   const [name, setName] = useState();
   const [minRequired, setMinRequired] = useState();
-
   const dutyData = {
     name: name,
     minRequired: minRequired,
@@ -23,7 +25,6 @@ function AddDutyPopup(props) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    console.log("handleSubmit called");
     DutiesAPI.addDuty(dutyData);
     props.onDutyAdd(true);
   }
@@ -41,7 +42,7 @@ function AddDutyPopup(props) {
     </button>,
     <button className="button-primary-extra-small" disabled={disable()}>
       Add
-    </button>
+    </button>,
   ];
 
   return (

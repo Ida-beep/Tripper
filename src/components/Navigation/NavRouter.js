@@ -10,7 +10,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import CreateExcursion from "../LoginSignup/CreateExcursion";
 
 /**
- *  @public NavRouter is responsible for all routing between pages
+ *  NavRouter is responsible for all routing between pages
  */
 function NavRouter() {
   const [emptyStats, setEmptyStats] = useState();
