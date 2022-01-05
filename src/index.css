@@ -789,7 +789,7 @@ input[type="number"] {
 .duties-headline {
   color: #0c6d4a;
   padding: 10px;
-  padding-bottom: 50px;
+  padding-bottom: 40px;
   padding-left: 35px;
   padding-top: 20px;
   width: 892px;
@@ -805,9 +805,9 @@ input[type="number"] {
 .profile-headline {
   color: #0c6d4a;
   padding: 10px;
-  padding-bottom: 50px;
+  padding-bottom: 40px;
   padding-left: 35px;
-  padding-top: 20px;
+  padding-top: 30px;
   width: 892px;
   display: flex;
   align-items: flex-start;
