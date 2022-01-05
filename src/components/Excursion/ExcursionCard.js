@@ -115,14 +115,6 @@ function ExcursionCard(props) {
     console.log("Value of show shopping is:", props.showShopping);
   }, [props.showShopping]);
 
-  function closeShopping() {
-    props.setShowShopping(false);
-  }
-
-  function openShopping() {
-    props.setShowShopping(true);
-  }
-
   let subtitle =
     excursionInfo.fromDate +
     " - " +
@@ -134,7 +126,7 @@ function ExcursionCard(props) {
     <LongCard active={props.active}>
       <div className="excursion-card">
         <div className="excursion-card-main-content">
-          <h4 style={{ fontSize: "20px" }}>{excursionInfo.excursionTitle}</h4>
+          <h4 style={{ fontSize: "20px", color:"#1ea774" }}>{excursionInfo.excursionTitle}</h4>
           <p style={{ fontSize: "16px" }} className="subtitle">
             {subtitle}
           </p>
@@ -158,15 +150,6 @@ function ExcursionCard(props) {
         </div>
       </div>
       <div className="edit-button-container">
-        <button
-          className="button-secondary-extra-small"
-          onClick={closeShopping}
-        >
-          Duties
-        </button>
-        <button className="button-secondary-extra-small" onClick={openShopping}>
-          Shopping
-        </button>
         <button disabled={true} className="button-secondary-extra-small">
           Send Out Invite!
         </button>
