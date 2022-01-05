@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { Parse } from "parse";
 import { useNavigate } from "react-router-dom";
-import API from "../API/API";
 import Footer from "../Navigation/Footer";
 import { Link } from "react-router-dom";
 
@@ -10,20 +9,7 @@ import ImgLogo from "../Img/ImgLogo";
 function Login(props) {
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
-
   const navigate = useNavigate();
-
-  // function handleSignup(e){
-  //     e.preventDefault();
-  //     console.log("Signup was called");
-  //     const user = new Parse.User();
-  //     user.setPassword(password);
-  //     user.setUsername(username);
-
-  //     API.signup(username,password);
-  //     console.log("user singed up!");
-  //<button className="button-secondary-extra-small" type="submit" onClick={handleSignup}>Signup</button>
-  // }
 
   function handleLoginAttempt(e) {
     e.preventDefault();

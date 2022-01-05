@@ -11,14 +11,6 @@ function DutiesCard(props) {
     setAllDuties(refetchedList);
   }
 
-  function fetchUpdateAfterDeletion() {
-    console.log("deleting: ", selected);
-    DutiesAPI.deleteDuty(selected).then(async () => {
-      const refetchedList = await DutiesAPI.fetchDutiesFromDB();
-      setAllDuties(refetchedList);
-    });
-  }
-
   function removeAllSelected() {
     if (typeof selected !== "undefined") {
       for (let i = 0; i < selected.length; i++) {
@@ -28,20 +20,21 @@ function DutiesCard(props) {
     }
   }
 
-  /*   useEffect(() => {
-    if (props.isFinished === true) {
-      console.log("NOW we should update the list!");
-      props.onFinishAddingPrev(false);
-    }
-  }, [props.isFinished]); */
-
   useEffect(() => {
     props.setDeletionHappening(false);
     props.toggleDeletePopup(false);
     removeAllSelected();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [allDuties]);
 
   useEffect(() => {
+    function fetchUpdateAfterDeletion() {
+      console.log("deleting: ", selected);
+      DutiesAPI.deleteDuty(selected).then(async () => {
+        const refetchedList = await DutiesAPI.fetchDutiesFromDB();
+        setAllDuties(refetchedList);
+      });
+    }
     if (props.deletionConfirmed === true) {
       console.log("The deletion is confirmed?: ", props.deletionConfirmed);
       fetchUpdateAfterDeletion();
@@ -54,6 +47,7 @@ function DutiesCard(props) {
       console.log("after updating the list is now: ", selected);
       removeAllSelected();
       props.setAddPrevious(false);
+      // eslint-disable-next-line react-hooks/exhaustive-deps
     }
   }, [props.addPrevious]);
 
@@ -62,12 +56,6 @@ function DutiesCard(props) {
     fetchUpdatedDuties();
     props.addingDuty(false);
   }, [props.onDutiesAdded]);
-
-  function addElementToSelected(element) {
-    // setSelected(element);
-    setSelected((prevState) => [...prevState, element]);
-    console.log("selected: ", selected);
-  }
 
   /**
    * Fetch all duties on first render
@@ -93,11 +81,6 @@ function DutiesCard(props) {
     }
     return false;
   }
-
-  //Returns selected data to Excursion component
-  /*   useEffect(() => {
-    props.selected(selected);
-  }, [selected]); */
 
   return (
     <div className="card-container">

@@ -1,42 +1,21 @@
-/**
- * @public SignUp creates a new user object in the database (back4app)
- * username + password can afterwards be used on the login screen to login
- *
- */
-
 import { useState } from "react";
-import Parse from "parse";
-import { useNavigate } from "react-router-dom";
 import { FaUser, FaLock, FaEnvelope } from "react-icons/fa";
 import Footer from "../Navigation/Footer.js";
 import { Link } from "react-router-dom";
 import LongInput from "../Cards/LongInput";
 import ContactMemberAPI from "../API/ContactMemberAPI.js";
-// import API from "./API/API.js";
-
 import ImgLogo from "../Img/ImgLogo.js";
 
+/**
+ * @public SignUp creates a new user object in the database (back4app)
+ * username + password can afterwards be used on the login screen to login
+ */
 function SignUp() {
   const [username, setUsername] = useState();
   const [excursionID, setExcursionID] = useState();
   const [password, setPassword] = useState();
   const [email, setEmail] = useState();
   const [isOrganiser, setIsOrganiser] = useState(false);
-
-  const navigate = useNavigate();
-
-  // async function createAccount() {
-  //   const user = new Parse.User();
-  //   user.setUsername(username);
-  //   user.setPassword(password);
-  //   user.setEmail(email);
-  //   try {
-  //     await user.signUp();
-  //   } catch (error) {
-  //     alert("Error: " + error.message);
-  //   }
-  //   navigate(`/`);
-  // }
 
   async function handleSubmit(e) {
     e.preventDefaul();

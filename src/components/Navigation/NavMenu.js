@@ -2,16 +2,13 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import Parse from "parse";
-import { FaRegUserCircle, FaUser } from "react-icons/fa";
-
+import { FaRegUserCircle } from "react-icons/fa";
 import ImgLogo from "../Img/ImgLogo";
 
 /**
  *  @public NavMenu let's the user use the NavRouter to switch between different main pages
  */
-
 function NavMenu(props) {
-  const [excursionDropDown, setExcursionDropDown] = useState(false);
   const [profileDropDown, setProfileDropDown] = useState(false);
   const navigate = useNavigate();
 
@@ -36,25 +33,6 @@ function NavMenu(props) {
             <div className="Divider"></div>
             <div className="Nav-Item-Overview">
               <>
-                {/* <div
-                  className="nav-item"
-                  onClick={() => setExcursionDropDown(!excursionDropDown)}
-                >
-                  Excursion
-                  {excursionDropDown && (
-                    <div
-                      className="nav-drop-down"
-                      /* onClick={() => setExcursionDropDown(!excursionDropDown)} 
-                    >
-                      <Link className="drop-down-options" to="/Shopping">
-                        Shopping List
-                      </Link>
-                      <Link className="drop-down-options" to="/Duties">
-                        Duties
-                      </Link>
-                    </div>
-                  )}
-                </div> */}
                 <Link className="nav-item" to="/">
                   Excursion
                 </Link>
