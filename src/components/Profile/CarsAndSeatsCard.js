@@ -7,6 +7,7 @@ import CarsAPI from "../API/CarsAPI";
  * cars and allows the user to add, edit and delete cars.
  */
 function CarsAndSeatsCard(props) {
+  /* eslint-disable no-unused-vars */
   const [carsAndSeats, setCarsAndSeats] = useState([]);
   const [selected, setSelected] = useState();
   const [deleteCar, setDeleteCar] = useState(false);

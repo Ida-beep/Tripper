@@ -12,6 +12,7 @@ import ShortInput from "../Cards/ShortInput.js";
  *
  */
 function AddFamilyPopup(props) {
+  /* eslint-disable no-unused-vars */
   const [firstName, setFirstName] = useState();
   const [lastName, setLastName] = useState();
   const [age, setAge] = useState();

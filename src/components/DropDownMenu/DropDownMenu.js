@@ -10,6 +10,7 @@ import DropDownItem from "./DropDownItem";
  */
 
 function DropDownMenu() {
+  /* eslint-disable no-unused-vars */
   let displayedDuties = [];
   const [selectedDuties, setSelectedDuties] = useState([]);
 

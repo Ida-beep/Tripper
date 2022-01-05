@@ -10,6 +10,7 @@ import DropDownMenu from "../DropDownMenu/DropDownMenu";
  * family members.
  */
 function EditFamilyMemberPopup(props) {
+  /* eslint-disable no-unused-vars */
   const [firstName, setFirstName] = useState();
   const [lastName, setLastName] = useState();
   const [age, setAge] = useState();

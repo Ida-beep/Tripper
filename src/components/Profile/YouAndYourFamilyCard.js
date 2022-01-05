@@ -6,6 +6,7 @@ import FamilyMemberAPI from "../API/FamilyMemberAPI";
  * YouAndYourFamilyCard shows all relevant participating members of a family
  */
 function YouAndYourFamilyCard(props) {
+  /* eslint-disable no-unused-vars */
   const [memberAndFamiliy, setMemberAndFamily] = useState([]);
   const [selected, setSelected] = useState();
   const [deleteMember, setDeleteMember] = useState(false);
@@ -41,7 +42,6 @@ function YouAndYourFamilyCard(props) {
    * Updates list after deletions on FamilyMembers
    */
   function fetchUpdateAfterDeletion() {
-    const lastSelected = selected[0]
     FamilyMemberAPI.deleteFamilyMember(selected).then(async () => {
       const refetchedList = await FamilyMemberAPI.fetchFamilyMembersFromDB();
       setMemberAndFamily(refetchedList);
