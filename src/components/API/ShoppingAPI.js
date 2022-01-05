@@ -70,7 +70,7 @@ const fetchPreviousShoppingListFromDB = async (excursionID) => {
   for (let i = 0; i < allShoppingItems.length; i++) {
     try {
       const item = await query.get(allShoppingItems[i].id);
-      const otherexcursionid = item.get("excursionID");
+      /* const otherexcursionid = item.get("excursionID"); */
 
       if (item.get("excursionID") === excursionID) {
         const id = allShoppingItems[i].id;

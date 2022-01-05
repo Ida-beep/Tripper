@@ -98,7 +98,7 @@ const updateCar = async (selected) => {
     object.set("owner", Parse.User.current().id);
     object.set("carColor", selected.color);
     try {
-      const response = await object.save();
+      //const response = await object.save();
       alert("Car updated");
     } catch (error) {
       console.error("Error while updating Car", error);
@@ -110,9 +110,10 @@ const updateCar = async (selected) => {
   }
 };
 
-export default {
-  addCar: addCar,
-  deleteCar: deleteCar,
-  fetchCarsFromDB: fetchCarsFromDB,
-  updateCar: updateCar,
+const CarsAPI = {
+  addCar,
+  deleteCar,
+  fetchCarsFromDB,
+  updateCar,
 };
+export default CarsAPI;

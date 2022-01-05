@@ -50,6 +50,7 @@ async function getAllFamilyMembersREST() {
       }
     );
     const content = await response.json();
+    console.log("Succesfull respons:", content);
   } catch (error) {
     console.log(error.message);
   }
@@ -142,6 +143,7 @@ const updateFamilyMember = async (selected) => {
     object.set("contactPersonID", Parse.User.current().id);
     try {
       const response = await object.save();
+      console.log("Succesfull response: ", response);
     } catch (error) {
       console.error("Error while updating FamilyMember", error);
     }

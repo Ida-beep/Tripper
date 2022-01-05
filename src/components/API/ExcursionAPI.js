@@ -46,6 +46,7 @@ async function creatExcursionREST({ excursionName, location, description }) {
       }
     );
     const content = await response.json();
+    console.log("Succesfull response", response, content);
   } catch (error) {
     console.log("Could not do REST POST call: ", error.message);
   }
@@ -124,7 +125,6 @@ const updateExcursion = async ({
   const query = new Parse.Query("Excursion");
 
   try {
-    // here you put the objectId that you want to update
     const User = Parse.User.current();
     const queryUser = new Parse.Query("User");
     const user = await queryUser.get(User.id);
@@ -140,7 +140,7 @@ const updateExcursion = async ({
     try {
       const response = await object.save().then(
         () => {
-          alert("Info successfully updated");
+          alert("Info successfully updated", response);
         },
         (error) => {
           alert("failed to update with error-code : " + error);
