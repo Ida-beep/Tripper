@@ -1,30 +1,21 @@
 import { Parse } from "parse";
 
 const fetchDutiesFromDB = async () => {
-  //Getting current excursionID
   const User = Parse.User.current();
   const queryUser = new Parse.Query("User");
   const user = await queryUser.get(User.id);
   const contactMember = await queryUser.get(user.id);
   const excursionID = contactMember.get("excursionID");
-
-  console.log("user is: ", user.id, " and excursionID is: ", excursionID);
-
   const dutyCollection = [];
   const query = new Parse.Query("Duties");
-
   let allDutiesFromDB = await query.find();
-  console.log("amount of duties found: ", allDutiesFromDB.length);
 
   for (let i = 0; i < allDutiesFromDB.length; i++) {
-    // finder alle duties i back4app baseret på objectId
     try {
       const duty = await query.get(allDutiesFromDB[i].id);
       if (duty.get("excursionID") === excursionID) {
         const id = allDutiesFromDB[i].id;
-        console.log(id);
         const name = duty.get("name");
-        console.log(name);
         const minRequired = duty.get("minRequired");
         const peopleAssigned = duty.get("peopleAssigned");
 
@@ -37,7 +28,7 @@ const fetchDutiesFromDB = async () => {
         dutyCollection.push(dutyObject);
       }
     } catch (error) {
-      console.log(`FAILED to retrieve the DUTY entry. Error: ${error.message}`);
+      console.log(`Failed to retrieve the duty entry. Error: ${error.message}`);
     }
   }
   return dutyCollection;
@@ -49,7 +40,6 @@ const fetchPreviousDutyFromDB = async (id) => {
 
   let allDutiesFromDB = await query.find();
   for (let i = 0; i < allDutiesFromDB.length; i++) {
-    // finder alle duties i back4app baseret på objectId
     try {
       const duty = await query.get(allDutiesFromDB[i].id);
       if (duty.get("excursionID") === id) {
@@ -65,7 +55,7 @@ const fetchPreviousDutyFromDB = async (id) => {
         dutyCollection.push(dutyObject);
       }
     } catch (error) {
-      alert(`FAILED to retrieve the DUTY entry. Error: ${error.message}`);
+      alert(`Failed to retrieve the duty entry. Error: ${error.message}`);
     }
   }
   return dutyCollection;
@@ -78,12 +68,11 @@ async function addDuty(data) {
     const user = await queryUser.get(User.id);
     const contactMember = await queryUser.get(user.id);
     const excursionID = contactMember.get("excursionID");
-
     const dutyName = data.name;
     const minRequired = parseInt(data.minRequired);
-
     const Duty = Parse.Object.extend("Duties");
     const duty = new Duty();
+
     duty.set("name", dutyName);
     duty.set("minRequired", minRequired);
     duty.set("excursionID", excursionID);
@@ -98,7 +87,7 @@ async function addDuty(data) {
       }
     );
   } catch (error) {
-    console.log(error);
+    console.log("failed to add duty:", error.code);
   }
 }
 
@@ -109,8 +98,6 @@ async function addMultipleDuties(list) {
 }
 
 async function deleteDuty(duty) {
-  console.log("DELETE IN API CALLED, deleting: ", duty);
-
   if (typeof duty !== "undefined") {
     const dutyID = duty.id;
     const Duties = Parse.Object.extend("Duties");
@@ -118,9 +105,8 @@ async function deleteDuty(duty) {
 
     query.equalTo("objectId", dutyID);
     let result = await query.find();
-    result = result[0];
 
-    console.log("result is: ", result);
+    result = result[0];
     result.destroy().then(
       () => {
         alert("Duty successfully deleted ");
