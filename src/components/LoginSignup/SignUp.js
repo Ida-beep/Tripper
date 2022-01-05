@@ -11,6 +11,7 @@ import ImgLogo from "../Img/ImgLogo.js";
  * username + password can afterwards be used on the login screen to login
  */
 function SignUp() {
+  /* eslint-disable no-unused-vars */
   const [username, setUsername] = useState();
   const [excursionID, setExcursionID] = useState();
   const [password, setPassword] = useState();

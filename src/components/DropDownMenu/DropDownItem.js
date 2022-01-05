@@ -1,6 +1,7 @@
 import { React, useState } from "react";
 
 function DropDownItem(props) {
+  /* eslint-disable no-unused-vars */
   const [selected, setSelected] = useState(false);
   const [unSelectedColor, setUnSelectedColor] = useState("#FDF5D5");
   const [selectedColor, setSelectedColor] = useState("#FADF63");

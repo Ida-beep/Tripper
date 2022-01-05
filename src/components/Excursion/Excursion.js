@@ -19,6 +19,7 @@ import EditShoppingPopup from "./EditShoppingPopup";
  * for a given Excursion. There's also a description of the excursion.
  */
 function Excursion(props) {
+  /* eslint-disable no-unused-vars */
   /** Varibales related to Duties */
   const [editExcursionActive, setExcursionEditActive] = useState(false);
   const [dutiesPopupActive, setDutiesPopupAcitve] = useState(false);

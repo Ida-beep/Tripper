@@ -13,6 +13,7 @@ import { Link } from "react-router-dom";
  * excursion, along with it's initial organisers
  */
 function CreateExcursion() {
+  /* eslint-disable no-unused-vars */
   const [excursionName, setExcursionName] = useState();
   const [fromDate, setFromDate] = useState();
   const [toDate, setToDate] = useState();
