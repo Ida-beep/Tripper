@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Parse } from "parse";
 
@@ -6,14 +6,15 @@ const Footer = () => {
   const [totalParticipants, setTotalParticipants] = useState(0);
   const [avgAge, setAvgAge] = useState(0);
 
-  /*   function totalParticipantsCloud() {
+  function totalParticipantsCloud() {
     let prevTotal = totalParticipants;
 
-    console.log("prevtotal is: ", prevTotal);
-    const user = Parse.User.current().excursionID;
-    const params = { user: user };
+    const startCount = 1;
+    const params = { user: startCount };
+
     let num = 0;
-    Parse.Cloud.run("totalParticipants", params).then(
+
+    Parse.Cloud.run("totalUsers", params).then(
       (result) => {
         console.log("current total is: ", result);
         num = result;
@@ -27,27 +28,10 @@ const Footer = () => {
       }
     );
   }
-  totalParticipantsCloud();
 
-  function averageAge() {
-    let prevTotal = avgAge;
-    const user = Parse.User.current().excursionID;
-    const params = { user: user };
-    let num = 0;
-    Parse.Cloud.run("avgAge", params).then(
-      (result) => {
-        num = result;
-        if (prevTotal > num || prevTotal < num) {
-          setAvgAge(num.toFixed(2));
-          console.log("changed avg age to: ", num);
-        }
-      },
-      (error) => {
-        console.log(error.code);
-      }
-    );
-  }
-  averageAge(); */
+  useEffect(() => {
+    totalParticipantsCloud();
+  }, []);
 
   return (
     <footer className="footer-container">
@@ -62,18 +46,12 @@ const Footer = () => {
         <p>Copyrigth &copy; 2021 Tripper Inc. </p>
       </div>
       <div className="statistics">
-        {/*         <div className="statistics-item">
+        <div className="statistics-item">
           <p>People on Tripper</p>
           <p style={{ fontSize: "16px", color: "#0c6d4a" }}>
             <b>{totalParticipants}</b>
           </p>
         </div>
-        <div className="statistics-item">
-          <p>Their Average Age </p>
-          <p style={{ fontSize: "16px", color: "#0c6d4a" }}>
-            <b>{avgAge}</b>
-          </p>
-        </div> */}
       </div>
     </footer>
   );
