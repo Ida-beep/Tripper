@@ -15,7 +15,7 @@ import PreviousShoppingListsCard from "./PreviousShoppingListsCard";
 import PreviousShoppingListPopup from "./PreviousShoppingListPopup";
 import EditShoppingPopup from "./EditShoppingPopup";
 
-function Excursion() {
+function Excursion(props) {
   const [editExcursionActive, setExcursionEditActive] = useState(false);
   const [dutiesPopupActive, setDutiesPopupAcitve] = useState(false);
   const [previousDutiesActive, setPreviousDutiesActive] = useState(false);
@@ -51,6 +51,7 @@ function Excursion() {
         <div className="page-container">
           {" "}
           <ExcursionCard
+            emptyStats={props.emptyStats}
             active={() => setExcursionEditActive(true)}
             setShowShopping={(shouldShow) => setShowShopping(shouldShow)}
             showShopping={showShopping}

@@ -33,6 +33,23 @@ function ExcursionCard(props) {
   }
   totalParticipantsCloud();
 
+  async function resetCloudStats() {
+    setAvgAge(0);
+    setTotalParticipants(0);
+  }
+
+  useEffect(() => {
+    console.log("Empties Statistics: ", props.emptyStats);
+    resetCloudStats().then(
+      () => {
+        console.log(avgAge, " : ", totalParticipants);
+      },
+      (error) => {
+        console.log(error.code);
+      }
+    );
+  }, [props.emptyStats]);
+
   function averageAge() {
     let prevTotal = avgAge;
     const user = Parse.User.current().excursionID;
@@ -42,8 +59,8 @@ function ExcursionCard(props) {
       (result) => {
         num = result;
         if (prevTotal > num || prevTotal < num) {
-          setAvgAge(num);
-          console.log("changed avg age: ");
+          setAvgAge(num.toFixed(2));
+          console.log("changed avg age to: ", num);
         }
       },
       (error) => {
