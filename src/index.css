@@ -249,11 +249,15 @@ li {
 }
 .Logo {
   display: flex;
-  padding-left: 50px;
+  padding-left: 10px;
   font-family: "Roboto Slab", serif;
   font-size: 16pt;
   color: #1ea774;
   font-weight: 900;
+}
+.user-circle {
+  padding-left: 5px;
+  padding-top: 5px;
 }
 .Nav-Item-Overview {
   display: flex;
@@ -477,6 +481,13 @@ a {
   display: flex;
   justify-content: center;
 }
+.button-container-home {
+  display: flex;
+  justify-content: center;
+  /* margin-left: -15px; */
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
 
 /*PROFILE*/
 .profile {
@@ -516,13 +527,7 @@ a {
   height: auto;
   background-color: #fdf5d5;
 }
-.statistics {
-  display: flex;
-  flex-direction: row;
-}
-.statistics-item {
-  margin: 10px;
-}
+
 .long-card {
   display: flex;
   margin: 25px;
@@ -904,21 +909,28 @@ td {
 
 .footer-container {
   display: flex;
-  justify-content: center;
+  flex-direction: row;
+  padding-left: 50px;
+  padding-right: 50px;
+  justify-content: space-between;
+  /* justify-content: flex-end; */
   padding-top: 25px;
   margin-top: 150px;
   border-top: solid #fadf63 2px;
-
-  /*border: #fadf63 solid 2px;
-  flex-direction: column;
-  margin-top: 50px;
-  margin-left: 100px;
-  padding: 80px;
-  width: 180px;
-  height: 100%;
-  align-items: center;
-  justify-content: center;
-  align-content: center;*/
+}
+.info-container {
+  display: flex;
+  width: 300px;
+  flex-direction: row;
+  justify-self: center;
+}
+.statistics {
+  display: flex;
+  flex-direction: row;
+  justify-self: flex-end;
+}
+.statistics-item {
+  padding-left: 50px;
 }
 
 .signup-container {
@@ -939,6 +951,11 @@ td {
   justify-content: center;
   margin-right: 50px;
 }
+.greeting {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
 /*-------- Home/Welcome Page -----------*/
 
@@ -952,8 +969,8 @@ td {
 .welcome-content {
   display: flex;
   flex-direction: column;
-  justify-content: left;
-  justify-self: center;
+  justify-content: center;
+  /* justify-self: center; */
 }
 
 .button-container {
@@ -976,17 +993,15 @@ td {
 
 /*-------- Home/Welcome Page / Animation  -----------*/
 
+/*RENAMING*/
 .image-car-container {
   display: flex;
   justify-content: center;
-}
-/*RENAMING*/
-.image-car-container {
-  padding: 10px;
+  /* padding: 10px; */
   /*background-color: #fffbf2;*/
-  width: 450px;
+  width: 480px;
   min-width: 450px;
-  margin: 0px 10px;
+  margin: 0px 20px;
   /*border: solid #fadf63 1px;*/
 }
 
@@ -996,10 +1011,10 @@ td {
 }
 /*RENAMING*/
 .image-logo-container {
-  padding: 10px;
+  /* padding: 10px; */
   /*background-color: #fffbf2;*/
-  width: 60px;
-  min-width: 60px;
-  margin: 0px 10px;
+  width: 40px;
+  min-width: 40px;
+  /* margin: 0px 10px; */
   /*border: solid #fadf63 1px;*/
 }

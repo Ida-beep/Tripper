@@ -8,13 +8,13 @@ import { useState } from "react";
 import Parse from "parse";
 import { useNavigate } from "react-router-dom";
 import { FaUser, FaLock, FaEnvelope } from "react-icons/fa";
-import Footer from "./Footer.js";
+import Footer from "../Navigation/Footer.js";
 import { Link } from "react-router-dom";
-import LongInput from "./Cards/LongInput";
-import ContactMemberAPI from "./API/ContactMemberAPI.js";
+import LongInput from "../Cards/LongInput";
+import ContactMemberAPI from "../API/ContactMemberAPI.js";
 // import API from "./API/API.js";
 
-import ImgLogo from "./ImgLogo.js";
+import ImgLogo from "../Img/ImgLogo.js";
 
 function SignUp() {
   const [username, setUsername] = useState();
@@ -92,7 +92,7 @@ function SignUp() {
     <>
       <div className="page-container">
         <div className="signup-container">
-        <ImgLogo />
+          <ImgLogo />
           <h4 style={{ color: "#1ea774" }}>Sign Up </h4>
           <p style={{ color: "#1ea774" }}>For Existing Excursion </p>
 

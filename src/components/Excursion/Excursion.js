@@ -6,7 +6,7 @@ import GuestDutyCard from "./GuestDutyCard";
 import DutiesCard from "./DutiesCard";
 import AddDutyPopup from "./AddDutyPopup";
 import PreviousDutiesPopup from "./PreviousDutiesPopup";
-import Footer from "../Footer";
+import Footer from "../Navigation/Footer";
 import { FaHourglassEnd } from "react-icons/fa";
 import DeleteDutyPopup from "./DeleteDutyPopup";
 import ShoppingListCard from "./ShoppingListCard";
@@ -15,7 +15,7 @@ import PreviousShoppingListsCard from "./PreviousShoppingListsCard";
 import PreviousShoppingListPopup from "./PreviousShoppingListPopup";
 import EditShoppingPopup from "./EditShoppingPopup";
 
-function Excursion() {
+function Excursion(props) {
   const [editExcursionActive, setExcursionEditActive] = useState(false);
   const [dutiesPopupActive, setDutiesPopupAcitve] = useState(false);
   const [previousDutiesActive, setPreviousDutiesActive] = useState(false);
@@ -68,6 +68,7 @@ function Excursion() {
         <div className="page-container">
           {" "}
           <ExcursionCard
+            emptyStats={props.emptyStats}
             active={() => setExcursionEditActive(true)}
             setShowShopping={(shouldShow) => setShowShopping(shouldShow)}
             showShopping={showShopping}

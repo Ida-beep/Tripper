@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import LongCard from "../Cards/LongCard";
-import Upload from "../Upload";
+import Upload from "./Upload";
 import ContactMemberAPI from "../API/ContactMemberAPI.js";
 
 function ContactMemberCard(props) {
