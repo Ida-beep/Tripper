@@ -1,8 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Footer from "./Footer.js";
-
-import ImgTripCar from "./ImgTripCar.js";
+import Footer from "../Navigation/Footer.js";
+import ImgTripCar from "../Img/ImgTripCar.js";
 
 function Home() {
   return (

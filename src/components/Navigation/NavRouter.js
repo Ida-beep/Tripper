@@ -2,13 +2,12 @@ import Excursion from "../Excursion/Excursion";
 import Profile from "../Profile/Profile";
 import NavMenu from "./NavMenu";
 import React, { useState } from "react";
-import Login from "./Login";
-import OrganiserLogin from "./OrganiserLogin";
-import SignUp from "../SignUp";
-import Home from "../Home";
-import Shopping from "../Excursion/Shopping";
+import Login from "../LoginSignup/Login";
+import OrganiserLogin from "../LoginSignup/OrganiserLogin";
+import SignUp from "../LoginSignup/SignUp";
+import Home from "../LoginSignup/Home";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
-import CreateExcursion from "../CreateExcursion";
+import CreateExcursion from "../LoginSignup/CreateExcursion";
 
 /**
  *  @public NavRouter is responsible for all routing between pages

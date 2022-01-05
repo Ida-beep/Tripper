@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Parse } from "parse";
 import { useNavigate } from "react-router-dom";
 import API from "../API/API";
-import Footer from "../Footer";
+import Footer from "../Navigation/Footer";
 import { Link } from "react-router-dom";
 
 function OrganiserLogin(props) {
@@ -43,14 +43,13 @@ function OrganiserLogin(props) {
 
   return (
     <>
-      <div className="page-container" >
+      <div className="page-container">
         <div className="signup-container">
-          <h4 style={{ color: "#1ea774"}}>Login </h4>
-          <p style={{ color: "#1ea774"}}>To plan your trip </p>
-          <div className="login-form" >
-            <form onSubmit={handleLoginAttempt} >
-              <div className="long-input" 
-                style={{justifyContent:"center"}}>
+          <h4 style={{ color: "#1ea774" }}>Login </h4>
+          <p style={{ color: "#1ea774" }}>To plan your trip </p>
+          <div className="login-form">
+            <form onSubmit={handleLoginAttempt}>
+              <div className="long-input" style={{ justifyContent: "center" }}>
                 <label>
                   <p>Username</p>
                   <input
@@ -60,8 +59,10 @@ function OrganiserLogin(props) {
                   />
                 </label>
               </div>
-              <div className="long-input" 
-                style={{justifyContent:"center", paddingTop:"10px" }}>
+              <div
+                className="long-input"
+                style={{ justifyContent: "center", paddingTop: "10px" }}
+              >
                 <label>
                   <p>Password</p>
                   <input
@@ -71,8 +72,11 @@ function OrganiserLogin(props) {
                   />
                 </label>
               </div>
-              <button className="button-secondary-extra-small" 
-                type="submit"  style={{marginTop:"30px", marginLeft:"85px" }}>
+              <button
+                className="button-secondary-extra-small"
+                type="submit"
+                style={{ marginTop: "30px", marginLeft: "85px" }}
+              >
                 Login
               </button>
 

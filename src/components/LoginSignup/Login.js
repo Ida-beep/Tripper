@@ -2,10 +2,10 @@ import React, { useState } from "react";
 import { Parse } from "parse";
 import { useNavigate } from "react-router-dom";
 import API from "../API/API";
-import Footer from "../Footer";
+import Footer from "../Navigation/Footer";
 import { Link } from "react-router-dom";
 
-import ImgLogo from "../ImgLogo";
+import ImgLogo from "../Img/ImgLogo";
 
 function Login(props) {
   const [username, setUsername] = useState();
@@ -62,7 +62,7 @@ function Login(props) {
                   />
                 </label>
               </div>
-              <div className="long-input" style={{marginTop:"10px"}}>
+              <div className="long-input" style={{ marginTop: "10px" }}>
                 <label>
                   <p>Password</p>
                   <input
@@ -72,8 +72,11 @@ function Login(props) {
                   />
                 </label>
               </div>
-              <button className="button-secondary-extra-small" 
-                type="submit" style={{marginLeft:"50px", marginTop:"30px"}}>
+              <button
+                className="button-secondary-extra-small"
+                type="submit"
+                style={{ marginLeft: "50px", marginTop: "30px" }}
+              >
                 Login
               </button>
 

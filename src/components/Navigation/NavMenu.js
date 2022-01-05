@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Parse from "parse";
 import { FaRegUserCircle, FaUser } from "react-icons/fa";
 
-import ImgLogo from "../ImgLogo";
+import ImgLogo from "../Img/ImgLogo";
 
 /**
  *  @public NavMenu let's the user use the NavRouter to switch between different main pages
