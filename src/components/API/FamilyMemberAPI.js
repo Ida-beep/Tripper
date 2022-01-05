@@ -1,5 +1,4 @@
 import { Parse } from "parse";
-import API from "./API"
 
 const fetchFamilyMembersFromDB = async () => {
   const contactPerson = Parse.User.current();
