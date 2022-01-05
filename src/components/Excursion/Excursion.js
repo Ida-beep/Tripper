@@ -6,7 +6,7 @@ import GuestDutyCard from "./GuestDutyCard";
 import DutiesCard from "./DutiesCard";
 import AddDutyPopup from "./AddDutyPopup";
 import PreviousDutiesPopup from "./PreviousDutiesPopup";
-import Footer from "../Footer";
+import Footer from "../Navigation/Footer";
 import { FaHourglassEnd } from "react-icons/fa";
 import DeleteDutyPopup from "./DeleteDutyPopup";
 import ShoppingListCard from "./ShoppingListCard";

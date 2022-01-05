@@ -6,11 +6,10 @@ import { Parse } from "parse";
 function ExcursionCard(props) {
   const [selected, setSelected] = useState([]);
   const [excursionInfo, setExcursionInfo] = useState([]);
-  const [totalParticipants, setTotalParticipants] = useState(0);
-  const [avgAge, setAvgAge] = useState(0);
-  const [amountUnderEighteen, setAmountUnderEighteen] = useState(0);
+  /*   const [totalParticipants, setTotalParticipants] = useState(0);
+  const [avgAge, setAvgAge] = useState(0); */
 
-  function totalParticipantsCloud() {
+  /*   function totalParticipantsCloud() {
     let prevTotal = totalParticipants;
 
     console.log("prevtotal is: ", prevTotal);
@@ -31,15 +30,16 @@ function ExcursionCard(props) {
       }
     );
   }
-  totalParticipantsCloud();
+  totalParticipantsCloud(); */
 
-  async function resetCloudStats() {
+  /*   async function resetCloudStats() {
     setAvgAge(0);
     setTotalParticipants(0);
-  }
+  } */
 
-  useEffect(() => {
+  /*   useEffect(() => {
     console.log("Empties Statistics: ", props.emptyStats);
+    window.un
     resetCloudStats().then(
       () => {
         console.log(avgAge, " : ", totalParticipants);
@@ -48,9 +48,14 @@ function ExcursionCard(props) {
         console.log(error.code);
       }
     );
-  }, [props.emptyStats]);
+  }, [props.emptyStats]); */
 
-  function averageAge() {
+  /*   window.onunload = function () {
+    resetCloudStats();
+    console.log(avgAge, " : ", totalParticipants);
+  }; */
+
+  /*   function averageAge() {
     let prevTotal = avgAge;
     const user = Parse.User.current().excursionID;
     const params = { user: user };
@@ -68,7 +73,7 @@ function ExcursionCard(props) {
       }
     );
   }
-  averageAge();
+  averageAge(); */
 
   /*   function amountUnderEighteenCloud() {
     let prevTotal = amountUnderEighteen;
@@ -95,7 +100,15 @@ function ExcursionCard(props) {
       setExcursionInfo(await ExcursionAPI.fetchExcursionFromDB());
     }
     fetchData();
-    console.log("excursionCard useEffect called");
+    /*     resetCloudStats().then(
+      () => {
+        console.log(avgAge, " : ", totalParticipants);
+      },
+      (error) => {
+        console.log(error.code);
+      }
+    ); */
+    console.log("excursionCard useEffect called + reset states");
   }, []);
 
   useEffect(() => {
@@ -127,7 +140,7 @@ function ExcursionCard(props) {
           </p>
           <p>{excursionInfo.description}</p>
           <br></br>
-          <div className="statistics">
+          {/*           <div className="statistics">
             <div className="statistics-item">
               <p>Participants:</p>
               <p style={{ fontSize: "20px", color: "#0c6d4a" }}>
@@ -140,7 +153,7 @@ function ExcursionCard(props) {
                 <b>{avgAge}</b>
               </p>
             </div>
-          </div>
+          </div> */}
           {/*          <p>Amount under 18: {amountUnderEighteen}</p> */}
         </div>
       </div>
