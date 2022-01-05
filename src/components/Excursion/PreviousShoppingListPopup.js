@@ -66,6 +66,10 @@ function PreviousShoppingListPopup(props) {
               tkey={["itemName", "amount", "unit"]}
               theaders={["Item", "Amount", "Unit"]}
               tdata={shoppingItems}
+              tBodyKey="previousShoppingBody"
+              tTableKey="previousShoppingTable"
+              tHeadKey="previousShoppingHead"
+              key="PreviousShoppingPopupCard"
             />
           </div>
         </div>

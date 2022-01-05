@@ -1,6 +1,7 @@
 import { Parse } from "parse";
 
 const fetchDutiesFromDB = async () => {
+  
   const User = Parse.User.current();
   const queryUser = new Parse.Query("User");
   const user = await queryUser.get(User.id);

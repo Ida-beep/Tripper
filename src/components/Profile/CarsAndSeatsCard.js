@@ -117,6 +117,10 @@ function CarsAndSeatsCard(props) {
           tkey={["carModel", "licensePlate", "carColor", "carSeats"]}
           theaders={["Car", "License", "Color", "Seats"]}
           tdata={carsAndSeats}
+          tBodyKey="carsBody"
+          tTableKey="carsTable"
+          tHeadKey="carsHead"
+          key="CarsAndSeatsCard"
         />
       </div>
 

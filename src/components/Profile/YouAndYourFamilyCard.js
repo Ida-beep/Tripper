@@ -41,7 +41,7 @@ function YouAndYourFamilyCard(props) {
   //Fetch after DELETE
   function fetchUpdateAfterDeletion() {
     const lastSelected = selected[0]
-    FamilyMemberAPI.deleteOneFamilyMember(selected).then(async () => {
+    FamilyMemberAPI.deleteFamilyMember(selected).then(async () => {
       const refetchedList = await FamilyMemberAPI.fetchFamilyMembersFromDB();
       setMemberAndFamily(refetchedList);
     });
@@ -110,6 +110,10 @@ function YouAndYourFamilyCard(props) {
           tkey={["firstName", "lastName", "age", "duties"]}
           theaders={["First Name", "Last Name", "Age", "Duty Preference"]}
           tdata={memberAndFamiliy}
+          tBodyKey="familyBody"
+          tTableKey="familyTable"
+          tHeadKey="familyHead"
+          key="YouAndYourFamilyCard"
         />
       </div>
 

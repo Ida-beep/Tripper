@@ -36,6 +36,10 @@ function PreviousShoppingListsCard(props) {
           tkey={["excursionTitle"]}
           theaders={["Excursion"]}
           tdata={excursions}
+          tBodyKey="excursionBody"
+          tTableKey="excursionTable"
+          tHeadKey="excursionHead"
+          key="ShoppingListCardPrevious"
         />
       </div>
       <div className="button-container">
