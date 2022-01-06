@@ -32,37 +32,27 @@ function SignUp() {
     });
   }
 
+  /**Sets field values to 
+   * respective variables */
   function excursionIDChange(e) {
     setExcursionID(e.target.value);
   }
-
   function usernameChange(e) {
     setUsername(e.target.value);
   }
   function passwordChange(e) {
     setPassword(e.target.value);
   }
-
   function emailChange(e) {
     setEmail(e.target.value);
   }
 
-  const usernameTitle = (
-    <p>
-      <FaUser /> Username
-    </p>
-  );
-  const passwordTitle = (
-    <p>
-      <FaLock /> Password
-    </p>
-  );
-  const emailTile = (
-    <p>
-      <FaEnvelope /> Email address
-    </p>
-  );
+  //Variables storing field titles
+  const usernameTitle = (<p><FaUser /> Username</p>);
+  const passwordTitle = (<p><FaLock /> Password</p>);
+  const emailTile = (<p><FaEnvelope /> Email address</p>);
 
+  //Disables submit button until all fields are filled
   function disable() {
     if (!username || !password || !email) {
       return true;
@@ -134,5 +124,5 @@ function SignUp() {
     </>
   );
 }
-//onClick={() => {navigate("/Profile")}}
+
 export default SignUp;

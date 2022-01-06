@@ -1,4 +1,4 @@
-/*GENERAL*/
+/*-------GENERAL---------*/
 body {
   margin: 0;
   font-family: "Poppins", sans-serif;
@@ -11,7 +11,7 @@ code {
     monospace;
 }
 
-/*TYPOGRAPHY*/
+/*-------TYPOGRAPHY---------*/
 h1,
 h2,
 h3,
@@ -43,7 +43,6 @@ h4 {
   padding-bottom: 10px;
 }
 
-/*Subtitle suggestion*/
 .subtitle {
   font-size: 12pt;
   margin-top: -5px;
@@ -53,6 +52,18 @@ h4 {
 p,
 li {
   font-size: 10pt; 
+}
+
+a {
+  color: grey; 
+  text-decoration: none;
+}
+
+.Link {
+  font-family: "Roboto Slab", serif;
+  font-size: 16pt;
+  text-decoration: underline;
+  color: #1ea774;
 }
 
 .description {
@@ -131,6 +142,7 @@ li {
   border: solid #0c6d4a 3px;
   background-color: #0c6d4a;
 }
+
 .delete-button {
   font-family: "Roboto Slab", serif;
   font-size: 10pt;
@@ -172,6 +184,7 @@ li {
   background-color: #1ea774;
 }
 
+/*------Tab in Excursion--------*/
 .selected {
   font-family: "Poppins", sans-serif;
   font-size: 10pt;
@@ -203,35 +216,10 @@ li {
   margin-right: -1.4px;
 }
 
-.nav-link-button {
-  font-family: "Poppins", sans-serif;
-  font-size: 15pt;
-  font-weight: 500;
-  border: none;
-  color: #1ea774;
-  background-color: red;
-  margin: 20px;
-  height: 25px;
-}
 
-.nav-link-button:hover {
-  font-family: "Poppins", sans-serif;
-  font-size: 15pt;
-  font-weight: 500;
-  border: none;
-  color: #1ea774;
-  background-color: transparent;
-  border-bottom: #0c6d4a solid 2px;
-}
 
-.Link {
-  font-family: "Roboto Slab", serif;
-  font-size: 16pt;
-  text-decoration: underline;
-  color: #1ea774;
-}
 
-/*NAVBAR*/
+/*------NAVBAR----------*/
 .Nav-Bar {
   display: flex;
   border-bottom: 2px solid;
@@ -305,13 +293,9 @@ li {
   object-fit: cover;
 }
 
-/*LINKS*/
-a {
-  color: grey; 
-  text-decoration: none;
-}
 
-/*LOGIN*/
+
+/*------------LOGIN--------------*/
 .login-navigation {
   display: flex;
   flex-direction: column;
@@ -342,7 +326,7 @@ a {
   font-weight: 900;
 }
 
-/*DELETEPOPUP*/
+/*--------DELETEPOPUP----------*/
 .delete-pop-up {
   background-color: #fdf5d5;
   width: 500px;
@@ -350,7 +334,7 @@ a {
   border: solid DD0D18 2px;
 }
 
-/*DROPDOWN*/
+/*--------DROPDOWN----------*/
 .nav-drop-down {
   margin-top: 155px;
   border: solid #fadf63 1.5px;
@@ -432,19 +416,6 @@ a {
   height: 10px;
 }
 
-/*OVERVIEWCARD*/
-.overview-card {
-  display: flex;
-  width: 100%;
-}
-/*CarsAndSeats*/
-.cars-and-seats {
-  display: flex;
-  width: 100%;
-}
-
-
-/*HOME*/
 .button-container-home {
   display: flex;
   justify-content: center;
@@ -452,14 +423,19 @@ a {
   margin-bottom: 10px;
 }
 
-/*PROFILE*/
+/*--------PROFILE----------*/
 .profile {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-/*CARD*/
+.cars-and-seats {
+  display: flex;
+  width: 100%;
+}
+
+/*-------CARDS---------*/
 .Header {
   display: flex;
   justify-content: space-between;
@@ -523,7 +499,7 @@ a {
   padding: 40px;
 }
 
-/*CONTACT MEMBER CARD*/
+/*------CONTACT MEMBER CARD-------*/
 .contact-member-info {
   display: flex;
   align-content: center;
@@ -596,10 +572,10 @@ a {
   width: 50px;
 }
 
-/*ADD FAMILY*/
 input,
 label {
   display: block;
+  margin-right: 10px;
 }
 input {
   border: none;
@@ -618,6 +594,7 @@ textarea {
   width: 490px;
   height: 100px;
 }
+
 input:hover {
   border: solid #1ea774 2px;
 }
@@ -765,9 +742,9 @@ input[type="number"] {
 /* ------------TABLE RELATED STYLING--------*/
 .table-container {
   height: 250px;
-
   overflow-y: scroll;
 }
+
 table {
   border-collapse: collapse;
   width: 99%;
@@ -820,7 +797,7 @@ td {
   display: flex;
   justify-content: center;
 }
-/*RENAMING*/
+
 .image-container {
   padding: 10px;
   width: 150px;

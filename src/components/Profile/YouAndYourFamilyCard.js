@@ -66,7 +66,8 @@ function YouAndYourFamilyCard(props) {
   }, [props.isCanceled]);
 
   /**
-   * The FamilyMember is deleted from DB, and an updated list is fetched
+   * The FamilyMember is deleted from DB, 
+   * and an updated list is fetched
    */
   useEffect(() => {
     if (props.onConfirmation === true) {
@@ -77,9 +78,7 @@ function YouAndYourFamilyCard(props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.onConfirmation]);
 
-  /**
-   * Checks if deletion should begin
-   */
+  /**Checks if deletion should begin*/
   useEffect(() => {
     if (deleteMember === true) {
       props.onDeletion(deleteMember);
@@ -91,9 +90,7 @@ function YouAndYourFamilyCard(props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [deleteMember]);
 
-  /**
-   * Returns boolean based on if any members is selected
-   */
+  /**Returns boolean based on if any members is selected*/
   function disable() {
     if (!selected) {
       return true;

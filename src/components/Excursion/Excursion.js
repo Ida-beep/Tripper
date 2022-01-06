@@ -20,6 +20,7 @@ import EditShoppingPopup from "./EditShoppingPopup";
  */
 function Excursion(props) {
   /* eslint-disable no-unused-vars */
+
   /** Varibales related to Duties */
   const [editExcursionActive, setExcursionEditActive] = useState(false);
   const [dutiesPopupActive, setDutiesPopupAcitve] = useState(false);
@@ -31,6 +32,7 @@ function Excursion(props) {
   const [deletionConfirmed, setDeletionConfirmed] = useState(false);
   const [addPrevious, setAddPrevious] = useState(false);
   const [finishAddinPrev, setFinishAddingPrev] = useState(false);
+
   /** Varibales related to Shopping */
   const [showShopping, setShowShopping] = useState(false);
   const [showShoppingPopUp, setShowShoppingPopUp] = useState(false);
@@ -39,6 +41,7 @@ function Excursion(props) {
   const [selectedExcursion, setSelectedExcursion] = useState();
   const [selectedShoppingItem, setSelectedShoppingItem] = useState();
   const [shoppingItemDidUpdate, setShoppingItemDidUpdate] = useState();
+
   /** Varibales related to Button styling */
   const [dutiesButtonStyle, setDutiesButtonStyle] = useState("selected");
   const [shoppingButtonStyle, setShoppingButtonStyle] = useState("unselected");
@@ -47,18 +50,14 @@ function Excursion(props) {
     setLastSelected(selected);
   }
 
-  /**
-   * Closes Shopping-related Cards, Opens Duty-related Cards
-   */
+  /**Closes Shopping-related Cards, Opens Duty-related Cards*/
   function closeShopping() {
     setShowShopping(false);
     setDutiesButtonStyle("selected");
     setShoppingButtonStyle("unselected");
   }
 
-  /**
-   * Opens Shopping-related Cards, Closes Duty-related Cards
-   */
+  /**Opens Shopping-related Cards, Closes Duty-related Cards*/
   function openShopping() {
     setShowShopping(true);
     setDutiesButtonStyle("unselected");

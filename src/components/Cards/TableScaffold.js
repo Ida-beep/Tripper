@@ -6,7 +6,7 @@
  */
 
 function TableScaffold(props) {
-  const rowHeaders = props.theaders.map((header, index) => {
+  const rowHeaders = props.theaders.map((header) => {
     return <th key={header}>{header}</th>;
   });
   const rowData = props.tdata.map((tdata) => {

@@ -33,17 +33,6 @@ function OrganiserLogin(props) {
     );
   }
 
-  const usernameTitle = (
-    <p>
-      <FaUser /> Username
-    </p>
-  );
-  const passwordTitle = (
-    <p>
-      <FaLock /> Password
-    </p>
-  );
-
   return (
     <>
       <div className="page-container">
@@ -55,7 +44,7 @@ function OrganiserLogin(props) {
             <form onSubmit={handleLoginAttempt}>
               <div className="long-input" style={{ justifyContent: "center" }}>
                 <label>
-                  <p>{usernameTitle}</p>
+                  <p><p><FaUser /> Username</p></p>
                   <input
                     type="text"
                     value={username}
@@ -68,7 +57,7 @@ function OrganiserLogin(props) {
                 style={{ justifyContent: "center", paddingTop: "10px" }}
               >
                 <label>
-                  <p>{passwordTitle}</p>
+                  <p><p><FaLock/>Password</p></p>
                   <input
                     type="password"
                     value={password}

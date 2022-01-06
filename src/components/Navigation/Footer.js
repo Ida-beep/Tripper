@@ -2,14 +2,12 @@ import React, { useState, useEffect } from "react";
 import { Parse } from "parse";
 
 /**
- * Displayes some information and stats in the bottom of the page
+ * Displays some information and stats in the bottom of the page
  */
 const Footer = () => {
   const [totalParticipants, setTotalParticipants] = useState(0);
 
-  /**
-   * Runs cloud function to display stat (total users of the system)
-   */
+  /**Runs cloud function to display stat (total users of the system)*/
   useEffect(() => {
     function totalParticipantsCloud() {
       let prevTotal = totalParticipants;

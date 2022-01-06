@@ -8,9 +8,7 @@ import ExcursionAPI from "../API/ExcursionAPI.js";
 function ExcursionCard(props) {
   const [excursionInfo, setExcursionInfo] = useState([]);
 
-  /**
-   * Fetched Excursion from database
-   */
+  /**Fetches Excursion from database*/
   useEffect(() => {
     async function fetchData() {
       setExcursionInfo(await ExcursionAPI.fetchExcursionFromDB());

@@ -15,6 +15,7 @@ function EditCarPopup(props) {
   const [selectedCar, setSelectedCar] = useState();
   const carData = { id, carModel, licenseNumber, color, seats };
 
+  //Sets selected car once props.selectedCar is not null
   useEffect(() => {
     if (typeof props.selectedCar === "undefined") {
       return;
@@ -23,6 +24,8 @@ function EditCarPopup(props) {
     }
   }, [props.selectedCar]);
 
+  /**Sets all variables from selected car once 
+   * it contains a value*/
   useEffect(() => {
     if (selectedCar) {
       setCarModel(selectedCar.carModel);
@@ -46,6 +49,8 @@ function EditCarPopup(props) {
     </button>,
   ];
 
+  /**Sets field values to 
+   * respective variables */
   function changeCarModel(e) {
     e.preventDefault();
     setCarModel(e.target.value);
@@ -63,6 +68,7 @@ function EditCarPopup(props) {
     setSeats(e.target.value);
   }
 
+  //Updates car on submit
   function handleSubmit(e) {
     e.preventDefault();
     CarsAPI.updateCar(carData).then(
@@ -76,6 +82,7 @@ function EditCarPopup(props) {
     );
   }
 
+  //Disables submit untill all fields are filled
   function disable() {
     if (!carModel || !licenseNumber || !color || !seats) {
       return true;

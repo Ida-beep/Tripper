@@ -14,31 +14,23 @@ function CarsAndSeatsCard(props) {
   const [addingCar, setAddingCar] = useState(false);
   const [confirmedDeletion, setConfirmedDeletion] = useState(false);
 
-  /**
-   * Passes selected props to parent
-   */
+  /**Passes selected props to parent*/
   useEffect(() => {
     props.selectedCar(selected);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selected]);
 
-  /**
-   * Updates the current list of Cars
-   */
+  /**Updates the current list of Cars*/
   async function fetchData() {
     setCarsAndSeats(await CarsAPI.fetchCarsFromDB());
   }
 
-  /**
-   * Fetches all data at initial page render
-   */
+  /**Fetches all data at initial page render*/
   useEffect(() => {
     fetchData();
   }, []);
 
-  /**
-   * Updates after Car is edited
-   */
+  /**Updates after Car is edited*/
   useEffect(() => {
     if (props.carDidUpdate === true) {
       fetchData();
@@ -48,25 +40,19 @@ function CarsAndSeatsCard(props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.carDidUpdate]);
 
-  /**
-   * Updates after a new Car is added
-   */
+  /**Updates after a new Car is added*/
   useEffect(() => {
     setAddingCar(true);
     fetchData();
     setAddingCar(false);
   }, [props.showCarPopup]);
 
-  /**
-   * Sets the selected to null after deletion
-   */
+  /**Sets the selected to null after deletion*/
   useEffect(() => {
     setSelected(null);
   }, [props.isCanceled]);
 
-  /**
-   * Check if the users has confirmed to delete
-   */
+  /**Check if the users has confirmed to delete*/
   useEffect(() => {
     if (props.onConfirmation === true) {
       fetchUpdateAfterDeletion();
@@ -83,9 +69,7 @@ function CarsAndSeatsCard(props) {
     });
   }
 
-  /**
-   * Checks whether deletion should begin
-   */
+  /**Checks whether deletion should begin*/
   useEffect(() => {
     if (deleteCar === true) {
       props.onDeletion(true);
@@ -97,6 +81,8 @@ function CarsAndSeatsCard(props) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [deleteCar]);
 
+  /**Disables edit and delete 
+   * if selected is null */
   function disable() {
     if (!selected) {
       return true;

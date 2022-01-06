@@ -1,5 +1,10 @@
 import { React, useState } from "react";
 
+/**
+ * Renders each individual section with
+ * items in dropdown that can be selected.
+ */
+
 function DropDownItem(props) {
   /* eslint-disable no-unused-vars */
   const [selected, setSelected] = useState(false);

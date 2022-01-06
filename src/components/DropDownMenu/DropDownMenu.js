@@ -14,6 +14,9 @@ function DropDownMenu() {
   let displayedDuties = [];
   const [selectedDuties, setSelectedDuties] = useState([]);
 
+  /** Creates a dropdownitem per duty in database, 
+   * and assigns selected duties to selected duties array.
+  */
   useEffect(() => {
     function mapDuties(fetchedDutyList) {
       for (let i = 0; i < fetchedDutyList.length; i++) {

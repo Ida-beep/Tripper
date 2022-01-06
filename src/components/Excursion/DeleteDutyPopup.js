@@ -1,15 +1,23 @@
 import React from "react";
 import PopUp from "../Cards/PopUp";
 
-/**
- * A popup that allows the user to delete items to their shoppinglist
- */
+/**A popup that allows the user to delete items to their shoppinglist*/
 function DeleteDutyPopup(props) {
+
+  /**
+   * Confirms that item should be
+   * deleted and signals this to 
+   * relevant card handling the data.
+   */
   function handleSubmit(e) {
     e.preventDefault();
     props.setDeletionConfirmed(true);
   }
 
+  /**
+   * Sets showDeletePopup to false
+   * Is therefore not displayed anymore.
+   */
   function handleCancel(e) {
     e.preventDefault();
     props.toggleDeletePopup();

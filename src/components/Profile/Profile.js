@@ -45,6 +45,7 @@ function Profile() {
   const [cancelCarDelete, setCancelCarDelete] = useState(false);
   const [carName, setCarName] = useState("");
 
+  //Sets carname once selected car is not null
   useEffect(() => {
     if (selectedCar) {
       const carName = selectedCar.carModel;
@@ -52,6 +53,7 @@ function Profile() {
     }
   }, [selectedCar]);
 
+  //Sets membername once selected member is not null
   useEffect(() => {
     if (selectedMember) {
       const memberName =

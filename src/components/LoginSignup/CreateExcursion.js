@@ -28,44 +28,36 @@ function CreateExcursion() {
 
   const navigate = useNavigate();
 
+  /**Sets field values to 
+   * respective variables */
   function excursionNameChange(e) {
     setExcursionName(e.target.value);
   }
-
   function fromDateChange(e) {
     setFromDate(e.target.value);
   }
-
   function toDateChange(e) {
     setToDate(e.target.value);
   }
-
   function locationChange(e) {
     setLocation(e.target.value);
   }
-
   function descriptionChange(e) {
     setDescription(e.target.value);
   }
-
   function usernameChange(e) {
     setUsername(e.target.value);
   }
-
   function passwordChange(e) {
     setPassword(e.target.value);
   }
-
   function emailChange(e) {
     setEmail(e.target.value);
   }
-
   async function handleSubmit(e) {
     e.preventDefault();
     ExcursionAPI.createExcursion({
-      excursionName,
-      fromDate,
-      toDate,
+      excursionName,fromDate,toDate,
       location,
       description,
     }).then(
@@ -86,11 +78,8 @@ function CreateExcursion() {
   useEffect(() => {
     if (excursionID) {
       ContactMemberAPI.signUp({
-        username,
-        password,
-        email,
-        isOrganiser,
-        excursionID,
+        username,password,email,
+        isOrganiser,excursionID,
       }).then(
         (loggedInUser) => {
           navigate(`/`);
@@ -104,16 +93,15 @@ function CreateExcursion() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [excursionID]);
 
+  /**
+   * This function disables the submit button
+   * until all fields are filled.
+   */
   function disable() {
     if (
-      !excursionName ||
-      !fromDate ||
-      !toDate ||
-      !location ||
-      !description ||
-      !username ||
-      !password ||
-      !email
+      !excursionName ||!fromDate ||!toDate ||
+      !location ||!description ||!username ||
+      !password ||!email
     ) {
       return true;
     }

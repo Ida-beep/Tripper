@@ -8,9 +8,7 @@ import { FaFileUpload } from "react-icons/fa";
 function Upload() {
   const [imageFile, setImageFile] = useState();
 
-  /**
-   * Returns URL for UserProfileImage
-   */
+  /**Returns URL for UserProfileImage*/
   const fetchProfileImage = async () => {
     const User = Parse.User.current();
     const userId = User.id;
@@ -25,17 +23,13 @@ function Upload() {
     }
   };
 
-  /**
-   * Fetches profile pic on first render
-   */
+  /** Fetches profile pic on first render*/
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(async () => {
     fetchProfileImage();
   }, []);
 
-  /**
-   * Uploads Image to DataBase
-   */
+  /**Uploads Image to DataBase*/
   async function fileUploadHandler(imageFile) {
     const Image = Parse.Object.extend("Image");
     const newImage = new Image();
@@ -53,7 +47,8 @@ function Upload() {
   }
 
   /**
-   * Changes profile picture and uploads. Event is the file selected by the user
+   * Changes profile picture and uploads. 
+   * Event is the file selected by the user
    */
   async function fileSelectedHandler(event) {
     fileUploadHandler(event.target.files[0]);
