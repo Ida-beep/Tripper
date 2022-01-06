@@ -28,6 +28,7 @@ function Upload() {
   /**
    * Fetches profile pic on first render
    */
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(async () => {
     fetchProfileImage();
   }, []);

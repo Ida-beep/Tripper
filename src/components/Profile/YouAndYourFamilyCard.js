@@ -15,6 +15,7 @@ function YouAndYourFamilyCard(props) {
 
   useEffect(() => {
     props.selectedMember(selected);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selected]);
 
   /**
@@ -57,6 +58,7 @@ function YouAndYourFamilyCard(props) {
       setSelected(null);
       props.setDidUpdate(false);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.didUpdate]);
 
   useEffect(() => {
@@ -72,6 +74,7 @@ function YouAndYourFamilyCard(props) {
       setConfirmedDeletion(false);
       setSelected(null);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.onConfirmation]);
 
   /**
@@ -85,6 +88,7 @@ function YouAndYourFamilyCard(props) {
     } else {
       console.log("Deletion didn't begin/ already happened");
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [deleteMember]);
 
   /**

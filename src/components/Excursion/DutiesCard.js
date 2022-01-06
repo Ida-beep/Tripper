@@ -52,6 +52,7 @@ function DutiesCard(props) {
     if (deletionConfirmed === true) {
       fetchUpdateAfterDeletion();
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [deletionConfirmed]);
 
   /**
@@ -64,6 +65,7 @@ function DutiesCard(props) {
       props.setAddPrevious(false);
       // eslint-disable-next-line react-hooks/exhaustive-deps
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.addPrevious]);
 
   /**
@@ -72,6 +74,7 @@ function DutiesCard(props) {
   useEffect(() => {
     fetchUpdatedDuties();
     props.addingDuty(false);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.onDutiesAdded]);
 
   /**

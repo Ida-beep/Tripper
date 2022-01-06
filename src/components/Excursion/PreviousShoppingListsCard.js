@@ -21,6 +21,7 @@ function PreviousShoppingListsCard(props) {
    */
   useEffect(() => {
     props.selected(selected);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selected]);
 
   function disable() {
