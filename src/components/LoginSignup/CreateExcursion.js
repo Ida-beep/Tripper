@@ -1,16 +1,19 @@
-import React, { useState } from "react";
-import LongInput from "./Cards/LongInput";
-import Footer from "./Footer";
-import DescriptionInput from "./Cards/DescriptionInput";
-import ExtraLongInput from "./Cards/ExtraLongInput";
-import DropDownMenu from "./DropDownMenu/DropDownMenu";
-import ExcursionAPI from "./API/ExcursionAPI";
-import ContactMemberAPI from "./API/ContactMemberAPI";
+import React, { useState, useEffect } from "react";
+import LongInput from "../Cards/LongInput";
+import Footer from "../Navigation/Footer";
+import DescriptionInput from "../Cards/DescriptionInput";
+import ExtraLongInput from "../Cards/ExtraLongInput";
+import ExcursionAPI from "../API/ExcursionAPI";
+import ContactMemberAPI from "../API/ContactMemberAPI";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import { Parse } from "parse";
 
+/**
+ * This component is responsible for creating an
+ * excursion, along with it's initial organisers
+ */
 function CreateExcursion() {
+  /* eslint-disable no-unused-vars */
   const [excursionName, setExcursionName] = useState();
   const [fromDate, setFromDate] = useState();
   const [toDate, setToDate] = useState();
@@ -20,118 +23,85 @@ function CreateExcursion() {
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
   const [email, setEmail] = useState();
-  // const [firstName, setFirstName] = useState();
-  // const [lastName, setLastName] = useState();
-  // const [age, setAge] = useState();
   const [isOrganiser, setIsOrganiser] = useState(true);
+  const [excursionID, setExcursionID] = useState();
 
   const navigate = useNavigate();
 
+  /**Sets field values to 
+   * respective variables */
   function excursionNameChange(e) {
     setExcursionName(e.target.value);
   }
-
   function fromDateChange(e) {
     setFromDate(e.target.value);
   }
-
   function toDateChange(e) {
     setToDate(e.target.value);
   }
-
   function locationChange(e) {
     setLocation(e.target.value);
   }
-
   function descriptionChange(e) {
     setDescription(e.target.value);
   }
-
   function usernameChange(e) {
     setUsername(e.target.value);
   }
-
   function passwordChange(e) {
     setPassword(e.target.value);
   }
-
   function emailChange(e) {
     setEmail(e.target.value);
   }
-
-  // function firstNameChange(e) {
-  //     setFirstName(e.target.value);
-  // }
-
-  // function lastNameChange(e) {
-  //     setLastName(e.target.value);
-  // }
-
-  // function ageChange(e) {
-  //     setAge(e.target.value);
-  // }
-
-  // function dutiesChange(e) {
-  //     setDuties(e.target.value);
-  // }
-
   async function handleSubmit(e) {
     e.preventDefault();
-    console.log("create excursion handle submit called");
-    let excursionID = "";
-
-    ContactMemberAPI.signUp({
-      username,
-      password,
-      email,
-      isOrganiser,
-      excursionID,
-    }).then(
-      (loggedInUser) => {
-        navigate(`/`);
-        console.log("succes in signup");
-      },
-      (error) => {
-        console.log("Didn't login with error code: ", error.code);
-      }
-    );
     ExcursionAPI.createExcursion({
-      excursionName,
-      fromDate,
-      toDate,
+      excursionName,fromDate,toDate,
       location,
       description,
     }).then(
       (excursion) => {
-        const user = Parse.User.current();
-        user.set("excursionID", excursion.id);
-        user.save().then(
-          () => {
-            console.log("succes in saving excursionID");
-          },
-          (error) => {
-            console.log("failed at saving excursionID: ", error.code);
-          }
-        );
+        setExcursionID(excursion.id);
       },
       (error) => {
-        console.log("failed to create excursion OR set excursionID of user");
+        console.log("Failed to create excursion OR set excursionID of user");
       }
     );
-
-    /* excursionID = excursion.id; */
   }
 
+  /**
+   * This useEffect ensures that an organiser is never signed up
+   * before an excursion is created. This ensures that the contact
+   * member is always associated with an excursion.
+   */
+  useEffect(() => {
+    if (excursionID) {
+      ContactMemberAPI.signUp({
+        username,password,email,
+        isOrganiser,excursionID,
+      }).then(
+        (loggedInUser) => {
+          navigate(`/`);
+          console.log("Succes in signup");
+        },
+        (error) => {
+          console.log("Failed to login with error code: ", error.code);
+        }
+      );
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [excursionID]);
+
+  /**
+   * This function disables the submit button
+   * until all fields are filled.
+   */
   function disable() {
     if (
-      !excursionName ||
-      !fromDate ||
-      !toDate ||
-      !location ||
-      !description ||
-      !username ||
-      !password ||
-      !email
+      !excursionName ||!fromDate ||!toDate ||
+      !location ||!description ||!username ||
+      !password ||!email
     ) {
       return true;
     }
@@ -207,21 +177,16 @@ function CreateExcursion() {
                 />
               </div>
 
-              {/* <div className="input-section">
-                            <LongInput title="First name" value={firstName} type="text" changeValue={firstNameChange}  />
-                            <LongInput title="Last name" value={lastName} type="text" changeValue={lastNameChange}  />
-                            <LongInput title="Age" value={age} type="number" changeValue={ageChange}  />
-                        </div> */}
-
               <button
                 className="button-secondary-extra-small"
                 type="submit"
                 variant="primary"
                 disabled={disable()}
+                style={{ marginLeft: "0px", marginTop: "15px" }}
               >
                 Create Excursion &amp; User
               </button>
-              <p style={{ textAlign: "center" }}>
+              <p style={{ textAlign: "left", marginTop: "30px" }}>
                 <Link to="/OrganiserLogin">
                   {" "}
                   Want to login or plan existing excursion?{" "}
@@ -230,7 +195,7 @@ function CreateExcursion() {
                   </p>{" "}
                 </Link>
               </p>
-              <p style={{ textAlign: "center" }}>
+              <p style={{ textAlign: "left" }}>
                 <Link to="/Home">
                   {" "}
                   <p style={{ color: "#1ea774" }}>Go To Home Page</p>{" "}

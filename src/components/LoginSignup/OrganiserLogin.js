@@ -1,39 +1,31 @@
 import React, { useState } from "react";
 import { Parse } from "parse";
 import { useNavigate } from "react-router-dom";
-import API from "../API/API";
-import Footer from "../Footer";
+import Footer from "../Navigation/Footer";
 import { Link } from "react-router-dom";
+import ImgLogo from "../Img/ImgLogo.js";
+import { FaUser, FaLock } from "react-icons/fa";
 
+/**
+ * Handles login for organisers (not participants)
+ */
 function OrganiserLogin(props) {
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
-
   const navigate = useNavigate();
 
-  // function handleSignup(e){
-  //     e.preventDefault();
-  //     console.log("Signup was called");
-  //     const user = new Parse.User();
-  //     user.setPassword(password);
-  //     user.setUsername(username);
-
-  //     API.signup(username,password);
-  //     console.log("user singed up!");
-  //<button className="button-secondary-extra-small" type="submit" onClick={handleSignup}>Signup</button>
-  // }
-
+  /**
+   * Logs in and redirects the user to Excursion page
+   */
   function handleLoginAttempt(e) {
     e.preventDefault();
-    console.log("handleLoginAttempt was called");
-
     const user = new Parse.User();
     user.setPassword(password);
     user.setUsername(username);
     user.logIn().then(
       (loggedInUser) => {
-        console.log(loggedInUser);
-        navigate(`/`);
+        console.log("Succesfull login with :", loggedInUser);
+        navigate(`/Excursion`);
       },
       (error) => {
         alert("login not successfull with errorcode: " + error.code);
@@ -45,13 +37,14 @@ function OrganiserLogin(props) {
     <>
       <div className="page-container">
         <div className="signup-container">
+          <ImgLogo/>
           <h4 style={{ color: "#1ea774" }}>Login </h4>
           <p style={{ color: "#1ea774" }}>To plan your trip </p>
           <div className="login-form">
             <form onSubmit={handleLoginAttempt}>
-              <div className="long-input">
+              <div className="long-input" style={{ justifyContent: "center" }}>
                 <label>
-                  <p>Username</p>
+                  <p><p><FaUser /> Username</p></p>
                   <input
                     type="text"
                     value={username}
@@ -59,9 +52,12 @@ function OrganiserLogin(props) {
                   />
                 </label>
               </div>
-              <div className="long-input">
+              <div
+                className="long-input"
+                style={{ justifyContent: "center", paddingTop: "10px" }}
+              >
                 <label>
-                  <p>Password</p>
+                  <p><p><FaLock/>Password</p></p>
                   <input
                     type="password"
                     value={password}
@@ -69,7 +65,11 @@ function OrganiserLogin(props) {
                   />
                 </label>
               </div>
-              <button className="button-secondary-extra-small" type="submit">
+              <button
+                className="button-secondary-extra-small"
+                type="submit"
+                style={{ marginTop: "30px", marginLeft: "85px" }}
+              >
                 Login
               </button>
 

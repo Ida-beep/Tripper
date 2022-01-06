@@ -2,30 +2,26 @@ import React, { useState, useEffect } from "react";
 import TableScaffold from "../Cards/TableScaffold.js";
 import FamilyMemberAPI from "../API/FamilyMemberAPI.js";
 
-function XGuestDutyCard() {
-  // const partData = participantData.map(data => <XGuestDuty data={data}  />);
+/**
+ * Lists Participants who are going to the given excursion with their
+ * duty preferences that they selected
+ */
+function ParticipantDutyCard() {
+  /* eslint-disable no-unused-vars */
   const [allGuests, setAllGuests] = useState([]);
   const [selected, setSelected] = useState([]);
 
-  // Renders GuestsOverview from DB
+  /**Retrieves and sets data about family member to allGuests variable */
   useEffect(() => {
     async function fetchData() {
-      setAllGuests(await FamilyMemberAPI.fetchFamilyMembersFromDB());
+      setAllGuests(await FamilyMemberAPI.fetchAllFamilyMembersInExcursion());
     }
     fetchData();
-    console.log("guestdutycard called");
   }, []);
 
+  /**Adds selected element to selected array */
   function addElementToSelected(element) {
     setSelected((prevState) => [...prevState, element]);
-    console.log("selected: ", selected);
-  }
-
-  function disableAssignSelected() {
-    if (selected.length < 1) {
-      return true;
-    }
-    return false;
   }
 
   return (
@@ -35,18 +31,23 @@ function XGuestDutyCard() {
           tkey={["firstName", "age", "duties"]}
           theaders={["Participant", "Age", "Duty Preferences"]}
           tdata={allGuests}
+          onSelection={(member) => addElementToSelected(member)}
+          tBodyKey="participantBody"
+          tTableKey="participantTable"
+          tHeadKey="participantHead"
+          key="ParticipantDutyCard"
         />
       </div>
 
       <div className="button-container">
         <button
           className="button-secondary-extra-small"
-          disabled={disableAssignSelected()}
+          disabled={true}
         >
           Assign Selected
         </button>
         <button
-          disabled={disableAssignSelected()}
+          disabled={true}
           className="button-secondary-extra-small"
         >
           Auto Assign All
@@ -56,4 +57,4 @@ function XGuestDutyCard() {
   );
 }
 
-export default XGuestDutyCard;
+export default ParticipantDutyCard;

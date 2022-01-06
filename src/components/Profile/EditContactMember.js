@@ -8,27 +8,22 @@ import ShortInput from "../Cards/ShortInput";
 import ExtraLongInput from "../Cards/ExtraLongInput";
 
 /**
- * @public EditContactMembern defines the content of the popup to
+ * EditContactMembern defines the content of the popup to
  * edit contact person information, using its parent Popup.js
- *
- * TO DO
- * - How to prevent overwriting of data when editing contact member information
  */
-
 function EditContactMember(props) {
   const [contactP, setContactP] = useState([]);
 
+  /**Fetches current contact member data from 
+   * DB and sets it to contactP*/
   useEffect(() => {
     async function fetchData() {
       setContactP(await ContactMemberAPI.fetchContactMemberFromDB());
-      console.log("fetched the following :", contactP);
     }
     fetchData();
-    console.log("EditContactMember useeffect called ");
   }, []);
 
   useEffect(() => {
-    console.log("changed info on ContactPerson");
     setFirstName(contactP.firstName);
     setLastName(contactP.lastName);
     setAge(contactP.age);
@@ -54,95 +49,71 @@ function EditContactMember(props) {
   const [workPhone, setWorkPhone] = useState();
   const [duties, setDuties] = useState([]);
 
+  //Disables submit until all fields are filled
   function disable() {
-    if (
-      !firstName ||
-      !lastName ||
-      !email ||
-      !age ||
-      !street ||
-      !zip ||
-      !city ||
-      !mobile ||
-      !phone ||
-      !workPhone ||
-      !duties
+    if (!firstName || !lastName ||!email ||
+      !age ||!street ||!zip ||!city ||
+      !mobile ||!phone ||!workPhone
     ) {
       return true;
     }
     return false;
   }
 
+  /**Sets field values to 
+   * respective variables */
   function changeFirstName(e) {
     e.preventDefault();
     setFirstName(e.target.value);
   }
-
   function changeLastName(e) {
     e.preventDefault();
     setLastName(e.target.value);
   }
-
   function changeAge(e) {
     e.preventDefault();
     setAge(e.target.value);
   }
-
   function changeEmail(e) {
     e.preventDefault();
     setEmail(e.target.value);
   }
-
   function changeStreet(e) {
     e.preventDefault();
     setStreet(e.target.value);
   }
-
   function changeZip(e) {
     e.preventDefault();
     setZip(e.target.value);
   }
-
   function changeCity(e) {
     e.preventDefault();
     setCity(e.target.value);
   }
-
   function changeMobile(e) {
     e.preventDefault();
     setMobile(e.target.value);
   }
-
   function changePhone(e) {
     e.preventDefault();
     setPhone(e.target.value);
   }
-
   function changeWorkPhone(e) {
     e.preventDefault();
     setWorkPhone(e.target.value);
   }
-
   function changeDuties(e) {
     e.preventDefault();
     setDuties(e.target.value);
   }
 
+  //Updates contact member info on submit
   function handleSubmit(e) {
     e.preventDefault();
-    console.log("update ebing called");
     ContactMemberAPI.updateContactMemberFromDB({
-      firstName,
-      lastName,
-      age,
-      duties,
-      email,
-      street,
-      workPhone,
-      phone,
-      mobile,
-      zip,
-      city,
+      firstName, lastName,age,
+      duties,email,street,workPhone,
+      phone,mobile,zip,city,
     });
   }
 
@@ -152,12 +123,6 @@ function EditContactMember(props) {
       onClick={props.toggleContactMember}
     >
       Back
-    </button>,
-    <button
-      className="button-secondary-extra-small"
-      onClick={props.toggleContactMember}
-    >
-      Finish
     </button>,
     <button className="button-primary-extra-small" disabled={disable()}>
       Save
@@ -190,7 +155,7 @@ function EditContactMember(props) {
             title="Age"
             value={age}
             changeValue={changeAge}
-            type="text"
+            type="number"
           />
         </div>
         <div className="input-section">
@@ -218,12 +183,12 @@ function EditContactMember(props) {
             title="Zip"
             value={zip}
             changeValue={changeZip}
-            type="text"
+            type="number"
           />
         </div>
         <div className="input-section">
           <LongInput
-            title="Mobile"
+            title="Mobile Phone"
             value={mobile}
             changeValue={changeMobile}
             type="text"
@@ -235,7 +200,7 @@ function EditContactMember(props) {
             type="text"
           />
           <LongInput
-            title="Work"
+            title="Work Phone"
             value={workPhone}
             changeValue={changeWorkPhone}
             type="text"

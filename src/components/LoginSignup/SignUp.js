@@ -1,46 +1,28 @@
-/**
- * @public SignUp creates a new user object in the database (back4app)
- * username + password can afterwards be used on the login screen to login
- *
- */
-
 import { useState } from "react";
-import Parse from "parse";
-import { useNavigate } from "react-router-dom";
 import { FaUser, FaLock, FaEnvelope } from "react-icons/fa";
-import Footer from "./Footer.js";
+import Footer from "../Navigation/Footer.js";
 import { Link } from "react-router-dom";
-import LongInput from "./Cards/LongInput";
-import ContactMemberAPI from "./API/ContactMemberAPI.js";
-// import API from "./API/API.js";
+import LongInput from "../Cards/LongInput";
+import ContactMemberAPI from "../API/ContactMemberAPI.js";
+import ImgLogo from "../Img/ImgLogo.js";
 
-import ImgLogo from "./ImgLogo.js";
-
+/**
+ * SignUp creates a new participant object in the database (back4app)
+ * username + password can afterwards be used on the login screen to login
+ */
 function SignUp() {
+  /* eslint-disable no-unused-vars */
   const [username, setUsername] = useState();
   const [excursionID, setExcursionID] = useState();
   const [password, setPassword] = useState();
   const [email, setEmail] = useState();
   const [isOrganiser, setIsOrganiser] = useState(false);
 
-  const navigate = useNavigate();
-
-  // async function createAccount() {
-  //   const user = new Parse.User();
-  //   user.setUsername(username);
-  //   user.setPassword(password);
-  //   user.setEmail(email);
-  //   try {
-  //     await user.signUp();
-  //   } catch (error) {
-  //     alert("Error: " + error.message);
-  //   }
-  //   navigate(`/`);
-  // }
-
+  /**
+   * Signs up the participant with their information and excursionID
+   */
   async function handleSubmit(e) {
     e.preventDefaul();
-    console.log("create account called");
     ContactMemberAPI.signUp({
       username,
       password,
@@ -50,37 +32,27 @@ function SignUp() {
     });
   }
 
+  /**Sets field values to 
+   * respective variables */
   function excursionIDChange(e) {
     setExcursionID(e.target.value);
   }
-
   function usernameChange(e) {
     setUsername(e.target.value);
   }
   function passwordChange(e) {
     setPassword(e.target.value);
   }
-
   function emailChange(e) {
     setEmail(e.target.value);
   }
 
-  const usernameTitle = (
-    <p>
-      <FaUser /> Username
-    </p>
-  );
-  const passwordTitle = (
-    <p>
-      <FaLock /> Password
-    </p>
-  );
-  const emailTile = (
-    <p>
-      <FaEnvelope /> Email address
-    </p>
-  );
+  //Variables storing field titles
+  const usernameTitle = (<p><FaUser /> Username</p>);
+  const passwordTitle = (<p><FaLock /> Password</p>);
+  const emailTile = (<p><FaEnvelope /> Email address</p>);
 
+  //Disables submit button until all fields are filled
   function disable() {
     if (!username || !password || !email) {
       return true;
@@ -92,7 +64,7 @@ function SignUp() {
     <>
       <div className="page-container">
         <div className="signup-container">
-        <ImgLogo />
+          <ImgLogo />
           <h4 style={{ color: "#1ea774" }}>Sign Up </h4>
           <p style={{ color: "#1ea774" }}>For Existing Excursion </p>
 
@@ -152,5 +124,5 @@ function SignUp() {
     </>
   );
 }
-//onClick={() => {navigate("/Profile")}}
+
 export default SignUp;

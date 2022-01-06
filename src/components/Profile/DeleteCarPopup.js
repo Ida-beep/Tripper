@@ -1,21 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import PopUp from "../Cards/PopUp";
 
 /**
- * Popup that handles final deletion
+ * Handles final deletion of Car
  */
-function DeletePopup(props) {
+function DeleteCarPopup(props) {
   function handleSubmit(e) {
     e.preventDefault();
     props.onConfirmation(true);
-    props.closePopup(false);
+    props.toggleDeletePopup(false);
   }
 
-  //Hides popup
+  /**Hides popup when clicking "back" */
   function handleCancel(e) {
     e.preventDefault();
     props.onCancel(true);
-    props.closePopup(false);
+    props.toggleDeletePopup(false);
   }
 
   const buttons = [
@@ -38,4 +38,4 @@ function DeletePopup(props) {
   );
 }
 
-export default DeletePopup;
+export default DeleteCarPopup;

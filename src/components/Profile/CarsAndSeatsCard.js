@@ -2,33 +2,89 @@ import React, { useState, useEffect } from "react";
 import TableScaffold from "../Cards/TableScaffold";
 import CarsAPI from "../API/CarsAPI";
 
+/**
+ * CarsAndSeatsCard displays information about the
+ * cars and allows the user to add, edit and delete cars.
+ */
 function CarsAndSeatsCard(props) {
+  /* eslint-disable no-unused-vars */
   const [carsAndSeats, setCarsAndSeats] = useState([]);
-  const [selected, setSelected] = useState([]);
+  const [selected, setSelected] = useState();
+  const [deleteCar, setDeleteCar] = useState(false);
+  const [addingCar, setAddingCar] = useState(false);
+  const [confirmedDeletion, setConfirmedDeletion] = useState(false);
 
-  function addElementToSelected(element) {
-    setSelected((prevState) => [...prevState, element]);
-    console.log(selected);
+  /**Passes selected props to parent*/
+  useEffect(() => {
+    props.selectedCar(selected);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selected]);
+
+  /**Updates the current list of Cars*/
+  async function fetchData() {
+    setCarsAndSeats(await CarsAPI.fetchCarsFromDB());
   }
 
-  async function handleDelete(e) {
-    e.preventDefault();
+  /**Fetches all data at initial page render*/
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  /**Updates after Car is edited*/
+  useEffect(() => {
+    if (props.carDidUpdate === true) {
+      fetchData();
+      setSelected(null);
+      props.setCarDidUpdate(false);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [props.carDidUpdate]);
+
+  /**Updates after a new Car is added*/
+  useEffect(() => {
+    setAddingCar(true);
+    fetchData();
+    setAddingCar(false);
+  }, [props.showCarPopup]);
+
+  /**Sets the selected to null after deletion*/
+  useEffect(() => {
+    setSelected(null);
+  }, [props.isCanceled]);
+
+  /**Check if the users has confirmed to delete*/
+  useEffect(() => {
+    if (props.onConfirmation === true) {
+      fetchUpdateAfterDeletion();
+      setConfirmedDeletion(false);
+      setSelected(null);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [props.onConfirmation]);
+
+  function fetchUpdateAfterDeletion() {
     CarsAPI.deleteCar(selected).then(async () => {
       const refetchedList = await CarsAPI.fetchCarsFromDB();
       setCarsAndSeats(refetchedList);
     });
   }
 
+  /**Checks whether deletion should begin*/
   useEffect(() => {
-    async function fetchData() {
-      setCarsAndSeats(await CarsAPI.fetchCarsFromDB());
+    if (deleteCar === true) {
+      props.onDeletion(true);
+      props.carToDelete(selected);
+      setDeleteCar(false);
+    } else {
+      console.log("Deletion didn't begin/ already happened");
     }
-    fetchData();
-    console.log("use Effect for fetchCarsFromDB called");
-  }, []);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [deleteCar]);
 
+  /**Disables edit and delete 
+   * if selected is null */
   function disable() {
-    if (selected.length < 1) {
+    if (!selected) {
       return true;
     }
     return false;
@@ -38,22 +94,30 @@ function CarsAndSeatsCard(props) {
     <div className="card-container">
       <div className="table-container">
         <TableScaffold
-          onSelection={(selected) => addElementToSelected(selected)}
+          onSelection={(selected) => setSelected(selected)}
           tkey={["carModel", "licensePlate", "carColor", "carSeats"]}
           theaders={["Car", "License", "Color", "Seats"]}
           tdata={carsAndSeats}
+          tBodyKey="carsBody"
+          tTableKey="carsTable"
+          tHeadKey="carsHead"
+          key="CarsAndSeatsCard"
         />
       </div>
 
       <div className="button-container">
         <button
           className="button-secondary-extra-small"
-          onClick={handleDelete}
+          onClick={props.deleteActive}
           disabled={disable()}
         >
           Delete
         </button>
-        <button className="button-secondary-extra-small" disabled={disable()}>
+        <button
+          className="button-secondary-extra-small"
+          disabled={disable()}
+          onClick={props.editActive}
+        >
           Edit
         </button>
         <button

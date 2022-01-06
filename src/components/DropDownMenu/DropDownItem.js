@@ -1,23 +1,26 @@
-import { idempotency } from "parse";
-import { React, useState, useEffect } from "react";
+import { React, useState } from "react";
+
+/**
+ * Renders each individual section with
+ * items in dropdown that can be selected.
+ */
 
 function DropDownItem(props) {
+  /* eslint-disable no-unused-vars */
   const [selected, setSelected] = useState(false);
   const [unSelectedColor, setUnSelectedColor] = useState("#FDF5D5");
   const [selectedColor, setSelectedColor] = useState("#FADF63");
   const [count, setCount] = useState(0);
 
+  /**
+   * On handleClick() the user can select or de-select items on the dropdown
+   */
   function handleClick() {
     setCount(count + 1);
-    console.log(count);
     if (count % 2 === 1) {
-      console.log("unselected");
       setSelected(false);
-      //props.removeDuty();
     } else {
-      console.log("selected");
       setSelected(true);
-      //props.addToArr(props.name);
     }
   }
 

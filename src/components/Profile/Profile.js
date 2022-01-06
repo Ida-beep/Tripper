@@ -10,41 +10,73 @@ import Image from "../../assets/norwegian_fjord.png";
 import AddCarPopup from "./AddCarPopup";
 import EditFamilyMemberPopup from "./EditFamilyMemberPopup";
 import DeletePopup from "./DeletePopup";
-import Footer from "../Footer.js";
+import Footer from "../Navigation/Footer.js";
+import EditCarPopup from "./EditCarPopup";
 
 /**
- *  @public Profile displays the different Card types and formats them
+ *  Profile displays the different Card types and formats them
  */
 
 function Profile() {
+  /* eslint-disable no-unused-vars */
+
+  /**ContactMember useStates*/
   const [showEditContactMember, setShowEditContactMember] = useState(false);
+  /**YouAndYourFamilyCard*/
   const [showAddFamilyPopup, setShowAddFamilyPopup] = useState(false);
-  const [showCarPopup, setShowCarPopup] = useState(false);
-  //const [showDeletePopup, setShowDeletePopup] = useState(false);
   const [editFMActive, setEditFMActive] = useState(false);
+  const [didUpdate, setDidUpdate] = useState(false);
+  const [selectedMember, setSelectedMember] = useState();
   const [deleteMember, setDeleteMember] = useState(false);
   const [memberToDelete, setMemberToDelete] = useState();
   const [confirmedDeletion, setConfirmedDeletion] = useState();
   const [cancelDelete, setCancelDelete] = useState(false);
-  const [selectedMember, setSelectedMember] = useState();
-  const [didUpdate, setDidUpdate] = useState(false);
+  const [memberName, setMemberName] = useState("");
+  const [showDeleteFMPopup, setShowDeleteFMPopup] = useState(false);
+  /**CarsAndSeats useStates*/
+  const [showCarPopup, setShowCarPopup] = useState(false);
+  const [editCarActive, setEditCarActive] = useState(false);
+  const [carDidUpdate, setCarDidUpdate] = useState(false);
+  const [selectedCar, setSelectedCar] = useState();
+  const [showDeleteCarPopup, setShowDeleteCarPopup] = useState(false);
+  const [deleteCar, setDeleteCar] = useState(false);
+  const [carToDelete, setCarToDelete] = useState();
+  const [confirmedCarDeletion, setConfirmedCarDeletion] = useState();
+  const [cancelCarDelete, setCancelCarDelete] = useState(false);
+  const [carName, setCarName] = useState("");
 
+  //Sets carname once selected car is not null
   useEffect(() => {
-    console.log("PROFILE: value of update is : ", didUpdate);
-  }, [didUpdate]);
+    if (selectedCar) {
+      const carName = selectedCar.carModel;
+      setCarName(carName);
+    }
+  }, [selectedCar]);
+
+  //Sets membername once selected member is not null
+  useEffect(() => {
+    if (selectedMember) {
+      const memberName =
+        selectedMember.firstName + " " + selectedMember.lastName;
+      setMemberName(memberName);
+    }
+  }, [selectedMember]);
 
   return (
     <div className="profile">
       <img className="photo-header-image" src={Image} alt="NorwegianFjord" />
+
       <AddFamilyPopup
         showAddFamilyPopup={showAddFamilyPopup}
         toggleFamilyItem={() => setShowAddFamilyPopup(false)}
       />
       <DeletePopup
-        showDeletePopup={deleteMember}
+        showDeletePopup={showDeleteFMPopup}
         onCancel={(isCanceled) => setCancelDelete(isCanceled)}
         toggleDeletePopup={(isOpen) => setDeleteMember(isOpen)}
-        memberToDelete={memberToDelete}
+        itemToDelete={selectedMember}
+        text={memberName}
+        closePopup={(value) => setShowDeleteFMPopup(value)}
         onConfirmation={(isConfirmed) => {
           setConfirmedDeletion(isConfirmed);
         }}
@@ -58,11 +90,30 @@ function Profile() {
       <EditContactMember
         showEditContactMember={showEditContactMember}
         toggleContactMember={() => setShowEditContactMember(false)}
+        title="Edit Contact Member"
       />
       <AddCarPopup
         showCarPopup={showCarPopup}
         toggleAddCar={() => setShowCarPopup(false)}
         title="Add Car"
+      />
+      <EditCarPopup
+        title="Edit Car Information"
+        selectedCar={selectedCar}
+        carDidUpdate={(carDidUpdate) => setCarDidUpdate(carDidUpdate)}
+        editCarActive={editCarActive}
+        editState={() => setEditCarActive(false)}
+      />
+      <DeletePopup
+        showDeletePopup={showDeleteCarPopup}
+        onCancel={(isCanceled) => setCancelCarDelete(isCanceled)}
+        closePopup={(value) => setShowDeleteCarPopup(value)}
+        toggleDeletePopup={(isOpen) => setDeleteCar(isOpen)}
+        text={carName}
+        itemToDelete={selectedCar}
+        onConfirmation={(isConfirmed) => {
+          setConfirmedCarDeletion(isConfirmed);
+        }}
       />
 
       <div className="page-container">
@@ -72,9 +123,12 @@ function Profile() {
           active={() => setShowEditContactMember(true)}
         />
       </div>
+
       <div className="page-container">
-        <div className="duties-headline">
-          <h4 style={{ fontSize: "20px" }}>Your Family and Transportation</h4>
+        <div className="profile-headline">
+          <h4 style={{ fontSize: "16px", color: "#1ea774" }}>
+            Your Family and Transportation
+          </h4>
           <p>Here you can add your family members. You can also add you car</p>
         </div>
       </div>
@@ -84,7 +138,7 @@ function Profile() {
             setMemberToDelete(member);
           }}
           onDeletion={(isDeleting) => {
-            setDeleteMember(isDeleting);
+            setSelectedMember(isDeleting);
           }}
           selectedMember={(member) => {
             setSelectedMember(member);
@@ -96,8 +150,28 @@ function Profile() {
           editActive={() => setEditFMActive(true)}
           onConfirmation={confirmedDeletion}
           onAddingFamilyMembers={showAddFamilyPopup}
+          deleteActive={() => setShowDeleteFMPopup(true)}
         />
-        <CarsAndSeatsCard toggleCarItem={() => setShowCarPopup(true)} />
+        <CarsAndSeatsCard
+          deleteActive={() => setShowDeleteCarPopup(true)}
+          carToDelete={(car) => {
+            setCarToDelete(car);
+          }}
+          onDeletion={(isDeleting) => {
+            setDeleteCar(isDeleting);
+          }}
+          deleteCar={deleteCar}
+          selectedCar={(car) => {
+            setSelectedCar(car);
+          }}
+          carDidUpdate={carDidUpdate}
+          setCarDidUpdate={(isUpdating) => setCarDidUpdate(isUpdating)}
+          toggleCarItem={() => setShowCarPopup(true)}
+          isCanceled={cancelCarDelete}
+          editActive={() => setEditCarActive(true)}
+          onConfirmation={confirmedCarDeletion}
+          showCarPopup={showCarPopup}
+        />
       </div>
       <Footer />
     </div>

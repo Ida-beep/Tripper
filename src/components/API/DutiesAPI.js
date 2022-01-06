@@ -1,30 +1,29 @@
 import { Parse } from "parse";
 
+/**
+ * DutiesAPI handles all API calls related to the Duties table
+ * in the DB, such as fetching, deleting, update and add.
+ * */
+
+
+//Fetches duties from current excursion
 const fetchDutiesFromDB = async () => {
-  //Getting current excursionID
+  
   const User = Parse.User.current();
   const queryUser = new Parse.Query("User");
   const user = await queryUser.get(User.id);
   const contactMember = await queryUser.get(user.id);
   const excursionID = contactMember.get("excursionID");
-
-  console.log("user is: ", user.id, " and excursionID is: ", excursionID);
-
   const dutyCollection = [];
   const query = new Parse.Query("Duties");
-
   let allDutiesFromDB = await query.find();
-  console.log("amount of duties found: ", allDutiesFromDB.length);
 
   for (let i = 0; i < allDutiesFromDB.length; i++) {
-    // finder alle duties i back4app baseret på objectId
     try {
       const duty = await query.get(allDutiesFromDB[i].id);
       if (duty.get("excursionID") === excursionID) {
         const id = allDutiesFromDB[i].id;
-        console.log(id);
         const name = duty.get("name");
-        console.log(name);
         const minRequired = duty.get("minRequired");
         const peopleAssigned = duty.get("peopleAssigned");
 
@@ -37,23 +36,20 @@ const fetchDutiesFromDB = async () => {
         dutyCollection.push(dutyObject);
       }
     } catch (error) {
-      alert(`FAILED to retrieve the DUTY entry. Error: ${error.message}`);
+      console.log(`Failed to retrieve the duty entry. Error: ${error.message}`);
     }
   }
   return dutyCollection;
 };
 
+/*Fetches and returns duties from previous excursions. 
+ The excursion ID is passed in as a parameter.*/
 const fetchPreviousDutyFromDB = async (id) => {
-  //
-
-  console.log("selected excursion: ", id);
-
   const dutyCollection = [];
   const query = new Parse.Query("Duties");
 
   let allDutiesFromDB = await query.find();
   for (let i = 0; i < allDutiesFromDB.length; i++) {
-    // finder alle duties i back4app baseret på objectId
     try {
       const duty = await query.get(allDutiesFromDB[i].id);
       if (duty.get("excursionID") === id) {
@@ -69,25 +65,28 @@ const fetchPreviousDutyFromDB = async (id) => {
         dutyCollection.push(dutyObject);
       }
     } catch (error) {
-      alert(`FAILED to retrieve the DUTY entry. Error: ${error.message}`);
+      alert(`Failed to retrieve the duty entry. Error: ${error.message}`);
     }
   }
   return dutyCollection;
 };
 
+//Adds duty to current excursion
 async function addDuty(data) {
   try {
+    //Fetches current excursion ID
     const User = Parse.User.current();
     const queryUser = new Parse.Query("User");
     const user = await queryUser.get(User.id);
     const contactMember = await queryUser.get(user.id);
     const excursionID = contactMember.get("excursionID");
 
+    //Assigns and cleans up data passed as argument
     const dutyName = data.name;
     const minRequired = parseInt(data.minRequired);
-
     const Duty = Parse.Object.extend("Duties");
     const duty = new Duty();
+
     duty.set("name", dutyName);
     duty.set("minRequired", minRequired);
     duty.set("excursionID", excursionID);
@@ -102,28 +101,29 @@ async function addDuty(data) {
       }
     );
   } catch (error) {
-    console.log(error);
+    console.log("Failed to add duty:", error.code);
   }
 }
 
+/*Adds multiple duties passed as list
+  using addDuty()*/
 async function addMultipleDuties(list) {
   for (let i = 0; i < list.length; i++) {
     addDuty(list[i]);
   }
 }
 
-async function deleteDuty(duties) {
-  for (let i = 0; i < duties.length; i++) {
-    const duty = duties[i];
-
+//Deletes duty passed as parameter
+async function deleteDuty(duty) {
+  if (typeof duty !== "undefined") {
     const dutyID = duty.id;
     const Duties = Parse.Object.extend("Duties");
     const query = new Parse.Query(Duties);
 
     query.equalTo("objectId", dutyID);
     let result = await query.find();
-    result = result[0];
 
+    result = result[0];
     result.destroy().then(
       () => {
         alert("Duty successfully deleted ");
@@ -135,10 +135,12 @@ async function deleteDuty(duties) {
   }
 }
 
-export default {
-  fetchPreviousDutyFromDB: fetchPreviousDutyFromDB,
-  deleteDuty: deleteDuty,
-  addDuty: addDuty,
-  fetchDutiesFromDB: fetchDutiesFromDB,
-  addMultipleDuties: addMultipleDuties,
+const DutiesAPI = {
+  fetchPreviousDutyFromDB,
+  deleteDuty,
+  addDuty,
+  fetchDutiesFromDB,
+  addMultipleDuties,
 };
+
+export default DutiesAPI;

@@ -1,44 +1,31 @@
 import React, { useState } from "react";
 import { Parse } from "parse";
 import { useNavigate } from "react-router-dom";
-import API from "../API/API";
-import Footer from "../Footer";
+import Footer from "../Navigation/Footer";
 import { Link } from "react-router-dom";
+import ImgLogo from "../Img/ImgLogo";
+import { FaUser, FaLock} from "react-icons/fa";
 
-import ImgLogo from "../ImgLogo";
-
+/**
+ * Handles login for participants (not organisers)
+ */
 function Login(props) {
   const [username, setUsername] = useState();
   const [password, setPassword] = useState();
-
   const navigate = useNavigate();
-
-  // function handleSignup(e){
-  //     e.preventDefault();
-  //     console.log("Signup was called");
-  //     const user = new Parse.User();
-  //     user.setPassword(password);
-  //     user.setUsername(username);
-
-  //     API.signup(username,password);
-  //     console.log("user singed up!");
-  //<button className="button-secondary-extra-small" type="submit" onClick={handleSignup}>Signup</button>
-  // }
 
   function handleLoginAttempt(e) {
     e.preventDefault();
-    console.log("handleLoginAttempt was called");
-
     const user = new Parse.User();
     user.setPassword(password);
     user.setUsername(username);
     user.logIn().then(
       (loggedInUser) => {
-        console.log(loggedInUser);
-        navigate(`/`);
+        console.log("Succesful login with: ", loggedInUser);
+        navigate(`/Profile`);
       },
       (error) => {
-        alert("login not successfull with errorcode: " + error.code);
+        alert("Failed to login with errorcode: " + error.code);
       }
     );
   }
@@ -54,7 +41,7 @@ function Login(props) {
             <form onSubmit={handleLoginAttempt}>
               <div className="long-input">
                 <label>
-                  <p>Username</p>
+                  <p><p><FaUser /> Username</p></p>
                   <input
                     type="text"
                     value={username}
@@ -62,9 +49,9 @@ function Login(props) {
                   />
                 </label>
               </div>
-              <div className="long-input">
+              <div className="long-input" style={{ marginTop: "10px" }}>
                 <label>
-                  <p>Password</p>
+                  <p><p><FaLock /> Password</p></p>
                   <input
                     type="password"
                     value={password}
@@ -72,7 +59,11 @@ function Login(props) {
                   />
                 </label>
               </div>
-              <button className="button-secondary-extra-small" type="submit">
+              <button
+                className="button-secondary-extra-small"
+                type="submit"
+                style={{ marginLeft: "50px", marginTop: "30px" }}
+              >
                 Login
               </button>
 
@@ -86,7 +77,7 @@ function Login(props) {
                 </Link>
               </p>
               <p style={{ textAlign: "center" }}>
-                <Link to="/Home">
+                <Link to="/">
                   {" "}
                   <p style={{ color: "#1ea774" }}>Go To Home Page</p>{" "}
                 </Link>

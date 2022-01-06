@@ -5,13 +5,11 @@ import ExcursionAPI from "../API/ExcursionAPI";
 import ExtraLongInput from "../Cards/ExtraLongInput";
 import DescriptionInput from "../Cards/DescriptionInput";
 
+/**
+ * EditExcursion renders the PopUp for editing excursions.
+ * Is a child of the component PopUp
+ */
 function EditExcursion(props) {
-  /**
-   * @public EditExcursion renders the PopUp for editing excursions.
-   * Is a child of the component PopUp.
-   *
-   */
-
   const [excursion, setExcursion] = useState();
   const [excursionTitle, setExcursionTitle] = useState();
   const [dateFrom, setDateFrom] = useState();
@@ -20,16 +18,16 @@ function EditExcursion(props) {
   const [description, setDescription] = useState();
   const notInitialRender = useRef(false);
 
+  /**Fetches Excursion from the database*/
   useEffect(() => {
     async function fetchData() {
       setExcursion(await ExcursionAPI.fetchExcursionFromDB());
-      console.log("fetchExcursion called");
     }
     fetchData();
-    console.log("Excursion useeffect called ");
   }, []);
 
-  /**Sets excursion information once excursion state has been updated.
+  /**
+   * Sets excursion information once excursion state has been updated.
    * useRef notInititalRender ensures that this useEffect will not be
    * called until excursion state contains data.
    */
@@ -45,6 +43,8 @@ function EditExcursion(props) {
     }
   }, [excursion]);
 
+  /**Sets field values to 
+   * respective variables */
   function changeExcursionTitle(e) {
     e.preventDefault();
     setExcursionTitle(e.target.value);
@@ -53,23 +53,20 @@ function EditExcursion(props) {
     e.preventDefault();
     setDateFrom(e.target.value);
   }
-
   function changeDateTo(e) {
     e.preventDefault();
     setDateTo(e.target.value);
   }
-
   function changeLocation(e) {
     e.preventDefault();
     setLocation(e.target.value);
   }
-
   function changeDescription(e) {
     e.preventDefault();
     setDescription(e.target.value);
   }
 
-  /**Disables submit button if either input fields are empty. */
+  /**Determines whether or not a button is disabled or not*/
   function disable() {
     if (!excursionTitle || !dateFrom || !dateTo || !location || !description) {
       return true;
@@ -77,46 +74,28 @@ function EditExcursion(props) {
     return false;
   }
 
+  /**Submits excursion*/
   function handleSubmit(e) {
     e.preventDefault();
-    console.log(
-      "haaandleee submit: " + excursionTitle,
-      dateFrom,
-      dateTo,
-      location,
-      description
-    );
     ExcursionAPI.updateExcursion({
-      excursionTitle,
-      dateFrom,
-      dateTo,
-      location,
-      description,
+      excursionTitle,dateFrom,
+      dateTo,location,description,
     });
-    console.log(
-      "submit handles with " + excursionTitle,
-      dateTo,
-      dateFrom,
-      location,
-      description
-    );
   }
 
   const buttons = [
     <button className="button-secondary-extra-small" onClick={props.editState}>
       Back
     </button>,
-    <button className="button-secondary-extra-small" onClick={props.editState}>
-      Finish
-    </button>,
     <button className="button-primary-extra-small" disabled={disable()}>
       Save
-    </button>,
+    </button>
   ];
 
   return (
     props.trigger && (
       <PopUp
+        title="Edit Excursion"
         editState={props.editState}
         submitChanges={handleSubmit}
         buttons={buttons}

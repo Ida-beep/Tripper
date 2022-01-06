@@ -1,5 +1,9 @@
 import React, { useState } from "react";
 
+/**Component that renders a dropdown, including
+ * "input field", individiual DropDownItems 
+ * and the DropDownMenus
+*/
 function DropDown(props) {
   const [open, setOpen] = useState(false);
 

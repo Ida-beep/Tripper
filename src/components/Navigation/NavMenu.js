@@ -2,25 +2,24 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import Parse from "parse";
-import { FaRegUserCircle, FaUser } from "react-icons/fa";
-
-import ImgLogo from '../ImgLogo';
+import { FaRegUserCircle } from "react-icons/fa";
+import ImgLogo from "../Img/ImgLogo";
 
 /**
- *  @public NavMenu let's the user use the NavRouter to switch between different main pages
+ *  NavMenu lets the user use the NavRouter to 
+ * switch between different main pages
  */
-
-function NavMenu() {
-  const [excursionDropDown, setExcursionDropDown] = useState(false);
+function NavMenu(props) {
   const [profileDropDown, setProfileDropDown] = useState(false);
   const navigate = useNavigate();
 
+  /**Logsout and redirects user to /Home*/
   async function handleLogOutAttempt(e) {
     e.preventDefault();
-    console.log("Logout was called");
+    props.setEmptyStats();
 
     Parse.User.logOut().then(() => {
-      navigate(`/Home`);
+      navigate(`/`);
     });
   }
 
@@ -29,36 +28,24 @@ function NavMenu() {
       {Parse.User.current() && (
         <nav className="Nav-Bar">
           <ul className="Nav-Ul">
+            <ImgLogo />
             <div className="Logo">tripper</div>
-            <ImgLogo/>
+
             <div className="Divider"></div>
             <div className="Nav-Item-Overview">
               <>
-                <div
-                  className="nav-item"
-                  onClick={() => setExcursionDropDown(!excursionDropDown)}
-                >
+                <Link className="nav-item" to="/Excursion">
                   Excursion
-                  {excursionDropDown && (
-                    <div
-                      className="nav-drop-down"
-                      /* onClick={() => setExcursionDropDown(!excursionDropDown)} */
-                    >
-                      <Link className="drop-down-options" to="/Shopping">
-                        Shopping List
-                      </Link>
-                      <Link className="drop-down-options" to="/Duties">
-                        Duties
-                      </Link>
-                    </div>
-                  )}
-                </div>
+                </Link>
                 <div
                   className="nav-item"
                   to="/Profile"
                   onClick={() => setProfileDropDown(!profileDropDown)}
                 >
-                  Profile <FaRegUserCircle />
+                  Profile
+                  <div className="user-circle">
+                    <FaRegUserCircle />
+                  </div>
                   {profileDropDown && (
                     <div
                       className="nav-drop-down"
@@ -75,7 +62,7 @@ function NavMenu() {
                         Logout
                       </Link>
                     </div>
-                  )}
+                  )}{" "}
                 </div>
               </>
             </div>

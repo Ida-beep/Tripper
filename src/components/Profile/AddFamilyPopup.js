@@ -7,17 +7,19 @@ import LongInput from "../Cards/LongInput.js";
 import ShortInput from "../Cards/ShortInput.js";
 
 /**
- * @public AddFamilyPopup defines the content of the popup to
+ * AddFamilyPopup defines the content of the popup to
  * add family items, using its parent PopUp.js
- *
  */
 function AddFamilyPopup(props) {
+  /* eslint-disable no-unused-vars */
   const [firstName, setFirstName] = useState();
   const [lastName, setLastName] = useState();
   const [age, setAge] = useState();
   const [duties, setDuties] = useState([]);
   const personData = { firstName, lastName, age, duties };
 
+  /**Sets field values to 
+   * respective variables */
   function changeFirstName(e) {
     e.preventDefault();
     setFirstName(e.target.value);
@@ -29,14 +31,15 @@ function AddFamilyPopup(props) {
   function changeAge(e) {
     e.preventDefault();
     setAge(e.target.value);
-    console.log("age was changed");
   }
 
+  //Adds family member on submit
   function handleSubmit(e) {
     e.preventDefault();
     FamilyMemberAPI.addFamilyMember(personData);
   }
 
+  //Disables submit button until all field are filled
   function disable() {
     if (!firstName || !lastName || !age) {
       return true;
@@ -44,27 +47,29 @@ function AddFamilyPopup(props) {
     return false;
   }
 
+  /**Ensures that fields are empty 
+   * when reopening the add family popup.
+  */
+  function closeAndReset() {
+    props.toggleFamilyItem();
+    setAge();
+    setFirstName("");
+    setLastName("");
+  }
+
   const buttons = [
-    <button
-      className="button-secondary-extra-small"
-      onClick={props.toggleFamilyItem}
-    >
-      Cancel
-    </button>,
-    <button
-      className="button-secondary-extra-small"
-      onClick={props.toggleFamilyItem}
-    >
-      Finish
+    <button className="button-secondary-extra-small" onClick={closeAndReset}>
+      Back
     </button>,
     <button className="button-primary-extra-small" disabled={disable()}>
-      Add
+      Save
     </button>,
   ];
 
   return (
     props.showAddFamilyPopup && (
-      <PopUp data={personData} submitChanges={handleSubmit} buttons={buttons}>
+      <PopUp data={personData} submitChanges={handleSubmit} 
+        buttons={buttons} title="Add Family Member">
         <div className="input-section">
           <LongInput
             title="First Name"
