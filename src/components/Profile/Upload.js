@@ -34,8 +34,11 @@ function Upload() {
     const Image = Parse.Object.extend("Image");
     const newImage = new Image();
     const file = new Parse.File(imageFile.name, imageFile);
+    const User = Parse.User.current();
+    const userId = User.id;
+    
     newImage.set("file", file);
-    newImage.set("user", "ti8kJQvgJ4");
+    newImage.set("user", userId);
 
     try {
       await newImage.save();
