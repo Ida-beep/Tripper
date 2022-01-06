@@ -1,4 +1,4 @@
-/*GENERAL*/
+/*-------GENERAL---------*/
 body {
   margin: 0;
   font-family: "Poppins", sans-serif;
@@ -11,7 +11,7 @@ code {
     monospace;
 }
 
-/*TYPOGRAPHY*/
+/*-------TYPOGRAPHY---------*/
 h1,
 h2,
 h3,
@@ -43,32 +43,123 @@ h4 {
   padding-bottom: 10px;
 }
 
-/*Subtitle suggestion*/
 .subtitle {
   font-size: 12pt;
-  margin-top: -20px;
+  margin-top: -5px;
   margin-bottom: 20px;
 }
 
 p,
 li {
-  font-size: 10pt; /*Changed from 12 to 10*/
+  font-size: 10pt; 
+}
+
+a {
+  color: grey; 
+  text-decoration: none;
+}
+
+.Link {
+  font-family: "Roboto Slab", serif;
+  font-size: 16pt;
+  text-decoration: underline;
+  color: #1ea774;
 }
 
 .description {
   font-size: 10pt;
 }
-.button-medium {
+
+/*---------Buttons---------*/
+.button-primary-medium {
+  font-family: "Roboto Slab", sans-serif;
+  font-size: 16pt;
+  font-weight: 500;
+  color: #fefbec;
+  border: #1ea774 1px;
+  background-color: #1ea774;
+  height: 40px;
+  padding-left: 25px;
+  padding-right: 25px;
+  margin: 10px;
+}
+
+.button-secondary-medium {
   font-family: "Roboto Slab", serif;
   font-size: 16pt;
   font-weight: 500;
 }
-.button-small {
+
+.button-primary-small {
+  font-family: "Roboto Slab", serif;
+  font-size: 13pt;
+  font-weight: 500;
+  color: #fefbec;
+  border: #1ea774 1px;
+  background-color: #1ea774;
+  height: 40px;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin: 50px 0px;
+}
+
+.button-primary-small:disabled {
+  border: solid #a6a6a6 1px;
+  color: #fefbec;
+  background-color: #a6a6a6;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.button-secondary-small {
   font-family: "Roboto Slab", serif;
   font-size: 13pt;
   font-weight: 500;
 }
-.button-extra-small {
+
+.button-primary-extra-small {
+  font-family: "Roboto Slab", serif;
+  font-size: 10pt;
+  font-weight: 500;
+  color: #fefbec;
+  border: solid #1ea774 3px;
+  background-color: #1ea774;
+  height: 25px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin: 10px;
+}
+
+.button-primary-extra-small:disabled {
+  border: solid #a6a6a6 3px;
+  color: #fefbec;
+  background-color: #a6a6a6;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+.button-primary-extra-small:hover {
+  border: solid #0c6d4a 3px;
+  background-color: #0c6d4a;
+}
+
+.delete-button {
+  font-family: "Roboto Slab", serif;
+  font-size: 10pt;
+  font-weight: 500;
+  border: solid #dd0d18 1px;
+  color: #dd0d18;
+  background-color: transparent;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin: 10px;
+}
+.delete-button:hover {
+  color: #fffbf2;
+  background-color: #dd0d18;
+}
+
+.button-secondary-extra-small {
   font-family: "Roboto Slab", serif;
   font-size: 10pt;
   font-weight: 500;
@@ -81,18 +172,54 @@ li {
   margin: 10px;
 }
 
-.Link {
-  font-family: "Roboto Slab", serif;
-  font-size: 16pt;
-  text-decoration: underline;
-  color: #1ea774;
+.button-secondary-extra-small:disabled {
+  border: solid #a6a6a6 1px;
+  color: #a6a6a6;
+  cursor: not-allowed;
+  pointer-events: none;
 }
-.button-extra-small:hover {
+
+.button-secondary-extra-small:hover {
   color: #fffbf2;
   background-color: #1ea774;
 }
 
-/*NAVBAR*/
+/*------Tab in Excursion--------*/
+.selected {
+  font-family: "Poppins", sans-serif;
+  font-size: 10pt;
+  font-weight: 500;
+  border: solid #fadf63 2.25px;
+  border-bottom: none;
+  color: #424242;
+  background-color: transparent;
+  padding-left: 207.4px;
+  padding-right: 207.4px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  margin-left: -1.4px;
+  margin-right: -1.4px;
+}
+
+.unselected {
+  font-family: "Poppins", sans-serif;
+  font-size: 10pt;
+  font-weight: 500;
+  border: solid #fadf63 2.25px;
+  color: #424242;
+  background-color: transparent;
+  padding-left: 207.4px;
+  padding-right: 207.4px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  margin-left: -1.4px;
+  margin-right: -1.4px;
+}
+
+
+
+
+/*------NAVBAR----------*/
 .Nav-Bar {
   display: flex;
   border-bottom: 2px solid;
@@ -112,20 +239,52 @@ li {
 }
 .Logo {
   display: flex;
-  padding-left: 50px;
+  padding-left: 10px;
   font-family: "Roboto Slab", serif;
   font-size: 16pt;
   color: #1ea774;
   font-weight: 900;
 }
+.user-circle {
+  padding-left: 5px;
+  padding-top: 5px;
+}
 .Nav-Item-Overview {
   display: flex;
+  flex-direction: row;
   flex-shrink: 0;
-  padding-right: 25px;
+  padding-right: 70px;
 }
-.Nav-Item {
+.nav-item {
+  color: #6b6b6b;
+  cursor: pointer;
   display: flex;
-  padding-left: 40px;
+  position: relative;
+  padding-top: 15px;
+  padding-right: 5px;
+  margin-left: 15px;
+  margin-right: 15px;
+  align-items: center;
+  justify-self: center;
+  border-bottom: solid transparent 10px;
+}
+.nav-item:hover {
+  border-bottom: solid #fadf63 10px;
+}
+
+.nav-container {
+  display: flex;
+  flex-direction: row;
+  width: 900px;
+  justify-content: space-evenly;
+}
+
+.page-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  margin-top: 0px;
 }
 
 .photo-header-image {
@@ -134,16 +293,40 @@ li {
   object-fit: cover;
 }
 
-/*LINKS*/
-a {
-  color: grey; /*no Figma decisions yet*/
-  text-decoration: none;
-}
-a:hover {
-  color: black; /*no Figma decisions yet*/
+
+
+/*------------LOGIN--------------*/
+.login-navigation {
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
 }
 
-/*DELETEPOPUP*/
+.login-container {
+  display: flex;
+  border: #fadf63 solid 2px;
+  flex-direction: column;
+  margin: 50px 20px;
+  padding: 80px;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+}
+
+.login-form {
+  display: flex;
+  padding: 30px;
+}
+.logo-login {
+  display: flex;
+  font-family: "Roboto Slab", serif;
+  font-size: 16pt;
+  color: #1ea774;
+  font-weight: 900;
+}
+
+/*--------DELETEPOPUP----------*/
 .delete-pop-up {
   background-color: #fdf5d5;
   width: 500px;
@@ -151,12 +334,36 @@ a:hover {
   border: solid DD0D18 2px;
 }
 
-/*DROPDOWN*/
+/*--------DROPDOWN----------*/
+.nav-drop-down {
+  margin-top: 155px;
+  border: solid #fadf63 1.5px;
+  background-color: #fffbf2;
+  display: flex;
+  position: absolute;
+  flex-direction: column;
+  align-content: center;
+}
+.drop-down-options {
+  display: flex;
+  position: relative;
+  padding-left: 20px;
+  padding-right: 20px;
+  padding-top: 5px;
+  padding-bottom: 10px;
+  z-index: 1;
+  width: 140px;
+  height: 50;
+  margin-top: 10px;
+}
+.drop-down-options:hover {
+  background-color: #fadf63;
+}
+
 .drop-down-menu {
   display: flex;
   flex: 4;
   flex-direction: column;
-  margin-top: 25px;
 }
 .drop-down-top {
   display: flex;
@@ -196,87 +403,44 @@ a:hover {
   justify-self: flex-start;
   margin-right: 15px;
 }
-.PlaceHolder {
+.placeHolder {
   display: flex;
   flex: 4;
   padding: 5px;
 }
 
 .arrowBtn {
-  /*Currently not being used - remove?*/
   display: none;
   flex: 1;
   width: 5px;
   height: 10px;
 }
 
-/*OVERVIEWCARD*/
-.overview-card {
-  display: flex;
-  width: 100%;
-}
-/*CarsAndSeats*/
-.cars-and-seats {
-  display: flex;
-  width: 100%;
-}
-
-/*YOUANDYOURFAM*/
-.you-and-your-family {
-  display: flex;
-  width: 100%;
-}
-
-/*EXCURSION -- currently not */
-.excursion {
+.button-container-home {
   display: flex;
   justify-content: center;
-  flex-direction: column;
+  margin-top: 20px;
+  margin-bottom: 10px;
 }
 
-/*profile-1 and excursion-1 are currently
-identical. Should we combine them?*/
-.excursion-1 {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  width: 100%;
-}
-
-/*HOME*/
-.home {
-  display: flex;
-  justify-content: center;
-}
-
-/*PROFILE*/
+/*--------PROFILE----------*/
 .profile {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-/*profile-1 and excursion-1 are currently
-identical. Should we combine them?*/
-.profile-1 {
+.cars-and-seats {
   display: flex;
-  flex-direction: row;
-  justify-content: center;
   width: 100%;
 }
 
-.profile-2 {
-  display: flex;
-  justify-content: center;
-  /* width: 100%; */
-}
-
-/*CARD*/
+/*-------CARDS---------*/
 .Header {
   display: flex;
   justify-content: space-between;
   color: #6b6b6b;
-  border-bottom: solid #fadf63 2px;
+  border-bottom: solid #fadf63 3px;
   padding: 15px;
 }
 .Footer {
@@ -292,13 +456,14 @@ identical. Should we combine them?*/
 .Right {
   display: flex;
 }
+
 .card {
   display: flex;
   margin: 25px;
   padding: 25px;
   flex-direction: column;
-  min-width: 450px; /*This might not make sense on mobile?*/
-  width: 100%; /*add max width?*/
+  min-width: 450px; 
+  width: 100%; 
   height: auto;
   background-color: #fdf5d5;
 }
@@ -310,31 +475,36 @@ identical. Should we combine them?*/
   width: 932px;
   height: auto;
   background-color: #fffbf2;
-  border: solid #fadf63 1px;
+  border: #fadf63 solid 2.25px;
 }
 
 .contact-person-card {
   display: flex;
 }
 
-.excursion-card {
+.create-contact-member {
   display: flex;
+  flex: 1;
   flex-direction: row;
-  padding: 25px;
-  width: 100%;
+  align-items: center;
+  justify-content: center;
+  padding: 50px;
 }
 
-.excursion-card-main-content {
+.shopping-card-main-content {
   display: flex;
   flex-direction: column;
   flex: 2;
+  text-align: left;
+  padding: 40px;
 }
 
+/*------CONTACT MEMBER CARD-------*/
 .contact-member-info {
   display: flex;
   align-content: center;
   flex-wrap: wrap;
-  flex-basis: 100%; /*Change to responsive format*/
+  flex-basis: 100%; 
   padding: 25px;
 }
 .contact-member-name {
@@ -344,31 +514,20 @@ identical. Should we combine them?*/
 }
 .address-and-email {
   flex: 1;
-  /* display:flex;
-  flex-direction: column;
-  justify-content: center; */
 }
 
 .mobile-info {
   flex: 1;
   padding-top: 20px;
-  /* display:flex;
-  flex-direction: column;
-  justify-content: center; */
-}
-
-.preferred-duties {
-  flex: 1;
-  /* display:flex;
-  flex-direction: column;
-  justify-content: center; */
 }
 
 .edit-button-container {
   display: flex;
-  flex-direction: column;
-  justify-content: end;
-  padding: 25px;
+  flex-direction: row;
+  align-items: flex-end;
+  justify-content: flex-end;
+  width: 400px;
+  padding: 10px;
 }
 
 .contact-member-image {
@@ -386,32 +545,6 @@ identical. Should we combine them?*/
   object-fit: cover;
 }
 
-/*IMAGECARD*/
-.ImageCard {
-  display: flex;
-}
-
-/*PARTICIPANT INFO*/
-.participant-info {
-  display: flex;
-  flex-basis: 100px;
-  background-color: #fffbf2;
-  border-radius: 5px;
-  border: solid transparent 2px;
-  margin: 10px;
-  padding-left: 20px;
-  padding-top: 20px;
-  word-wrap: break-word;
-}
-.participant-info:hover {
-  border: solid #1ea774 2px;
-}
-.name-icon {
-  flex: 1;
-  display: grid;
-  grid-template-columns: 40px 40px 40px;
-  grid-template-rows: 30px 30px 30px;
-}
 .age {
   flex: 1;
   width: 33%;
@@ -439,10 +572,10 @@ identical. Should we combine them?*/
   width: 50px;
 }
 
-/*ADD FAMILY*/
 input,
 label {
   display: block;
+  margin-right: 10px;
 }
 input {
   border: none;
@@ -451,6 +584,17 @@ input {
   border-bottom: solid #fee2a3 2px;
   padding: 5px;
 }
+
+textarea {
+  border: none;
+  background-color: #fdf5d5;
+  border: solid transparent 2px;
+  border-bottom: solid #fee2a3 2px;
+  padding: 5px;
+  width: 490px;
+  height: 100px;
+}
+
 input:hover {
   border: solid #1ea774 2px;
 }
@@ -463,17 +607,15 @@ input:focus {
   border: solid #1ea774 2px;
 }
 
-label {
-  margin-right: 10px;
-}
-
 .popup {
   display: flex;
-  position: fixed;
+  position: absolute;
   top: 0;
+  left: 0;
+  justify-content: center;
   z-index: 1;
   width: 100%;
-  height: 100%;
+  height: 170%;
   background-color: rgba(0, 0, 0, 0.2);
 }
 .popup-content {
@@ -481,9 +623,7 @@ label {
   flex-direction: column;
   background-color: #fffbf2;
   position: absolute;
-  top: 15%;
-  left: 30%;
-  width: 500px;
+  top: 17%;
   padding: 50px;
   border-radius: 5px;
   border: 1px solid #fadf63;
@@ -495,22 +635,8 @@ label {
   flex-direction: row;
   justify-content: flex-start;
   width: 100%;
-  padding-top: 15px;
+  padding-top: 25px;
 }
-
-/* .first-line{
-  display:flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  width: 100%;
-}
-
-.second-line {
-  display:flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  width:100%;
-} */
 
 .popup-title {
   display: flex;
@@ -521,41 +647,99 @@ label {
   display: flex;
 }
 
-/*Fix so that it's shorter in the popup*/
 .short-input {
   display: flex;
+}
+
+input[type="number"] {
+  width: 60px;
 }
 
 .popup-drop-down {
   display: flex;
   flex-direction: row;
   width: 100%;
+  margin-top: 30px;
 }
 
 .popup-button-footer {
   display: flex;
   flex-direction: row;
-  justify-content: end;
+  justify-content: flex-end;
   padding-top: 25px;
 }
 
 /* ---------------------Excursion CSS-------------------- */
+.excursion {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.excursion-card {
+  display: flex;
+  flex-direction: row;
+  padding: 25px;
+  width: 100%;
+}
+
+.excursion-card-main-content {
+  display: flex;
+  flex-direction: column;
+  flex: 2;
+}
 
 /*-------- GuestsAndPrefDuties Card -----------*/
 .cards-container {
   display: flex;
   justify-content: center;
-}
-/*RENAMING*/
-.card-container {
-  padding: 10px 10px;
-  background-color: #fffbf2;
-  width: 436px;
-  min-width: 436px;
-  margin: 0px 10px;
-  border: solid #fadf63 1px;
+  align-items: center;
 }
 
+.card-container {
+  padding: 10px 15.5px;
+  background-color: #fefbec;
+  width: 436px;
+  min-width: 436px;
+  border: #fadf63 solid 2.25px;
+  margin-left: -1.4px;
+  margin-right: -1.4px;
+}
+
+.duties-headline {
+  color: #0c6d4a;
+  padding: 10px;
+  padding-bottom: 40px;
+  padding-left: 35px;
+  padding-top: 20px;
+  width: 892px;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  border-right: #fadf63 solid 2.25px;
+  border-left: #fadf63 solid 2.25px;
+  border-bottom: #fadf63 solid 2.25px;
+}
+
+.profile-headline {
+  color: #0c6d4a;
+  padding: 10px;
+  padding-bottom: 40px;
+  padding-left: 35px;
+  padding-top: 30px;
+  width: 892px;
+  display: flex;
+  align-items: flex-start;
+
+  flex-direction: column;
+  border-top: #fadf63 solid 2.25px;
+  border-right: #fadf63 solid 2.25px;
+  border-left: #fadf63 solid 2.25px;
+  border-bottom: #fadf63 solid 2.25px;
+}
+
+/* ------------TABLE RELATED STYLING--------*/
 .table-container {
   height: 250px;
   overflow-y: scroll;
@@ -563,26 +747,174 @@ label {
 
 table {
   border-collapse: collapse;
-  width: 100%;
+  width: 99%;
   font-size: 10pt;
+  color: #424242;
 }
 th {
   text-align: left;
+  font-size: 12px;
+  font-family: "Poppins", sans-serif;
+  color: #8d8d8d;
   background-color: #fffbf2;
   position: sticky;
   top: 0px;
+  padding-top: 10px;
+  padding-bottom: 15px;
+  border-bottom: solid 2px #fadf63;
 }
 
 td {
   background-color: #fffbf2;
+  padding-top: 7.5px;
+}
+.trow {
+  margin: 10px;
+  font-size: 16px;
+  cursor: default;
+  border: transparent solid 2px;
+}
+.trow:hover {
+  border-bottom: #1ea774 solid 2px;
+}
+
+.button-container > button {
+  margin-left: 15px;
+  margin-top: 5px;
+}
+
+/*-------- Upload (Profile_Image) -----------*/
+
+.p-header-image {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  justify-content: center;
+  margin: 0px;
+}
+
+.image-container {
+  display: flex;
+  justify-content: center;
+}
+
+.image-container {
+  padding: 10px;
+  width: 150px;
+  min-width: 150px;
+  margin: 0px 10px;
+}
+
+.label {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+#input[type="file"] {
+  display: none;
+}
+
+/*-------- SignUp -----------*/
+
+.footer-container {
+  display: flex;
+  flex-direction: row;
+  padding-left: 50px;
+  padding-right: 50px;
+  justify-content: space-between;
+  padding-top: 25px;
+  margin-top: 150px;
+  border-top: solid #fadf63 2px;
+}
+.info-container {
+  display: flex;
+  width: 300px;
+  flex-direction: row;
+  justify-self: center;
+}
+.statistics {
+  display: flex;
+  flex-direction: row;
+  justify-self: flex-end;
+}
+.statistics-item {
+  padding-left: 50px;
+}
+
+.signup-container {
+  display: flex;
+  border: #fadf63 solid 2px;
+  flex-direction: column;
+  margin: 50px 20px;
+  padding: 60px 80px;
+  padding-top: 40px;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+}
+
+.welcome-message {
+  display: flex;
+  justify-content: center;
+  margin-right: 50px;
+}
+.greeting {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/*-------- Home/Welcome Page -----------*/
+
+.welcome-page {
+  display: flex;
+  height: 80vh;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.welcome-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .button-container {
   display: flex;
   justify-content: right;
+  margin-left: -15px;
+  margin-top: 20px;
+  margin-bottom: 10px;
 }
 
-.button-container > button {
-  margin-left: 15px;
-  margin-top: 15px;
+/*-------- Create Excursion -----------*/
+
+.create-excursion {
+  display: flex;
+  border: #fadf63 solid 2px;
+  flex-direction: column;
+  margin: 50px 20px;
+  padding: 80px;
+}
+
+/*-------- Home/Welcome Page / Animation  -----------*/
+
+.image-car-container {
+  display: flex;
+  justify-content: center;
+  width: 480px;
+  min-width: 450px;
+  margin: 0px 20px;
+}
+
+.image-logo-container {
+  display: flex;
+  justify-content: center;
+}
+
+.image-logo-container {
+  width: 40px;
+  min-width: 40px;
 }

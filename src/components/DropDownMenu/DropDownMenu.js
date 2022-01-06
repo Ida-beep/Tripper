@@ -1,38 +1,43 @@
-import React from 'react';
-import {useState} from 'react';
-import dutyList from '../data/dutyList';
-import DropDown from './DropDown';
-import DropDownItem from './DropDownItem';
+import React from "react";
+import { useState, useEffect } from "react";
+import DropDown from "./DropDown";
+import DutiesAPI from "../API/DutiesAPI.js";
+import DropDownItem from "./DropDownItem";
 
 /**
- *  - buttons "back" and "add" need some more styling
- *  - From Backend: should the duties be stored as state-object in DropDownMenu?
- *  - The Array remove/add works, but the color is not following!
+ * DropDownMenu takes all duties from backend and displays them as DropDownItems.
+ * You can select an amount of Duties that will be saved as you preferred duties (selectedDuties).
  */
 
+function DropDownMenu() {
+  /* eslint-disable no-unused-vars */
+  let displayedDuties = [];
+  const [selectedDuties, setSelectedDuties] = useState([]);
 
-function DropDownMenu(props){
-    const [dutyArr, setDutyArr] = useState([]);
-    const duties = dutyList.map(duty => <DropDownItem duties={dutyArr} key={duty.name} name={duty.name} removeDuty={()=>removeDuty(duty.name)} addToArr={()=>addToArr(duty.name)}/>);
-
-    function addToArr(name){
-        if(dutyArr.length < 3){
-            setDutyArr((prevState)=> [...prevState,name])
-        }
+  /** Creates a dropdownitem per duty in database, 
+   * and assigns selected duties to selected duties array.
+  */
+  useEffect(() => {
+    function mapDuties(fetchedDutyList) {
+      for (let i = 0; i < fetchedDutyList.length; i++) {
+        displayedDuties.push(
+          <DropDownItem
+            key={fetchedDutyList[i].id}
+            name={fetchedDutyList[i].name}
+            isSelected={(duty) =>
+              setSelectedDuties((prevState) => [...prevState, duty])
+            }
+          />
+        );
+      }
     }
+    DutiesAPI.fetchDutiesFromDB().then((result) => {
+      mapDuties(result);
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-    function removeDuty(name){
-        console.log(dutyArr);
-        let index = dutyArr.indexOf(name);
-        dutyArr.splice(index,1);
-        console.log(dutyArr);
-    }
-    
-    return(
-        <DropDown >
-            {duties}
-        </DropDown>
-    )
+  return <DropDown>{displayedDuties}</DropDown>;
 }
 
 export default DropDownMenu;

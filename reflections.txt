@@ -1,21 +1,43 @@
-In general:
+----In general----
 - npm install parse
 
-Suggestions
-- Delete ImageCard.js?
 
-AddFamily:
-- Where should the state be? Where is it most logical?
-- Components: ContactPersonCard -> AddFamily -> AddFamilyItem 
 
-Backend
-- AddFamily Popup doesn't work onSubmit..
-
-Component Manifesto
+----Component Manifesto----
 - All boxes that have the same structure should comply with given rules
 
-    Tables
-        - Header
-        - Content (length may differ)
-        - Footer
+- Case Conventions
+    - Database
+        - Entities/Tables/Class: First letter capital, e.g. FamilyMember
+        - Attributes: camelCase
 
+
+
+----Outstanding Issues----
+
+- getCurrentExcursion() in ShoppingAPI is only returning a promise, but not the excursionID.
+    Would love some help here. -Ingrid
+
+- AddFamily Popup doesn't work onSubmit..
+
+- EditExcursion might be currently adding new excursion instead of editing
+
+- Unable to deselect items in table scaffolds
+
+- updateExursion working, but is a little glitchy due to date inputs.. 
+    might need to fix later.
+
+- Select in tableScaffold acting funky 
+    - Sometimes has to select twice the first time until item is added to array
+    - Want item to be highlighted when it is selected
+
+- PreviousDutiesPopup: 
+    - Want to use arrow button to open excursion duties, but right now it creates an infinite loop.
+
+
+----Discussions----
+- AddFamily: Where should the state be? Where is it most logical?
+- Shopping list: remove popup and make it a field above the list?
+- Why is GuestDutyCard called XGuestDutyCard inside its component?
+- What is the difference in fetchFamilyMembersFromDB and fetchGuestsFromDB?
+    Same with getDuties and fetchDutiesFromDB + getContactMember
