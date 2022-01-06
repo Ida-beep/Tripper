@@ -110,12 +110,9 @@ function EditExcursion(props) {
     <button className="button-secondary-extra-small" onClick={props.editState}>
       Back
     </button>,
-    <button className="button-secondary-extra-small" onClick={props.editState}>
-      Finish
-    </button>,
     <button className="button-primary-extra-small" disabled={disable()}>
       Save
-    </button>,
+    </button>
   ];
 
   return (

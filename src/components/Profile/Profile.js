@@ -88,6 +88,7 @@ function Profile() {
       <EditContactMember
         showEditContactMember={showEditContactMember}
         toggleContactMember={() => setShowEditContactMember(false)}
+        title="Edit Contact Member"
       />
       <AddCarPopup
         showCarPopup={showCarPopup}

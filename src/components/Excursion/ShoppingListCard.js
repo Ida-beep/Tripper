@@ -22,6 +22,7 @@ function ShoppingListCard(props) {
    */
   useEffect(() => {
     props.selectedShoppingItem(selected);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selected]);
 
   /**
@@ -33,13 +34,6 @@ function ShoppingListCard(props) {
     }
     fetchData();
   }, []);
-
-  function disable() {
-    if (!selected) {
-      return true;
-    }
-    return false;
-  }
 
   return (
     <div className="card-container">
@@ -59,13 +53,13 @@ function ShoppingListCard(props) {
         <button
           className="button-secondary-extra-small"
           onClick={handleDelete}
-          disabled={disable()}
+          disabled={true}
         >
           Delete
         </button>
         <button
           className="button-secondary-extra-small"
-          disabled={disable()}
+          disabled={true}
           onClick={props.editActive}
         >
           Edit

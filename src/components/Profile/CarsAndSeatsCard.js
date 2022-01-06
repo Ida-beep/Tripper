@@ -19,6 +19,7 @@ function CarsAndSeatsCard(props) {
    */
   useEffect(() => {
     props.selectedCar(selected);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selected]);
 
   /**
@@ -44,6 +45,7 @@ function CarsAndSeatsCard(props) {
       setSelected(null);
       props.setCarDidUpdate(false);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.carDidUpdate]);
 
   /**
@@ -71,6 +73,7 @@ function CarsAndSeatsCard(props) {
       setConfirmedDeletion(false);
       setSelected(null);
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.onConfirmation]);
 
   function fetchUpdateAfterDeletion() {
@@ -91,6 +94,7 @@ function CarsAndSeatsCard(props) {
     } else {
       console.log("Deletion didn't begin/ already happened");
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [deleteCar]);
 
   function disable() {
