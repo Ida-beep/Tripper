@@ -82,7 +82,7 @@ function CreateExcursion() {
         isOrganiser,excursionID,
       }).then(
         (loggedInUser) => {
-          navigate(`/`);
+          navigate(`/Excursion`);
           console.log("Succes in signup");
         },
         (error) => {
