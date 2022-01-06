@@ -22,7 +22,7 @@ function Login(props) {
     user.logIn().then(
       (loggedInUser) => {
         console.log("Succesful login with: ", loggedInUser);
-        navigate(`/`);
+        navigate(`/Profile`);
       },
       (error) => {
         alert("Failed to login with errorcode: " + error.code);
@@ -88,7 +88,7 @@ function Login(props) {
                 </Link>
               </p>
               <p style={{ textAlign: "center" }}>
-                <Link to="/Home">
+                <Link to="/">
                   {" "}
                   <p style={{ color: "#1ea774" }}>Go To Home Page</p>{" "}
                 </Link>
