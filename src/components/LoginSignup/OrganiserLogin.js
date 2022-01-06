@@ -3,6 +3,8 @@ import { Parse } from "parse";
 import { useNavigate } from "react-router-dom";
 import Footer from "../Navigation/Footer";
 import { Link } from "react-router-dom";
+import ImgLogo from "../Img/ImgLogo.js";
+import { FaUser, FaLock } from "react-icons/fa";
 
 /**
  * Handles login for organisers (not participants)
@@ -31,17 +33,29 @@ function OrganiserLogin(props) {
     );
   }
 
+  const usernameTitle = (
+    <p>
+      <FaUser /> Username
+    </p>
+  );
+  const passwordTitle = (
+    <p>
+      <FaLock /> Password
+    </p>
+  );
+
   return (
     <>
       <div className="page-container">
         <div className="signup-container">
+          <ImgLogo/>
           <h4 style={{ color: "#1ea774" }}>Login </h4>
           <p style={{ color: "#1ea774" }}>To plan your trip </p>
           <div className="login-form">
             <form onSubmit={handleLoginAttempt}>
               <div className="long-input" style={{ justifyContent: "center" }}>
                 <label>
-                  <p>Username</p>
+                  <p>{usernameTitle}</p>
                   <input
                     type="text"
                     value={username}
@@ -54,7 +68,7 @@ function OrganiserLogin(props) {
                 style={{ justifyContent: "center", paddingTop: "10px" }}
               >
                 <label>
-                  <p>Password</p>
+                  <p>{passwordTitle}</p>
                   <input
                     type="password"
                     value={password}

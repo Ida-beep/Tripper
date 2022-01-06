@@ -103,9 +103,6 @@ function DutiesCard(props) {
     return false;
   }
 
-
-  console.log("dutieees card")
-
   return (
     <div className="card-container">
       <div className="table-container">

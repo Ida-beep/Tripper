@@ -59,13 +59,13 @@ function ShoppingListCard(props) {
         <button
           className="button-secondary-extra-small"
           onClick={handleDelete}
-          disabled={disable()}
+          disabled={true}
         >
           Delete
         </button>
         <button
           className="button-secondary-extra-small"
-          disabled={disable()}
+          disabled={true}
           onClick={props.editActive}
         >
           Edit

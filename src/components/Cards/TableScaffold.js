@@ -31,11 +31,6 @@ function TableScaffold(props) {
     );
   });
 
-  console.log("rooww data:", rowData)
-  console.log("table keyyyy", props.tTableKey)
-  console.log("body keyyyy", props.tBodyKey)
-  console.log("head keyyyy", props.tHeadKey)
-
   return (
     <table key={props.tTableKey}>
       <thead key={props.tHeadKey}> 

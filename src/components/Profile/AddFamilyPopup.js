@@ -62,7 +62,8 @@ function AddFamilyPopup(props) {
 
   return (
     props.showAddFamilyPopup && (
-      <PopUp data={personData} submitChanges={handleSubmit} buttons={buttons}>
+      <PopUp data={personData} submitChanges={handleSubmit} 
+        buttons={buttons} title="Add Family Member">
         <div className="input-section">
           <LongInput
             title="First Name"

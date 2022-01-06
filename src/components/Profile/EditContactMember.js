@@ -144,12 +144,6 @@ function EditContactMember(props) {
     >
       Back
     </button>,
-    <button
-      className="button-secondary-extra-small"
-      onClick={props.toggleContactMember}
-    >
-      Finish
-    </button>,
     <button className="button-primary-extra-small" disabled={disable()}>
       Save
     </button>,

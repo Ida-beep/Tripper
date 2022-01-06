@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Footer from "../Navigation/Footer";
 import { Link } from "react-router-dom";
 import ImgLogo from "../Img/ImgLogo";
+import { FaUser, FaLock} from "react-icons/fa";
 
 /**
  * Handles login for participants (not organisers)
@@ -29,6 +30,17 @@ function Login(props) {
     );
   }
 
+  const usernameTitle = (
+    <p>
+      <FaUser /> Username
+    </p>
+  );
+  const passwordTitle = (
+    <p>
+      <FaLock /> Password
+    </p>
+  );
+
   return (
     <>
       <div className="page-container">
@@ -40,7 +52,7 @@ function Login(props) {
             <form onSubmit={handleLoginAttempt}>
               <div className="long-input">
                 <label>
-                  <p>Username</p>
+                  <p>{usernameTitle}</p>
                   <input
                     type="text"
                     value={username}
@@ -50,7 +62,7 @@ function Login(props) {
               </div>
               <div className="long-input" style={{ marginTop: "10px" }}>
                 <label>
-                  <p>Password</p>
+                  <p>{passwordTitle}</p>
                   <input
                     type="password"
                     value={password}

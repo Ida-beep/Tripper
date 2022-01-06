@@ -7,6 +7,7 @@ import FamilyMemberAPI from "../API/FamilyMemberAPI.js";
  * duty preferences that they selected
  */
 function ParticipantDutyCard() {
+  /* eslint-disable no-unused-vars */
   const [allGuests, setAllGuests] = useState([]);
   const [selected, setSelected] = useState([]);
 
@@ -19,13 +20,6 @@ function ParticipantDutyCard() {
 
   function addElementToSelected(element) {
     setSelected((prevState) => [...prevState, element]);
-  }
-
-  function disableAssignSelected() {
-    if (selected.length < 1) {
-      return true;
-    }
-    return false;
   }
 
   return (
@@ -46,12 +40,12 @@ function ParticipantDutyCard() {
       <div className="button-container">
         <button
           className="button-secondary-extra-small"
-          disabled={disableAssignSelected()}
+          disabled={true}
         >
           Assign Selected
         </button>
         <button
-          disabled={disableAssignSelected()}
+          disabled={true}
           className="button-secondary-extra-small"
         >
           Auto Assign All

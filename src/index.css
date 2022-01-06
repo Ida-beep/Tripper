@@ -52,12 +52,14 @@ h4 {
 
 p,
 li {
-  font-size: 10pt; /*Changed from 12 to 10*/
+  font-size: 10pt; 
 }
 
 .description {
   font-size: 10pt;
 }
+
+/*---------Buttons---------*/
 .button-primary-medium {
   font-family: "Roboto Slab", sans-serif;
   font-size: 16pt;
@@ -271,7 +273,6 @@ li {
   display: flex;
   position: relative;
   padding-top: 15px;
-
   padding-right: 5px;
   margin-left: 15px;
   margin-right: 15px;
@@ -288,11 +289,14 @@ li {
   flex-direction: row;
   width: 900px;
   justify-content: space-evenly;
-  /* 
-  display: flex; */
+}
 
-  /* justify-content: center;
-  width: 100%; */
+.page-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  margin-top: 0px;
 }
 
 .photo-header-image {
@@ -303,18 +307,14 @@ li {
 
 /*LINKS*/
 a {
-  color: grey; /*no Figma decisions yet*/
+  color: grey; 
   text-decoration: none;
 }
-/* a:hover {
-  color: black;
-*/
 
 /*LOGIN*/
 .login-navigation {
   display: flex;
   flex-direction: column;
-  /* border: saddlebrown solid 2px; */
   margin: 10px;
 }
 
@@ -324,7 +324,6 @@ a {
   flex-direction: column;
   margin: 50px 20px;
   padding: 80px;
-  /* width: 180px; */
   height: 100%;
   align-items: center;
   justify-content: center;
@@ -350,13 +349,6 @@ a {
   height: 200px;
   border: solid DD0D18 2px;
 }
-
-/* #family-member-add-button {
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-end;
-  margin-top: px;
-} */
 
 /*DROPDOWN*/
 .nav-drop-down {
@@ -451,37 +443,11 @@ a {
   width: 100%;
 }
 
-/*YOUANDYOURFAM*/
-.you-and-your-family {
-  display: flex;
-  width: 100%;
-}
-
-/*EXCURSION -- currently not */
-.excursion {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-.page-container {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  width: 100%;
-  margin-top: 0px;
-}
 
 /*HOME*/
-.home {
-  display: flex;
-  justify-content: center;
-}
 .button-container-home {
   display: flex;
   justify-content: center;
-  /* margin-left: -15px; */
   margin-top: 20px;
   margin-bottom: 10px;
 }
@@ -514,13 +480,14 @@ a {
 .Right {
   display: flex;
 }
+
 .card {
   display: flex;
   margin: 25px;
   padding: 25px;
   flex-direction: column;
-  min-width: 450px; /*This might not make sense on mobile?*/
-  width: 100%; /*add max width?*/
+  min-width: 450px; 
+  width: 100%; 
   height: auto;
   background-color: #fdf5d5;
 }
@@ -548,19 +515,6 @@ a {
   padding: 50px;
 }
 
-.excursion-card {
-  display: flex;
-  flex-direction: row;
-  padding: 25px;
-  width: 100%;
-}
-
-.excursion-card-main-content {
-  display: flex;
-  flex-direction: column;
-  flex: 2;
-}
-
 .shopping-card-main-content {
   display: flex;
   flex-direction: column;
@@ -569,11 +523,12 @@ a {
   padding: 40px;
 }
 
+/*CONTACT MEMBER CARD*/
 .contact-member-info {
   display: flex;
   align-content: center;
   flex-wrap: wrap;
-  flex-basis: 100%; /*Change to responsive format*/
+  flex-basis: 100%; 
   padding: 25px;
 }
 .contact-member-name {
@@ -614,27 +569,6 @@ a {
   object-fit: cover;
 }
 
-/*PARTICIPANT INFO*/
-.participant-info {
-  display: flex;
-  flex-basis: 100px;
-  background-color: #fffbf2;
-  border-radius: 5px;
-  border: solid transparent 2px;
-  margin: 10px;
-  padding-left: 20px;
-  padding-top: 20px;
-  word-wrap: break-word;
-}
-.participant-info:hover {
-  border: solid #1ea774 2px;
-}
-.name-icon {
-  flex: 1;
-  display: grid;
-  grid-template-columns: 40px 40px 40px;
-  grid-template-rows: 30px 30px 30px;
-}
 .age {
   flex: 1;
   width: 33%;
@@ -696,10 +630,6 @@ input:focus {
   border: solid #1ea774 2px;
 }
 
-label {
-  margin-right: 10px;
-}
-
 .popup {
   display: flex;
   position: absolute;
@@ -714,7 +644,6 @@ label {
 .popup-content {
   display: flex;
   flex-direction: column;
-  /* align-self: center; */
   background-color: #fffbf2;
   position: absolute;
   top: 17%;
@@ -763,11 +692,26 @@ input[type="number"] {
   padding-top: 25px;
 }
 
-/* #cancel-button {
-  align-self: flex-end;
-} */
-
 /* ---------------------Excursion CSS-------------------- */
+.excursion {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.excursion-card {
+  display: flex;
+  flex-direction: row;
+  padding: 25px;
+  width: 100%;
+}
+
+.excursion-card-main-content {
+  display: flex;
+  flex-direction: column;
+  flex: 2;
+}
 
 /*-------- GuestsAndPrefDuties Card -----------*/
 .cards-container {
@@ -775,7 +719,7 @@ input[type="number"] {
   justify-content: center;
   align-items: center;
 }
-/*RENAMING*/
+
 .card-container {
   padding: 10px 15.5px;
   background-color: #fefbec;
@@ -795,7 +739,6 @@ input[type="number"] {
   width: 892px;
   display: flex;
   align-items: flex-start;
-
   flex-direction: column;
   border-right: #fadf63 solid 2.25px;
   border-left: #fadf63 solid 2.25px;
@@ -858,8 +801,6 @@ td {
   border-bottom: #1ea774 solid 2px;
 }
 
-/* Buttons in the buttom of a card*/
-
 .button-container > button {
   margin-left: 15px;
   margin-top: 5px;
@@ -882,16 +823,13 @@ td {
 /*RENAMING*/
 .image-container {
   padding: 10px;
-  /*background-color: #fffbf2;*/
   width: 150px;
   min-width: 150px;
   margin: 0px 10px;
-  /*border: solid #fadf63 1px;*/
 }
 
 .label {
   width: 100%;
-  /*margin-top: 1rem;*/
   display: flex;
   justify-content: center;
 }
@@ -908,7 +846,6 @@ td {
   padding-left: 50px;
   padding-right: 50px;
   justify-content: space-between;
-  /* justify-content: flex-end; */
   padding-top: 25px;
   margin-top: 150px;
   border-top: solid #fadf63 2px;
@@ -965,7 +902,6 @@ td {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  /* justify-self: center; */
 }
 
 .button-container {
@@ -988,28 +924,20 @@ td {
 
 /*-------- Home/Welcome Page / Animation  -----------*/
 
-/*RENAMING*/
 .image-car-container {
   display: flex;
   justify-content: center;
-  /* padding: 10px; */
-  /*background-color: #fffbf2;*/
   width: 480px;
   min-width: 450px;
   margin: 0px 20px;
-  /*border: solid #fadf63 1px;*/
 }
 
 .image-logo-container {
   display: flex;
   justify-content: center;
 }
-/*RENAMING*/
+
 .image-logo-container {
-  /* padding: 10px; */
-  /*background-color: #fffbf2;*/
   width: 40px;
   min-width: 40px;
-  /* margin: 0px 10px; */
-  /*border: solid #fadf63 1px;*/
 }
