@@ -19,7 +19,8 @@ function NavRouter() {
     <Router>
       <NavMenu setEmptyStats={() => setEmptyStats(true)} />
       <Routes>
-        <Route path="/" element={<Excursion emptyStats={emptyStats} />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/Excursion" element={<Excursion emptyStats={emptyStats} />} />
         <Route path="/Profile" element={<Profile />} />
         <Route path="/Login" element={<Login />} />
         <Route path="/CreateExcursion" element={<CreateExcursion />} />
