@@ -1,5 +1,9 @@
 import React from "react";
 
+ /**
+   * Returns Large input box for longer descriptions 
+   */
+
 function DescriptionInput(props) {
   return (
     <div className="short-input">

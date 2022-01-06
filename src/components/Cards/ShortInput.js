@@ -1,5 +1,8 @@
 import React from 'react';
 
+ /**
+   * Returns short sized input box 
+   */
 function ShortInput(props) {
     return (
         <div className="short-input">
