@@ -6,25 +6,25 @@
  */
 
 function TableScaffold(props) {
-  const rowHeaders = props.theaders.map((header, index) => {
-    return <th key={header}>{header}</th>;
+  const rowHeaders = props.theaders.map((header) => {
+    return <th>{header}</th>;
   });
   const rowData = props.tdata.map((tdata) => {
-    const rowDataValue = props.tkey.map((header, index) => {
+    const rowDataValue = props.tkey.map((header) => {
       if (tdata[header].constructor === Array) {
         let tableDatalist = "";
         for (let i = 0; i < tdata[header].length; i++) {
           tableDatalist += tdata[header][i] + " ";
         }
-        return <td key={tdata.id}>{tableDatalist}</td>;
+        return <td>{tableDatalist}</td>;
       }
-      return <td key={index}>{tdata[header]}</td>;
+      return <td>{tdata[header]}</td>;
     });
     return (
       <tr
         className="trow"
         onClick={() => props.onSelection(tdata)}
-        key={props.tdata}
+        
       >
         {rowDataValue}
       </tr>
@@ -32,11 +32,11 @@ function TableScaffold(props) {
   });
 
   return (
-    <table key={props.tTableKey}>
-      <thead key={props.tHeadKey}> 
+    <table >
+      <thead> 
         <tr>{rowHeaders}</tr>
       </thead>
-      <tbody key={props.tBodyKey}>{rowData}</tbody>
+      <tbody >{rowData}</tbody>
     </table>
   );
 }
