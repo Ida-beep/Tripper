@@ -1,5 +1,9 @@
 import React from 'react';
 
+ /**
+   * Returns an Extra long sized inpunt box 
+   */
+
 function ExtraLongInput(props) {
     return (
         <div className="short-input">
