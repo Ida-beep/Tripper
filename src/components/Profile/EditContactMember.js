@@ -188,7 +188,7 @@ function EditContactMember(props) {
         </div>
         <div className="input-section">
           <LongInput
-            title="Mobile"
+            title="Mobile Phone"
             value={mobile}
             changeValue={changeMobile}
             type="text"
@@ -200,7 +200,7 @@ function EditContactMember(props) {
             type="text"
           />
           <LongInput
-            title="Work"
+            title="Work Phone"
             value={workPhone}
             changeValue={changeWorkPhone}
             type="text"

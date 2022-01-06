@@ -25,7 +25,7 @@ function OrganiserLogin(props) {
     user.logIn().then(
       (loggedInUser) => {
         console.log("Succesfull login with :", loggedInUser);
-        navigate(`/`);
+        navigate(`/Excursion`);
       },
       (error) => {
         alert("login not successfull with errorcode: " + error.code);

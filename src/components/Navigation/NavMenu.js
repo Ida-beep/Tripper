@@ -19,7 +19,7 @@ function NavMenu(props) {
     props.setEmptyStats();
 
     Parse.User.logOut().then(() => {
-      navigate(`/Home`);
+      navigate(`/`);
     });
   }
 
@@ -34,7 +34,7 @@ function NavMenu(props) {
             <div className="Divider"></div>
             <div className="Nav-Item-Overview">
               <>
-                <Link className="nav-item" to="/">
+                <Link className="nav-item" to="/Excursion">
                   Excursion
                 </Link>
                 <div
