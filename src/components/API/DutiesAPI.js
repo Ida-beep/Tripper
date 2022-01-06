@@ -1,5 +1,12 @@
 import { Parse } from "parse";
 
+/**
+ * DutiesAPI handles all API calls related to the Duties table
+ * in the DB, such as fetching, deleting, update and add.
+ * */
+
+
+//Fetches duties from current excursion
 const fetchDutiesFromDB = async () => {
   
   const User = Parse.User.current();
@@ -35,6 +42,8 @@ const fetchDutiesFromDB = async () => {
   return dutyCollection;
 };
 
+/*Fetches and returns duties from previous excursions. 
+ The excursion ID is passed in as a parameter.*/
 const fetchPreviousDutyFromDB = async (id) => {
   const dutyCollection = [];
   const query = new Parse.Query("Duties");
@@ -62,13 +71,17 @@ const fetchPreviousDutyFromDB = async (id) => {
   return dutyCollection;
 };
 
+//Adds duty to current excursion
 async function addDuty(data) {
   try {
+    //Fetches current excursion ID
     const User = Parse.User.current();
     const queryUser = new Parse.Query("User");
     const user = await queryUser.get(User.id);
     const contactMember = await queryUser.get(user.id);
     const excursionID = contactMember.get("excursionID");
+
+    //Assigns and cleans up data passed as argument
     const dutyName = data.name;
     const minRequired = parseInt(data.minRequired);
     const Duty = Parse.Object.extend("Duties");
@@ -92,12 +105,15 @@ async function addDuty(data) {
   }
 }
 
+/*Adds multiple duties passed as list
+  using addDuty()*/
 async function addMultipleDuties(list) {
   for (let i = 0; i < list.length; i++) {
     addDuty(list[i]);
   }
 }
 
+//Deletes duty passed as parameter
 async function deleteDuty(duty) {
   if (typeof duty !== "undefined") {
     const dutyID = duty.id;

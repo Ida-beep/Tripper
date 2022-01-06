@@ -1,6 +1,14 @@
 import { Parse } from "parse";
 
+/**
+ * ShoppingAPI handles all API calls related to the Shopping table
+ * in the DB, such as fetching, deleting, update and add.
+ * */
+
+/**Fetches shopping list from current excursion */
 const fetchShoppingListFromDB = async () => {
+
+  //Gets current excursion ID
   const User = Parse.User.current();
   const queryUser = new Parse.Query("User");
   const user = await queryUser.get(User.id);
@@ -37,31 +45,10 @@ const fetchShoppingListFromDB = async () => {
   return shoppingList;
 };
 
-/* const updateShoppingItem = async (selected) => {
-    const query = new Parse.Query("ShoppingList");
-    try {
-        const User = Parse.User.current();
-        const queryUser = new Parse.Query("User");
-        const user = await queryUser.get(User.id);
-        const contactMember = await queryUser.get(user.id);
-        const excursionID = contactMember.get("excursionID");
-
-        const object = await query.get(selected.id);
-        object.set('itemName', selected.item);
-        object.set('amount', parseInt(selected.amount));
-        object.set('unit', selected.unit);
-        object.set('excursionID', excursionID);
-        try {
-            const response = await object.save();
-            alert("Update successful");
-        } catch (error) {
-            alert('Error while updating shoppinglist' + error)
-            }
-    } catch (error) {
-        alert('Error while retrieving object shoppinglist' +  error)
-    }
-  }; */
-
+/**
+ * Returns shopping list of excursion ID that 
+ * is passed in as argument
+ */
 const fetchPreviousShoppingListFromDB = async (excursionID) => {
   const shoppingList = [];
   const query = new Parse.Query("ShoppingList");
@@ -70,7 +57,6 @@ const fetchPreviousShoppingListFromDB = async (excursionID) => {
   for (let i = 0; i < allShoppingItems.length; i++) {
     try {
       const item = await query.get(allShoppingItems[i].id);
-      /* const otherexcursionid = item.get("excursionID"); */
 
       if (item.get("excursionID") === excursionID) {
         const id = allShoppingItems[i].id;
@@ -93,6 +79,7 @@ const fetchPreviousShoppingListFromDB = async (excursionID) => {
   return shoppingList;
 };
 
+/**Creates new shopping item and adds to DB */
 async function addShoppingItem(data) {
   try {
     const itemName = data.itemName;
@@ -124,12 +111,15 @@ async function addShoppingItem(data) {
   }
 }
 
+/**Adds multiple shopping item 
+ * using addShoppingItem() */
 async function addMultipleShoppingItems(list) {
   for (let i = 0; i < list.length; i++) {
     addShoppingItem(list[i]);
   }
 }
 
+/**Deletes shopping item passed in as argument */
 async function deleteShoppingItem(items) {
   for (let i = 0; i < items.length; i++) {
     const item = items[i];
@@ -152,9 +142,37 @@ async function deleteShoppingItem(items) {
   }
 }
 
+/**Updates shopping items passed in as argument. */
+const updateShoppingItem = async (selected) => {
+  const query = new Parse.Query("ShoppingList");
+  try {
+      const User = Parse.User.current();
+      const queryUser = new Parse.Query("User");
+      const user = await queryUser.get(User.id);
+      const contactMember = await queryUser.get(user.id);
+      const excursionID = contactMember.get("excursionID");
+
+      const object = await query.get(selected.id);
+      object.set('itemName', selected.item);
+      object.set('amount', parseInt(selected.amount));
+      object.set('unit', selected.unit);
+      object.set('excursionID', excursionID);
+      try {
+          /* eslint-disable no-unused-vars */
+          const response = await object.save();
+          alert("Update successful");
+      } catch (error) {
+          alert('Error while updating shoppinglist' + error)
+          }
+  } catch (error) {
+      alert('Error while retrieving object shoppinglist' +  error)
+  }
+};
+
 const ShoppingAPI = {
   addShoppingItem,
   fetchShoppingListFromDB,
+  updateShoppingItem,
   deleteShoppingItem,
   fetchPreviousShoppingListFromDB,
   addMultipleShoppingItems,

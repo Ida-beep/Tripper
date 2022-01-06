@@ -14,6 +14,8 @@ import ExtraLongInput from "../Cards/ExtraLongInput";
 function EditContactMember(props) {
   const [contactP, setContactP] = useState([]);
 
+  /**Fetches current contact member data from 
+   * DB and sets it to contactP*/
   useEffect(() => {
     async function fetchData() {
       setContactP(await ContactMemberAPI.fetchContactMemberFromDB());
@@ -47,93 +49,71 @@ function EditContactMember(props) {
   const [workPhone, setWorkPhone] = useState();
   const [duties, setDuties] = useState([]);
 
+  //Disables submit until all fields are filled
   function disable() {
-    if (
-      !firstName ||
-      !lastName ||
-      !email ||
-      !age ||
-      !street ||
-      !zip ||
-      !city ||
-      !mobile ||
-      !phone ||
-      !workPhone
+    if (!firstName || !lastName ||!email ||
+      !age ||!street ||!zip ||!city ||
+      !mobile ||!phone ||!workPhone
     ) {
       return true;
     }
     return false;
   }
 
+  /**Sets field values to 
+   * respective variables */
   function changeFirstName(e) {
     e.preventDefault();
     setFirstName(e.target.value);
   }
-
   function changeLastName(e) {
     e.preventDefault();
     setLastName(e.target.value);
   }
-
   function changeAge(e) {
     e.preventDefault();
     setAge(e.target.value);
   }
-
   function changeEmail(e) {
     e.preventDefault();
     setEmail(e.target.value);
   }
-
   function changeStreet(e) {
     e.preventDefault();
     setStreet(e.target.value);
   }
-
   function changeZip(e) {
     e.preventDefault();
     setZip(e.target.value);
   }
-
   function changeCity(e) {
     e.preventDefault();
     setCity(e.target.value);
   }
-
   function changeMobile(e) {
     e.preventDefault();
     setMobile(e.target.value);
   }
-
   function changePhone(e) {
     e.preventDefault();
     setPhone(e.target.value);
   }
-
   function changeWorkPhone(e) {
     e.preventDefault();
     setWorkPhone(e.target.value);
   }
-
   function changeDuties(e) {
     e.preventDefault();
     setDuties(e.target.value);
   }
 
+  //Updates contact member info on submit
   function handleSubmit(e) {
     e.preventDefault();
     ContactMemberAPI.updateContactMemberFromDB({
-      firstName,
-      lastName,
-      age,
-      duties,
-      email,
-      street,
-      workPhone,
-      phone,
-      mobile,
-      zip,
-      city,
+      firstName, lastName,age,
+      duties,email,street,workPhone,
+      phone,mobile,zip,city,
     });
   }
 

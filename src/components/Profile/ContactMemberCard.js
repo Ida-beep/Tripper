@@ -3,6 +3,9 @@ import LongCard from "../Cards/LongCard";
 import Upload from "./Upload";
 import ContactMemberAPI from "../API/ContactMemberAPI.js";
 
+/**
+ * Renders the contact member card.
+ * */
 function ContactMemberCard(props) {
   const [firstName, setFirstName] = useState();
   const [lastName, setLastName] = useState();
@@ -28,13 +31,14 @@ function ContactMemberCard(props) {
     });
   }
 
+  /**Returns and sets contact member data 
+   * to use state variables
+   */
   useEffect(() => {
     fetchData();
   }, []);
 
-  const personId = "84757"; //Connect to database
-
-  return personId ? (
+  return (
     <LongCard active={props.active}>
       <div className="contact-person-card">
         <div className="contact-member-image">
@@ -47,9 +51,7 @@ function ContactMemberCard(props) {
             </h4>
           </div>
           <div className="address-and-email">
-            <p>
-              <b>Contact Information</b>
-            </p>
+            <p><b>Contact Information</b></p>
             <p>{address}</p>
             <p>{zip + " " + city}</p>
             <p>{email}</p>
@@ -67,17 +69,7 @@ function ContactMemberCard(props) {
         </button>
       </div>
     </LongCard>
-  ) : (
-    <LongCard active={props.active}>
-      <div className="create-contact-member">
-        <button className="button-primary-extra-small" onClick={props.active}>
-          Create Contact Member
-        </button>
-      </div>
-    </LongCard>
-  );
+  ) 
 }
 
 export default ContactMemberCard;
-
-//    <img className="contact-member-image-1" src={props.ContactImage} alt="upload"/>

@@ -1,11 +1,19 @@
 import { Parse } from "parse";
 
+/**
+ * ContactMemberAPI handles all API calls related to the 
+ * ContactMember table in the DB, such as fetching, 
+ * deleting, update and add.
+ * */
+
+/**
+ * Signs up user, assigns it to relevant
+ * excursion and sets user type 
+ * (organiser/non-organiser)
+ */
 const signUp = async ({
-  username,
-  password,
-  email,
-  isOrganiser,
-  excursionID,
+  username,password,email,
+  isOrganiser,excursionID,
 }) => {
   const user = new Parse.User();
   user.set("username", username);
@@ -22,6 +30,7 @@ const signUp = async ({
   }
 };
 
+//Fetches current user and its info from DB
 const fetchContactMemberFromDB = async () => {
   const User = Parse.User.current();
   const id = User.id;
@@ -57,59 +66,10 @@ const fetchContactMemberFromDB = async () => {
   return contactMemberData;
 };
 
-function addContactMember({
-  firstName,
-  lastName,
-  age,
-  duties,
-  email,
-  street,
-  workPhone,
-  phone,
-  mobilePhone,
-  zip,
-  city,
-}) {
-  try {
-    const ContactMember = Parse.Object.extend("User");
-    const contactMember = new ContactMember();
-    contactMember.set("firstName", firstName);
-    contactMember.set("lastName", lastName);
-    contactMember.set("age", parseInt(age));
-    contactMember.set("duties", duties);
-    contactMember.set("email", email);
-    contactMember.set("zip", parseInt(zip));
-    contactMember.set("street", street);
-    contactMember.set("city", city);
-    contactMember.set("workPhone", parseInt(workPhone));
-    contactMember.set("phone", parseInt(phone));
-    contactMember.set("mobilePhone", parseInt(mobilePhone));
-
-    contactMember.save().then(
-      (contactMember) => {
-        alert("A Family Member was submitted: " + contactMember.firstName);
-      },
-      (error) => {
-        alert("Failed to create object, error code: " + error.message);
-      }
-    );
-  } catch (error) {
-    console.log(error);
-  }
-}
-
+//Updates changed data about contact member to DB
 const updateContactMemberFromDB = async ({
-  firstName,
-  lastName,
-  age,
-  duties,
-  email,
-  street,
-  workPhone,
-  phone,
-  mobile,
-  zip,
-  city,
+  firstName,lastName,age,duties,email,
+  street,workPhone,phone,mobile,zip,city,
 }) => {
   const User = new Parse.User();
   const query = new Parse.Query(User);
@@ -151,7 +111,6 @@ const updateContactMemberFromDB = async ({
 const ContactMemberAPI = {
   signUp,
   fetchContactMemberFromDB,
-  addContactMember,
   updateContactMemberFromDB,
 };
 

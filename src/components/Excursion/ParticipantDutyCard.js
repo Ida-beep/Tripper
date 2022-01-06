@@ -11,6 +11,7 @@ function ParticipantDutyCard() {
   const [allGuests, setAllGuests] = useState([]);
   const [selected, setSelected] = useState([]);
 
+  /**Retrieves and sets data about family member to allGuests variable */
   useEffect(() => {
     async function fetchData() {
       setAllGuests(await FamilyMemberAPI.fetchAllFamilyMembersInExcursion());
@@ -18,6 +19,7 @@ function ParticipantDutyCard() {
     fetchData();
   }, []);
 
+  /**Adds selected element to selected array */
   function addElementToSelected(element) {
     setSelected((prevState) => [...prevState, element]);
   }

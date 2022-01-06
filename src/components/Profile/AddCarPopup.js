@@ -3,6 +3,10 @@ import CarsAPI from "../API/CarsAPI";
 import LongInput from "../Cards/LongInput";
 import PopUp from "../Cards/PopUp";
 
+/**
+ * AddCarPopup renders a popup that
+ * allows the user to add a car.
+ */
 function AddCarPopup(props) {
   const [carModel, setCarModel] = useState();
   const [license, setLicense] = useState();
@@ -10,31 +14,30 @@ function AddCarPopup(props) {
   const [seats, setSeats] = useState();
   const carData = [carModel, license, color, seats];
 
+  /**Sets field values to 
+   * respective variables */
   function changeCarModel(e) {
     e.preventDefault();
     setCarModel(e.target.value);
   }
-
   function changeLicense(e) {
     e.preventDefault();
     setLicense(e.target.value);
   }
-
   function changeColor(e) {
     e.preventDefault();
     setColor(e.target.value);
   }
-
   function changeSeats(e) {
     e.preventDefault();
     setSeats(e.target.value);
   }
-
   function handleSubmit(e) {
     e.preventDefault();
     CarsAPI.addCar(carData);
   }
 
+  //Disables submit button until all fields are filled
   function disable() {
     if (!carModel || !license || !color || !seats) {
       return true;

@@ -11,9 +11,7 @@ function PreviousShoppingListPopup(props) {
   const [selectedItem, setSelectedItem] = useState([]);
   const [shoppingItems, setShoppingItems] = useState([]);
 
-  /**
-   * Retrieves data from the selected item
-   */
+  /**Retrieves data from the selected item*/
   useEffect(() => {
     if (typeof props.selectedExcursion !== "undefined") {
       async function fetchData() {
@@ -27,10 +25,13 @@ function PreviousShoppingListPopup(props) {
     }
   }, [props.selectedExcursion]);
 
+  //Adds all selected items to shopping items
   function handleSubmit(e) {
     e.preventDefault();
     ShoppingAPI.addMultipleShoppingItems(selectedItem);
   }
+
+  //Disables submit button if array is empty
   function disable() {
     if (selectedItem.length < 1) {
       return true;
@@ -38,6 +39,7 @@ function PreviousShoppingListPopup(props) {
     return false;
   }
 
+  //Adds selected elements to list selectedItem
   function addElementToSelected(element) {
     setSelectedItem((prevState) => [...prevState, element]);
   }

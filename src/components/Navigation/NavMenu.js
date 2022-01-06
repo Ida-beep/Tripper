@@ -6,15 +6,14 @@ import { FaRegUserCircle } from "react-icons/fa";
 import ImgLogo from "../Img/ImgLogo";
 
 /**
- *  NavMenu let's the user use the NavRouter to switch between different main pages
+ *  NavMenu lets the user use the NavRouter to 
+ * switch between different main pages
  */
 function NavMenu(props) {
   const [profileDropDown, setProfileDropDown] = useState(false);
   const navigate = useNavigate();
 
-  /**
-   * Logsout and redirects user to /Home
-   */
+  /**Logsout and redirects user to /Home*/
   async function handleLogOutAttempt(e) {
     e.preventDefault();
     props.setEmptyStats();

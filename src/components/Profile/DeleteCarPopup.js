@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import PopUp from "../Cards/PopUp";
+
 /**
  * Handles final deletion of Car
  */
@@ -10,17 +11,12 @@ function DeleteCarPopup(props) {
     props.toggleDeletePopup(false);
   }
 
+  /**Hides popup when clicking "back" */
   function handleCancel(e) {
     e.preventDefault();
     props.onCancel(true);
     props.toggleDeletePopup(false);
   }
-
-  useEffect(() => {
-    if (props.itemToDelete) {
-      const carText = props.text;
-    }
-  }, [props.itemToDelete]);
 
   const buttons = [
     <button className="button-secondary-extra-small" onClick={handleCancel}>

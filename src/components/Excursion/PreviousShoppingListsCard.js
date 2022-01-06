@@ -9,6 +9,7 @@ function PreviousShoppingListsCard(props) {
   const [excursions, setExcursions] = useState([]);
   const [selected, setSelected] = useState();
 
+  //Returns and sets all excursions
   useEffect(() => {
     async function fetchData() {
       setExcursions(await ExcursionAPI.fetchAllExcursionsFromDB());
@@ -16,14 +17,13 @@ function PreviousShoppingListsCard(props) {
     fetchData();
   }, []);
 
-  /**
-   * Returns selected data to Excursion component
-   */
+  /**Returns selected data to Excursion component*/
   useEffect(() => {
     props.selected(selected);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selected]);
 
+  //Disables submit button if no elements are selected
   function disable() {
     if (!selected) {
       return true;

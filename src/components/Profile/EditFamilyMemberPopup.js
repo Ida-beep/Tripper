@@ -19,6 +19,7 @@ function EditFamilyMemberPopup(props) {
   const personData = { id, firstName, lastName, age, duties };
   const [selectedMember, setSelectedMember] = useState();
 
+  //Sets selected member once props.selectedMember is not null
   useEffect(() => {
     if (typeof props.selectedMember === "undefined") {
       return;
@@ -36,6 +37,8 @@ function EditFamilyMemberPopup(props) {
     }
   }, [selectedMember]);
 
+  /**Sets field values to 
+   * respective variables */
   function changeFirstName(e) {
     e.preventDefault();
     setFirstName(e.target.value);
@@ -49,6 +52,7 @@ function EditFamilyMemberPopup(props) {
     setAge(e.target.value);
   }
 
+  //Upates family member on submit
   function handleSubmit(e) {
     e.preventDefault();
     FamilyMemberAPI.updateFamilyMember(personData).then(
@@ -62,6 +66,7 @@ function EditFamilyMemberPopup(props) {
     );
   }
 
+  //Disables submit button until all fields are filled
   function disable() {
     if (firstName === "" || lastName === "" || age === "") {
       return true;
