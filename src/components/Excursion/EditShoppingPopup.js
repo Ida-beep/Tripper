@@ -55,6 +55,8 @@ function EditShoppingPopup(props) {
     </button>,
   ];
 
+  /**Sets field values to 
+   * respective variables */
   function changeItem(e) {
     e.preventDefault();
     setItem(e.target.value);
@@ -68,6 +70,7 @@ function EditShoppingPopup(props) {
     setUnit(e.target.value);
   }
 
+  /**Updates shopping item data on submit*/
   function handleSubmit(e) {
     e.preventDefault();
     ShoppingAPI.updateShoppingItem(itemData).then(

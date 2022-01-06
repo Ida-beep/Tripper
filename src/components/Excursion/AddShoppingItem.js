@@ -18,6 +18,8 @@ function AddShoppingItem(props) {
     unit: unit,
   };
 
+  /**Sets field values to 
+   * respective variables */
   function changeItem(e) {
     e.preventDefault();
     setItem(e.target.value);
@@ -26,17 +28,22 @@ function AddShoppingItem(props) {
     e.preventDefault();
     setAmount(e.target.value);
   }
-
   function changeUnit(e) {
     e.preventDefault();
     setUnit(e.target.value);
   }
 
+  //Adds shopping item to DB on submit
   function handleSubmit(e) {
     e.preventDefault();
     ShoppingAPI.addShoppingItem(shoppingData);
   }
 
+  /**
+   * Returns true if parameters are null
+   * Used to disable submit button until all
+   * fields are filled.
+   */
   function disable() {
     if (!itemName || !amount || !unit) {
       return true;
@@ -53,8 +60,6 @@ function AddShoppingItem(props) {
     </button>,
   ];
 
-  //editState={props.toggleContactMember}
-  //placeholder to longinput
   return (
     props.trigger && (
       <PopUp

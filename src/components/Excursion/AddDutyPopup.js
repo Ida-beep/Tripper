@@ -14,6 +14,8 @@ function AddDutyPopup(props) {
     minRequired: minRequired,
   };
 
+  /**Sets field values to 
+   * respective variables */
   function changeName(e) {
     e.preventDefault();
     setName(e.target.value);
@@ -23,12 +25,18 @@ function AddDutyPopup(props) {
     setMinRequired(e.target.value);
   }
 
+  //Adds duty to DB on submit
   function handleSubmit(e) {
     e.preventDefault();
     DutiesAPI.addDuty(dutyData);
     props.onDutyAdd(true);
   }
 
+  /**
+   * Returns true if parameters are null
+   * Used to disable submit button until all
+   * fields are filled.
+   */
   function disable() {
     if (!name || !minRequired) {
       return true;

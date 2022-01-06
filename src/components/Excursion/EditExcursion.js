@@ -18,9 +18,7 @@ function EditExcursion(props) {
   const [description, setDescription] = useState();
   const notInitialRender = useRef(false);
 
-  /**
-   * Fetches Excursion from the database
-   */
+  /**Fetches Excursion from the database*/
   useEffect(() => {
     async function fetchData() {
       setExcursion(await ExcursionAPI.fetchExcursionFromDB());
@@ -45,46 +43,30 @@ function EditExcursion(props) {
     }
   }, [excursion]);
 
-  /**
-   * Changes excursionTitle
-   */
+  /**Sets field values to 
+   * respective variables */
   function changeExcursionTitle(e) {
     e.preventDefault();
     setExcursionTitle(e.target.value);
   }
-  /**
-   * Changes dateFrom
-   */
   function changeDateFrom(e) {
     e.preventDefault();
     setDateFrom(e.target.value);
   }
-  /**
-   * Changes dateTo
-   */
   function changeDateTo(e) {
     e.preventDefault();
     setDateTo(e.target.value);
   }
-  /**
-   * Changes location
-   */
   function changeLocation(e) {
     e.preventDefault();
     setLocation(e.target.value);
   }
-
-  /**
-   * Changes description
-   */
   function changeDescription(e) {
     e.preventDefault();
     setDescription(e.target.value);
   }
 
-  /**
-   * Determines whether or not a button is disabled or not
-   */
+  /**Determines whether or not a button is disabled or not*/
   function disable() {
     if (!excursionTitle || !dateFrom || !dateTo || !location || !description) {
       return true;
@@ -92,17 +74,12 @@ function EditExcursion(props) {
     return false;
   }
 
-  /**
-   * Submits excursion
-   */
+  /**Submits excursion*/
   function handleSubmit(e) {
     e.preventDefault();
     ExcursionAPI.updateExcursion({
-      excursionTitle,
-      dateFrom,
-      dateTo,
-      location,
-      description,
+      excursionTitle,dateFrom,
+      dateTo,location,description,
     });
   }
 

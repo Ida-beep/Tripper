@@ -1,5 +1,15 @@
 import { Parse } from "parse";
 
+/**
+ * FamilyMemberAPI handles all API calls related to the 
+ * FamilyMember table in the DB, such as fetching, 
+ * deleting, update and add.
+ * */
+
+/**
+ * Returns family members that are assigned
+ * to current user.
+*/
 const fetchFamilyMembersFromDB = async () => {
   const contactPerson = Parse.User.current();
   const contactPersonID = contactPerson.id;
@@ -104,7 +114,11 @@ async function fetchAllFamilyMembersInExcursion() {
   return familyMemberCollection;
 }
 
-async function addFamilyMember({ firstName, lastName, age, duties }) {
+/**Adds family member and assigns to
+ * current contact person and current excursion.
+*/
+async function addFamilyMember({ 
+    firstName, lastName, age, duties }) {
   try {
     const User = Parse.User.current();
     const id = User.id;
@@ -138,6 +152,10 @@ async function addFamilyMember({ firstName, lastName, age, duties }) {
   }
 }
 
+/**
+ * Updates data that has changed about 
+ * family member 
+ * */
 const updateFamilyMember = async (selected) => {
   const query = new Parse.Query("FamilyMember");
   try {
@@ -158,6 +176,7 @@ const updateFamilyMember = async (selected) => {
   }
 };
 
+/**Deletes family member that is passed through argument */
 async function deleteFamilyMember(familyMember) {
   const member = familyMember;
 

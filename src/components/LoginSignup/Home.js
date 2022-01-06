@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import Footer from "../Navigation/Footer.js";
 import ImgTripCar from "../Img/ImgTripCar.js";
 
+
+/**This page renders the home page of tripper. */
 function Home() {
   return (
     <>

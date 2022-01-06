@@ -9,7 +9,6 @@ import ShortInput from "../Cards/ShortInput.js";
 /**
  * AddFamilyPopup defines the content of the popup to
  * add family items, using its parent PopUp.js
- *
  */
 function AddFamilyPopup(props) {
   /* eslint-disable no-unused-vars */
@@ -19,6 +18,8 @@ function AddFamilyPopup(props) {
   const [duties, setDuties] = useState([]);
   const personData = { firstName, lastName, age, duties };
 
+  /**Sets field values to 
+   * respective variables */
   function changeFirstName(e) {
     e.preventDefault();
     setFirstName(e.target.value);
@@ -32,11 +33,13 @@ function AddFamilyPopup(props) {
     setAge(e.target.value);
   }
 
+  //Adds family member on submit
   function handleSubmit(e) {
     e.preventDefault();
     FamilyMemberAPI.addFamilyMember(personData);
   }
 
+  //Disables submit button until all field are filled
   function disable() {
     if (!firstName || !lastName || !age) {
       return true;
@@ -44,6 +47,9 @@ function AddFamilyPopup(props) {
     return false;
   }
 
+  /**Ensures that fields are empty 
+   * when reopening the add family popup.
+  */
   function closeAndReset() {
     props.toggleFamilyItem();
     setAge();

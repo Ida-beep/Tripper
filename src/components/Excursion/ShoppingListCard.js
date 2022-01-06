@@ -2,13 +2,15 @@ import React, { useEffect, useState } from "react";
 import TableScaffold from "../Cards/TableScaffold";
 import ShoppingAPI from "../API/ShoppingAPI";
 
+/**
+ * This component renders all shopping items listed
+ * for the current excursion.
+ */
 function ShoppingListCard(props) {
   const [shoppingList, setShoppingList] = useState([]);
   const [selected, setSelected] = useState();
 
-  /**
-   * Deletes shopping item
-   */
+  /**Deletes shopping item*/
   async function handleDelete(e) {
     e.preventDefault();
     ShoppingAPI.deleteShoppingItem(selected).then(async () => {
@@ -17,17 +19,13 @@ function ShoppingListCard(props) {
     });
   }
 
-  /**
-   * Sets the selected shopping item as selected
-   */
+  /**Sets the selected shopping item as selected*/
   useEffect(() => {
     props.selectedShoppingItem(selected);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selected]);
 
-  /**
-   * Fetches shoppinglist from database
-   */
+  /**Fetches shoppinglist from database*/
   useEffect(() => {
     async function fetchData() {
       setShoppingList(await ShoppingAPI.fetchShoppingListFromDB());

@@ -1,6 +1,9 @@
 import lottie from "lottie-web";
 import React, { useEffect, useRef } from "react";
 
+/**
+ * Returns the animation for Trippers Homepage.
+ */
 function ImgTripCar() {
   const imgContainer = useRef(null);
 

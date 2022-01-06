@@ -1,5 +1,11 @@
 import { Parse } from "parse";
 
+/**
+ * CarsAPI handles all API calls related to the Cars table
+ * in the DB, such as fetching, deleting, update and add.
+ * */
+
+//Fetches all cars that belongs to the user that is logged in
 const fetchCarsFromDB = async () => {
   const carCollection = [];
   const query = new Parse.Query("Car");
@@ -38,6 +44,7 @@ const fetchCarsFromDB = async () => {
   return carCollection;
 };
 
+//Adds car and assigns it to current user
 function addCar(data) {
   try {
     const User = Parse.User.current();
@@ -68,6 +75,7 @@ function addCar(data) {
   }
 }
 
+//Deletes car that is passed in as argument
 async function deleteCar(Car) {
   const car = Car;
   const carID = car.id;
@@ -88,6 +96,7 @@ async function deleteCar(Car) {
   );
 }
 
+//Updates data about car that has changed
 const updateCar = async (selected) => {
   const query = new Parse.Query("Car");
   try {

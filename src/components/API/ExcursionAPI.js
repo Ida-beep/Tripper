@@ -1,11 +1,16 @@
 import { Parse } from "parse";
 
+/**
+ * ExcursionAPI handles all API calls related to the 
+ * Excursion table in the DB, such as fetching, 
+ * deleting, update and add.
+ * */
+
+
+/**Creates excursion and saves in DB */
 const createExcursion = async ({
-  excursionName,
-  fromDate,
-  toDate,
-  location,
-  description,
+  excursionName,fromDate,toDate,
+  location,description,
 }) => {
   const newExcursion = new Parse.Object("Excursion");
   newExcursion.set("excursionTitle", excursionName);
@@ -94,6 +99,7 @@ const fetchExcursionFromDB = async () => {
   return excursionInfo;
 };
 
+/**Returns all excursions from DB */
 const fetchAllExcursionsFromDB = async () => {
   const query = new Parse.Query("Excursion");
   let excursions = await query.find();
@@ -115,12 +121,10 @@ const fetchAllExcursionsFromDB = async () => {
   return excursionArr;
 };
 
+/**Updates changed data to relevant excursion*/
 const updateExcursion = async ({
-  excursionTitle,
-  dateFrom,
-  dateTo,
-  location,
-  description,
+  excursionTitle,dateFrom,dateTo,
+  location,description,
 }) => {
   const query = new Parse.Query("Excursion");
 

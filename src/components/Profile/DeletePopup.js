@@ -11,6 +11,7 @@ function DeletePopup(props) {
     props.closePopup(false);
   }
 
+  //Hides popup
   function handleCancel(e) {
     e.preventDefault();
     props.onCancel(true);

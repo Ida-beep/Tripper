@@ -13,9 +13,7 @@ function PreviousDutiesPopup(props) {
   const [excursionDuties, setExcursionDuties] = useState([]);
   const [selectedDuties, setSelectedDuties] = useState([]);
 
-  /**
-   * Fetched All Excursion from database
-   */
+  /**Fetched All Excursion from database*/
   useEffect(() => {
     async function fetchData() {
       ExcursionAPI.fetchAllExcursionsFromDB().then(
@@ -30,24 +28,18 @@ function PreviousDutiesPopup(props) {
     fetchData();
   }, []);
 
-  /**
-   * Submits selected duties
-   */
+  /**Submits selected duties*/
   function handleSubmit(e) {
     e.preventDefault();
     DutiesAPI.addMultipleDuties(selectedDuties);
   }
 
-  /**
-   * Adds an element to the array of duties
-   */
+  /**Adds an element to the array of duties*/
   function setDutyElementToSelected(element) {
     setSelectedDuties((prevState) => [...prevState, element]);
   }
 
-  /**
-   * Fetches data from Previous Excursions
-   */
+  /**Fetches data from Previous Excursions*/
   useEffect(() => {
     if (typeof selectedExcursion !== "undefined") {
       async function fetchData() {
@@ -57,13 +49,6 @@ function PreviousDutiesPopup(props) {
       fetchData();
     }
   }, [selectedExcursion]);
-
-  /**
-   * Sets the selected Excursion as selected
-   */
-  function setExcursionElementToSelected(element) {
-    setSelectedExcursion(element);
-  }
 
   const buttons = [
     <button className="button-secondary-extra-small" onClick={props.editState}>
@@ -85,7 +70,7 @@ function PreviousDutiesPopup(props) {
             <div className="table-container">
               <TableScaffold
                 onSelection={(selectedItem) =>
-                  setExcursionElementToSelected(selectedItem)
+                  setSelectedExcursion(selectedItem)
                 }
                 tkey={["excursionTitle"]}
                 theaders={["Excursion"]}

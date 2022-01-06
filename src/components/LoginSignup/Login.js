@@ -30,17 +30,6 @@ function Login(props) {
     );
   }
 
-  const usernameTitle = (
-    <p>
-      <FaUser /> Username
-    </p>
-  );
-  const passwordTitle = (
-    <p>
-      <FaLock /> Password
-    </p>
-  );
-
   return (
     <>
       <div className="page-container">
@@ -52,7 +41,7 @@ function Login(props) {
             <form onSubmit={handleLoginAttempt}>
               <div className="long-input">
                 <label>
-                  <p>{usernameTitle}</p>
+                  <p><p><FaUser /> Username</p></p>
                   <input
                     type="text"
                     value={username}
@@ -62,7 +51,7 @@ function Login(props) {
               </div>
               <div className="long-input" style={{ marginTop: "10px" }}>
                 <label>
-                  <p>{passwordTitle}</p>
+                  <p><p><FaLock /> Password</p></p>
                   <input
                     type="password"
                     value={password}
