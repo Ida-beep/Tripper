@@ -5,26 +5,33 @@
         tkey        =   [pass an array of the keys the tdata should display] - should match the headers
  */
 
+
+// Creates random key for children in scaffold - This is Bad practice - but for now it removes the "missing key" warning.  
+function createKey(){
+  const randomKey = Math.random()
+  return randomKey
+}
+
 function TableScaffold(props) {
   const rowHeaders = props.theaders.map((header) => {
-    return <th key={header}>{header}</th>;
+    return <th key={createKey()}>{header}</th>;
   });
   const rowData = props.tdata.map((tdata) => {
-    const rowDataValue = props.tkey.map((header, index) => {
+    const rowDataValue = props.tkey.map((header) => {
       if (tdata[header].constructor === Array) {
         let tableDatalist = "";
         for (let i = 0; i < tdata[header].length; i++) {
           tableDatalist += tdata[header][i] + " ";
         }
-        return <td key={tdata.id}>{tableDatalist}</td>;
+        return <td key={createKey()}>{tableDatalist}</td>;
       }
-      return <td key={index}>{tdata[header]}</td>;
+      return <td key={createKey()}>{tdata[header]}</td>;
     });
     return (
       <tr
         className="trow"
         onClick={() => props.onSelection(tdata)}
-        key={props.tdata}
+        key={createKey()}
       >
         {rowDataValue}
       </tr>
@@ -32,11 +39,11 @@ function TableScaffold(props) {
   });
 
   return (
-    <table key={props.tTableKey}>
-      <thead key={props.tHeadKey}> 
+    <table >
+      <thead> 
         <tr>{rowHeaders}</tr>
       </thead>
-      <tbody key={props.tBodyKey}>{rowData}</tbody>
+      <tbody >{rowData}</tbody>
     </table>
   );
 }
