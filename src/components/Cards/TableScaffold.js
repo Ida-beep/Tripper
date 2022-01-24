@@ -6,7 +6,9 @@
  */
 
 function TableScaffold({ theaders, tkey, tdata, onSelection }) {
+  //Maps through the array of objects passed as props (tdata)
   const tableData = tdata.map((object) => {
+    // Maps through the array of keys passed as props (tkey) - Returns <td> of each key passed to object
     const data = tkey.map((key, index) => (
       <td key={index}>
         {Array.isArray(object[key]) ? object[key].join(", ") : object[key]}
