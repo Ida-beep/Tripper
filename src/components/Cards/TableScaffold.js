@@ -5,45 +5,33 @@
         tkey        =   [pass an array of the keys the tdata should display] - should match the headers
  */
 
+function TableScaffold({ theaders, tkey, tdata, onSelection }) {
+  //Maps through the array of objects passed as props (tdata)
+  const tableData = tdata.map((object) => {
+    // Maps through the array of keys passed as props (tkey) - Returns <td> of each key passed to object
+    const data = tkey.map((key, index) => (
+      <td key={index}>
+        {Array.isArray(object[key]) ? object[key].join(", ") : object[key]}
+      </td>
+    ));
 
-// Creates random key for children in scaffold - This is Bad practice - but for now it removes the "missing key" warning.  
-function createKey(){
-  const randomKey = Math.random()
-  return randomKey
-}
-
-function TableScaffold(props) {
-  const rowHeaders = props.theaders.map((header) => {
-    return <th key={createKey()}>{header}</th>;
-  });
-  const rowData = props.tdata.map((tdata) => {
-    const rowDataValue = props.tkey.map((header) => {
-      if (tdata[header].constructor === Array) {
-        let tableDatalist = "";
-        for (let i = 0; i < tdata[header].length; i++) {
-          tableDatalist += tdata[header][i] + " ";
-        }
-        return <td key={createKey()}>{tableDatalist}</td>;
-      }
-      return <td key={createKey()}>{tdata[header]}</td>;
-    });
     return (
-      <tr
-        className="trow"
-        onClick={() => props.onSelection(tdata)}
-        key={createKey()}
-      >
-        {rowDataValue}
+      <tr className="trow" key={object.id} onClick={() => onSelection(object)}>
+        {data}
       </tr>
     );
   });
 
   return (
-    <table >
-      <thead> 
-        <tr>{rowHeaders}</tr>
+    <table>
+      <thead>
+        <tr>
+          {theaders.map((header, index) => (
+            <th key={index}>{header}</th>
+          ))}
+        </tr>
       </thead>
-      <tbody >{rowData}</tbody>
+      <tbody>{tableData}</tbody>
     </table>
   );
 }
